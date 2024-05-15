@@ -16,10 +16,13 @@ alias ls='eza -al --color=always --group-directories-first'
 alias tree='eza --color=always --group-directories-first --tree -L 3'
 
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
-LFCD="~/.config/lf/lfcd.sh"
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi
+
+
+lfcd () {                                             
+# `command` is needed in case `lfcd` is aliased to
+cd "$(command lf -print-last-dir "$@")"
+}
+    
 # Also set a keybind to open it with <ctrl>+<o>
 bind '"\C-o":"lfcd\C-m"'
 
