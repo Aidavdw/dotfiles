@@ -2,6 +2,11 @@
 # http://colemakmods.github.io/mod-dh/.
 # Public domain.
 # Edited slightly by aida.
+# To automatically load in tty, add the line
+# `KEYMAP=/home/aida/.outside/colemak_dh_ansi`
+# to /etc/vconsole.conf
+#
+# https://wiki.archlinux.org/title/Linux_console/Keyboard_configuration#Persistent_configuration
 
 alt_is_meta
 charset "iso-8859-15"  # use a ISO-8859-15 font, e.g.: consolechars -f lat9v-14
