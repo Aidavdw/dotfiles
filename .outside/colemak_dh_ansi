@@ -15,6 +15,18 @@ include "qwerty-layout"
 include "linux-with-alt-and-altgr"
 strings as usual
 
+# Columns are octal:
+# 1: shift
+# 2: altGr
+# 4: control
+# 8: alt
+# 16: ShiftL
+# 32: ShiftR
+# 64: ctrlL
+# 128: ctrlR
+# 256: CapsShift
+
+#               plain         Shift+       Altgr+           altgr+shift+   ctrl+
 keycode  41  =  grave         asciitilde   dead_tilde       asciitilde     nul
 keycode  2   =  one           exclam       exclamdown       onesuperior
 keycode  3   =  two           at           masculine        twosuperior    nul
@@ -22,7 +34,7 @@ keycode  4   =  three         numbersign   ordfeminine      threesuperior  Escap
 keycode  5   =  four          dollar       cent             sterling       Control_backslash
 keycode  6   =  five          percent      euro             yen            Control_bracketright
 keycode  7   =  six           asciicircum  hstroke          Hstroke        Control_asciicircum
-keycode  8   =  equal         plus         multiply         division
+keycode  8   =  backslash     bar          asciitilde       asciitilde     Control_backslash
 keycode  9   =  seven         ampersand    eth              ETH            Control_underscore
 keycode  10  =  eight         asterisk     thorn            THORN          Delete
 keycode  11  =  nine          parenleft    asciitilde       asciitilde
@@ -41,7 +53,7 @@ keycode  24  =  u             U            uacute           Uacute         Contr
 keycode  25  =  y             Y            udiaeresis       Udiaeresis     Control_y
 keycode  26  =  semicolon     colon        odiaeresis       Odiaeresis
 keycode  27  =  apostrophe    quotedbl     otilde           Otilde
-keycode  43  =  backslash     bar          asciitilde       asciitilde     Control_backslash
+keycode  43  =  equal         plus         multiply         division
 
 keycode  30  =  a             A            aacute           Aacute         Control_a
 keycode  31  =  r             R            dead_grave       asciitilde     Control_r
@@ -69,9 +81,6 @@ keycode  53  =  period        greater      asciitilde       asciitilde
 
 keycode  57  =  space         space        space            nobreakspace   nul
 
-! Remove this line if you want caps lock unmodified
-keycode  58 =    BackSpace     BackSpace        BackSpace         BackSpace
-
 keycode   1 = Escape
 keycode  14 = Delete
 keycode  15 = Tab
@@ -82,3 +91,15 @@ keycode  42 = Shift
 keycode  54 = Shift
 keycode  56 = Alt
 keycode  97 = Control
+
+# Extend layer
+keycode  58 = CtrlR
+ctrlr keycode 40 = BackSpace
+ctrlr keycode 39 = Right
+ctrlr keycode 24 = Up
+ctrlc keycode 38 = Down
+ctrlc keycode 37 = Left
+ctrlr keycode 25 = End
+ctrlr keycode 23 = Home
+ctrlr keycode 37 = PageUp
+ctrlr keycode 36 = PageDown
