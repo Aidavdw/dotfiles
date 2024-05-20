@@ -39,7 +39,7 @@ keycode  9   =  seven         ampersand    eth              ETH            Contr
 keycode  10  =  eight         asterisk     thorn            THORN          Delete
 keycode  11  =  nine          parenleft    asciitilde       asciitilde
 keycode  12  =  zero          parenright   asciitilde       asciitilde
-keycode  13  =  minus         underscore   asciitilde       asciitilde     Control_underscore
+keycode  13  =  equal         plus         multiply         division
 
 keycode  16  =  q             Q            adiaeresis       Adiaeresis     Control_q
 keycode  17  =  w             W            aring            Aring          Control_w
@@ -51,9 +51,9 @@ keycode  22  =  j             J            asciitilde       asciitilde     Contr
 keycode  23  =  l             L            asciitilde       asciitilde     Control_l
 keycode  24  =  u             U            uacute           Uacute         Control_u
 keycode  25  =  y             Y            udiaeresis       Udiaeresis     Control_y
-keycode  26  =  semicolon     colon        odiaeresis       Odiaeresis
+keycode  26  =  minus         underscore   asciitilde       asciitilde     Control_underscore
 keycode  27  =  apostrophe    quotedbl     otilde           Otilde
-keycode  43  =  equal         plus         multiply         division
+keycode  43  =  semicolon     colon        odiaeresis       Odiaeresis
 
 keycode  30  =  a             A            aacute           Aacute         Control_a
 keycode  31  =  r             R            dead_grave       asciitilde     Control_r
