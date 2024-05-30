@@ -36,4 +36,4 @@ alias please='sudo "$BASH" -c "$(history -p !!)"'
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH="$HOME/.cargo/bin${PATH:+:${PATH}}"
 PATH="$HOME/.local/bin${PATH:+:${PATH}}"
-PATH="$HOME/.dotfiles/scripts${PATH:+:${PATH}}"
+PATH="$HOME/scripts${PATH:+:${PATH}}"
