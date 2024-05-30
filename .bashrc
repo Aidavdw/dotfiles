@@ -24,7 +24,7 @@ cd "$(command lf -print-last-dir "$@")"
 }
     
 # Also set a keybind to open it with <ctrl>+<o>
-bind '"\C-o":"lfcd\C-m"'
+bind '"\C-o":"\C-ulfcd\C-m"'
 
 # Make the terminal look pretty using starship! Means that PS1 does not need to be set.
 #PS1='[\u@\h \W]\$ '
