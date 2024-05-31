@@ -1,0 +1,5 @@
+[Desktop Entry]
+#This is installed as a dependency, and I don't want it cluttering up space. Hide it from menus.
+#If you want it to show up after all, just delete this file. The one in /usr/share/applications will take priority again.
+NoDisplay=true
+Hidden=true

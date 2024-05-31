@@ -1,0 +1,8 @@
+#!/bin/bash
+if ! [ -f "/usr/share/applications/$1" ]; then
+    echo "No .desktop file with name $1"
+    exit 2
+fi
+
+printf "[Desktop Entry]\n#This is installed as a dependency, and I don't want it cluttering up space. Hide it from menus.\n#If you want it to show up after all, just delete this file. The one in /usr/share/applications will take priority again.\nNoDisplay=true\nHidden=true" > ~/dotfiles/.local/share/applications/$1
+stow-dotfiles
