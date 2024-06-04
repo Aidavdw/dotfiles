@@ -8,4 +8,5 @@ homedirlen="${#HOME}"
 target="${HOME}/dotfiles${1:$homedirlen}"
 mkdir -p `dirname $target`
 mv $1 $target
+stow-dotfiles
 echo "moved to $target"
