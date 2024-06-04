@@ -41,7 +41,7 @@ map mf mkfile
 
 # Bookmarks for quick navigation
 # Movement
-map gc cd ~/.dotfiles
+map gc cd ~/dotfiles
 map gf cd ~/documents
 map gd cd ~/downloads
 map gp cd ~/pictures
