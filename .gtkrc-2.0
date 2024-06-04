@@ -1,3 +1,4 @@
 # GTK2 settings
 gtk-im-module="fcitx"
 gtk-font-name = "Noto Sans"
+# Set theme with dsettings
