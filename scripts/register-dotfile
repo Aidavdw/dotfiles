@@ -1,0 +1,11 @@
+#!/bin/bash
+if ! [[ $1 == ~/* ]]; then
+    echo "Provide filename in format ~/[...]"
+    exit 2
+fi
+
+homedirlen="${#HOME}"
+target="${HOME}/dotfiles${1:$homedirlen}"
+mkdir -p `dirname $target`
+mv $1 $target
+echo "moved to $target"
