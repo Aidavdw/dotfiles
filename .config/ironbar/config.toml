@@ -6,22 +6,17 @@ height = 38 # height of bar in pixels
 [[start]]
 type = "workspaces"
 all_monitors = false
-favourites=[home,music,mail,notes,vscode]
+favourites = ["1", "music"]
 
 [start.name_map]
-home = ""
+1 = ""
 music = "󰎆"
 social = "󰭹"
-documentation = "󰂺"
 mail = ""
 notes = "󰎞"
 vscode = "󰨞"
+documentation = "󰂺"
 procrastination = "󱣻"
-
-
-[[start]]
-type = "label"
-label = "random num: {{500:echo FIXME}}"
 
 #[[end]]
 #type = "music"
