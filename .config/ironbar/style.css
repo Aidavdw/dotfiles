@@ -1,3 +1,4 @@
+/* @define-color is valid GTK3 CSS */
 @define-color color_bg #2d2d2d;
 @define-color color_bg_dark #1c1c1c;
 @define-color color_border #424242;
@@ -8,19 +9,22 @@
 /* -- base styles -- */
 
 * {
-    font-family: Noto Sans Nerd Font, sans-serif;
+    font-family: Noto Sans, JetBrainsMono Nerd Font Mono, sans-serif;
     font-size: 16px;
     border: none;
     border-radius: 0;
 }
 
-box, menubar, button {
+box,
+menubar,
+button {
     background-color: @color_bg;
     background-image: none;
     box-shadow: none;
 }
 
-button, label {
+button,
+label {
     color: @color_text;
 }
 
@@ -42,7 +46,6 @@ scale trough {
     padding: 1em;
 }
 
-
 /* -- clipboard -- */
 
 .clipboard {
@@ -54,7 +57,6 @@ scale trough {
     padding-bottom: 0.3em;
     border-bottom: 1px solid @color_border;
 }
-
 
 /* -- clock -- */
 
@@ -83,7 +85,6 @@ scale trough {
 .popup-clock .calendar:selected {
     background-color: @color_border_active;
 }
-
 
 /* -- launcher -- */
 
@@ -115,7 +116,6 @@ scale trough {
     border-top: 1px solid @color_border;
 }
 
-
 /* -- music -- */
 
 .music:hover * {
@@ -130,7 +130,8 @@ scale trough {
     margin-right: 0.4em;
 }
 
-.popup-music .title .icon, .popup-music .title .label {
+.popup-music .title .icon,
+.popup-music .title .label {
     font-size: 1.7em;
 }
 
@@ -170,7 +171,6 @@ scale trough {
     padding-left: 10px;
 }
 
-
 /* -- sys_info -- */
 
 .sysinfo {
@@ -180,7 +180,6 @@ scale trough {
 .sysinfo .item {
     margin-left: 5px;
 }
-
 
 /* -- tray -- */
 
@@ -205,7 +204,6 @@ scale trough {
     box-shadow: inset 0 -3px;
 }
 
-
 /* -- custom: power menu -- */
 
 .popup-power-menu #header {
@@ -223,4 +221,3 @@ scale trough {
 .popup-power-menu #buttons > *:nth-child(1) .power-btn {
     margin-right: 1em;
 }
-
