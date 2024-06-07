@@ -6,17 +6,17 @@ height = 38 # height of bar in pixels
 [[start]]
 type = "workspaces"
 all_monitors = false
-favourites = ["1", "music"]
+favourites = ["1", "11", "12", "13","14", "16", "17"]
 
 [start.name_map]
 1 = ""
-music = "󰎆"
-social = "󰭹"
-mail = ""
-notes = "󰎞"
-vscode = "󰨞"
-documentation = "󰂺"
-procrastination = "󱣻"
+11 = "󰎆"
+12 = "󰭹"
+14 = ""
+16 = "󱍄"
+17 = "󰨞"
+13 = "󰂺"
+18 = "󱣻"
 
 #[[end]]
 #type = "music"
@@ -53,16 +53,16 @@ procrastination = "󱣻"
 #disks = 300
 #networks = 3
 
-[[end]]
-type = "volume"
-format = "{icon} {percentage}%"
-max_volume = 100
-
-[end.icons]
-volume_high = "󰕾"
-volume_medium = "󰖀"
-volume_low = "󰕿"
-muted = "󰝟"
+#[[end]]
+#type = "volume"
+#format = "{icon} {percentage}%"
+#max_volume = 100
+#
+#[end.icons]
+#volume_high = "󰕾"
+#volume_medium = "󰖀"
+#volume_low = "󰕿"
+#muted = "󰝟"
 
 [[end]]
 type = "clipboard"
