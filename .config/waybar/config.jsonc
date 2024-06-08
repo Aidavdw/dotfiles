@@ -6,22 +6,44 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "custom/media"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     "modules-right": [
+        "tray", // For discord, etc- 
         "mpd",
         "pulseaudio",
-        "network",
-        //"power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        //"backlight",
+        "group/hardware",
         "battery",
         "battery#bat2",
         "clock",
-        "tray"
+        "group/power"
     ],
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 400
+        },
+        "modules": [
+            "network",
+            //"power-profiles-daemon",
+            "cpu",
+            "memory",
+            "temperature"
+            //"backlight"
+        ]
+    },
+    "group/power": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 400
+        },
+        "modules": [
+            "custom/power", // First element is the "group leader" and won't ever be hidden
+            "custom/quit",
+            "custom/lock",
+            "custom/reboot"
+        ] 
+    },
     // Modules configuration
     "hyprland/workspaces": {
         // TODO: Window rewrite rules- makes individual windows show up. https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window-rewrite-rules
@@ -162,16 +184,24 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    "custom/quit": {
+        "format": "󰗼",
+        "tooltip": false,
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+        "format": "󰍁",
+        "tooltip": false,
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "reboot"
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "shutdown now"
     }
 }
