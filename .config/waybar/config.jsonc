@@ -27,11 +27,17 @@
     ],
     // Modules configuration
     "hyprland/workspaces": {
-        "disable-scroll": true,
+        // TODO: Window rewrite rules- makes individual windows show up. https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window-rewrite-rules
+        //"sort-by":"default" // Let Hyprland determine the sort order.
+        // Hyprland binding for scroll, as the waybar scroll does not interface.
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
-        "warp-on-scroll": false,
+        //"warp-on-scroll": false, // Styling thing?
         "format": "{icon}",
         "format-icons": {
+            "1": "",
             "music": "󰎆",
             "social": "󰭹",
             "mail": "",
@@ -39,6 +45,9 @@
             "vscode": "󰨞",
             "documentation": "󰂺",
             "procrastination": "󱣻"
+        },
+        "persistent-workspaces": {
+            "1": [] // always keep the home screen, even when there is nothing on there.
         }
     },
     "keyboard-state": {
@@ -49,9 +58,6 @@
             "locked": "",
             "unlocked": ""
         }
-    },
-    "hyprland/mode": {
-        "format": "<span style=\"italic\">{}</span>"
     },
     "hyprland/scratchpad": {
         "format": "{icon} {count}",
