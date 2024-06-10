@@ -101,8 +101,13 @@
     },
     "clock": {
         // "timezone": "America/New_York",
+        // 'L' makes it adhere to the set localectl, instead of defaulting to C.
+        // formatting boxes need a ':' in front.
+        // Only allows one set of {} in here.
+        // {: must directly be followed by a formatting specifier.
+        "format": "{:L%a %e日%b %p %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%H:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
