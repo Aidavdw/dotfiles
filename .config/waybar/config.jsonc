@@ -9,13 +9,14 @@
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
     "modules-right": [
-        "tray", // For discord, etc- 
+        "tray", // For discord, etc-
         "mpd",
         "pulseaudio",
         "group/hardware",
         "battery",
         "battery#bat2",
-        "clock",
+        "clock#date",
+        "clock#time",
         "group/power"
     ],
     "group/hardware": {
@@ -42,7 +43,7 @@
             "custom/quit",
             "custom/lock",
             "custom/reboot"
-        ] 
+        ]
     },
     // Modules configuration
     "hyprland/workspaces": {
@@ -99,15 +100,18 @@
         // "icon-size": 21,
         "spacing": 10
     },
-    "clock": {
-        // "timezone": "America/New_York",
+    "clock#date": {
         // 'L' makes it adhere to the set localectl, instead of defaulting to C.
         // formatting boxes need a ':' in front.
         // Only allows one set of {} in here.
         // {: must directly be followed by a formatting specifier.
-        "format": "{:L%a %e日%b %p %H:%M}",
+        "format": "{:L%a %e日%b}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%H:%M}"
+    },
+    "clock#time": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
         "format": "{usage}% ",
