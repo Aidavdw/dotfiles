@@ -1,0 +1,3 @@
+#!/bin/bash
+pkill -9 -x waybar
+nohup waybar >> /var/log/waybar.log &

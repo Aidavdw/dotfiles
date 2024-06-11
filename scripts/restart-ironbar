@@ -1,4 +1,0 @@
-#!/bin/bash
-pkill -9 -x ironbar
-echo Starting ironbar
-nohup ironbar >> /var/log/ironbar.log &
