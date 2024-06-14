@@ -32,9 +32,11 @@ else
     export PS1='\e[01;32m[\t]\e[m \u@\h \e[0;32m\w\e[m$ '
 fi
 
-
 # 'oh fuck, I needed to run that command as sudo'. Rerun the previous command as sudo
 alias please='sudo "$BASH" -c "$(history -p !!)"'
+
+# When using a live usb, 
+alias archusb-ssh='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH="$HOME/.cargo/bin${PATH:+:${PATH}}"
