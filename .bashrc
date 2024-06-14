@@ -25,7 +25,7 @@ cd "$(command lf -print-last-dir "$@")"
 bind '"\C-o":"\C-ulfcd\C-m"'
 
 # The user@hostname part that is printed before every command. If starship is installed use that, otherwise use a fallback
-if ! [ -x "$(command -v starship)" ]; then
+if [ -x "$(command -v starship)" ]; then
     eval "$(starship init bash)"
 else
     echo 'starship unavailable, using PS1 for current session' >&2
