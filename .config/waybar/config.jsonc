@@ -128,16 +128,16 @@
         // formatting boxes need a ':' in front.
         // Only allows one set of {} in here.
         // {: must directly be followed by a formatting specifier.
-        "format": "{:L%a %e日%b}",
+         "format": "{:L%e日\n%m月}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%H:%M}"
+        "format-alt": "{:%e %b}"
     },
     "clock#time": {
-        "format": "{:%H:%M}",
+        "format": "{:L%a %H:%M}",
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "{usage}% <span size='200%'></span>",
+        "format": "{usage}% <span size='200%'></span>",
         "tooltip": false
     },
     "memory": {

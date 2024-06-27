@@ -29,7 +29,7 @@
 * {
     /* `otf-font-awesome` or a nerdfont is required to be installed for icons */
     font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font Mono";
-    font-size: 13px;
+    font-size: 1em;
 }
 
 /* Note that `window` is the text box showing the title of the active window, but `window#waybar` is the entire waybar!*/
@@ -53,28 +53,17 @@ window#waybar.solo {
 window#waybar.firefox {
 }
 
-/* "pills" */
+/* Main groups */
 #workspace, #tray, #window, #hardware, #audio, #power{
-    border-radius: 1em;
-    margin-left: 10px;
-    padding-right: 5px;
-    padding-left: 5px;
 }
 
-/* Left half pill for date */
-#clock#date {
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    margin-right: 0px;
-    background-color: @flamingo;
+#clock.date {
+    font-size:0.8em;
 }
 
 /* Right half pill */
-#clock#time {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    margin-left: 0px;
-    background-color: @sky;
+#clock.time {
+    font-size:1.4em;
 }
 
 /* Groups */
@@ -85,7 +74,6 @@ window#waybar.firefox {
     background-color: @peach;
 }
 #hardware {
-    background-color: @maroon;
 }
 
 button {
@@ -122,7 +110,7 @@ button:hover {
 
 #workspaces button.focused {
     color: @base;
-    background-color: @mauve;
+    background-color: @yellow;
 }
 
 #workspaces button.urgent {
