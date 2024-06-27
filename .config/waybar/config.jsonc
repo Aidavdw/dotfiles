@@ -10,22 +10,44 @@
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray", // For discord, etc-
-        "mpd",
-        "pulseaudio",
+        "group/media",
         "group/hardware",
-        "battery",
-        "battery#bat2",
-        "clock#date",
-        "clock#time",
+        "group/datetime",
         "group/power"
     ],
+    /************* Pills **************/
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": [
+            "mpd",
+            "pulseaudio",
+            "privacy"
+        ]
+    },
     "group/hardware": {
+        "orientation": "horizontal",
+        "modules": [
+            "network",
+            "battery",
+            "battery#bat2",
+            "group/hardwaredrawer"
+        ]
+    },
+    "group/datetime": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock#date",
+            "clock#time"
+        ]
+    },
+
+    /************* Folding things **************/
+    "group/hardwaredrawer": {
         "orientation": "horizontal",
         "drawer": {
             "transition-duration": 400
         },
         "modules": [
-            "network",
             //"power-profiles-daemon",
             "cpu",
             "memory",
@@ -45,7 +67,8 @@
             "custom/reboot"
         ]
     },
-    // Modules configuration
+
+    /************* Modules configuration **************/
     "hyprland/workspaces": {
         // TODO: Window rewrite rules- makes individual windows show up. https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window-rewrite-rules
         //"sort-by":"default" // Let Hyprland determine the sort order.
@@ -55,7 +78,7 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "{icon}",
+        "format": "<span size='200%'>{icon}</span>",
         "format-icons": {
             "1": "",
             "music": "󰎆",
@@ -114,11 +137,11 @@
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% <span size='200%'></span>",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% <span size='200%'></span>"
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -126,12 +149,12 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", "󱗗"]
     },
     "backlight": {
         // TODO: Setup and activate.
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{percent}% <span size='200%'>{icon}</span>",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -140,11 +163,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format": "{capacity}% <span size='200%'>{icon}</span>",
+        "format-full": "{capacity}% <span size='200%'>{icon}</span>",
+        "format-charging": "{capacity}% <span size='200%'></span>",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format-alt": "{time} <span size='200%'>{icon}</span>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -154,34 +177,35 @@
     },
     "power-profiles-daemon": {
         //TODO: setup & enable
-        "format": "{icon}",
+        "format": "<span size='200%'>{icon}</span>",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
-            "default": "",
-            "performance": "",
+            "default": "󰓅",
+            "performance": "󰓅",
             "balanced": "",
             "power-saver": ""
         }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {essid} {signalStrength}%",
-        "format-ethernet": "󰈀",
+        "format-wifi": "<span size='200%'>{icon}</span> {essid} {signalStrength}%",
+        "format-ethernet": "<span size='200%'>󰈀</span>",
         "tooltip-format": "{ipaddr}/{cidr} through {ifname} via {gwaddr}",
-        "format-linked": "󰇨  {ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-linked": "<span size='200%'>󰇨</span>  {ifname} (No IP)",
+        "format-disconnected": "<span size='200%'>⚠</span> Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{volume}% <span size='200%'>{icon}</span> {format_source}",
+        "format-bluetooth": "{volume}% <span size='200%'>{icon}<span> {format_source}",
+        "format-bluetooth-muted": "<span size='200%'>󰝟 {icon}</span> {format_source}",
+        "format-muted": "<span size='200%'>󰝟</span> {format_source}",
+        "format-source": "{volume}% <span size='200%'></span>",
+        "format-source-muted": "<span size='200%'></span>",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -194,23 +218,45 @@
         "on-click": "pavucontrol"
     },
     "custom/quit": {
-        "format": "󰗼",
+        "format": "<span size='200%'>󰗼</span>",
         "tooltip": false,
         "on-click": "hyprctl dispatch exit"
     },
     "custom/lock": {
-        "format": "󰍁",
+        "format": "<span size='200%'>󰍁</span>",
         "tooltip": false,
         "on-click": "swaylock"
     },
     "custom/reboot": {
-        "format": "󰜉",
+        "format": "<span size='200%'>󰜉</span>",
         "tooltip": false,
         "on-click": "reboot"
     },
     "custom/power": {
-        "format": "",
+        "format": "<span size='200%'></span>",
         "tooltip": false,
         "on-click": "shutdown now"
+    },
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 22,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-out",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
     }
 }
