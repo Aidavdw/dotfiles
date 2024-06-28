@@ -137,18 +137,19 @@
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "<span size='120%'></span> {usage}%",
-        "tooltip": false
+        "format": "<span size='120%'></span> {usage}%"
     },
     "memory": {
-        "format": "<span size='120%'></span> {}%"
+        "format": "<span size='120%'></span> {used}GB",
+        "tooltip-format": "Memory usage: {used}GB/{total}GB\nSwap usage: {swapUsed}GB/{swapTotal}GB"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
+        "critical-threshold": 70,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
+        "tooltip-format":"CPU temperature",
         "format-icons": ["", "", "󱗗"]
     },
     "backlight": {
@@ -219,22 +220,22 @@
     },
     "custom/quit": {
         "format": "<span size='120%'>󰗼</span>",
-        "tooltip": false,
+        "tooltip-format": "Quit hyperland and return to TTY",
         "on-click": "hyprctl dispatch exit"
     },
     "custom/lock": {
         "format": "<span size='120%'>󰍁</span>",
-        "tooltip": false,
+        "tooltip-format": "Lock screen",
         "on-click": "swaylock"
     },
     "custom/reboot": {
         "format": "<span size='120%'>󰜉</span>",
-        "tooltip": false,
+        "tooltip-format": "Reboot",
         "on-click": "reboot"
     },
     "custom/poweroff": {
         "format": "<span size='120%'></span>",
-        "tooltip": false,
+        "tooltip-format": "Power off",
         "on-click": "shutdown now"
     },
     "privacy": {
