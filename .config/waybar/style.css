@@ -65,13 +65,18 @@ window#waybar.firefox {
 
 /*********** HORIZONTAL OFFSETS *******/
 /* Major groupings potentiall do the pills here */
-#tray, #window, #hardware, #media, #power, #datetime{
+#tray, #window, #hardware, #media, #datetime{
     margin-left: 1.2em;
 }
 
 /* minor groupings: inside of a major group*/
-#hardwaredrawer, #mpd, #pulseaudio {
+#mpd, #pulseaudio {
     margin-left: 1em
+}
+
+/* Can't give margins to drawers (#hardwaredrawer and #power) or they will start spazzing upon hover. Apply right margin on the ones that neighbour it. */
+#datetime, #network {
+    margin-right:1em;
 }
 
 /* Grouping: The contents of the hardwaredrawer */
