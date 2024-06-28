@@ -80,6 +80,7 @@ window#waybar.firefox {
     font-family: "JetBrainsMono Nerd Font Mono";
     font-size:0.8em;
     margin-bottom: 0px;
+    margin-top: 0.2em;
     color: @lavender;
 }
 
@@ -107,36 +108,39 @@ button:hover {
 /************ WORKSPACES **************/
 
 #workspaces {
-    border-radius: 0.5em;
-    margin-left: 10px;
-    padding-right: 0px;
-    padding-left: 5px;
+    margin-left: 0.3em;
+    margin-left: 0.3em;
 }
 
 #workspaces button {
-    padding: 5px;
     color: @lavender;
-    margin-right: 5px;
+    padding-right: 1em;
 }
 
+/* The workspace you are currently in */
 #workspaces button.active {
-    color: @mauve;
-}
-
-#workspaces button.focused {
-    color: @base;
-    background-color: @yellow;
+    color: @peach;
 }
 
 #workspaces button.urgent {
-    color: @crust;
-    background-color: @red;
+    color: @red;
+    background-color: @crust;
 }
 
 #workspaces button:hover {
     background-color: @surface0;
     color: @text;
+    border-radius: 0.5em;
 }
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/*********** RIGHT SIDE MODULES ************/
 
 #battery {
 }
@@ -146,12 +150,7 @@ button:hover {
     color: @green
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
+
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {

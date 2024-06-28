@@ -81,7 +81,7 @@
         "format": "<span size='120%'>{icon}</span>",
         "format-icons": {
             "1": "",
-            "music": "󰎆",
+            "music": "",
             "social": "󰭹",
             "mail": "",
             "notes": "󰎞",
