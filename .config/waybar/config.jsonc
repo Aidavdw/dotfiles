@@ -2,7 +2,6 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
@@ -45,23 +44,24 @@
     "group/hardwaredrawer": {
         "orientation": "horizontal",
         "drawer": {
-            "transition-duration": 400
+            "transition-duration": 500
         },
         "modules": [
             //"power-profiles-daemon",
             "cpu",
             "memory",
-            "temperature"
-            //"backlight"
+            "temperature",
+            "backlight"
         ]
     },
     "group/power": {
         "orientation": "horizontal",
         "drawer": {
-            "transition-duration": 400
+            "transition-duration": 500,
+            "transition-left-to-right": false // moving the mouse onto it from the left direction will make it stutter/glitch. Doesn't matter if it's inverted unfortunately.
         },
         "modules": [
-            "custom/power", // First element is the "group leader" and won't ever be hidden
+            "custom/poweroff", // First element is the "group leader" and won't ever be hidden
             "custom/quit",
             "custom/lock",
             "custom/reboot"
@@ -78,7 +78,7 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "<span size='200%'>{icon}</span>",
+        "format": "<span size='120%'>{icon}</span>",
         "format-icons": {
             "1": "",
             "music": "󰎆",
@@ -137,24 +137,24 @@
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "{usage}% <span size='200%'></span>",
+        "format": "<span size='120%'></span> {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% <span size='200%'></span>"
+        "format": "<span size='120%'></span> {}%"
     },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
+        "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
         "format-icons": ["", "", "󱗗"]
     },
     "backlight": {
         // TODO: Setup and activate.
         // "device": "acpi_video1",
-        "format": "{percent}% <span size='200%'>{icon}</span>",
+        "format": "<span size='120%'>{icon}</span> {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -163,11 +163,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% <span size='200%'>{icon}</span>",
-        "format-full": "{capacity}% <span size='200%'>{icon}</span>",
-        "format-charging": "{capacity}% <span size='200%'></span>",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} <span size='200%'>{icon}</span>",
+        "format": "<span size='120%'>{icon}</span> {capacity}%",
+        "format-full": "<span size='120%'>{icon}</span> {capacity}%",
+        "format-charging": "<span size='120%'></span> {capacity}%",
+        "format-plugged": "<span size='120%'></span> {capacity}%",
+        "format-alt": "<span size='120%'>{icon}</span> {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
@@ -177,7 +177,7 @@
     },
     "power-profiles-daemon": {
         //TODO: setup & enable
-        "format": "<span size='200%'>{icon}</span>",
+        "format": "<span size='120%'>{icon}</span>",
         "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
         "format-icons": {
@@ -189,23 +189,23 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span size='200%'>{icon}</span> {essid} {signalStrength}%",
-        "format-ethernet": "<span size='200%'>󰈀</span>",
+        "format-wifi": "<span size='120%'>{icon}</span> {essid} {signalStrength}%",
+        "format-ethernet": "<span size='120%'>󰈀</span>",
         "tooltip-format": "{ipaddr}/{cidr} through {ifname} via {gwaddr}",
-        "format-linked": "<span size='200%'>󰇨</span>  {ifname} (No IP)",
-        "format-disconnected": "<span size='200%'>⚠</span> Disconnected",
+        "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
+        "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% <span size='200%'>{icon}</span> {format_source}",
-        "format-bluetooth": "{volume}% <span size='200%'>{icon}<span> {format_source}",
-        "format-bluetooth-muted": "<span size='200%'>󰝟 {icon}</span> {format_source}",
-        "format-muted": "<span size='200%'>󰝟</span> {format_source}",
-        "format-source": "{volume}% <span size='200%'></span>",
-        "format-source-muted": "<span size='200%'></span>",
+        "format": "<span size='120%'>{icon}</span> {volume}% {format_source}",
+        "format-bluetooth": "<span size='120%'>{icon}<span> {volume}% {format_source}",
+        "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span> {format_source}",
+        "format-muted": "<span size='120%'>󰝟</span> {format_source}",
+        "format-source": "<span size='120%'></span> {volume}% ",
+        "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -218,22 +218,22 @@
         "on-click": "pavucontrol"
     },
     "custom/quit": {
-        "format": "<span size='200%'>󰗼</span>",
+        "format": "<span size='120%'>󰗼</span>",
         "tooltip": false,
         "on-click": "hyprctl dispatch exit"
     },
     "custom/lock": {
-        "format": "<span size='200%'>󰍁</span>",
+        "format": "<span size='120%'>󰍁</span>",
         "tooltip": false,
         "on-click": "swaylock"
     },
     "custom/reboot": {
-        "format": "<span size='200%'>󰜉</span>",
+        "format": "<span size='120%'>󰜉</span>",
         "tooltip": false,
         "on-click": "reboot"
     },
-    "custom/power": {
-        "format": "<span size='200%'></span>",
+    "custom/poweroff": {
+        "format": "<span size='120%'></span>",
         "tooltip": false,
         "on-click": "shutdown now"
     },

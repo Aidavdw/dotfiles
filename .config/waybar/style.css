@@ -1,4 +1,4 @@
-/* This file is a GTK css theme, so there are some syntax thingies that are not in the web spec, such as using the @colors. */
+/* This file is a GTK3 css theme, so there are some syntax thingies that are not in the web spec, such as using the @colors. */
 @define-color rosewater #f5e0dc;
 @define-color flamingo #f2cdcd;
 @define-color pink #f5c2e7;
@@ -53,27 +53,42 @@ window#waybar.solo {
 window#waybar.firefox {
 }
 
-/* Main groups */
-#workspace, #tray, #window, #hardware, #audio, #power{
+/*********** HORIZONTAL OFFSETS *******/
+/* Major groupings potentiall do the pills here */
+#tray, #window, #hardware, #media, #power, #datetime{
+    margin-left: 1.2em;
 }
 
+/* minor groupings: inside of a major group*/
+#hardwaredrawer, #mpd, #pulseaudio {
+    margin-left: 1em
+}
+
+/* Grouping: The contents of the hardwaredrawer */
+#cpu #disk, #memory, #temperature {
+    margin-left: 0.6em;
+}
+
+/* Grouping: The contents of the hardwaredrawer. made larger so you don't misclick. */
+#custom-quit, #custom-lock, #custom-reboot {
+    margin-right: 2em;
+}
+
+
+/*********** CLOCKS: DATE AND TIME *******/
 #clock.date {
+    font-family: "JetBrainsMono Nerd Font Mono";
     font-size:0.8em;
+    margin-bottom: 0px;
+    color: @lavender;
 }
 
 /* Right half pill */
 #clock.time {
+    color: @sky;
+    margin-left: 0.2em;
+    font-family: 'A-OTF Shin Go Pro R', 'FOT-NewRodin Pro M', "JetBrainsMono Nerd Font Mono";
     font-size:1.4em;
-}
-
-/* Groups */
-#power {
-    background-color: @mantle;
-}
-#media {
-    background-color: @peach;
-}
-#hardware {
 }
 
 button {
@@ -89,7 +104,7 @@ button:hover {
     box-shadow: inset 0 -3px @overlay1;
 }
 
-/************ Workspaces **************/
+/************ WORKSPACES **************/
 
 #workspaces {
     border-radius: 0.5em;
@@ -122,11 +137,6 @@ button:hover {
     background-color: @surface0;
     color: @text;
 }
-
-#datetime {
-    font-family: 'A-OTF Shin Go Pro R', 'FOT-NewRodin Pro M', "JetBrainsMono Nerd Font Mono";
-}
-
 
 #battery {
 }
@@ -176,6 +186,15 @@ label:focus {
     background-color: @base;
 }
 
+#network {
+    color: @blue;
+
+}
+
+#network.disconnected {
+    color: @red;
+}
+
 #cpu {
     color: @maroon;
 }
@@ -188,16 +207,16 @@ label:focus {
     color: @teal
 }
 
+#temperature {
+    color: @yellow;
+}
+
+#temperature.critical {
+    background-color: @red;
+
+}
+
 #backlight {
-}
-
-#network {
-    color: @blue;
-
-}
-
-#network.disconnected {
-    color: @red;
 }
 
 #pulseaudio {
@@ -212,15 +231,6 @@ label:focus {
 }
 
 #wireplumber.muted {
-
-}
-
-#temperature {
-    color: @yellow;
-}
-
-#temperature.critical {
-    background-color: @red;
 
 }
 
@@ -276,4 +286,8 @@ label:focus {
 
 #privacy-item.audio-out {
     background-color: @blue;
+}
+
+#power {
+    margin-right: 0.5em;
 }
