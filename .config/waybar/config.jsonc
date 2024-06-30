@@ -137,7 +137,7 @@
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "<span size='120%'></span> {usage}%"
+        "format": "<span size='120%'></span> {usage:02}%"
     },
     "memory": {
         "format": "<span size='120%'></span> {used}GB",
