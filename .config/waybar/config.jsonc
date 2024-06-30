@@ -1,4 +1,5 @@
 // -*- mode: jsonc -*-
+// In this file, all "format" fields are formatted in [PangoMarkupFormat](https://docs.gtk.org/Pango/pango_markup.html#pango-markup).
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
@@ -12,6 +13,7 @@
         "group/media",
         "group/hardware",
         "group/datetime",
+        "custom/swaync",
         "group/power"
     ],
     /************* Pills **************/
@@ -259,5 +261,28 @@
                 "tooltip-icon-size": 24
             }
         ]
+    },
+    "custom/swaync": {
+        "tooltip": false,
+        "format": "{icon} {}",
+        "format-icons": {
+            // #f9e2af is catppuccin mocha yellow.
+            "notification": "<span color='#f9e2af'></span>",
+            "none": "",
+            // #f38ba8 is catppuccin mocha red.
+            "dnd-notification": "<span color='#f38ba8'></span>",
+            "dnd-none": "",
+            // #89b4fa is catppuccin mocha blue
+            "inhibited-notification": "<span color='#89b4fa'></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span color='#f38ba8'></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb", // -swb is a specific "subscribe" for waybar.
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
     }
 }

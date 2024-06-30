@@ -65,7 +65,7 @@ window#waybar.firefox {
 
 /*********** HORIZONTAL OFFSETS *******/
 /* Major groupings potentiall do the pills here */
-#tray, #window, #hardware, #media, #datetime{
+#tray, #window, #hardware, #media, #datetime, #custom-swaync{
     margin-left: 1.2em;
 }
 
@@ -75,7 +75,7 @@ window#waybar.firefox {
 }
 
 /* Can't give margins to drawers (#hardwaredrawer and #power) or they will start spazzing upon hover. Apply right margin on the ones that neighbour it. */
-#datetime, #network {
+#custom-swaync, #network {
     margin-right:1em;
 }
 
