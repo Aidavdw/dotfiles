@@ -35,8 +35,14 @@ fi
 # 'oh fuck, I needed to run that command as sudo'. Rerun the previous command as sudo
 alias please='sudo "$BASH" -c "$(history -p !!)"'
 
-# When using a live usb, 
+# When connecting to a live usb, ssh might complain about an invalid hosts file. Use this to connect then.
 alias archusb-ssh='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
+
+# Catppuccin Mocha colour theme for FZF
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH="$HOME/.cargo/bin${PATH:+:${PATH}}"
