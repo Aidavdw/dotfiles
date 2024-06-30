@@ -228,7 +228,7 @@
     "custom/lock": {
         "format": "<span size='120%'>󰍁</span>",
         "tooltip-format": "Lock screen",
-        "on-click": "swaylock"
+        "on-click": "hyprlock"
     },
     "custom/reboot": {
         "format": "<span size='120%'>󰜉</span>",
