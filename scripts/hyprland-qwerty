@@ -1,0 +1,5 @@
+#!/bin/bash
+hyprctl keyword input:kb_model pc104
+hyprctl keyword input:kb_variant intl
+hyprctl keyword input:kb_options ""
+echo "Set keyboard to QWERTY"
