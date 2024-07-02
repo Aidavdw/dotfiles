@@ -19,27 +19,15 @@
     /************* Pills **************/
     "group/media": {
         "orientation": "horizontal",
-        "modules": [
-            "mpd",
-            "pulseaudio",
-            "privacy"
-        ]
+        "modules": ["mpd", "pulseaudio", "privacy"]
     },
     "group/hardware": {
         "orientation": "horizontal",
-        "modules": [
-            "network",
-            "battery",
-            "battery#bat2",
-            "group/hardwaredrawer"
-        ]
+        "modules": ["network", "battery", "battery#bat2", "group/hardwaredrawer"]
     },
     "group/datetime": {
         "orientation": "horizontal",
-        "modules": [
-            "clock#date",
-            "clock#time"
-        ]
+        "modules": ["clock#date", "clock#time"]
     },
 
     /************* Folding things **************/
@@ -82,17 +70,33 @@
         //"warp-on-scroll": false, // Styling thing?
         "format": "<span size='120%'>{icon}</span>",
         "format-icons": {
-            "1": "",
-            "music": "",
-            "social": "󰭹",
-            "mail": "",
-            "notes": "󰎞",
-            "vscode": "󰨞",
-            "documentation": "󰂺",
-            "procrastination": "󱣻"
+            "1": "", // Home
+            "2": "", // Music
+            "3": "󰴓", // Notes
+            "4": "󰨞", // Vscode
+            "5": "󰂺", // Reference
+            "6": "", // Social
+            "7": "󰭹", // Chat
+            "8": "", // Discord
+            "9": "", // Mail
+            "101": "α", // α
+            "102": "β", // β
+            "1001": "1",
+            "1002": "2",
+            "1003": "3",
+            "1004": "4",
+            "1005": "5",
+            "1006": "6",
+            "1007": "7",
+            "1008": "8",
+            "1009": "9"
         },
         "persistent-workspaces": {
-            "1": [] // always keep the home screen, even when there is nothing on there.
+            "1": [], // always keep the home screen, even when there is nothing on there.
+            "2": [], // Music
+            "9": [], // mail
+            "101": [], // α
+            "102": [] // β
         }
     },
     "mpd": {
@@ -130,7 +134,7 @@
         // formatting boxes need a ':' in front.
         // Only allows one set of {} in here.
         // {: must directly be followed by a formatting specifier.
-         "format": "{:L%e日\n%m月}",
+        "format": "{:L%e日\n%m月}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%e %b}"
     },
@@ -151,7 +155,7 @@
         "critical-threshold": 70,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
-        "tooltip-format":"CPU temperature",
+        "tooltip-format": "CPU temperature",
         "format-icons": ["", "", "󱗗"]
     },
     "backlight": {
@@ -198,7 +202,7 @@
         "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
         "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"]
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
