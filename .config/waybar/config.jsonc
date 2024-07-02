@@ -164,7 +164,13 @@
     },
     "clock#time": {
         "format": "{:L%a %H:%M}",
-        "format-alt": "{:L%p %I:%M}"
+        "format-alt": "{:L%p %I:%M}",
+        "tooltip-format": "{tz_list}",
+        "timezones": [
+            "Europe/Amsterdam",
+            "Asia/Tokyo",
+            "America/Los_Angeles"
+        ]
     },
     "cpu": {
         "format": "<span size='120%'></span>  {usage:2}%"
