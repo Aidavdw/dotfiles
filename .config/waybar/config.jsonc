@@ -82,7 +82,7 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "<span size='120%'>{icon}</span>",
+        "format": "<span size='120%'>{icon} </span><span size='80%' color='#a6adc8'>{windows}</span>",
         "format-icons": {
             "1": "", // Home
             "2": "", // Music
@@ -111,6 +111,16 @@
             "9": [], // mail
             "101": [], // α
             "102": [] // β
+        },
+        "format-window-separator": "|",
+        "window-rewrite-default": "",
+        "window-rewrite": {
+            "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+            "class<firefox>": "", // Windows whose classes are "firefox"
+            "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+            "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+            "code": "󰨞",
+            "codium": "󰨞"
         }
     },
     "mpd": {
@@ -312,7 +322,7 @@
     },
     "custom/swaync": {
         "tooltip": false,
-        "format": "{icon} {}",
+        "format": "{icon} {} ",
         "format-icons": {
             // #f9e2af is catppuccin mocha yellow.
             "notification": "<span color='#f9e2af'></span>",

@@ -28,7 +28,7 @@
 
 * {
     /* `otf-font-awesome` or a nerdfont is required to be installed for icons */
-    font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font Propo";
+    font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font";
     font-size: 1em;
 }
 
@@ -100,7 +100,7 @@ window#waybar.firefox {}
 
 /*********** CLOCKS: DATE AND TIME *******/
 #clock.date {
-    font-family: "JetBrainsMono Nerd Font Mono";
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 0.8em;
     margin-bottom: 0px;
     margin-top: 0.2em;
@@ -137,7 +137,12 @@ button:hover {
 
 #workspaces button {
     color: @lavender;
-    padding-right: 1em;
+    padding-right: 0.4em;
+    font-weight: 600;
+}
+
+#workspaces button.empty {
+    color: @overlay0;
 }
 
 /* The workspace you are currently in */
@@ -149,6 +154,7 @@ button:hover {
     color: @red;
     background-color: @crust;
 }
+
 
 #workspaces button:hover {
     background-color: @surface0;
