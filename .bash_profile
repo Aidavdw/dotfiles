@@ -11,4 +11,7 @@ export QT_IM_MODULE=fcitx
 export QT_IM_MODULES="wayland;fcitx;ibus"
 
 # xwayland use fcitx
-export XMODIFIERS=@im=fcitx 
+export XMODIFIERS=@im=fcitx
+
+# Make electron apps aware it is running in wayland
+export ELECTRON_OZONE_PLATFORM_HINT=auto

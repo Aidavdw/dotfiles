@@ -82,7 +82,7 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "<span size='120%'>{icon} </span><span size='80%' color='#a6adc8'>{windows}</span>",
+        "format": "<span size='126%'>{icon} </span><span size='80%' color='#a6adc8'>{windows}</span>",
         "format-icons": {
             "1": "", // Home
             "2": "", // Music
@@ -120,7 +120,9 @@
             "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
             "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
             "code": "󰨞",
-            "codium": "󰨞"
+            "codium": "󰨞",
+            "discord": "",
+            "webcord": ""
         }
     },
     "mpd": {
