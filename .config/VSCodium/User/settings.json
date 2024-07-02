@@ -1,5 +1,7 @@
 // VS Code or vscodium settings
 {
+  // Workaround with it not launching on wayland
+  "window.titleBarStyle": "custom",
   // Using Catppuccin color scheme!
   "workbench.colorTheme": "Catppuccin Mocha",
   // we try to make semantic highlighting look good
