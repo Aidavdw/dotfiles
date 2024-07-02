@@ -48,44 +48,52 @@ window#waybar {
     opacity: 0.7;
     border-radius: 0.5em;
     padding-left: 1em;
-    padding-right:1em;
+    padding-right: 1em;
 }
 
 /* When no windows are in the workspace */
-window#waybar.empty {
-}
+window#waybar.empty {}
 
 /* When one tiled window is visible in the workspace (floating windows may be present) */
-window#waybar.solo {
-}
+window#waybar.solo {}
 
 /* When a window with the class "firefox" is the only tiled window */
-window#waybar.firefox {
-}
+window#waybar.firefox {}
 
 /*********** HORIZONTAL OFFSETS *******/
 /* Major groupings potentiall do the pills here */
-#tray, #window, #hardware, #media, #datetime, #custom-swaync{
+#tray,
+#window,
+#hardware,
+#media,
+#datetime,
+#custom-swaync {
     margin-left: 1.2em;
 }
 
 /* minor groupings: inside of a major group*/
-#mpd, #pulseaudio {
+#mpd,
+#pulseaudio {
     margin-left: 1em
 }
 
 /* Can't give margins to drawers (#hardwaredrawer and #power) or they will start spazzing upon hover. Apply right margin on the ones that neighbour it. */
-#custom-swaync, #network {
-    margin-right:1em;
+#custom-swaync,
+#network {
+    margin-right: 1em;
 }
 
 /* Grouping: The contents of the hardwaredrawer */
-#cpu #disk, #memory, #temperature {
+#cpu #disk,
+#memory,
+#temperature {
     margin-left: 0.6em;
 }
 
 /* Grouping: The contents of the hardwaredrawer. made larger so you don't misclick. */
-#custom-quit, #custom-lock, #custom-reboot {
+#custom-quit,
+#custom-lock,
+#custom-reboot {
     margin-right: 2em;
 }
 
@@ -93,7 +101,7 @@ window#waybar.firefox {
 /*********** CLOCKS: DATE AND TIME *******/
 #clock.date {
     font-family: "JetBrainsMono Nerd Font Mono";
-    font-size:0.8em;
+    font-size: 0.8em;
     margin-bottom: 0px;
     margin-top: 0.2em;
     color: @lavender;
@@ -104,7 +112,7 @@ window#waybar.firefox {
     color: @sky;
     margin-left: 0.2em;
     font-family: 'A-OTF Shin Go Pro R', 'FOT-NewRodin Pro M', "JetBrainsMono Nerd Font Mono";
-    font-size:1.4em;
+    font-size: 1.4em;
 }
 
 button {
@@ -157,8 +165,7 @@ button:hover {
 
 /*********** RIGHT SIDE MODULES ************/
 
-#battery {
-}
+#battery {}
 
 #battery.charging,
 #battery.plugged {
@@ -178,8 +185,7 @@ button:hover {
     animation-direction: alternate;
 }
 
-#power-profiles-daemon {
-}
+#power-profiles-daemon {}
 
 #power-profiles-daemon.performance {
     background-color: @red;
@@ -202,7 +208,7 @@ label:focus {
 
 #network {
     color: @blue;
-
+    font-family: "JetBrainsMono Nerd Font";
 }
 
 #network.disconnected {
@@ -211,18 +217,22 @@ label:focus {
 
 #cpu {
     color: @maroon;
+    font-family: "JetBrainsMono Nerd Font";
 }
 
 #memory {
     color: @peach;
+    font-family: "JetBrainsMono Nerd Font";
 }
 
 #disk {
-    color: @teal
+    color: @teal;
+    font-family: "JetBrainsMono Nerd Font";
 }
 
 #temperature {
     color: @yellow;
+    font-family: "JetBrainsMono Nerd Font";
 }
 
 #temperature.critical {
@@ -230,34 +240,28 @@ label:focus {
 
 }
 
-#backlight {
-}
+#backlight {}
 
 #pulseaudio {
-
+    font-family: "JetBrainsMono Nerd Font";
 }
 
-#pulseaudio.muted {
-}
+#pulseaudio.muted {}
 
-#wireplumber {
+#wireplumber {}
 
-}
-
-#wireplumber.muted {
-
-}
+#wireplumber.muted {}
 
 #tray {
     background-color: @surface3;
     font-size: 1.8em;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: @red;
 }
@@ -271,20 +275,15 @@ label:focus {
     color: #2d3436;
 }
 
-#mpd {
-}
+#mpd {}
 
-#mpd.disconnected {
-}
+#mpd.disconnected {}
 
-#mpd.stopped {
-}
+#mpd.stopped {}
 
-#mpd.paused {
-}
+#mpd.paused {}
 
-#privacy {
-}
+#privacy {}
 
 #privacy-item {
     color: @text;

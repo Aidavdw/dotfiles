@@ -6,8 +6,12 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
     "modules-right": [
         "tray", // For discord, etc-
         "group/media",
@@ -19,17 +23,28 @@
     /************* Pills **************/
     "group/media": {
         "orientation": "horizontal",
-        "modules": ["mpd", "pulseaudio", "privacy"]
+        "modules": [
+            "mpd",
+            "pulseaudio",
+            "privacy"
+        ]
     },
     "group/hardware": {
         "orientation": "horizontal",
-        "modules": ["network", "battery", "battery#bat2", "group/hardwaredrawer"]
+        "modules": [
+            "network",
+            "battery",
+            "battery#bat2",
+            "group/hardwaredrawer"
+        ]
     },
     "group/datetime": {
         "orientation": "horizontal",
-        "modules": ["clock#date", "clock#time"]
+        "modules": [
+            "clock#date",
+            "clock#time"
+        ]
     },
-
     /************* Folding things **************/
     "group/hardwaredrawer": {
         "orientation": "horizontal",
@@ -57,7 +72,6 @@
             "custom/reboot"
         ]
     },
-
     /************* Modules configuration **************/
     "hyprland/workspaces": {
         // TODO: Window rewrite rules- makes individual windows show up. https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window-rewrite-rules
@@ -143,7 +157,7 @@
         "format-alt": "{:L%p %I:%M}"
     },
     "cpu": {
-        "format": "<span size='120%'></span> {usage:02}%"
+        "format": "<span size='120%'></span>  {usage:2}%"
     },
     "memory": {
         "format": "<span size='120%'></span> {used}GB",
@@ -156,13 +170,27 @@
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
         "tooltip-format": "CPU temperature",
-        "format-icons": ["", "", "󱗗"]
+        "format-icons": [
+            "",
+            "",
+            "󱗗"
+        ]
     },
     "backlight": {
         // TODO: Setup and activate.
         // "device": "acpi_video1",
         "format": "<span size='120%'>{icon}</span> {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery": {
         "states": {
@@ -177,7 +205,13 @@
         "format-alt": "<span size='120%'>{icon}</span> {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -202,16 +236,22 @@
         "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
         "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "<span size='120%'>{icon}</span> {volume}% {format_source}",
-        "format-bluetooth": "<span size='120%'>{icon}<span> {volume}% {format_source}",
+        "format": "<span size='120%'>{icon}</span>  {volume:3}% {format_source}",
+        "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}% {format_source}",
         "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span> {format_source}",
         "format-muted": "<span size='120%'>󰝟</span> {format_source}",
-        "format-source": "<span size='120%'></span> {volume}% ",
+        "format-source": "<span size='120%'></span> {volume:3}% ",
         "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
             "headphone": "",
@@ -220,7 +260,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
