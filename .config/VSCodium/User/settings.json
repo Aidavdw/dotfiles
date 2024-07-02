@@ -1,0 +1,66 @@
+// VS Code or vscodium settings
+{
+  // Using Catppuccin color scheme!
+  "workbench.colorTheme": "Catppuccin Mocha",
+  // we try to make semantic highlighting look good
+  "editor.semanticHighlighting.enabled": true,
+  // prevent VSCode from modifying the terminal colors
+  "terminal.integrated.minimumContrastRatio": 1,
+  // make the window's titlebar use the workbench colors
+  "window.titleBarStyle": "custom",
+  // Layout
+  "workbench.sideBar.location": "right",
+  "breadcrumbs.enabled": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "workbench.editor.tabActionUnpinVisibility": false,
+  "workbench.editor.tabSizing": "fixed",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editor.tabSizingFixedMinWidth": 140,
+  "workbench.editor.tabSizingFixedMaxWidth": 140,
+  "editor.minimap.enabled": false,
+  // Text display
+  "editor.wrappingIndent": "deepIndent",
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "boundary",
+  "editor.fontFamily": "JetbrainsMono Nerd Font Mono",
+  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 8,
+  // Behaviour
+  "workbench.editor.closeOnFileDelete": true,
+  "window.restoreWindows": "folders",
+  "files.enableTrash": false,
+  "editor.formatOnSave": true,
+  // External programs
+  // Git
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  // Debugger
+  "debug.allowBreakpointsEverywhere": true,
+  "window.commandCenter": false,
+  // Vim emulation
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "t",
+        "n"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "// To improve performance",
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  }
+}
