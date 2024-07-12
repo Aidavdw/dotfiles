@@ -265,7 +265,7 @@
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "<span size='120%'>{icon}</span>  {volume:3}% {format_source}",
+        "format": "<span size='120%'>{icon}</span>   {volume:3}% {format_source}",
         "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}% {format_source}",
         "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span> {format_source}",
         "format-muted": "<span size='120%'>󰝟</span> {format_source}",
@@ -273,8 +273,8 @@
         "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "HANDS_FREE",
+            "headset": "HEADSET",
             "phone": "",
             "portable": "",
             "car": "",
