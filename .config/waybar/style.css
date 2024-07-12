@@ -42,13 +42,10 @@ window#waybar {
 
 /*The title of the program that is currently focused*/
 #window {
+    font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font";
     font-size: 1em;
     font-weight: 400;
-    background-color: @base;
-    opacity: 0.6;
-    border-radius: 0.5em;
-    padding-left: 1em;
-    padding-right: 1em;
+    color: @peach;
 }
 
 /* When no windows are in the workspace */
@@ -68,7 +65,7 @@ window#waybar.firefox {}
 #media,
 #datetime,
 #custom-swaync {
-    margin-left: 1.2em;
+    margin-left: 3em;
 }
 
 /* minor groupings: inside of a major group*/
@@ -138,7 +135,7 @@ button:hover {
 
 #workspaces button {
     font-family: "JetBrainsMono Nerd Font Propo";
-    color: @lavender;
+    color: @rosewater;
     padding-right: 0.4em;
     font-weight: 600;
 }

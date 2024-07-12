@@ -82,7 +82,7 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "<span size='126%'>{icon} </span><span size='80%' color='#a6adc8'>{windows}</span>",
+        "format": "<span size='126%'>{icon} </span><span size='94%' color='#9399b2'>{windows}</span>", // Color is @overlay2
         "format-icons": {
             "1": "", // Home
             "2": "", // Music
