@@ -126,16 +126,15 @@
         }
     },
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format-disconnected": "MPD 󱘖",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD  ",
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
             "on": " "
         },
         "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
             "on": " "
         },
         "repeat-icons": {
@@ -148,8 +147,9 @@
             "paused": "",
             "playing": ""
         },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format": "Volume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
+        "tooltip-format-disconnected": "Not connected to MPD",
+        "on-click": "~/scripts/mpd-play-pause-toggle"
     },
     "tray": {
         // "icon-size": 21,
@@ -265,11 +265,11 @@
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "<span size='120%'>{icon}</span>   {volume:3}% {format_source}",
-        "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}% {format_source}",
-        "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span> {format_source}",
-        "format-muted": "<span size='120%'>󰝟</span> {format_source}",
-        "format-source": "<span size='120%'></span> {volume:3}% ",
+        "format": "<span size='120%'>{icon}</span>   {volume:3}% ",
+        "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}%",
+        "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span>",
+        "format-muted": "<span size='120%'>󰝟</span>",
+        "format-source": " {volume:3}% ",
         "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
             "headphone": "",
@@ -284,7 +284,8 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "tooltip-format": "{format_source}\nDevice:{desc}"
     },
     "custom/quit": {
         "format": "<span size='120%'>󰗼</span>",

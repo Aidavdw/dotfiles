@@ -1,0 +1,8 @@
+#!/bin/bash
+# If playing, then it says "playing" somewhere in the status.
+if mpc status | grep -q playing
+then
+    mpc pause
+else
+    mpc play
+fi
