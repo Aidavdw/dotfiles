@@ -7,7 +7,8 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "mpd"
     ],
     "modules-center": [
         "hyprland/window"
@@ -17,16 +18,15 @@
         "group/media",
         "group/hardware",
         "group/datetime",
-        "custom/swaync",
         "group/power"
     ],
     /************* Pills **************/
     "group/media": {
         "orientation": "horizontal",
         "modules": [
-            "mpd",
-            "pulseaudio",
-            "privacy"
+            "custom/swaync",
+            "privacy",
+            "pulseaudio"
         ]
     },
     "group/hardware": {
@@ -126,9 +126,9 @@
         }
     },
     "mpd": {
-        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> ({elapsedTime:%M:%S}/{totalTime:%M:%S}) {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
         "format-disconnected": "MPD 󱘖",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD  ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
@@ -144,8 +144,8 @@
             "on": "1 "
         },
         "state-icons": {
-            "paused": "",
-            "playing": ""
+            "paused": "<span color='#94e2d5'></span>",
+            "playing": "<span color='#a6e3a1'></span>"
         },
         "tooltip-format": "Volume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
         "tooltip-format-disconnected": "Not connected to MPD",
@@ -175,7 +175,7 @@
         ]
     },
     "cpu": {
-        "format": "<span size='120%'></span>  {usage:2}%"
+        "format": "<span size='120%'></span> {usage:2}%"
     },
     "memory": {
         "format": "<span size='120%'></span> {used}GB",
@@ -310,15 +310,10 @@
     "privacy": {
         "icon-spacing": 4,
         "icon-size": 22,
-        "transition-duration": 250,
+        "transition-duration": 400,
         "modules": [
             {
                 "type": "screenshare",
-                "tooltip": true,
-                "tooltip-icon-size": 24
-            },
-            {
-                "type": "audio-out",
                 "tooltip": true,
                 "tooltip-icon-size": 24
             },

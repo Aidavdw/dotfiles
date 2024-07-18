@@ -28,7 +28,7 @@
 
 * {
     /* `otf-font-awesome` or a nerdfont is required to be installed for icons */
-    font-family: FontAwesome, "JetBrainsMono Nerd Font Propo", monospace ;
+    font-family: FontAwesome, "JetBrainsMono Nerd Font Propo", monospace;
     font-size: 1em;
 }
 
@@ -65,20 +65,24 @@ window#waybar.firefox {}
 #media,
 #datetime,
 #custom-swaync {
-    margin-left: 3em;
+    margin-left: 2em;
 }
 
 /* minor groupings: inside of a major group*/
 #mpd,
-#pulseaudio {
+#pulseaudio,
+#privacy {
     font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font";
     margin-left: 1em
 }
 
 /* Can't give margins to drawers (#hardwaredrawer and #power) or they will start spazzing upon hover. Apply right margin on the ones that neighbour it. */
-#custom-swaync,
 #network {
     margin-right: 1em;
+}
+
+#datetime {
+    margin-right: 2em;
 }
 
 /* Grouping: The contents of the hardwaredrawer */
@@ -88,7 +92,7 @@ window#waybar.firefox {}
     margin-left: 0.6em;
 }
 
-/* Grouping: The contents of the hardwaredrawer. made larger so you don't misclick. */
+/* Grouping: The contents of the power menu drawer. made larger so you don't misclick. */
 #custom-quit,
 #custom-lock,
 #custom-reboot {
@@ -98,7 +102,7 @@ window#waybar.firefox {}
 
 /*********** CLOCKS: DATE AND TIME *******/
 #clock.date {
-    
+
     font-size: 0.8em;
     margin-bottom: 0px;
     margin-top: 0.2em;
@@ -213,7 +217,7 @@ label:focus {
 
 #network {
     color: @blue;
-    
+
 }
 
 #network.disconnected {
@@ -222,22 +226,22 @@ label:focus {
 
 #cpu {
     color: @maroon;
-    
+
 }
 
 #memory {
     color: @peach;
-    
+
 }
 
 #disk {
     color: @teal;
-    
+
 }
 
 #temperature {
     color: @yellow;
-    
+
 }
 
 #temperature.critical {
@@ -247,9 +251,7 @@ label:focus {
 
 #backlight {}
 
-#pulseaudio {
-    
-}
+#pulseaudio {}
 
 #pulseaudio.muted {}
 
