@@ -127,7 +127,7 @@
         }
     },
     "mpd": {
-        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
         "format-disconnected": "MPD 󱘖",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
         "unknown-tag": "N/A",
