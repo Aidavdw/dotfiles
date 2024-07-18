@@ -4,11 +4,10 @@
 
 # Cache music directory, because file paths listed by mpc are relative to this.
 MUSIC_DIR=$(< "$HOME/.config/mpd/mpd.conf" grep music_directory | cut -d " " -f 2 | sed 's/"//g');
-DEFAULT_COVER="$HOME/os/img/default_music_cover.png"
+DEFAULT_COVER="$HOME/os/img/default_cover_art.jpg"
 
 mkdir /tmp/music
 PREVIOUS_TRACK_LOCAL_FILENAME="";
-echo "$MUSIC_DIR"
 while : ; do
         # Wait until some event occurs. Note that this is fired also for pausing etc.
         mpc idle player
@@ -42,10 +41,14 @@ while : ; do
                 continue
         fi
 
-
         # Check if it has embedded album art.
+        # Below command just directly extracts it, and fails if there is no album art. Then, cover.jpg will not be created.
+        # This is with the assumption that all encoded album art is jpg, not png.
+        ffmpeg -i "$CURRENT_TRACK_PATH" -an -vcodec copy /tmp/music/cover.jpg
+        if [ -f "/tmp/music/cover.jpg" ]; then
+                continue
+        fi
 
         # If no cover art, use the the default album art.
-
-        echo No album art found
+        cp "$DEFAULT_COVER" /tmp/music/cover.jpg
 done
