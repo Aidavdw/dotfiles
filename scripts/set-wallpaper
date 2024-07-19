@@ -1,0 +1,11 @@
+#!/bin/bash
+#todo: Keep wallpapers in cache for all workspaces.
+TOP_TRANSPARENCY=0.3;
+LOWEST_SCREEN_FRACTION=0.3;
+
+rm /tmp/wallpaper.png
+# Since waybar is transparent, it will be hard to read if the top is not dark. Add some extra darkening to it with a gradient.
+# Originall based on this little snippet: https://superuser.com/questions/1126677/how-to-apply-a-gradient-to-an-image-in-imagemagick. Replaced the function with one in the form of y = ax + b.
+EQ=$"j/h < $LOWEST_SCREEN_FRACTION? $TOP_TRANSPARENCY + j*(1-$TOP_TRANSPARENCY)/($LOWEST_SCREEN_FRACTION *h) : 1"
+magick "$1" \( +clone -fx "$EQ" \) -compose multiply -composite /tmp/wallpaper.png
+swww img /tmp/wallpaper.png
