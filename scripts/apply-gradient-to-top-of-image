@@ -1,0 +1,9 @@
+#!/bin/bash
+# Originall based on this little snippet: https://superuser.com/questions/1126677/how-to-apply-a-gradient-to-an-image-in-imagemagick
+TOP_TRANSPARENCY=0.3;
+LOWEST_SCREEN_FRACTION=0.3;
+EQ=$"j/h < $LOWEST_SCREEN_FRACTION? $TOP_TRANSPARENCY + j*(1-$TOP_TRANSPARENCY)/($LOWEST_SCREEN_FRACTION *h) : 1"
+echo "$EQ"
+magick miku_freefall.png \( +clone -fx "$EQ" \) -compose multiply -composite out.jpg
+#magick miku_freefall.png \( +clone -fx 'j/h < 0.2? j/h/0.2 : 1' \) -compose multiply -composite out.jpg
+#i/w < 0.2 ? 0.2 : (i/w -0.2)*4 + 0.2
