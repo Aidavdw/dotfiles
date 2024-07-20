@@ -1,0 +1,32 @@
+#!/bin/sh
+
+USE_DEFAULT_WALLPAPER=false;
+DEFAULT_WALLPAPER="$HOME/.config/hypr/default_wallpaper.jpg"
+
+handle() {
+    case $1 in
+        workspace*) on_change_workspace ;;
+    esac
+}
+
+on_change_workspace() {
+    current_workspace=$(echo -e "$(hyprctl -j monitors)" | jq -r '.[0] | "\(.activeWorkspace.id)"')
+    # Check if a temporary wallpaper exists. if it does, use that. If not, use the cached permanent wallpaper for this workspace.
+    if [ -f "/tmp/wallpaper-ws-$current_workspace.png" ]; then
+        file="/tmp/wallpaper-ws-$current_workspace.png"
+    elif [ -f "$HOME/.cache/wallpaper-per-workspace/wallpaper-ws-$current_workspace.png" ]; then
+        file="$HOME/.cache/wallpaper-per-workspace/wallpaper-ws-$current_workspace.png"
+    else
+      #If there is no wallpaper for this 
+      if $USE_DEFAULT_WALLPAPER; then
+        echo "No wallpaper set for this workspace, using default"
+        file="$DEFAULT_WALLPAPER"
+      else
+        echo "No wallpaper set for this workspace, leaving as is."
+        return
+      fi
+    fi
+    swww img "$file"
+}
+
+socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done

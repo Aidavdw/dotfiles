@@ -1,18 +1,38 @@
 #!/bin/bash
+# A script to set wallpapers for hyprland using swww, allowing use of a different wallpaper per workspace.
+# Also allows setting of temporary wallpapers.
+if [[ $# -eq 0 ]] ; then
+    echo "usage: set-wallpaper [filename] [opt: workspace number] [opt: temporary?]"
+    echo "example to set a temporary wallpaper (resets at next reboot) for workspace 2 : set-wallpaper teto.png 2 y"
+    exit 0
+fi
+
 TOP_TRANSPARENCY=0.3;
 LOWEST_SCREEN_FRACTION=0.3;
-
-# The workspace to set this wallpaper for
+# TODO: make wallpapers permanent for most workspaces, except if one is set as temporary.
+# swww caches wallpapers by making a symlink in the ~/.cache/swww folder per monitor.
+# Get the workspace to set the wallpaper for.
 if [ -z "$2" ]; then
     # If no argument supplied, just use the current active workspace id.
     current_workspace=$(echo -e "$(hyprctl -j monitors)" | jq -r '.[0] | "\(.activeWorkspace.id)"')
+    echo No workspace number supplied, setting it for current workspace "($current_workspace)"
 else
     current_workspace=$2
 fi
-file="/tmp/wallpaper-ws-$current_workspace".png
+
+if [ -z "$3" ]; then
+    # Nothing supplied as third argument. Set it as the permanent wallpaper.
+    mkdir "$HOME/.cache/wallpaper-per-workspace"
+    file="$HOME/.cache/wallpaper-per-workspace/wallpaper-ws-$current_workspace".png
+    echo setting permanent wallpaper
+else
+    # Something (anything) supplied as third argument. Set it as a temporary wallpaper.
+    file="/tmp/wallpaper-ws-$current_workspace".png
+    echo setting temporary wallpaper
+fi
 rm "$file"
-# Since waybar is transparent, it will be hard to read if the top is not dark. Add some extra darkening to it with a gradient.
-# Originall based on this little snippet: https://superuser.com/questions/1126677/how-to-apply-a-gradient-to-an-image-in-imagemagick. Replaced the function with one in the form of y = ax + b.
+# Since my waybar is transparent, it will be hard to read if the top is not dark. Add some extra darkening to it with a gradient.
+# Original based on this little snippet: https://superuser.com/questions/1126677/how-to-apply-a-gradient-to-an-image-in-imagemagick. Replaced the function with one in the form of y = ax + b.
 EQ=$"j/h < $LOWEST_SCREEN_FRACTION? $TOP_TRANSPARENCY + j*(1-$TOP_TRANSPARENCY)/($LOWEST_SCREEN_FRACTION *h) : 1"
 magick "$1" \( +clone -fx "$EQ" \) -compose multiply -composite "$file"
 swww img "$file"
