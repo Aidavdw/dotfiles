@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 # ~/.bashrc
 #
 
@@ -16,11 +16,11 @@ alias tree='eza --color=always --group-directories-first --tree -L 3'
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
 
 
-lfcd () {                                             
-# `command` is needed in case `lfcd` is aliased to
-cd "$(command lf -print-last-dir "$@")"
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to
+    cd "$(command lf -print-last-dir "$@")" || exit
 }
-    
+
 # Also set a keybind to open it with <ctrl>+<o>
 bind '"\C-o":"\C-ulfcd\C-m"'
 
@@ -45,6 +45,4 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
-PATH="$HOME/.cargo/bin${PATH:+:${PATH}}"
-PATH="$HOME/.local/bin${PATH:+:${PATH}}"
-PATH="$HOME/scripts${PATH:+:${PATH}}"
+PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
