@@ -1,6 +1,6 @@
 // VS Code or vscodium settings
 {
-  // Workaround with it not launching on wayland
+  // Workaround with it not launching on wayland, and use the workbench colors
   "window.titleBarStyle": "custom",
   // Using Catppuccin color scheme!
   "workbench.colorTheme": "Catppuccin Mocha",
@@ -8,8 +8,6 @@
   "editor.semanticHighlighting.enabled": true,
   // prevent VSCode from modifying the terminal colors
   "terminal.integrated.minimumContrastRatio": 1,
-  // make the window's titlebar use the workbench colors
-  "window.titleBarStyle": "custom",
   // Layout
   "workbench.sideBar.location": "right",
   "breadcrumbs.enabled": false,
@@ -28,6 +26,12 @@
   "editor.fontFamily": "JetbrainsMono Nerd Font Mono",
   "editor.lineNumbers": "relative",
   "editor.cursorSurroundingLines": 8,
+  // Tabs are better than spaces, but if there is already a style use that.
+  "editor.tabSize": 3,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "editor.insertSpaces": false,
   // Behaviour
   "workbench.editor.closeOnFileDelete": true,
   "window.restoreWindows": "folders",
@@ -47,13 +51,8 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "before": [
-        "t",
-        "n"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["t", "n"],
+      "after": ["<Esc>"]
     }
   ],
   "vim.leader": "<space>",
@@ -61,8 +60,16 @@
     "<C-a>": false,
     "<C-f>": false
   },
-  "// To improve performance",
+  // To improve performance for vim shortcuts
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
-  }
+  },
+  // Code formatting
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[rust]": {
+    // Don't use prettier for rust, instead use rust-analyzer, as rustfmt it nicer.
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  // Docs Viewer plugin: Keep displaying the last documentation, even if the cursor moves away.
+  "docsView.documentationView.updateMode": "sticky"
 }
