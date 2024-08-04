@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=psst
+Comment=Spotify client with native GUI written in Rust
+GenericName=Music Player
+Exec=/usr/local/bin/psst-gui %U
+Icon=spotify
+Type=Application
+StartupNotify=true
+Categories=Music;
