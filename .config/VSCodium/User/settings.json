@@ -35,6 +35,11 @@
   "window.restoreWindows": "folders",
   "files.enableTrash": false,
   "editor.formatOnSave": true,
+  // Disable a whole bunch of annoying popups
+  "explorer.confirmDragAndDrop": false,
+  "python.createEnvironment.trigger": "off",
+  "RainbowBrackets.depreciation-notice": false,
+
   // External programs
   // Git
   "git.autofetch": true,
@@ -62,16 +67,25 @@
   "extensions.experimental.affinity": {
     "vscodevim.vim": 1
   },
-  // Code formatting
+  // Code formatting. Use prettier for everything except:
+  // Rust: rustfmt, as it is the standard.
+  // Python: Black, as prettier does not support python.
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.printWidth": 120,
   "prettier.bracketSameLine": true,
   "[rust]": {
-    // Don't use prettier for rust, instead use rust-analyzer, as rustfmt it nicer.
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
+  "[python]": {
+    "editor.defaultFormatter": null
+  },
+  "python.formatting.blackArgs": ["--line-length", "120"],
+  "python.formatting.provider": "black",
   // Docs Viewer plugin: Keep displaying the last documentation, even if the cursor moves away.
   "docsView.documentationView.updateMode": "sticky",
   // Errorlens
-  "errorLens.fontSize": "0.74em"
+  "errorLens.fontSize": "0.74em",
+  "basedpyright.analysis.diagnosticSeverityOverrides": {
+    //"reportUnknownVariableType": "none"
+  }
 }
