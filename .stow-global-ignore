@@ -1,0 +1,12 @@
+# `\.bak` matches only a file called `.bak`.
+# `.bak` matches both `.bak` and `foo.bakmore`.
+\.DS_Store
+\.git
+\.gitignore
+\.gitmodules
+\.stow-local-ignore
+
+README.*
+
+# Pyright typings files
+typings

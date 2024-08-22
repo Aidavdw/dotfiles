@@ -15,3 +15,8 @@ export XMODIFIERS=@im=fcitx
 
 # Make electron apps aware it is running in wayland
 export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+# By default, go installs its packages to $HOME/go. I don't like the clutter, so add it to .go instead
+export GOPATH="$HOME/.go"
+
+

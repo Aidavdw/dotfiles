@@ -2,5 +2,6 @@
 
 # For some reason, gtk keeps overwriting its bookmarks file as a new file, breaking the symlink. So, delete it a priori.
 rm ~/.config/gtk-3.0/bookmarks
+rm ~/.config/user-dirs.dirs
 cd ~/dotfiles
 stow --no-folding .
