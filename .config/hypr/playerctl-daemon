@@ -1,0 +1,5 @@
+#!/bin/bash
+while read -r line ; do
+    # Sends a signal to hyprlock to update its labels. Inside of hyprlock.conf, queries the title, album art etc
+    pkill -USR2 hyprlock
+done < <(    playerctl metadata --format '{{artist}}|{{title}}' --follow)
