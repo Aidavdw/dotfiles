@@ -113,9 +113,9 @@
       "qimgv": "",
       "psst-gui": "",
       "class<dog.unix.cantata.Cantata>": "󰲸",
-      "class<firefox> title<.*reddit.com.*>": "",
+      "class<firefox> title<.*Reddit.*>": "",
       "class<firefox> title<.*duckduckgo.*>": "󰇥",
-      "class<firefox> title<.*wiki.archlinux.orgn.*>": "󰣇",
+      "class<firefox> title<.*Arch.*>": "󰣇",
       "class<firefox> title<.*wikipedia.*>": "󰖬"
     }
   },
