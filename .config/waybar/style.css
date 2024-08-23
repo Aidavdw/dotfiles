@@ -99,14 +99,10 @@ window#waybar.firefox {
 /* Grouping: The contents of the power menu drawer. made larger so you don't misclick. */
 #custom-quit,
 #custom-lock,
-#custom-reboot {
-  margin-left: 1em;
-  margin-right: 1em;
-}
-
-/* So that the left-right spacing of the grouping is maintained */
+#custom-reboot,
 #custom-poweroff {
   margin-left: 1em;
+  margin-right: 1em;
 }
 
 /*********** CLOCKS: DATE AND TIME *******/
