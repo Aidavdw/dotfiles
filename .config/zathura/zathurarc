@@ -1,0 +1,4 @@
+# Enable copy to system clipboard
+set selection-clipboard clipboard
+include catppuccin-mocha
+set adjust-open "width"
