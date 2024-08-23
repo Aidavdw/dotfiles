@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 export EDITOR=vim
+export VISUAL=vim
 
 alias grep='grep --color=auto'
 
@@ -43,6 +44,9 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+# automatically fill in the 'cd' if you type in just a directory name.
+shopt -s autocd
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
