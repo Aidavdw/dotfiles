@@ -9,7 +9,7 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-" easier way to exit insert mode with 'hh'
+" easier way to exit insert mode with colemak keys
 :inoremap tn <esc>
 
 " Share clipboard with system
@@ -24,3 +24,4 @@ set showbreak=⤷/
 set linebreak
 
 set ignorecase
+syntax on
