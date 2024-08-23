@@ -106,7 +106,17 @@
       "code": "󰨞",
       "codium": "󰨞",
       "discord": "",
-      "webcord": ""
+      "webcord": "",
+      "zathura": "󰂺",
+      "thunar": "",
+      "mpv": "",
+      "qimgv": "",
+      "psst-gui": "",
+      "class<dog.unix.cantata.Cantata>": "󰲸",
+      "class<firefox> title<.*reddit.com.*>": "",
+      "class<firefox> title<.*duckduckgo.*>": "󰇥",
+      "class<firefox> title<.*wiki.archlinux.orgn.*>": "󰣇",
+      "class<firefox> title<.*wikipedia.*>": "󰖬"
     }
   },
   "mpd": {
