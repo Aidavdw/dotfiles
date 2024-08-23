@@ -1,4 +1,5 @@
 format = """
+$cmd_duration
 [██](#89dceb)\
  $username\
 [](bg:#89b4fa fg:#89dceb)\
@@ -13,6 +14,8 @@ $time\
 [ ](fg:#181825)\
 \n$character"""
 
+add_newline = false
+
 [username]
 show_always = true
 style_user = "bg:#89dceb"
@@ -22,15 +25,17 @@ disabled = false
 
 [directory]
 style = "fg:#e3e5e5 bg:#89b4fa"
+truncate_to_repo = true
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"~/documents" = "󰈙 "
+"~/downloads" = " "
+"~/music" = " "
+"~/pictures" = " "
+"~/code" = ""
 
 [git_branch]
 symbol = ""
@@ -47,3 +52,8 @@ disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#181825"
 format = '[[  $time ](fg:#a0a9cb bg:#181825)]($style)'
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration](bold yellow)\'
+
