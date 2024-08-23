@@ -18,13 +18,13 @@ add_newline = false
 
 [username]
 show_always = true
-style_user = "bg:#89dceb"
+style_user = "bg:#89dceb fg:#181825"
 style_root = "fg:#9A348E"
 format = '[$user ]($style)'
 disabled = false
 
 [directory]
-style = "fg:#e3e5e5 bg:#89b4fa"
+style = "fg:#181825 bg:#89b4fa"
 truncate_to_repo = true
 format = "[ $path ]($style)"
 truncation_length = 3
@@ -40,11 +40,11 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:#eba0ac"
-format = '[[ $symbol $branch ](fg:#89b4fa bg:#eba0ac)]($style)'
+format = '[[ $symbol $branch ](fg:#181825 bg:#eba0ac)]($style)'
 
 [git_status]
 style = "bg:#eba0ac"
-format = '[[($all_status$ahead_behind )](fg:#89b4fa bg:#eba0ac)]($style)'
+format = '[[($all_status$ahead_behind )](fg:#585b70 bg:#eba0ac)]($style)'
 
 
 [time]
@@ -56,4 +56,3 @@ format = '[[  $time ](fg:#a0a9cb bg:#181825)]($style)'
 [cmd_duration]
 min_time = 500
 format = 'took [$duration](bold yellow)'
-
