@@ -55,5 +55,5 @@ format = '[[  $time ](fg:#a0a9cb bg:#181825)]($style)'
 
 [cmd_duration]
 min_time = 500
-format = 'took [$duration](bold yellow)\'
+format = 'took [$duration](bold yellow)'
 
