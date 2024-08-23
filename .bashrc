@@ -5,8 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Default programs
 export EDITOR=vim
 export VISUAL=vim
+export BROWSER=firefox
 
 alias grep='grep --color=auto'
 

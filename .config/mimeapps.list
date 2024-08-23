@@ -1,0 +1,36 @@
+[Added Associations]
+application/zip=xarchiver.desktop;thunar.desktop;
+application/x-shellscript=codium-wayland.desktop;
+
+[Default Applications]
+application/zip=thunar.desktop
+inode/directory=thunar.desktop
+application/xml=firefox.desktop
+application/x-xpinstall=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/pdf=org.pwmt.zathura.desktop
+application/x-fictionbook+xml=org.pwmt.zathura.desktop
+application/oxps=org.pwmt.zathura.desktop
+application/epub+zip=org.pwmt.zathura.desktop
+image/bmp=qimgv.desktop
+image/png=qimgv.desktop
+image/gif=qimgv.desktop
+image/webp=qimgv.desktop
+image/jpeg=qimgv.desktop
+video/x-flv=mpv.desktop
+video/webm=mpv.desktop
+video/vnd.avi=mpv.desktop
+video/vnd.mpegurl=mpv.desktop
+video/mp4=mpv.desktop
+video/mpeg=mpv.desktop
+video/mp2t=mpv.desktop
+video/x-flic=mpv.desktop
+video/quicktime=mpv.desktop
+video/3gpp2=mpv.desktop
+video/x-matroska=mpv.desktop
+video/x-ms-wmv=mpv.desktop
+video/3gpp=mpv.desktop
+video/x-ogm+ogg=mpv.desktop
+video/dv=mpv.desktop
+video/vnd.rn-realvideo=mpv.desktop
+text/plain=vim.desktop
