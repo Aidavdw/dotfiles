@@ -1,0 +1,72 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#person  ",
+      "color": {
+        "a": 1,
+        "rgb": 15113984
+      }
+    },
+    {
+      "query": "tag:#engineering",
+      "color": {
+        "a": 1,
+        "rgb": 5682409
+      }
+    },
+    {
+      "query": "tag:#event",
+      "color": {
+        "a": 1,
+        "rgb": 40563
+      }
+    },
+    {
+      "query": "tag:#organisation  ",
+      "color": {
+        "a": 1,
+        "rgb": 15787074
+      }
+    },
+    {
+      "query": "tag:#computer  ",
+      "color": {
+        "a": 1,
+        "rgb": 29362
+      }
+    },
+    {
+      "query": "",
+      "color": {
+        "a": 1,
+        "rgb": 13983232
+      }
+    },
+    {
+      "query": "",
+      "color": {
+        "a": 1,
+        "rgb": 13400487
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.7,
+  "nodeSizeMultiplier": 1.88430905377808,
+  "lineSizeMultiplier": 0.567699115044248,
+  "collapse-forces": false,
+  "centerStrength": 0.475104541476223,
+  "repelStrength": 10.6437809977633,
+  "linkStrength": 0.722016921131965,
+  "linkDistance": 109,
+  "scale": 0.2888593746765511,
+  "close": true
+}

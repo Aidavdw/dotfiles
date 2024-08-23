@@ -1,0 +1,246 @@
+{
+  "main": {
+    "id": "be627c5b910463c4",
+    "type": "split",
+    "children": [
+      {
+        "id": "46dfb27651c2c5cf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a3c3ecefe5adaa09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cathode.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "224cca861fdd3967",
+    "type": "split",
+    "children": [
+      {
+        "id": "6c6597f07712db91",
+        "type": "tabs",
+        "dimension": 46.43678160919541,
+        "children": [
+          {
+            "id": "9ac29b85c90f1e46",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Cathode.md"
+              }
+            }
+          },
+          {
+            "id": "8e9594d98805d44e",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "12d8af6609be374e",
+        "type": "tabs",
+        "dimension": 53.5632183908046,
+        "children": [
+          {
+            "id": "4dce0ef5567eb682",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 287.50312423706055
+  },
+  "right": {
+    "id": "483723dd1cf4bdda",
+    "type": "split",
+    "children": [
+      {
+        "id": "90fe9640e63b0bf6",
+        "type": "tabs",
+        "dimension": 38.40262582056893,
+        "children": [
+          {
+            "id": "a40702f8e2fd5f1b",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "Cathode.md",
+                "options": {
+                  "collapse-filter": false,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": true,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            }
+          },
+          {
+            "id": "8effc4034e522d63",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "91adf03556ebe55f",
+        "type": "tabs",
+        "dimension": 39.715536105032825,
+        "children": [
+          {
+            "id": "c04f40285f21a363",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Cathode.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "ec716b1f9441d9f5",
+        "type": "tabs",
+        "dimension": 21.881838074398253,
+        "children": [
+          {
+            "id": "809c91a2392db60f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Cathode.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 441.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "command-palette:Open command palette": false,
+      "workspaces:Manage workspace layouts": false,
+      "float-search:Search Obsidian In Modal": false
+    }
+  },
+  "active": "a3c3ecefe5adaa09",
+  "lastOpenFiles": [
+    "Untitled 1.canvas",
+    "Cathode.md",
+    "lanthanum strontium manganite perovskites (LSM).md",
+    "LSF.md",
+    "LSC.md",
+    "LSF-GDC Composite Cathode.md",
+    "Gadolinia-doped ceria (CGO).md",
+    "Yttrium Stabilised Zirconia (YSZ).md",
+    "scandia-stabilized zirconia (ScSZ).md",
+    "Ni-ScSz.md",
+    "Anode.md",
+    "Ni-CGO co-impregnated on LST-GDC.md",
+    "LSGM-LSM Composite Cathode.md",
+    "Rh-GDC co-impregnated on LST-GDC.md",
+    "media/Pasted image 20240710140927.png",
+    "Ni-CGO co-impregnated on LST/GDC.md",
+    "media/Pasted image 20240710140803.png",
+    "media/Pasted image 20240710140738.png",
+    "Ni-CGO co-impregnated on LST",
+    "Ni-CGO.md",
+    "media/Pasted image 20240710140634.png",
+    "media/Pasted image 20240710140533.png",
+    "media/Pasted image 20240710140443.png",
+    "media/Pasted image 20240710140307.png",
+    "Strontium-magnesium-doped lanthanum gallate (LSGM).md",
+    "media/Pasted image 20240710132006.png",
+    "media/Pasted image 20240710131945.png",
+    "Electrolyte.md",
+    "media/Pasted image 20240710130325.png",
+    "Delta Article about Linux at TU delft.md",
+    "Tu delft mail on evolution.md",
+    "computer/Rust Error Handling.md",
+    "TU Delft cvb song.md",
+    "Audio on Linux.md",
+    "Limitations on SOFC simulation.md",
+    "Arch Linux.md",
+    "swaync.md",
+    "Untitled.canvas",
+    "engineering/Fuel Cell",
+    "media",
+    "language",
+    "projects/satune",
+    "projects",
+    "events",
+    "projects/cd-shelf",
+    "computer",
+    "profiles/organisations"
+  ]
+}

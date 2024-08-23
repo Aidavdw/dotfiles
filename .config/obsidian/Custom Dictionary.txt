@@ -1,0 +1,13 @@
+Anki
+HYLENA
+Involitional
+Nernst
+PyCharm
+SOFC
+breakpoint
+combustor
+debuggable
+electrochemical
+enum
+symlinked
+checksum_v1 = a7006591afce7791b8805f7fef8271bf

@@ -1,0 +1,215 @@
+{
+  "main": {
+    "id": "4c49743de31304f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "cdae990e97c1b2be",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3e7151e9428f6fbd",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "4833978ccba9c462",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Mass effect no audio.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "03ddcdcff8d487fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "language/German expressions.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "921d5387e00106b0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "engineering/Fuel Cell/Steady State SOFC Sim.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7438bdb187949191",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "8e85533cd5229b26",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "a669c03d9b344809",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "Mass effect",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "b2ecbe12b2874a7a",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "d8b78668ac04bbcd",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
+      },
+      {
+        "id": "d53e9275ca771d16",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "profiles/people/Daruska Miric Fuentes.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "currentTab": 1
+  },
+  "right": {
+    "id": "8a5c198e689c1b71",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "8f49a6a06464708b",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "Mass effect no audio.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "a8d77932926e46da",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "Mass effect no audio.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "2eceb6d6f6b8afc3",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "Mass effect no audio.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "float-search:Search Obsidian In Modal": false,
+      "workspaces:Manage workspace layouts": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "4833978ccba9c462",
+  "lastOpenFiles": [
+    "Sonic Targeting.md",
+    "Mass effect no audio.md",
+    "Music/Lyric ideas.md",
+    "engineering/Fuel Cell/Steady State SOFC Sim.md",
+    "language/German expressions.md",
+    "gwrman.md",
+    "Arch Linux.md",
+    "Cocktail place.md",
+    "projects/cd-shelf/CD Shelf.md",
+    "Eurovision bingo.md",
+    "events/Laatste FFS consult.md",
+    "Blog post ideas.md",
+    "Headset.md",
+    "media/Pasted image 20240330174636.png",
+    "Potential hairstyles.md",
+    "HYLENA PMC 27日3月2024年.md",
+    "profiles/projects/HYLENA.md",
+    "profiles/people/Daruska Miric Fuentes.md",
+    "profiles/people/Faisal Sedeqi.md",
+    "language/Japanese expressions.md",
+    "media/Pasted image 20240322211841.png",
+    "media/Pasted image 20240322211538.png",
+    "media/Pasted image 20240322210807.png",
+    "media/Pasted image 20240322210504.png",
+    "Pasted image 20240316172115.png",
+    "IMG_20240316_142730.jpg",
+    "IMG_20240316_142457.jpg",
+    "().md",
+    "HEX music controller.md",
+    "Atlant Alpha V.md",
+    "German expressions.md",
+    "Near-synonyms.md",
+    "Japanese expressions.md"
+  ]
+}

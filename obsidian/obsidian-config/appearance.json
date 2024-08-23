@@ -1,0 +1,10 @@
+{
+  "accentColor": "",
+  "baseFontSize": 18,
+  "cssTheme": "Catppuccin",
+  "enabledCssSnippets": [
+    "example-sentence-blockquotes"
+  ],
+  "textFontFamily": "DejaVu Sans",
+  "monospaceFontFamily": "0xProto Nerd Font Mono"
+}

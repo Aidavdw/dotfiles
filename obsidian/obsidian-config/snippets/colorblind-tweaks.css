@@ -1,0 +1,9 @@
+.markdown-source-view.mod-cm6 .is-unresolved .cm-underline {
+    color: red;
+}
+
+strong,
+.cm-s-obsidian span.cm-formatting-strong,
+.cm-s-obsidian span.cm-strong {
+    color: rgb(155, 238, 61);
+}

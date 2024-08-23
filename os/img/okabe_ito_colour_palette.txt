@@ -1,0 +1,14 @@
+These colours toghether form the Okabe-ito colour palette.
+This palette is a “Set of colors that is unambiguous both to colorblinds and non-colorblinds”.
+The use of this palette is supported by others (Wong, 2011; Levine, 2009) and it is the default scale for the book “Fundamentals of Data Visualization” by Claus Wilke.
+
+Hex codes:
+
+#E69F00
+#56B4E9
+#009E73
+#F0E442
+#0072B2
+#D55E00
+#CC79A7
+#000000
