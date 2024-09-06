@@ -16,6 +16,9 @@ alias grep='grep --color=auto'
 alias ls='eza -al --color=always --group-directories-first'
 alias tree='eza --color=always --group-directories-first --tree -L 3'
 
+# do visudo with vim, without having to edit root's bashrc
+alias visudo='sudo EDITOR=vim visudo'
+
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
 
 
@@ -49,6 +52,8 @@ export FZF_DEFAULT_OPTS=" \
 
 # automatically fill in the 'cd' if you type in just a directory name.
 shopt -s autocd
+
+
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
