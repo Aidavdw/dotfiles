@@ -255,7 +255,7 @@
   "custom/lock": {
     "format": "<span size='120%'>󰍁</span>",
     "tooltip-format": "Lock screen",
-    "on-click": "hyprlock && sleep 3 && pkill -USR2 hyprlock"
+    "on-click": "~/.config/hypr/hyprlock-with-albumart"
   },
   "custom/reboot": {
     "format": "<span size='120%'>󰜉</span>",
