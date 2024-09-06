@@ -10,3 +10,6 @@ README.*
 
 # Pyright typings files
 typings
+
+# These files are to be placed outside of the home dir anyway.
+.outside
