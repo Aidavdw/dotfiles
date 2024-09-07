@@ -1,0 +1,11 @@
+# Rofimoji, picker for emoji etc.
+
+prompt =^-^
+skin-tone = medium-light
+# Using the normal action (type) does not work in vs code, which is where I probably use this most. Using --action clipboard, uses wtype and pastes that way (while cancelling does not paste anything)
+action=clipboard
+# The rofi theme to be used
+selector-args="-theme simple"
+files=[emojis,math,greek_and_coptic,musical_symbols,nerd_font]
+
+ 
