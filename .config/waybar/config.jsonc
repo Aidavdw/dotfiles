@@ -6,7 +6,7 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces", "mpd"],
+  "modules-left": ["hyprland/workspaces", "mpris"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray", // For discord, etc-
@@ -118,6 +118,21 @@
       "class<firefox> title<.*Arch.*>": "󰣇",
       "class<firefox> title<.*wikipedia.*>": "󰖬"
     }
+  },
+  "mpris": {
+    "format": "{player_icon} <span color='#b4befe'>{artist}</span> - <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span>",
+    "format-paused": "{player_icon} <span color='#7f849c'>{artist} - {title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span> 󰏤",
+    "interval": 1,
+    "player-icons": {
+      "default": "󱖏",
+      "mpd": "🎵",
+      "dog": "🎵", // For some reason, Cantata likes to take over, and calls itself 'dog'.
+      "mpv": "",
+      "firefox": "󰈹",
+      "psst": "",
+      "spotify": ""
+    }
+    // "ignored-players": ["firefox"]
   },
   "mpd": {
     "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
