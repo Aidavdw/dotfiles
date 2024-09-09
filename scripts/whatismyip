@@ -1,2 +1,3 @@
 #!/bin/bash
+# Gets external ip
 curl https://ipinfo.io/ip

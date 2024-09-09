@@ -1,3 +1,4 @@
 #!/bin/bash
+# kinda aggressive but ok
 pkill -9 -x waybar
 nohup waybar >> /var/log/waybar.log &

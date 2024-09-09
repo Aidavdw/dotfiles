@@ -1,4 +1,5 @@
 #!/bin/bash
+# Runs in the background, and sends a message to hyprlock whenever next song starts playing.
 while read -r line ; do
     # Sends a signal to hyprlock to update its labels. Inside of hyprlock.conf, queries the title, album art etc
     pkill -USR2 hyprlock

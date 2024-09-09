@@ -9,7 +9,7 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 
-" easier way to exit insert mode with colemak keys
+" easier way to exit insert mode with colemak keys. Sorry qwerty nerds.
 :inoremap tn <esc>
 
 " Share clipboard with system

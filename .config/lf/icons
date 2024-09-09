@@ -335,6 +335,7 @@ Vagrantfile             
 *.ogx   
 
 # audio formats (extensions from dircolors defaults)
+# TODO: Change icons for music
 *.aac   
 *.au    
 *.flac  

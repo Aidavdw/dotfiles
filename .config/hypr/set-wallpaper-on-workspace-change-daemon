@@ -1,4 +1,5 @@
 #!/bin/sh
+# Change wallpaper when switching workspace, as set using scripts/set-wallpaper
 
 USE_DEFAULT_WALLPAPER=false;
 DEFAULT_WALLPAPER="$HOME/.config/hypr/default_wallpaper.jpg"

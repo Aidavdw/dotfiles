@@ -1,4 +1,5 @@
 #!/bin/bash
+# Convenience function for adding a file to this dotfiles registry :D
 if ! [[ $1 == ~/* ]]; then
     echo "Provide filename in format ~/[...]"
     exit 2

@@ -1,331 +1,334 @@
 // -*- mode: jsonc -*-
 // In this file, all "format" fields are formatted in [PangoMarkupFormat](https://docs.gtk.org/Pango/pango_markup.html#pango-markup).
 {
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
-  // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces", "mpris"],
-  "modules-center": ["hyprland/window"],
-  "modules-right": [
-    "tray", // For discord, etc-
-    "group/media",
-    "group/hardware",
-    "group/datetime",
-    "group/power"
-  ],
-  /************* Pills **************/
-  "group/media": {
-    "orientation": "horizontal",
-    "modules": ["custom/swaync", "privacy", "pulseaudio"]
-  },
-  "group/hardware": {
-    "orientation": "horizontal",
-    "modules": ["network", "battery", "battery#bat2", "group/hardwaredrawer"]
-  },
-  "group/datetime": {
-    "orientation": "horizontal",
-    "modules": ["clock#date", "clock#time"]
-  },
-  /************* Folding things **************/
-  "group/hardwaredrawer": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": [
+        "tray", // For discord, etc-
+        "group/media",
+        "group/hardware",
+        "group/datetime",
+        "group/power"
+    ],
+    /************* Pills **************/
+    "group/media": {
+        "orientation": "horizontal",
+        "modules": ["custom/swaync", "privacy", "pulseaudio"]
     },
-    "modules": [
-      //"power-profiles-daemon",
-      "cpu",
-      "memory",
-      "temperature",
-      "custom/kbtoggle",
-      "backlight"
-    ]
-  },
-  "group/power": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 500,
-      "transition-left-to-right": false // moving the mouse onto it from the left direction will make it stutter/glitch. Doesn't matter if it's inverted unfortunately.
+    "group/hardware": {
+        "orientation": "horizontal",
+        "modules": ["network", "battery", "battery#bat2", "group/hardwaredrawer"]
     },
-    "modules": [
-      "custom/poweroff", // First element is the "group leader" and won't ever be hidden
-      "custom/lock",
-      "custom/quit",
-      "custom/reboot"
-    ]
-  },
-  /************* Modules configuration **************/
-  "hyprland/workspaces": {
-    // TODO: Window rewrite rules- makes individual windows show up. https://github.com/Alexays/Waybar/wiki/Module:-Hyprland#window-rewrite-rules
-    //"sort-by":"default" // Let Hyprland determine the sort order.
-    // Hyprland binding for scroll, as the waybar scroll does not interface.
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
-    "all-outputs": true,
-    //"warp-on-scroll": false, // Styling thing?
-    "format": "<span size='126%'>{icon} </span><span size='94%' color='#9399b2'>{windows}</span>", // Color is @overlay2
-    "format-icons": {
-      "1": "", // Home
-      "2": "", // Music
-      "3": "󰴓", // Notes
-      "4": "󰨞", // Vscode
-      "5": "󰂺", // Reference
-      "6": "", // Social
-      "7": "󰭹", // Chat
-      "8": "", // Discord
-      "9": "", // Mail
-      "101": "α", // α
-      "102": "β", // β
-      "1001": "1",
-      "1002": "2",
-      "1003": "3",
-      "1004": "4",
-      "1005": "5",
-      "1006": "6",
-      "1007": "7",
-      "1008": "8",
-      "1009": "9"
+    "group/datetime": {
+        "orientation": "horizontal",
+        "modules": ["clock#date", "clock#time"]
     },
-    "persistent-workspaces": {
-      "1": [], // always keep the home screen, even when there is nothing on there.
-      "2": [], // Music
-      "9": [], // mail
-      "101": [], // α
-      "102": [] // β
+    /************* Folding things **************/
+    "group/hardwaredrawer": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500
+        },
+        "modules": [
+            //"power-profiles-daemon",
+            "cpu",
+            "memory",
+            "temperature",
+            "custom/kbtoggle",
+            "backlight"
+        ]
     },
-    "format-window-separator": "|",
-    "window-rewrite-default": "",
-    "window-rewrite": {
-      "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
-      "class<firefox>": "", // Windows whose classes are "firefox"
-      "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
-      "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
-      "code": "󰨞",
-      "codium": "󰨞",
-      "discord": "",
-      "webcord": "",
-      "zathura": "󰂺",
-      "thunar": "",
-      "mpv": "",
-      "qimgv": "",
-      "psst-gui": "",
-      "class<dog.unix.cantata.Cantata>": "󰲸",
-      "class<firefox> title<.*Reddit.*>": "",
-      "class<firefox> title<.*duckduckgo.*>": "󰇥",
-      "class<firefox> title<.*Arch.*>": "󰣇",
-      "class<firefox> title<.*wikipedia.*>": "󰖬"
-    }
-  },
-  "mpris": {
-    "format": "{player_icon} <span color='#b4befe'>{artist}</span> - <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span>",
-    "format-paused": "{player_icon} <span color='#7f849c'>{artist} - {title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span> 󰏤",
-    "interval": 1,
-    "player-icons": {
-      "default": "󱖏",
-      "mpd": "🎵",
-      "dog": "🎵", // For some reason, Cantata likes to take over, and calls itself 'dog'.
-      "mpv": "",
-      "firefox": "󰈹",
-      "psst": "",
-      "spotify": ""
-    }
-    // "ignored-players": ["firefox"]
-  },
-  "mpd": {
-    "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
-    "format-disconnected": "MPD 󱘖",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " "
+    "group/power": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "transition-left-to-right": false // moving the mouse onto it from the left direction will make it stutter/glitch. Doesn't matter if it's inverted unfortunately.
+        },
+        "modules": [
+            "custom/poweroff", // First element is the "group leader" and won't ever be hidden
+            "custom/lock",
+            "custom/quit",
+            "custom/reboot"
+        ]
     },
-    "random-icons": {
-      "on": " "
+    /************* Modules configuration **************/
+    "hyprland/workspaces": {
+        //"sort-by":"default" // Let Hyprland determine the sort order.
+        // Hyprland binding for scroll, as the waybar scroll does not interface.
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
+        "all-outputs": true,
+        //"warp-on-scroll": false, // Styling thing?
+        "format": "<span size='126%'>{icon} </span><span size='94%' color='#9399b2'>{windows}</span>", // Color is @overlay2
+        "format-icons": {
+            "1": "", // Home
+            "2": "", // Music
+            "3": "󰴓", // Notes
+            "4": "󰨞", // Vscode
+            "5": "󰂺", // Reference
+            "6": "", // Social
+            "7": "󰭹", // Chat
+            "8": "", // Discord
+            "9": "", // Mail
+            "101": "α", // α
+            "102": "β", // β
+            "1001": "1",
+            "1002": "2",
+            "1003": "3",
+            "1004": "4",
+            "1005": "5",
+            "1006": "6",
+            "1007": "7",
+            "1008": "8",
+            "1009": "9"
+        },
+        "persistent-workspaces": {
+            "1": [], // always keep the home screen, even when there is nothing on there.
+            "2": [], // Music
+            "9": [], // mail
+            "101": [], // α
+            "102": [] // β
+        },
+        "format-window-separator": "|",
+        "window-rewrite-default": "",
+        // If a certain window exists in a workspace, add a little icon
+        "window-rewrite": {
+            "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+            "class<firefox>": "", // Windows whose classes are "firefox"
+            "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+            "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+            "code": "󰨞",
+            "codium": "󰨞",
+            "discord": "",
+            "webcord": "",
+            "zathura": "󰂺",
+            "thunar": "",
+            "mpv": "",
+            "qimgv": "",
+            "psst-gui": "",
+            "class<dog.unix.cantata.Cantata>": "󰲸",
+            "class<firefox> title<.*Reddit.*>": "",
+            "class<firefox> title<.*duckduckgo.*>": "󰇥",
+            "class<firefox> title<.*Arch.*>": "󰣇",
+            "class<firefox> title<.*wikipedia.*>": "󰖬"
+        }
     },
-    "repeat-icons": {
-      "on": " "
+    "mpris": {
+        "format": "{player_icon} <span color='#b4befe'>{artist}</span> - <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span>",
+        "format-paused": "{player_icon} <span color='#7f849c'>{artist} - {title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span> 󰏤",
+        "interval": 1,
+        "player-icons": {
+            "default": "󱖏",
+            "mpd": "🎵",
+            "dog": "🎵", // For some reason, Cantata likes to take over, and calls itself 'dog'.
+            "mpv": "",
+            "firefox": "󰈹",
+            "psst": "",
+            "spotify": ""
+        }
+        // "ignored-players": ["firefox"]
     },
-    "single-icons": {
-      "on": "1 "
+    "mpd": {
+        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format-disconnected": "MPD 󱘖",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "<span color='#94e2d5'></span>",
+            "playing": "<span color='#a6e3a1'></span>"
+        },
+        "tooltip-format": "Volume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
+        "tooltip-format-disconnected": "Not connected to MPD",
+        "on-click": "~/scripts/mpd-play-pause-toggle"
     },
-    "state-icons": {
-      "paused": "<span color='#94e2d5'></span>",
-      "playing": "<span color='#a6e3a1'></span>"
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
     },
-    "tooltip-format": "Volume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
-    "tooltip-format-disconnected": "Not connected to MPD",
-    "on-click": "~/scripts/mpd-play-pause-toggle"
-  },
-  "tray": {
-    // "icon-size": 21,
-    "spacing": 10
-  },
-  "clock#date": {
-    // 'L' makes it adhere to the set localectl, instead of defaulting to C.
-    // formatting boxes need a ':' in front.
-    // Only allows one set of {} in here.
-    // {: must directly be followed by a formatting specifier.
-    "format": "{:L%e日\n%m月}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%e %b}"
-  },
-  "clock#time": {
-    "format": "{:L%a %H:%M}",
-    "format-alt": "{:L%p %I:%M}",
-    "tooltip-format": "{tz_list}",
-    "timezones": ["Europe/Amsterdam", "Asia/Tokyo", "America/Los_Angeles"]
-  },
-  "cpu": {
-    "format": "<span size='120%'></span> {usage:2}%"
-  },
-  "memory": {
-    "format": "<span size='120%'></span> {used}GB",
-    "tooltip-format": "Memory usage: {used}GB/{total}GB\nSwap usage: {swapUsed}GB/{swapTotal}GB"
-  },
-  "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 70,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
-    "tooltip-format": "CPU temperature",
-    "format-icons": ["", "", "󱗗"]
-  },
-  "backlight": {
-    // TODO: Setup and activate.
-    // "device": "acpi_video1",
-    "format": "<span size='120%'>{icon}</span> {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
-  },
-  "battery": {
-    "states": {
-      // "good": 95,
-      "warning": 30,
-      "critical": 15
+    // Shows the date using Japanese formatting
+    "clock#date": {
+        // 'L' makes it adhere to the set localectl, instead of defaulting to C.
+        // formatting boxes need a ':' in front.
+        // Only allows one set of {} in here.
+        // {: must directly be followed by a formatting specifier.
+        "format": "{:L%e日\n%m月}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%e %b}"
     },
-    "format": "<span size='120%'>{icon}</span> {capacity}%",
-    "format-full": "<span size='120%'>{icon}</span> {capacity}%",
-    "format-charging": "<span size='120%'></span> {capacity}%",
-    "format-plugged": "<span size='120%'></span> {capacity}%",
-    "format-alt": "<span size='120%'>{icon}</span> {time}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
-  },
-  "power-profiles-daemon": {
-    //TODO: setup & enable
-    "format": "<span size='120%'>{icon}</span>",
-    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-    "tooltip": true,
-    "format-icons": {
-      "default": "󰓅",
-      "performance": "󰓅",
-      "balanced": "",
-      "power-saver": ""
-    }
-  },
-  "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "<span size='120%'>{icon}</span> {essid} {signalStrength}%",
-    "format-ethernet": "<span size='120%'>󰈀</span>",
-    "tooltip-format": "{ipaddr}/{cidr} through {ifname} via {gwaddr}",
-    "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
-    "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
-  },
-  "pulseaudio": {
-    // Can use this if using pipewire-pulse package.
-    // "scroll-step": 1, // %, can be a float
-    "format": "<span size='120%'>{icon}</span>   {volume:3}% ",
-    "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}%",
-    "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span>",
-    "format-muted": "<span size='120%'>󰝟</span>",
-    "format-source": " {volume:3}% ",
-    "format-source-muted": "<span size='120%'></span>",
-    "format-icons": {
-      "headphone": "",
-      "hands-free": "HANDS_FREE",
-      "headset": "HEADSET",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
+    // Shows the current time
+    "clock#time": {
+        "format": "{:L%a %H:%M}",
+        "format-alt": "{:L%p %I:%M}",
+        "tooltip-format": "{tz_list}",
+        "timezones": ["Europe/Amsterdam", "Asia/Tokyo", "America/Los_Angeles"]
     },
-    "on-click": "pavucontrol",
-    "tooltip-format": "{format_source}\nDevice:{desc}"
-  },
-  "custom/quit": {
-    "format": "<span size='120%'>󰗼</span>",
-    "tooltip-format": "Quit hyperland and return to TTY",
-    "on-click": "hyprctl dispatch exit"
-  },
-  "custom/lock": {
-    "format": "<span size='120%'>󰍁</span>",
-    "tooltip-format": "Lock screen",
-    "on-click": "~/.config/hypr/hyprlock-with-albumart"
-  },
-  "custom/reboot": {
-    "format": "<span size='120%'>󰜉</span>",
-    "tooltip-format": "Reboot",
-    "on-click": "reboot"
-  },
-  "custom/poweroff": {
-    "format": "<span size='120%'></span>",
-    "tooltip-format": "Power off",
-    "on-click": "shutdown now"
-  },
-  "privacy": {
-    "icon-spacing": 4,
-    "icon-size": 22,
-    "transition-duration": 400,
-    "modules": [
-      {
-        "type": "screenshare",
+    "cpu": {
+        "format": "<span size='120%'></span> {usage:2}%"
+    },
+    "memory": {
+        "format": "<span size='120%'></span> {used}GB",
+        "tooltip-format": "Memory usage: {used}GB/{total}GB\nSwap usage: {swapUsed}GB/{swapTotal}GB"
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 70,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
+        "tooltip-format": "CPU temperature",
+        "format-icons": ["", "", "󱗗"]
+    },
+    "backlight": {
+        // TODO: Setup and activate.
+        // "device": "acpi_video1",
+        "format": "<span size='120%'>{icon}</span> {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span size='120%'>{icon}</span> {capacity}%",
+        "format-full": "<span size='120%'>{icon}</span> {capacity}%",
+        "format-charging": "<span size='120%'></span> {capacity}%",
+        "format-plugged": "<span size='120%'></span> {capacity}%",
+        "format-alt": "<span size='120%'>{icon}</span> {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "power-profiles-daemon": {
+        //TODO: setup & enable
+        "format": "<span size='120%'>{icon}</span>",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
         "tooltip": true,
-        "tooltip-icon-size": 24
-      },
-      {
-        "type": "audio-in",
-        "tooltip": true,
-        "tooltip-icon-size": 24
-      }
-    ]
-  },
-  "custom/swaync": {
-    "tooltip": false,
-    "format": "{icon} {} ",
-    "format-icons": {
-      // #f9e2af is catppuccin mocha yellow.
-      "notification": "<span color='#f9e2af'></span>",
-      "none": "",
-      // #f38ba8 is catppuccin mocha red.
-      "dnd-notification": "<span color='#f38ba8'></span>",
-      "dnd-none": "",
-      // #89b4fa is catppuccin mocha blue
-      "inhibited-notification": "<span color='#89b4fa'></span>",
-      "inhibited-none": "",
-      "dnd-inhibited-notification": "<span color='#f38ba8'></span>",
-      "dnd-inhibited-none": ""
+        "format-icons": {
+            "default": "󰓅",
+            "performance": "󰓅",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb", // -swb is a specific "subscribe" for waybar.
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
-  },
-  "custom/kbtoggle": {
-    "tooltip": true,
-    "tooltip-format": "Toggle QWERTY / CMK",
-    "format": "",
-    "on-click": "~/scripts/hyprland-toggle-kb"
-  }
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "<span size='120%'>{icon}</span> {essid} {signalStrength}%",
+        "format-ethernet": "<span size='120%'>󰈀</span>",
+        "tooltip-format": "{ipaddr}/{cidr} through {ifname} via {gwaddr}",
+        "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
+        "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    },
+    "pulseaudio": {
+        // Can use this if using pipewire-pulse package.
+        // "scroll-step": 1, // %, can be a float
+        "format": "<span size='120%'>{icon}</span>   {volume:3}% ",
+        "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}%",
+        "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span>",
+        "format-muted": "<span size='120%'>󰝟</span>",
+        "format-source": " {volume:3}% ",
+        "format-source-muted": "<span size='120%'></span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "HANDS_FREE",
+            "headset": "HEADSET",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "{format_source}\nDevice:{desc}"
+    },
+    "custom/quit": {
+        "format": "<span size='120%'>󰗼</span>",
+        "tooltip-format": "Quit hyperland and return to TTY",
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/lock": {
+        "format": "<span size='120%'>󰍁</span>",
+        "tooltip-format": "Lock screen",
+        "on-click": "~/.config/hypr/hyprlock-with-albumart"
+    },
+    "custom/reboot": {
+        "format": "<span size='120%'>󰜉</span>",
+        "tooltip-format": "Reboot",
+        "on-click": "reboot"
+    },
+    "custom/poweroff": {
+        "format": "<span size='120%'></span>",
+        "tooltip-format": "Power off",
+        "on-click": "shutdown now"
+    },
+    // Showing little icons when mic or camera is accessed, or screen is shared.
+    "privacy": {
+        "icon-spacing": 4,
+        "icon-size": 22,
+        "transition-duration": 400,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            },
+            {
+                "type": "audio-in",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    },
+    "custom/swaync": {
+        "tooltip": false,
+        "format": "{icon} {} ",
+        "format-icons": {
+            // #f9e2af is catppuccin mocha yellow.
+            "notification": "<span color='#f9e2af'></span>",
+            "none": "",
+            // #f38ba8 is catppuccin mocha red.
+            "dnd-notification": "<span color='#f38ba8'></span>",
+            "dnd-none": "",
+            // #89b4fa is catppuccin mocha blue
+            "inhibited-notification": "<span color='#89b4fa'></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span color='#f38ba8'></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb", // -swb is a specific "subscribe" for waybar.
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/kbtoggle": {
+        "tooltip": true,
+        "tooltip-format": "Toggle QWERTY / CMK",
+        "format": "",
+        "on-click": "~/scripts/hyprland-toggle-kb"
+    }
 }

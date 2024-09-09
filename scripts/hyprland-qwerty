@@ -1,4 +1,5 @@
 #!/bin/bash
+# Change layout of keyboard to qwerty. As a script instead of in hyprland's input because it requires changing options.
 hyprctl keyword input:kb_model pc104
 hyprctl keyword input:kb_variant intl
 hyprctl keyword input:kb_options ""

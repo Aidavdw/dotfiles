@@ -40,7 +40,6 @@ map md mkdir
 map mf mkfile
 
 # Bookmarks for quick navigation
-# Movement
 map gc cd ~/dotfiles
 map gf cd ~/documents
 map gd cd ~/downloads

@@ -41,7 +41,7 @@ fi
 # 'oh fuck, I needed to run that command as sudo'. Rerun the previous command as sudo
 alias please='sudo "$BASH" -c "$(history -p !!)"'
 
-# When connecting to a live usb, ssh might complain about an invalid hosts file. Use this to connect then.
+# When connecting to a live usb, ssh might complain about an invalid hosts file if you have previously connected to that device (but not with the USB). Use this to connect then.
 alias archusb-ssh='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
 
 # Catppuccin Mocha colour theme for FZF

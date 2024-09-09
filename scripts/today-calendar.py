@@ -1,3 +1,5 @@
+# To be used in little calendar applet
+
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from collections.abc import Sequence
