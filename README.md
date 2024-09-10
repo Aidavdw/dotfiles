@@ -94,3 +94,12 @@ mpv-mpvacious # Plugin for mpv that allows you to generate anki cards sentence m
 mpd-mpris-bin # To allow playerctl to control mpd
 flameshot-git # To take screenshots.
 ```
+
+# Screenshots
+
+![Screenshot of main workspace with firefox, file manager Thunar, and kitty terminal in the background. On the foreground, a scratchpad workspace with kitty is running lf](screenshots/term-lfcd-firefox-scratchpad.jpg "Screenshot of main workspace with firefox, file manager Thunar, and kitty terminal in the background. On the foreground, a scratchpad workspace with kitty is running lf")
+![Screenshot of coding with vscodium](screenshots/coding.jpg "Screenshot of coding with vscodium")
+![Screenshot of discord workspace. Also showing btop and qimgv](screenshots/discord-qimgv.jpg "Screenshot of discord workspace. Also showing btop and qimgv")
+![Screenshot of the same discord workspace, but now overlaid with rofimoj and swaync](screenshots/rofimoji-swaync.jpg "Screenshot of the same discord workspace, but now overlaid with rofimoj and swaync")
+![Screenshot of mpd+cantata. Note that the current song is also showing in the waybar.](screenshots/mpd-cantata.jpg "Screenshot of mpd+cantata. Note that the current song is also showing in the waybar.")
+![Screenshot of the lock screen using hyprlock, showing cover art of the current playing song over MPRIS](screenshots/hyprlock-musicintegration.png "Screenshot of the lock screen using hyprlock, showing cover art of the current playing song over MPRIS")
