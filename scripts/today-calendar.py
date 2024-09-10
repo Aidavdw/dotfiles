@@ -1,14 +1,16 @@
 # To be used in little calendar applet
 
 from dataclasses import dataclass
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from collections.abc import Sequence
 from typing import override
 from icalevents.icalparser import Event
 from icalevents.icalevents import events
 import os
+from colorama import Fore, Back, Style
 
-CALENDAR_URLS_FILE = os.path.expanduser("~/.config/eww/calendars.txt")
+CALENDAR_URLS_FILE = os.path.expanduser("~/scripts/calendars.txt")
+my_time_zone = datetime.now().astimezone().tzinfo
 
 
 # A container for multiple colums of events. Used for displaying events that are at the same time.
@@ -61,8 +63,89 @@ def group_into_parallel_events(all_events: Sequence[Event]) -> Sequence[Parallel
     return groups
 
 
+def now():
+    return datetime.now(datetime.now().astimezone().tzinfo)
+
+
 def duration(event: Event):
     return event.end - event.start
+
+
+def print_event_list(events: list[Event]):
+    at_day = -9999
+    for event in events:
+        # For some reason inverting it, event.start - now() magically makes an extra day appear. So, extra minux also works.
+        delta_day = -(now() - event.start).days
+        if delta_day > at_day:
+            at_day = delta_day
+            date = event.start.date()
+            if at_day < -2:
+                print(
+                    Back.LIGHTBLACK_EX
+                    + f"======== {at_day}日前 {date}========="
+                    + Back.RESET
+                )
+            elif at_day == -2:
+                print(
+                    Back.LIGHTBLACK_EX
+                    + f"======== 一昨日 {date} ========="
+                    + Back.RESET
+                )
+            elif at_day == -1:
+                print(Back.LIGHTBLACK_EX + f"========  昨日  =========" + Back.RESET)
+            elif at_day == 0:
+                print(Back.LIGHTBLACK_EX + f"========  今日  =========" + Back.RESET)
+            elif at_day == 1:
+                print(Back.LIGHTBLACK_EX + f"========  明日  =========" + Back.RESET)
+            elif at_day == 2:
+                print(Back.LIGHTBLACK_EX + f"======== 明後日 =========" + Back.RESET)
+            elif at_day == 3:
+                print(Back.LIGHTBLACK_EX + f"======== 明々後 =========" + Back.RESET)
+            elif at_day > 3:
+                print(
+                    Back.LIGHTBLACK_EX + f"======== {at_day}日後 =========" + Back.RESET
+                )
+        print_event(event)
+    return
+
+
+def print_event(event: Event):
+    s = event.start.astimezone(my_time_zone).time()
+    e = event.end.astimezone(my_time_zone).time()
+    from_to = (
+        Style.BRIGHT
+        + f"{s.hour}:{s.minute:02d} → {e.hour}:{e.minute:02d}"
+        + Style.NORMAL
+    )
+    time_until_start = event.start - now()
+    time_until_end = event.end - now()
+    hours_until = (time_until_start.seconds / 3600).__floor__()
+    minutes_until = ((time_until_start.seconds - hours_until * 3600) / 60).__floor__()
+    # If the event is ongoing, mark it in a special color
+    if time_until_start.total_seconds() < 0 and time_until_end.total_seconds() > 0:
+
+        hours_until_end = (time_until_end.seconds / 3600).__floor__()
+        minutes_until_end = (
+            (time_until_end.seconds - hours_until_end) / 60
+        ).__floor__()
+        print(
+            Fore.YELLOW
+            + f"{from_to}: {event.summary} (for {hours_until_end}:{minutes_until_end:2})"
+            + Fore.RESET
+        )
+    # If the event has already ended, mark it in a different colour.
+    elif time_until_start.total_seconds() < 0:
+        print(Style.DIM + f"{from_to}: {event.summary}" + Style.RESET_ALL)
+    # If the event is today, give more information. denote time until,
+    elif time_until_start.days < 1:
+        print(
+            Fore.BLUE
+            + f"{from_to}: {event.summary} (in {hours_until}h{minutes_until:02d})"
+            + Fore.RESET
+        )
+    # If it is tomorrow or later, just give rough information
+    else:
+        print(Fore.LIGHTBLACK_EX + f"{from_to}: {event.summary}" + Fore.RESET)
 
 
 if __name__ == "__main__":
@@ -77,7 +160,7 @@ if __name__ == "__main__":
             print("Configuration lines must be 3 entries each!")
             exit(0)
         today = datetime.today()
-        untildate = datetime.now() + timedelta(days=7)
+        untildate = datetime.now(timezone.utc) + timedelta(days=7)
         (name, colour, url) = x
         print("Getting events for {name}".format(name=name))
         es = events(url=url, start=datetime.today(), end=untildate)
@@ -88,5 +171,6 @@ if __name__ == "__main__":
             event.start.timestamp() - (event.end - event.start).total_seconds() * 1e-6
         )
     )
-    groups = group_into_parallel_events(all_events)
-    print(groups)
+    print_event_list(all_events)
+    # groups = group_into_parallel_events(all_events)
+    # print(groups)
