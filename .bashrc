@@ -19,9 +19,10 @@ alias tree='eza --color=always --group-directories-first --tree -L 3'
 # do visudo with vim, without having to edit root's bashrc
 alias visudo='sudo EDITOR=vim visudo'
 
+# Running 'vscodium ignores ~/.config/codium-flags.conf, which makes it not run with ime flags. This ensures it is never ignored'. https://github.com/VSCodium/vscodium/issues/1966
+alias vscodium='codium'
+
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
-
-
 lfcd () {
     # `command` is needed in case `lfcd` is aliased to
     cd "$(command lf -print-last-dir "$@")" || exit
