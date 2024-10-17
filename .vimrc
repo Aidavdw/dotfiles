@@ -12,15 +12,12 @@ set splitright
 set tabstop=4
 set expandtab
 set shiftwidth=4
-set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
+set smarttab " lets tab key insert 'tab stops', and bksp deletes tabs. Useful if you work with unicode txt files. Should not affect simpler encodings.
 set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 
-" easier way to exit insert mode with colemak keys. Sorry qwerty nerds.
-:inoremap tn <esc>
-
-" Allow yanking to system clipboard (linux). Note that  vim needs to be compiled with the +clipboard flag, and the one on arch repo is not. (workaround is installing gvim)
+" Allow yanking to system clipboard (linux). Note that  vim needs to be compiled with the +clipboard flag, and the one on arch repo is not. (workaround is installing gvim). Should work out of the box on debian-based systems.
 set clipboard=unnamedplus
 
 " Scroll in such a way that the current line is in the centre, not at the last line.
@@ -40,7 +37,7 @@ set noswapfile
 set ignorecase
 set smartcase
 set incsearch
-set gdefault "\g flag → Search in the entire line, not just the first word. This auto-sets this flag.
+set gdefault "When searching, automatically add \g flag → Search in the entire line, not just the first word. This auto-sets this flag.
 set hlsearch
 " Press Space to turn off highlighting and clear any message already displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -54,14 +51,3 @@ noremap j gj
 noremap k gk
 
 syntax on "Enable syntax highlighting
-
-" CUSTOM KEYBINDS
-" easier way to exit insert mode with colemak keys. Sorry qwerty nerds.
-:inoremap tn <esc>
-set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
-set shiftround " tab / shifting moves to closest tabstop.
-set autoindent " Match indents on new lines.
-set smartindent " Intellegently dedent / indent new lines based on rulesset smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
-set shiftround " tab / shifting moves to closest tabstop.
-set autoindent " Match indents on new lines.
-set smartindent " Intellegently dedent / indent new lines based on rules.
