@@ -1,0 +1,57 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+    "base_keymap": "VSCode",
+    "vim_mode": true,
+    // In vim mode, the command palette functions the same as the ':' commands
+    "ui_font_size": 15,
+    "theme": {
+        "mode": "dark",
+        "light": "One Light",
+        "dark": "One Dark"
+    },
+    // Buffer text
+    "buffer_font_family": "0xProto Nerd Font Mono",
+    "buffer_font_size": 14,
+    "relative_line_numbers": true,
+    "buffer_line_height": "comfortable",
+    "show_whitespaces": "selection",
+    "tab_size": 4,
+    "soft_wrap": "editor_width",
+    // Not yet implemented: Indent line wrap https://github.com/zed-industries/zed/issues/18687
+    "tab_bar": {
+        "show_nav_history_buttons": false
+    },
+    "preferred_line_length": 74, // Soft-wrap when longer than...
+    "tabs": {
+        "file_icons": false
+    },
+    "indent_guides": {
+        "coloring": "indent_aware"
+    },
+    "inlay_hints": {
+        "enabled": true
+    },
+    // Don't care too much about multiplayer features rn
+    "projects_online_by_default": false,
+    "show_call_status_icon": false,
+    "project_panel": {
+        "dock": "right"
+    },
+    "completion_documentation_secondary_query_debounce": 100,
+    "terminal": {
+        "copy_on_select": true,
+        "line_height": "standard",
+        "font_size": 12,
+        "option_as_meta": false
+    },
+    "languages": {
+        "Markdown": { "format_on_save": "off" }
+    }
+}

@@ -1,0 +1,28 @@
+[
+    {
+        "context": "Global",
+        "bindings": {
+            "ctrl-enter": "terminal_panel::ToggleFocus" // For some reason have to add this to all contexts
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-enter": "terminal_panel::ToggleFocus", // For some reason have to add this to all contexts
+            "ctrl-b": "workspace::CloseAllDocks"
+        }
+    },
+    {
+        "context": "vim_mode == insert",
+        "bindings": {
+            "t n": "vim::NormalBefore" // Exit insert mode
+        }
+    },
+    {
+        "context": "Terminal",
+        "bindings": {
+            "ctrl-o": ["terminal::SendKeystroke", "ctrl-o"], // To be able to still use lf in zed
+            "ctrl-enter": "workspace::ToggleBottomDock" // Hides the terminal. With `terminal_panel::ToggleFocus` on same key, works like a toggle open & focus and close.
+        }
+    }
+]
