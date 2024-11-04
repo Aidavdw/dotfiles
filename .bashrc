@@ -54,7 +54,9 @@ export FZF_DEFAULT_OPTS=" \
 # automatically fill in the 'cd' if you type in just a directory name.
 shopt -s autocd
 
-
+# Vim mode in terminal!
+set -o vi
+bind '"tn":vi-movement-mode'
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
