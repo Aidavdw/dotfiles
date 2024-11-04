@@ -14,7 +14,7 @@
     "theme": {
         "mode": "dark",
         "light": "One Light",
-        "dark": "One Dark"
+        "dark": "Catppuccin Mocha"
     },
     // Buffer text
     "buffer_font_family": "0xProto Nerd Font Mono",
