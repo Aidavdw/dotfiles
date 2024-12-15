@@ -965,5 +965,11 @@ require('lazy').setup({
   },
 })
 
+-- Neovide
+if vim.g.neovide then
+  vim.o.guifont = 'JetBrainsMono Nerd Font Propo:h11'
+  vim.g.neovide_cursor_animation_length = 0.04
+  vim.g.neovide_cursor_vfx_mode = 'wireframe'
+end
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
