@@ -616,7 +616,7 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -655,6 +655,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'rust_analyzer',
+        'codelldb',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -715,7 +717,9 @@ require('lazy').setup({
       },
     },
   },
-
+  { -- Icons for autocompletion menu
+    'onsails/lspkind.nvim',
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -751,6 +755,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help', -- Highlights the current parameter in the function
     },
     config = function()
       -- See `:help cmp`
@@ -825,8 +830,24 @@ require('lazy').setup({
             group_index = 0,
           },
           { name = 'nvim_lsp' },
+          { name = 'nvim-lsp-signature-help' },
           { name = 'luasnip' },
           { name = 'path' },
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
+        formatting = {
+          fields = { 'kind', 'abbr', 'menu' },
+          format = function(entry, vim_item)
+            local kind = require('lspkind').cmp_format { mode = 'symbol_text', maxwidth = 50 }(entry, vim_item)
+            local strings = vim.split(kind.kind, '%s', { trimempty = true })
+            kind.kind = ' ' .. (strings[1] or '') .. ' '
+            kind.menu = '    (' .. (strings[2] or '') .. ')'
+
+            return kind
+          end,
         },
       }
     end,
@@ -967,7 +988,7 @@ require('lazy').setup({
 
 -- Neovide
 if vim.g.neovide then
-  vim.o.guifont = 'JetBrainsMono Nerd Font Propo:h11'
+  vim.o.guifont = 'JetBrainsMono Nerd Font Propo:h10'
   vim.g.neovide_cursor_animation_length = 0.04
   vim.g.neovide_cursor_vfx_mode = 'wireframe'
 end
