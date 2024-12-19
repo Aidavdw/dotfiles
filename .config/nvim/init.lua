@@ -944,8 +944,10 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-  { 'https://gitlab.com/HiPhish/rainbow-delimiters.nvim' },
-  {
+  { -- [(())] different colours for different pairs of brackets!
+    'https://gitlab.com/HiPhish/rainbow-delimiters.nvim',
+  },
+  { -- Lines for indentation, with highlight for current indentation level.
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     ---@module "ibl"
