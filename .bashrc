@@ -24,11 +24,12 @@ alias vscodium='codium'
 
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
 lfcd () {
-    # `command` is needed in case `lfcd` is aliased to
+    # `command` is needed in case `lfcd` is aliased to.
+    # -print-last-dir requires lf version > 30 (debian Bookworm is v28). If using such an old version, see https://github.com/gokcehan/lf/blob/7d47436a352eb7f7d61303045ed79ed8989c6270/etc/lfcd.sh
     cd "$(command lf -print-last-dir "$@")" || exit
 }
 
-# Also set a keybind to open it with <ctrl>+<o>
+# Also set a keybind to open lf with <ctrl>+<o>
 bind '"\C-o":"\C-ulfcd\C-m"'
 
 # The user@hostname part that is printed before every command. If starship is installed use that, otherwise use a fallback
