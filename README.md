@@ -95,6 +95,37 @@ mpd-mpris-bin # To allow playerctl to control mpd
 flameshot-git # To take screenshots.
 ```
 
+# Modularise?
+
+I should actually organise these per application like
+
+```
+.
+├── bash
+│   ├── .bash_aliases
+│   └── .bashrc
+├── i3
+│   └── .config
+│       └── i3
+│           └── config
+├── i3blocks
+│   └── .config
+│       └── i3blocks
+│           └── config
+├── ranger
+│   └── .config
+│       └── ranger
+│           ├── commands_full.py
+│           ├── commands.py
+│           ├── rc.conf
+│           ├── rifle.conf
+│           └── scope.sh
+├── vim
+│   └── .vimrc
+```
+
+but sorry I haven't gotten around to it yet!
+
 # Screenshots
 
 ![Screenshot of main workspace with firefox, file manager Thunar, and kitty terminal in the background. On the foreground, a scratchpad workspace with kitty is running lf](screenshots/term-lfcd-firefox-scratchpad.jpg "Screenshot of main workspace with firefox, file manager Thunar, and kitty terminal in the background. On the foreground, a scratchpad workspace with kitty is running lf")
