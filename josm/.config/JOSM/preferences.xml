@@ -9,11 +9,12 @@
   <tag key='changesetdialog.lastHeight' value='0'/>
   <tag key='commandstack.lastHeight' value='0'/>
   <tag key='conflict.lastHeight' value='0'/>
+  <tag key='customsettings.lastDirectory' value='/home/aida'/>
   <tag key='draw.rawgps.lines' value='-1'/>
   <tag key='expert' value='true'/>
   <list key='file-open.history'>
-    <entry value='/alt/onedrive/_Projects/Mapping/loutropoli_thermis/village.osm'/>
     <entry value='/alt/onedrive/_Projects/Mapping/loutropoli_thermis/session.jos'/>
+    <entry value='/alt/onedrive/_Projects/Mapping/loutropoli_thermis/village.osm'/>
   </list>
   <tag key='filter.lastHeight' value='0'/>
   <tag key='gui.geometry' value='x=3234,y=93,width=1000,height=740'/>
@@ -197,6 +198,11 @@
     </map>
     <map>
       <tag key='active' value='true'/>
+      <tag key='title' value='New basic style'/>
+      <tag key='url' value='https://pasharm.github.io/New_basic_style_for_JOSM/New_basic_style.mapcss'/>
+    </map>
+    <map>
+      <tag key='active' value='true'/>
       <tag key='title' value='Potlatch 2'/>
       <tag key='url' value='https://josm.openstreetmap.de/josmfile?page=Styles/Potlatch2&amp;zip=1'/>
     </map>
@@ -210,15 +216,25 @@
       <tag key='title' value='Coloured Buildings.en'/>
       <tag key='url' value='https://josm.openstreetmap.de/josmfile?page=Styles/Coloured_buildings_en&amp;zip=1'/>
     </map>
+    <map>
+      <tag key='active' value='true'/>
+      <tag key='title' value='Greenery details'/>
+      <tag key='url' value='https://josm.openstreetmap.de/josmfile?page=Styles/Greenery&amp;zip=1'/>
+    </map>
   </maps>
   <list key='mappaint.style.known-defaults'>
     <entry value='resource://styles/standard/elemstyles.mapcss'/>
   </list>
   <tag key='mapstyle.lastHeight' value='0'/>
+  <tag key='mapstyle.visible' value='true'/>
   <tag key='minimap.lastHeight' value='0'/>
   <list key='mirror./home/aida/.cache/JOSM/images.https://josm.openstreetmap.de/raw-attachment/wiki/Maps/Worldwide/eox.png'>
     <entry value='1737543473498'/>
     <entry value='/home/aida/.cache/JOSM/images/mirror_https___josm.openstreetmap.de_raw-attachment_wiki_Maps_Worldwide_eox.png'/>
+  </list>
+  <list key='mirror./home/aida/.cache/JOSM/images.https://pasharm.github.io/New_basic_style_for_JOSM/icon/orchard2.png'>
+    <entry value='1737551919366'/>
+    <entry value='/home/aida/.cache/JOSM/images/mirror_https___pasharm.github.io_New_basic_style_for_JOSM_icon_orchard2.png'/>
   </list>
   <list key='mirror./home/aida/.cache/JOSM/images.https://wiki.openstreetmap.org/w/images/thumb/c/c9/Hot_logo.svg/300px-Hot_logo.svg.png'>
     <entry value='1737543271171'/>
@@ -236,6 +252,10 @@
     <entry value='1737548803705'/>
     <entry value='/home/aida/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Coloured_buildings_en_zip_1'/>
   </list>
+  <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Greenery&amp;zip_1'>
+    <entry value='1737551918738'/>
+    <entry value='/home/aida/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Greenery_zip_1'/>
+  </list>
   <list key='mirror.https://josm.openstreetmap.de/josmfile?page_Styles/Potlatch2&amp;zip_1'>
     <entry value='1737548803583'/>
     <entry value='/home/aida/.cache/JOSM/mirror_https___josm.openstreetmap.de_josmfile_page_Styles_Potlatch2_zip_1'/>
@@ -252,13 +272,17 @@
     <entry value='1737548739593'/>
     <entry value='/home/aida/.cache/JOSM/mirror_https___josm.openstreetmap.de_styles'/>
   </list>
+  <list key='mirror.https://pasharm.github.io/New_basic_style_for_JOSM/New_basic_style.mapcss'>
+    <entry value='1737551918964'/>
+    <entry value='/home/aida/.cache/JOSM/mirror_https___pasharm.github.io_New_basic_style_for_JOSM_New_basic_style.mapcss'/>
+  </list>
   <tag key='notes/note_open.lastHeight' value='0'/>
   <tag key='oauth.access-token.object.OAuth20.api.openstreetmap.org' value='{&quot;access_token&quot;:&quot;Wzt5e5gK32VflQzHxrslbBnXOtOO-uFsuzYmdX9Qc_o&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;created_at&quot;:1737548567,&quot;scope&quot;:&quot;read_gpx write_gpx read_prefs write_prefs write_api write_notes&quot;}'/>
   <tag key='oauth.access-token.parameters.OAuth20.api.openstreetmap.org' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
   <tag key='oauth.access-token.parameters.OAuth20.https://api.openstreetmap.org/api' value='{&quot;client_id&quot;:&quot;edPII614Lm0_0zEpc_QzEltA9BUll93-Y-ugRQUoHMI&quot;,&quot;redirect_uri&quot;:&quot;http://127.0.0.1:8111/oauth_authorization&quot;,&quot;api_url&quot;:&quot;https://api.openstreetmap.org/api&quot;,&quot;authorize_url&quot;:&quot;https://www.openstreetmap.org/oauth2/authorize&quot;,&quot;token_url&quot;:&quot;https://www.openstreetmap.org/oauth2/token&quot;}'/>
   <tag key='org.openstreetmap.josm.actions.SessionSaveAction$SessionSaveAsDialog.geometry' value='x=3295,y=315,width=450,height=450'/>
   <tag key='org.openstreetmap.josm.gui.download.DownloadDialog.geometry' value='x=3020,y=240,width=1000,height=600'/>
-  <tag key='org.openstreetmap.josm.gui.preferences.PreferenceDialog.geometry' value='x=2702,y=183,width=1428,height=800'/>
+  <tag key='org.openstreetmap.josm.gui.preferences.PreferenceDialog.geometry' value='x=189,y=271,width=1428,height=1065'/>
   <tag key='osm-download.bounds' value='39.1764902;26.478576;39.1845596;26.4959074'/>
   <tag key='preferences.reset.draw.rawgps.lines' value='true'/>
   <list key='projection.sub.core:mercator'>
