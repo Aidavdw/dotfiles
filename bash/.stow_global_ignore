@@ -1,8 +1,11 @@
+# THIS FILE IS ONLY USED WHEN IT IS PLACED IN THE ~ DIRECTORY!!!
+
 # Syntax is Perl regex.
 # If package doesn't have a .stow-local-ignore, this file will be used.
 # https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html
 # `\.bak` matches only a file called `.bak`.
 # `.bak` matches both `.bak` and `foo.bakmore`.
+# `^/file.txt` matches foo/file.txt and bar/ee/file.txt
 \.DS_Store
 \.git
 \.gitignore
@@ -10,12 +13,12 @@
 \.stow-local-ignore
 
 # Files that should be ignored in all packages
-README.*
-install_required_programs.sh
-pkglist.txt
-dependencies.txt
+^/README.*
+^/install_required_programs.sh
+^/pkglist.txt
+^/dependencies.txt
 
-mpdscribble.conf.example
+/mpdscribble.conf.example
 
 # Pyright typings folder for this git repo
 typings
@@ -23,4 +26,4 @@ typings
 docs
 
 # These files are to be placed outside of the home dir anyway.
-.outside
+^/.outside

@@ -1,0 +1,1 @@
+hunspell # Command line spell checker
