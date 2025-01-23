@@ -15,6 +15,7 @@
 ^/install_required_programs.sh
 ^/pkglist.txt
 ^/dependencies.txt
+^/manual_steps.md
 
 /mpdscribble.conf.example
 
