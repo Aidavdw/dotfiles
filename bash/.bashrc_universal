@@ -2,8 +2,6 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
 
 # Default programs
 export EDITOR=vim
@@ -36,7 +34,6 @@ bind '"\C-o":"\C-ulfcd\C-m"'
 if [ -x "$(command -v starship)" ]; then
     eval "$(starship init bash)"
 else
-    echo 'starship unavailable, using PS1 for current session' >&2
     export PS1='\e[01;32m[\t]\e[m \u@\h \e[0;32m\w\e[m$ '
 fi
 
@@ -57,9 +54,8 @@ export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type
 # automatically fill in the 'cd' if you type in just a directory name.
 shopt -s autocd
 
-# Vim mode in terminal!
+# Vim mode in terminal. No `tn` keybind here though, because i want to be able to use this on QWERTY computers too.
 set -o vi
-bind '"tn":vi-movement-mode'
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
