@@ -1,0 +1,2 @@
+kitty 
+ttf-jetbrains-mono-nerd # My preferred nerd font

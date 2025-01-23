@@ -9,7 +9,13 @@
 \.gitmodules
 \.stow-local-ignore
 
+# Files that should be ignored in all packages
 README.*
+install_required_programs.sh
+pkglist.txt
+dependencies.txt
+
+mpdscribble.conf.example
 
 # Pyright typings folder for this git repo
 typings

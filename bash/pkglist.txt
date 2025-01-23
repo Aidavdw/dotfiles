@@ -1,0 +1,8 @@
+eza # like 'ls', but with nicer colored output
+lf  # ranger, but better. allows you to cd really quickly
+starship  # Makes terminal header line pretty instead of ugly PS1 var. If this doesn't work, try `curl -sS https://starship.rs/install.sh | sh` 
+fzf  # fuzzy file finder
+wget  # for downloading from web
+qualc  # Terminal calculator
+cowsay  # moo
+ripgrep-all  # Faster grep, that also allows searching in pdfs etc. Used in fzf wrapper script.

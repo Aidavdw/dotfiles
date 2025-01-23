@@ -1,138 +1,65 @@
 # dotfiles
 
-Install (and update) by running `~/scripts/stow-dotfiles`
+Dotfiles managed using `stow`.
 
+# Packages
+Divided up into (modular) packages. Most packages only have one program, some are a collection (e.g. the arch one).
+These packages have minimal dependency on eachother, so can be used in isolation as much as possible.
+Each package has a:
+- `<package/dependencies.txt` if they need another package to be installed. You're going to have to do this manually, pardner!
+- `<package>/pkglist.txt` contains the packages you need to install. Assumed you use pacman/paru. The AUR packages are displayed together, last. You can install all of the required programs for a package using `pacman -S --needed - < pkglist.txt`
+- `<package>/README.md` if they require more information.
+- `<package>/install_required_programs.sh` if something requires more steps to install. 
+
+# Installation
+Load dotfiles for a specific package simply by `cd`ing to this git dir, and running `stow <package>`
+If it tries to overwrite files that exist, you can either ignore them, or use `stow --adopt <package>` to write the existing file back into this repo.
+
+# Programs that delete don't play nice with symlinks
 Some files are too happy to overwrite dotfiles. For example, JOSM thinks its easier to delete the file at `~/.config/JOSM/preferences.xml` every time, and writing a fully new one. This breaks the symlink.
-There is however a solution: Have stow replace the files in the repository with the ones that are on the machine. This is done by using `stow --adopt`.  
+There is however a solution: Have stow replace the files in the repository with the ones that are on the machine. This is done by using `stow --adopt <package>`.  
 This is the recommended way to deal with programs that peskily overwrite files :), see [this stackexchange](https://unix.stackexchange.com/questions/324040/dotfiles-can-should-gnu-stow-make-hard-links-so-i-can-still-use-xfce-settin)
 
 This command can also be used to 'discard' all the newly changed files, and replace them with what is in the git dir. Make sure your dir is up-to-date, then run  `stop --adopt` followed by `git reset --hard`.
-```
+
+# Manual steps required
+![../mpd/manual_steps.md]
+![../kodi-cli/manual_steps.md]
 
 
-Move `.outside/mpdscribble.conf.example` to `/etc/mpdscribble.conf` Change (remove .example)
-`~/mpdscribble/mpdscribble.conf.example` to use lastfm password.
 
-# Recommended programs
 
-These programs are set up using these dotfiles, or required.
+
+# Other programs
+Useful list for future me if i (re-)install, but if you are not me then maybe you can find some cool new packages here that I can highly recommend!
 
 ```bash
 pacman -S
-xdg-user-dirs # utility to handle setting $XDG_DOWNLOADS_DIR etc.
-eza # like 'ls', but with nicer colored output
-lf # ranger, but better. allows you to cd really quickly
-starship # Makes terminal header line pretty instead of ugly PS1 var
-fzf # fuzzy file finder
-btop # is a resource manager/task manager like `top` but with much more info and pretty colours
-kitty # terminal emulator
-p7zip # command line 7zip
-wget # for downloading from web
-bat # cat, but with syntax highlighting, git, etc.
-alsa-utils # Contains aplay, which is very useful for playing notification sounds.
-gtk3 # Otherwise blackscreens Hyprland
-qt5-wayland # Library to allow qt5 apps to run in wayland, I think? Suggested by hyprland wiki
-qt6-wayland # dito
-hyprland hyprutils hyprlang hyprwayland-scanner # Including supporting libraries. Be sure not to mix git and non-git!
-hyprlock # lockscreen
-hyprpicker # color picker
-hypridle #
-hyprcursor # SVG based cursor, which means it scales
-waybar # Toolbar
-mpd mpc ncmpcpp # music player daemon, for playing music
-stow # For managing dotfiles
-arch-install-scripts # To be able to create a new arch install image from here- includes arch-chroot
-fcitx5 # input method, so IME can be used
-fcitx5-mozc # for Japanese input
-firefox # mah internetz
-fuzzel # Program launcher. Can be left out if using rofi.
-github-cli # To authorise git with github
-mpv # media player.
-pavucontrol # Simple audio selection and volume control. works with pipewire through pipewire-pulse
-swaync # notifications daemon
-pacman-contrib # Pacman scripts, including paccache.timer
-thunar thunar-media-tags-plugin thunar-volman # file manager
-thunar-archive-plugin xarchiver # Allows archives to be opened in thunar. plugin requires a backend, for which I like xarchiver.
-qualc # Terminal calculator
-swww # Wallpapers
-imagemagick # command line image editor, used for scripting wallpapers.
-xdg-desktop-portal xdg-desktop-portal-wlr # To enable screensharing in wayland. Might be replaced by xdg-desktop-portal-hyprland
-xdg-desktop-portal-hyprland # To enable screensharing in wayland
-socat # To make scripts that hook into hyprland IPC sockets (such as changing wallpaper on workspace change)
+btop  # is a resource manager/task manager like `top` but with much more info and pretty colours
+p7zip  # command line 7zip
+stow  # For managing dotfiles. Duh!
+github-cli  # To authorise git with github
 shotcut # Video editor
-util-linux # Various utilities: SSD trim
-hunspell # command line spell checker
-deluge # torrent client
-gimp # image editor
-xclip # Dependency of mpv-mpvacious
-audacity # Audio editor
-cowsay # moo
-digikam # picture management software
-kid3 # music metadata tagger
-restic # Backup tool
-syncthing # Peer-to-peer syncing of files
-signal-desktop # messenger
-zathura zathura-pdf-mupdf # Lightweight pdf viewer
-yt-dlp # Command line youtube downloader
-xorg-xlsclients # allows use of xlsclients command, which shows which programs are running in xwayland.
-ripgrep-all # Faster grep, that also allows searching in pdfs etc. Used in fzf wrapper script.
-papirus-icon-theme # icons used kinda everywhere.
-wl-clipboard cliphist # Clipboard manager. Requires rofi to work well.
-wtype # xdotool for wayland. Allows simulating keypresses. Used in clipboard + rofi automation.
-noto-fonts-emoji # Proper display of emoji. Required for rofimoji
-rofimoji # Emoji picker
-python-build # Enables building python projects from pyproject.toml etc. using python -m build
-grim # utility to take screenshots on wayland. Required by flameshot.
+util-linux  # Various utilities: SSD trim
+hunspell  # command line spell checker
+deluge  # torrent client
+gimp  # image editor
+audacity  # Audio editor
+digikam  # picture management software
+restic  # Backup tool
+syncthing  # Peer-to-peer syncing of files
+signal-desktop  # messenger
+yt-dlp  # Command line youtube downloader
+python-build  # Enables building python projects from pyproject.toml etc. using python -m build
 
-
+# And a couple from the AUR
 paru -S
-qimgv # Image viewer
-cantata-qt6 # music player
-mpd-mpris-bin # To allow playerctl to control mpd
-vscodium-bin # Code editor
-vscodium-bin-marketplace # Easier installing extensions
-webcord-bin # Electron wrapped alternative client for discord, as this one does allow to screenshare.
-python-ics # used in 'today-calendar' widget
-freetube # YouTube client
-safeeyes # Forces me to take lil breaks
-aylurs-gtk-shell # Widget engine that is better than EWW. Not used yet.
-betterbird-bin # Fork of thunderbird mailclient. Better.
-nordvpn-bin # vpn
-mpv-mpvacious # Plugin for mpv that allows you to generate anki cards sentence mining.
-mpd-mpris-bin # To allow playerctl to control mpd
-flameshot-git # To take screenshots.
+cantata-qt6  # graphical client for MPD
+python-ics  # used in 'today-calendar' widget
+freetube  # YouTube client
+aylurs-gtk-shell  # Widget engine that is better than EWW. Not used yet.
+nordvpn-bin  # vpn
 ```
-
-# Modularise?
-
-I should actually organise these per application like
-
-```
-.
-├── bash
-│   ├── .bash_aliases
-│   └── .bashrc
-├── i3
-│   └── .config
-│       └── i3
-│           └── config
-├── i3blocks
-│   └── .config
-│       └── i3blocks
-│           └── config
-├── ranger
-│   └── .config
-│       └── ranger
-│           ├── commands_full.py
-│           ├── commands.py
-│           ├── rc.conf
-│           ├── rifle.conf
-│           └── scope.sh
-├── vim
-│   └── .vimrc
-```
-
-but sorry I haven't gotten around to it yet!
 
 # Screenshots
 

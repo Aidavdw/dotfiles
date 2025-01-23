@@ -1,0 +1,8 @@
+mpd # Music player daemon. This is the server
+mpc # CLI client that allows sending explicit commands. Useful for scripting.
+ncmpcpp # TUI client
+kid3  # music metadata tagger
+
+# A couple from the aur
+mpd-mpris-bin  # To allow playerctl to control mpd
+mpd-mpris-bin  # To allow playerctl to control mpd
