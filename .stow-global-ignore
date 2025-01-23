@@ -11,9 +11,10 @@
 
 README.*
 
-# Pyright typings files
+# Pyright typings folder for this git repo
 typings
+
+docs
 
 # These files are to be placed outside of the home dir anyway.
 .outside
-screenshots
