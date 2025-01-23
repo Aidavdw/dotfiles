@@ -2,6 +2,14 @@
 
 Install (and update) by running `~/scripts/stow-dotfiles`
 
+Some files are too happy to overwrite dotfiles. For example, JOSM thinks its easier to delete the file at `~/.config/JOSM/preferences.xml` every time, and writing a fully new one. This breaks the symlink.
+There is however a solution: Have stow replace the files in the repository with the ones that are on the machine. This is done by using `stow --adopt`.  
+This is the recommended way to deal with programs that peskily overwrite files :), see [this stackexchange](https://unix.stackexchange.com/questions/324040/dotfiles-can-should-gnu-stow-make-hard-links-so-i-can-still-use-xfce-settin)
+
+This command can also be used to 'discard' all the newly changed files, and replace them with what is in the git dir. Make sure your dir is up-to-date, then run  `stop --adopt` followed by `git reset --hard`.
+```
+
+
 Move `.outside/mpdscribble.conf.example` to `/etc/mpdscribble.conf` Change (remove .example)
 `~/mpdscribble/mpdscribble.conf.example` to use lastfm password.
 
