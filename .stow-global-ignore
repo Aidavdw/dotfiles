@@ -1,3 +1,6 @@
+# Syntax is Perl regex.
+# If package doesn't have a .stow-local-ignore, this file will be used.
+# https://www.gnu.org/software/stow/manual/html_node/Types-And-Syntax-Of-Ignore-Lists.html
 # `\.bak` matches only a file called `.bak`.
 # `.bak` matches both `.bak` and `foo.bakmore`.
 \.DS_Store
