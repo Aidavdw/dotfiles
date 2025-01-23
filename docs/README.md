@@ -23,8 +23,9 @@ This is the recommended way to deal with programs that peskily overwrite files :
 This command can also be used to 'discard' all the newly changed files, and replace them with what is in the git dir. Make sure your dir is up-to-date, then run  `stop --adopt` followed by `git reset --hard`.
 
 # Manual steps required
-![../mpd/manual_steps.md]
-![../kodi-cli/manual_steps.md]
+
+![mpd](../mpd/manual_steps.md)
+![kodi-cli](../kodi-cli/manual_steps.md)
 
 
 
