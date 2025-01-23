@@ -41,7 +41,6 @@ stow  # For managing dotfiles. Duh!
 github-cli  # To authorise git with github
 shotcut # Video editor
 util-linux  # Various utilities: SSD trim
-hunspell  # command line spell checker
 deluge  # torrent client
 gimp  # image editor
 audacity  # Audio editor

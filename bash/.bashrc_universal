@@ -17,8 +17,15 @@ alias tree='eza --color=always --group-directories-first --tree -L 3'
 # do visudo with vim, without having to edit root's bashrc
 alias visudo='sudo EDITOR=vim visudo'
 
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 # Running 'vscodium ignores ~/.config/codium-flags.conf, which makes it not run with ime flags. This ensures it is never ignored'. https://github.com/VSCodium/vscodium/issues/1966
 alias vscodium='codium'
+
+# Add current directory in file manager
+alias exp='xdg-open .'
 
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
 lfcd () {
@@ -56,6 +63,9 @@ shopt -s autocd
 
 # Vim mode in terminal. No `tn` keybind here though, because i want to be able to use this on QWERTY computers too.
 set -o vi
+
+# Make neovide automatically open with a slightly bigger window. TODO: Have this actually detect the size of the monitor, and adapt to it.
+alias neovide='neovide --size=1920x1080'
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"

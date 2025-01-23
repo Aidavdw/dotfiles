@@ -1,0 +1,9 @@
+#!/bin/bash
+windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
+if [[ -z $windows_title ]]; then
+    echo "No windows boot entry found in grub."
+else
+    echo "rebooting to $windows_title"
+    sudo grub-reboot "$windows_title"
+    sudo reboot
+fi
