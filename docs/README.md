@@ -11,6 +11,11 @@ Each package has a:
 - `<package>/README.md` if they require more information.
 - `<package>/install_required_programs.sh` if something requires more steps to install. 
 
+# Fonts
+Trying to keep a nice unified style! Sticking with the same fonts.
+- monospace: Iosevka (and where required, Iosevka Nerd font for extra glyphs)
+- Sans: Avenir Next
+
 # Installation
 Load dotfiles for a specific package simply by `cd`ing to this git dir, and running `stow <package>`
 If it tries to overwrite files that exist, you can either ignore them, or use `stow --adopt <package>` to write the existing file back into this repo.
