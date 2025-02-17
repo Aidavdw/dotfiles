@@ -41,7 +41,8 @@ bind '"\C-o":"\C-ulfcd\C-m"'
 if [ -x "$(command -v starship)" ]; then
     eval "$(starship init bash)"
 else
-    export PS1='\e[01;32m[\t]\e[m \u@\h \e[0;32m\w\e[m$ '
+    # Nobody tells you that you need to enclose colour codes with \[ \] (also ending \[\e[00m\], because otherwise it starts overwriting the current line.
+    export PS1='\n[\[\e[01;32m\]\A\[\e[00m\] \u@\h] \[\e[32m\]\w\[\e[00m\]\n\[\e[30;107m\]$\[\e[00m\] '
 fi
 
 # 'oh fuck, I needed to run that command as sudo'. Rerun the previous command as sudo
@@ -61,8 +62,6 @@ export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type
 # automatically fill in the 'cd' if you type in just a directory name.
 shopt -s autocd
 
-# Vim mode in terminal. No `tn` keybind here though, because i want to be able to use this on QWERTY computers too.
-set -o vi
 
 # Make neovide automatically open with a slightly bigger window. TODO: Have this actually detect the size of the monitor, and adapt to it.
 alias neovide='neovide --size=1920x1080'
