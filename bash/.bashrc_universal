@@ -34,8 +34,14 @@ lfcd () {
     cd "$(command lf -print-last-dir "$@")" || exit
 }
 
-# Also set a keybind to open lf with <ctrl>+<o>
+# Also set a keybind to open lf with ctrl+o
 bind '"\C-o":"\C-ulfcd\C-m"'
+
+# Keybind to open lazygit with ctrl+g
+bind '"\C-g":"\C-ulazygit\C-m"'
+
+# Keybind to open nvim in the current dir with ctrl+n
+bind '"\C-n":"\C-unvim .\C-m"'
 
 # The user@hostname part that is printed before every command. If starship is installed use that, otherwise use a fallback
 if [ -x "$(command -v starship)" ]; then
