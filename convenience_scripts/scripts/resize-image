@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Function to display usage
+usage() {
+    echo "Usage: $0 -s <size> <path_to_image>"
+    echo "Example: $0 -s 400 /path/to/image.jpg"
+    exit 1
+}
+
+# Check if the correct number of arguments is passed
+if [ "$#" -ne 3 ]; then
+    usage
+fi
+
+# Parse input arguments
+while getopts ":s:" opt; do
+    case $opt in
+        s) SIZE="$OPTARG" ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND -1))
+
+IMAGE_PATH="$1"
+
+# Validate the size argument
+if ! [[ "$SIZE" =~ ^[0-9]+$ ]]; then
+    echo "Error: Size must be a positive integer."
+    exit 1
+fi
+
+# Validate the image path
+if [ ! -f "$IMAGE_PATH" ]; then
+    echo "Error: File not found: $IMAGE_PATH"
+    exit 1
+fi
+
+# Resize the image using ImageMagick
+convert "$IMAGE_PATH" -resize "$SIZE"x"$SIZE>" "$IMAGE_PATH"
+
+echo "Image resized to largest dimension of $SIZE: $IMAGE_PATH"
+

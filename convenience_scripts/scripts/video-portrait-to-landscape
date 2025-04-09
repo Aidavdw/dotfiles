@@ -1,0 +1,13 @@
+#!/bin/bash
+
+filename="$1"
+echo $filename
+# Get the base name without extension and the extension
+base_name="${filename%.*}"
+extension="${filename##*.}"
+
+# Construct the output file name
+output_file="${base_name}_landscape.${extension}"
+
+echo $output_file
+ffmpeg -i "$filename" -c copy -metadata:s:v:0 rotate=0 "$output_file"
