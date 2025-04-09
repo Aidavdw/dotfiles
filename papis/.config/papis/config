@@ -1,0 +1,23 @@
+# https://papis.readthedocs.io/en/latest/configuration.html
+[settings]
+default-library = thesis-bibliography
+editor = nvim
+notes-name = {doc[ref]}.md
+file-browser = lf
+# the citation key in biblatex.
+ref-format = {doc[author_list][0][family]}{doc[year]}
+# file name of document does not really matter, because it is already in a folder with the citation name. To be able to find stuff better though, name is duplicated.
+add-file-name = {doc[author_list][0][family]}{doc[year]}
+# The folder in which bibitems are stored. Like the citation key, nice and consistent. Duplicates are handled with suffixes -a, -b
+add-folder-name = ``{doc[author_list][0][family]}{doc[year]}``
+
+# These two options together ensure that papis is updated automatically whenever you mess around wit the .yaml files or you delete files from the bibliography outside of papis
+database-backend = papis
+use-cache = False
+
+[thesis-bibliography]
+dir = /home/aida/thesis-bibliography
+opentool = okular
+bibtex-unicode = False
+citations-file-name = citations.yaml
+
