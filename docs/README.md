@@ -56,6 +56,7 @@ syncthing  # Peer-to-peer syncing of files
 signal-desktop  # messenger
 yt-dlp  # Command line youtube downloader
 python-build  # Enables building python projects from pyproject.toml etc. using python -m build
+gurk # Commandline client for signal messenger
 
 # And a couple from the AUR
 paru -S
