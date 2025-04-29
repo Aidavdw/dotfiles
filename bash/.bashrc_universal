@@ -2,7 +2,6 @@
 # ~/.bashrc
 #
 
-
 # Default programs
 export EDITOR=vim
 export VISUAL=vim
@@ -28,7 +27,7 @@ alias vscodium='codium'
 alias exp='xdg-open .'
 
 # lf: Terminal file explorer like ranger. This to set it up so that it exits into the directory you're currently in
-lfcd () {
+lfcd() {
     # `command` is needed in case `lfcd` is aliased to.
     # -print-last-dir requires lf version > 30 (debian Bookworm is v28). If using such an old version, see https://github.com/gokcehan/lf/blob/7d47436a352eb7f7d61303045ed79ed8989c6270/etc/lfcd.sh
     cd "$(command lf -print-last-dir "$@")" || exit
@@ -42,6 +41,9 @@ bind '"\C-g":"\C-ulazygit\C-m"'
 
 # Keybind to open nvim in the current dir with ctrl+n
 bind '"\C-n":"\C-unvim .\C-m"'
+
+# Keybind to open neovide in the current dir with ctrl+h
+bind '"\C-h":"\C-uneovide --size=1920x1080 . &\C-m"'
 
 # The user@hostname part that is printed before every command. If starship is installed use that, otherwise use a fallback
 if [ -x "$(command -v starship)" ]; then
@@ -62,15 +64,11 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-# Make fzf include hidden files be default. Also ignore .git folder. Magic invocation stolen from https://github.com/junegunn/fzf/issues/337#issuecomment-977592444 
+# Make fzf include hidden files be default. Also ignore .git folder. Magic invocation stolen from https://github.com/junegunn/fzf/issues/337#issuecomment-977592444
 export FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d \! -name '\''*.tags'\'' -printf '\''%P\n'\'
 
 # automatically fill in the 'cd' if you type in just a directory name.
 shopt -s autocd
-
-
-# Make neovide automatically open with a slightly bigger window. TODO: Have this actually detect the size of the monitor, and adapt to it.
-alias neovide='neovide --size=1920x1080'
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
