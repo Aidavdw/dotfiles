@@ -1,0 +1,3 @@
+echo 0|sudo tee -a /sys/bus/platform/drivers/ideapad_acpi/VPC2004*/conservation_mode > /dev/null
+echo "Removing battery charging limit, charging battery to 100% for the current session."
+echo "Charge limit will be reset to original value after reboot."

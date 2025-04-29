@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]
+then
+    F=main
+else
+    F=$1
+fi
+
+echo "Rendering LaTeX with main file '$F'"
+
+rm -r "$F.aux"
+rm -r "$F.bbl"
+rm -r "$F.bcf"
+rm -r "$F.blg"
+rm -r "$F.fdb_latexmk"
+rm -r "$F.fls"
+rm -r "$F.log"
+rm -r "$F.out"
+rm -r "$F.pdf"
+rm -r "$F.run.xml"
+rm -r "$F.synctex.gz"
+rm -r "$F.toc"
+rm -r "$F.cog"
+rm -r "$F.coi"
+rm -r "$F.syg"
+rm -r "$F.slg"
+rm -r "$F.syi"
+rm -r "$F.glsdefs"
+
+#--shell-escape is necessary for minted package (nice code listings)
+
+xelatex --no-pdf --halt-on-error --shell-escape "$F";
+retval=$?
+# If no errors, continue. Else, dump the errors.
+echo #?
+if [[ $retval -ne 0 ]]; then
+    echo "Could not compile!"
+    exit $retval
+fi
+
+biber "$F"
+makeglossaries "$F"
+xelatex --halt-on-error --shell-escape "$F"
+okular --unique "$F.pdf" &
+
