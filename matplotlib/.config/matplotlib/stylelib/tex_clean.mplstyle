@@ -1,129 +1,76 @@
-### LINES
-lines.linewidth   : 1.6     # line width in points
-lines.markersize  : 8       # markersize, in points
+# WARNING: editing this in nvim makes a `---` appear at the top here. Delete that.
 
-### FONT
-#
-# font properties used by text.Text.  See
-# http://matplotlib.org/api/font_manager_api.html for more
-# information on font properties.  The 6 font properties used for font
-# matching are given below with their default values.
-#
-# The font.family property has five values: 'serif' (e.g., Times),
-# 'sans-serif' (e.g., Helvetica), 'cursive' (e.g., Zapf-Chancery),
-# 'fantasy' (e.g., Western), and 'monospace' (e.g., Courier).  Each of
-# these font families has a default list of font names in decreasing
-# order of priority associated with them.  When text.usetex is False,
-# font.family may also be one or more concrete font names.
-#
-# The font.style property has three values: normal (or roman), italic
-# or oblique.  The oblique style will be used for italic, if it is not
-# present.
-#
-# The font.variant property has two values: normal or small-caps.  For
-# TrueType fonts, which are scalable fonts, small-caps is equivalent
-# to using a font size of 'smaller', or about 83% of the current font
-# size.
-#
-# The font.weight property has effectively 13 values: normal, bold,
-# bolder, lighter, 100, 200, 300, ..., 900.  Normal is the same as
-# 400, and bold is 700.  bolder and lighter are relative values with
-# respect to the current weight.
-#
-# The font.stretch property has 11 values: ultra-condensed,
-# extra-condensed, condensed, semi-condensed, normal, semi-expanded,
-# expanded, extra-expanded, ultra-expanded, wider, and narrower.  This
-# property is not currently implemented.
-#
-# The font.size property is the default font size for text, given in pts.
-# 12pt is the standard value.
-#
-#font.family         : monospace # for more computery look
-mathtext.fontset : cm
+# My personal clean style look for matplotlib.
+
+# automatically adjust subplot parameters to make the plot fit the figure using `tight_layout`
+figure.autolayout: true
+
+## FONTS
+# Make math text with 'Computer Modern' font.
+text.color: black
+mathtext.fontset: cm
 font.family: serif
+# Also make normal text 'Computer Modern', but now serif. This gives a unified look.
 font.serif: cmr10
 font.size: 12
-#font.style          : normal
-#font.variant        : normal
-#font.weight         : medium
-#font.stretch        : normal
 
+## AXES
+axes.linewidth: 1.0  # edge linewidth
+axes.grid: true  # Always display grid
+axes.titlesize: 12  # fontsize of the axes title
+axes.titlepad: 12  # vertical offset of the axes title
+axes.labelsize: 14 # fontsize of the x any y labels  ###12
+axes.labelpad: 2.0 # space between label and axis  ### 3
+# Allows you to use mathjax in axis labels.
+axes.formatter.use_mathtext: true
+axes.facecolor: 0.99  # axes background color
+axes.edgecolor: 0.7  # axes edge color
+axes.labelcolor: 0.5
+# NOTE: This file deliberately does not set colours.
+# Use okabe-ito or greyscale from the styling dir.
 
+## TICKS
+xtick.major.size: 8.25  # major tick size in points
+xtick.minor.size: 4.125  # minor tick size in points
+xtick.major.width: 0.75  # major tick width in points
+xtick.minor.width: 0.5  # minor tick width in points
+xtick.major.pad: 2  # distance to major tick label in points  
+xtick.minor.pad: 2  # distance to the minor tick label in points
+xtick.labelsize: 12                  # fontsize of the tick labels  ###10
+xtick.minor.visible: true
+xtick.major.top: true
+xtick.major.bottom: true
+xtick.minor.top: true
+xtick.minor.bottom: true
+xtick.color: 0.3  # color of the tick labels
+ytick.major.size: 8.25  # major tick size in points
+ytick.minor.size: 4.125  # minor tick size in points
+ytick.major.width: 0.75  # major tick width in points
+ytick.minor.width: 0.5  # minor tick width in points
+ytick.major.pad: 4  # distance to major tick label in points
+ytick.minor.pad: 5  # distance to the minor tick label in points
+ytick.labelsize: 12                  # fontsize of the tick labels  ###10
+ytick.minor.visible: true
+ytick.major.left: true
+ytick.major.right: true
+ytick.minor.left: true
+ytick.minor.right: true
+ytick.color: 0.3  # color of the tick labels
 
-### AXES
-# See http://matplotlib.org/api/axes_api.html#module-matplotlib.axes
-axes.linewidth      : 1.0           # edge linewidth
-axes.grid           : True          # display grid or not
-axes.titlesize      : 12            # fontsize of the axes title
-axes.titlepad       : 15            # vertical offset of the axes title
-axes.labelsize      : 12            # fontsize of the x any y labels
-axes.labelpad       : 6.0           # space between label and axis
-#axes.labelweight   : normal        # weight of the x and y labels
-#axes.axisbelow     : False         # whether axis gridlines and ticks are below the axes elements (lines, text, etc)
-axes.formatter.use_mathtext : True
-
-### TICKS
-# see http://matplotlib.org/api/axis_api.html#matplotlib.axis.Tick
-xtick.major.size     : 8.25         # major tick size in points
-xtick.minor.size     : 4.125        # minor tick size in points
-xtick.major.width    : 0.75         # major tick width in points
-xtick.minor.width    : 0.5         # minor tick width in points
-xtick.major.pad      : 4            # distance to major tick label in points
-xtick.minor.pad      : 5            # distance to the minor tick label in points
-xtick.labelsize      : 10            # fontsize of the tick labels
-xtick.minor.visible: True
-xtick.major.top: True
-xtick.major.bottom: True
-xtick.minor.top: True
-xtick.minor.bottom: True
-xtick.color          : 0.3      # color of the tick labels
-#xtick.direction     : in           # direction: in, out, or inout
-
-ytick.major.size     : 8.25         # major tick size in points
-ytick.minor.size     : 4.125        # minor tick size in points
-ytick.major.width    : 0.75         # major tick width in points
-ytick.minor.width    : 0.5         # minor tick width in points
-ytick.major.pad      : 4            # distance to major tick label in points
-ytick.minor.pad      : 5            # distance to the minor tick label in points
-ytick.labelsize      : 10            # fontsize of the tick labels
-ytick.minor.visible: True
-ytick.major.left: True
-ytick.major.right: True
-ytick.minor.left: True
-ytick.minor.right: True
-ytick.color          : 0.3      # color of the tick labels
-#ytick.direction      : in          # direction: in, out, or inout
-
-
-### GRIDS
-grid.linestyle   :   --       # lines
-grid.linewidth   :   0.75     # in points
-grid.alpha       :   0.24     # transparency, between 0.0 and 1.0
+## GRIDS
+grid.color: 0.2  # grid color
+grid.linestyle: --  # lines
+grid.linewidth: 0.75  # in points
+grid.alpha: 0.24  # transparency, between 0.0 and 1.0
 
 ### Legend
-legend.fancybox         : False     # if True, use a rounded box for the legend, else a rectangle
-legend.fontsize         : 9
-legend.shadow           : False
-legend.frameon          : True      # whether or not to draw a frame around legend
-legend.framealpha       : 0.82      # opacity of of legend frame
+legend.fancybox: false  # if True, use a rounded box for the legend, else a rectangle
+legend.fontsize: 12  #### 9
+legend.shadow: false
+legend.frameon: true  # whether or not to draw a frame around legend
+legend.framealpha: 0.82  # opacity of of legend frame
+markers.fillstyle: full  ## full|left|right|bottom|top|none
+legend.facecolor: 1  # legend background color (when 'inherit' uses axes.facecolor)
+legend.edgecolor: inherit  # legend edge color (when 'inherit' uses axes.edgecolor)
 
-markers.fillstyle: full ## full|left|right|bottom|top|none
-
-### FONT
-text.color : black
-
-### AXES
-axes.facecolor      : 0.99   # axes background color
-axes.edgecolor      : 0.7   # axes edge color
-axes.labelcolor     : 0.5
-
-### TICKS
-
-
-
-### GRIDS
-grid.color       :   0.2   # grid color
-
-### Legend
-legend.facecolor     : 1   # legend background color (when 'inherit' uses axes.facecolor)
-legend.edgecolor : inherit # legend edge color (when 'inherit' uses axes.edgecolor)
+#

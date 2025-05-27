@@ -1,0 +1,15 @@
+# WARNING: editing this in nvim makes a `---` appear at the top here. Delete that.
+
+# Colours based on okabe-ito, so that they are easily visible even for the colourblind.
+# In order:
+# Orange
+# Sky blue
+# bluish green
+# yellow
+# Blue
+# Vermillion
+# reddis purple
+# black
+axes.prop_cycle: cycler('color', ['E69F00', '56B4E9', '009E73', 'F0E442', '0072B2', 'D55E00', 'CC79A7', '000000'])
+
+# WARNING: this must be on one line. Do not trust the autoformatter.

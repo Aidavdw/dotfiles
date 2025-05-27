@@ -1,1 +1,100 @@
-figure.autolayout : True
+# WARNING: editing this in nvim makes a `---` appear at the top here. Delete that.
+
+# First some actual rc things,
+# Below you will find embedded two style sheets. This is because for some dumb reason matplotlib does not have a command in the rc to open a stylesheet.
+
+# Matplotlib's automatic DPI detection sucks on HDPI monitors.
+# by default saves images at a very low resolution. This makes it higher.
+savefig.dpi: 300
+
+# Open the savefig dialog window in the current directory (default is in ~)
+savefig.directory: .
+
+
+
+
+### tex_clean.mplstyle
+# My personal clean style look for matplotlib.
+# automatically adjust subplot parameters to make the plot fit the figure using `tight_layout`
+figure.autolayout: true
+
+## FONTS
+# Make math text with 'Computer Modern' font.
+text.color: black
+mathtext.fontset: cm
+font.family: serif
+# Also make normal text 'Computer Modern', but now serif. This gives a unified look.
+font.serif: cmr10
+font.size: 12
+
+## AXES
+axes.linewidth: 1.0  # edge linewidth
+axes.grid: true  # Always display grid
+axes.titlesize: 12  # fontsize of the axes title
+axes.titlepad: 12  # vertical offset of the axes title
+axes.labelsize: 14 # fontsize of the x any y labels  ###12
+axes.labelpad: 2.0 # space between label and axis  ### 3
+# Allows you to use mathjax in axis labels.
+axes.formatter.use_mathtext: true
+axes.facecolor: 0.99  # axes background color
+axes.edgecolor: 0.7  # axes edge color
+axes.labelcolor: 0.5
+# NOTE: This file deliberately does not set colours.
+# Use okabe-ito or greyscale from the styling dir.
+
+## TICKS
+xtick.major.size: 8.25  # major tick size in points
+xtick.minor.size: 4.125  # minor tick size in points
+xtick.major.width: 0.75  # major tick width in points
+xtick.minor.width: 0.5  # minor tick width in points
+xtick.major.pad: 2  # distance to major tick label in points  
+xtick.minor.pad: 2  # distance to the minor tick label in points
+xtick.labelsize: 12                  # fontsize of the tick labels  ###10
+xtick.minor.visible: true
+xtick.major.top: true
+xtick.major.bottom: true
+xtick.minor.top: true
+xtick.minor.bottom: true
+xtick.color: 0.3  # color of the tick labels
+ytick.major.size: 8.25  # major tick size in points
+ytick.minor.size: 4.125  # minor tick size in points
+ytick.major.width: 0.75  # major tick width in points
+ytick.minor.width: 0.5  # minor tick width in points
+ytick.major.pad: 4  # distance to major tick label in points
+ytick.minor.pad: 5  # distance to the minor tick label in points
+ytick.labelsize: 12                  # fontsize of the tick labels  ###10
+ytick.minor.visible: true
+ytick.major.left: true
+ytick.major.right: true
+ytick.minor.left: true
+ytick.minor.right: true
+ytick.color: 0.3  # color of the tick labels
+
+## GRIDS
+grid.color: 0.2  # grid color
+grid.linestyle: --  # lines
+grid.linewidth: 0.75  # in points
+grid.alpha: 0.24  # transparency, between 0.0 and 1.0
+
+### Legend
+legend.fancybox: false  # if True, use a rounded box for the legend, else a rectangle
+legend.fontsize: 12  #### 9
+legend.shadow: false
+legend.frameon: true  # whether or not to draw a frame around legend
+legend.framealpha: 0.82  # opacity of of legend frame
+markers.fillstyle: full  ## full|left|right|bottom|top|none
+legend.facecolor: 1  # legend background color (when 'inherit' uses axes.facecolor)
+legend.edgecolor: inherit  # legend edge color (when 'inherit' uses axes.edgecolor)
+
+### okabe_ito.mplstyle
+# Colours based on okabe-ito, so that they are easily visible even for the colourblind.
+# In order:
+# Orange
+# Sky blue
+# bluish green
+# yellow
+# Blue
+# Vermillion
+# reddis purple
+# black
+axes.prop_cycle: cycler('color', ['E69F00', '56B4E9', '009E73', 'F0E442', '0072B2', 'D55E00', 'CC79A7', '000000'])

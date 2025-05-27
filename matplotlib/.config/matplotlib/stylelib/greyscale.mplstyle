@@ -1,0 +1,6 @@
+# WARNING: editing this in nvim makes a `---` appear at the top here. Delete that.
+
+# Greyscale lines with patterns so that they are easily visible when printed.
+axes.prop_cycle: (cycler('color', ['000000']) * cycler('linestyle',['-','--','-.',':', (0, (3, 10, 1, 10)), (0, (5, 10)), (0, (3, 5, 1, 5, 1, 5)), (0, (3, 1, 1, 1, 1, 1))]))
+
+# WARNING: this must be on one line. Do not trust the autoformatter.
