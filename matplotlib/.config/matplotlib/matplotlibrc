@@ -43,6 +43,11 @@ axes.labelcolor: 0.5
 # Use okabe-ito or greyscale from the styling dir.
 
 ## TICKS
+# A limitation is that this only works for linear plots.
+# For log plots, it does not show the nice cascading ticks.
+# This is for some reason just really, really poorly implemented in matplotlib
+# I have not been able to get it to work, but it can't be configured in this rc file.
+# See https://stackoverflow.com/questions/30887920/how-to-show-minor-tick-labels-on-log-scale-with-matplotlib
 xtick.major.size: 8.25  # major tick size in points
 xtick.minor.size: 4.125  # minor tick size in points
 xtick.major.width: 0.75  # major tick width in points
