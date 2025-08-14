@@ -1,0 +1,3 @@
+#!/bin/bash
+xbacklight -set 2
+xbacklight -set 0
