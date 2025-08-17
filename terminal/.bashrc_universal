@@ -33,8 +33,23 @@ lfcd() {
     cd "$(command lf -print-last-dir "$@")" || exit
 }
 
-# Also set a keybind to open lf with ctrl+o
-bind '"\C-o":"\C-ulfcd\C-m"'
+function yazicd() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+# set a keybind to open yazi with ctrl+o.
+# If yazi is unavailable, fall back to lf.
+if [ -x "$(command -v yazi)" ]; then
+    bind '"\C-o":"\C-uyazicd\C-m"'
+elif [ -x "$(command -v lf)" ]; then
+    bind '"\C-o":"\C-ulfcd\C-m"'
+else
+    echo "neither yazi nor lf available, can't ctrl-o."
+fi
 
 # Keybind to open lazygit with ctrl+g
 bind '"\C-g":"\C-ulazygit\C-m"'
