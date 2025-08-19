@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BASH
+Comment=Do not start a graphical session, open BASH
+Exec=/bin/bash -l
+Type=Application
+DesktopNames=BASH
+Keywords=bash;terminal;tty;console;recovery
