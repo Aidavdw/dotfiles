@@ -95,5 +95,8 @@ shopt -s autocd
 #    echo \'keychain\' is not installed, you\'ll have to manually start ssh-agent and add ssh keys.
 # fi
 
+# Make the prompt asking for your password when using sudo red.
+export SUDO_PROMPT="$(tput setaf 1 bold)Password:$(tput sgr0) "
+
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
