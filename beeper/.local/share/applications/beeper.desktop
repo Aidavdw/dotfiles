@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Beeper
+Comment=Universal matrix-based messenger for Discord, Whatsapp, Instagram, etc. (Wayland wrapper)
+GenericName=Internet Messenger
+Exec=beeper --no-sandbox --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-hint=auto --ozone-platform=wayland --enable-wayland-ime %U
+Icon=beeper
+Type=Application
+StartupNotify=true
+Categories=Network;InstantMessaging;
+
