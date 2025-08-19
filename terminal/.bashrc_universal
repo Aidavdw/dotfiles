@@ -87,12 +87,13 @@ shopt -s autocd
 
 # You have to open ssh-agent and ssh-add manually all the time.
 # Use small program 'keychain' to do it for you if it is installed
-if [ -x "$(command -v keychain)" ]; then
+# Right now defer this to gnome-keychain.
+# if [ -x "$(command -v keychain)" ]; then
     # Assumes you store your ssh key with the default name.
-    eval 'keychain --eval id_ed25519'
-else
-    echo \'keychain\' is not installed, you\'ll have to manually start ssh-agent and add ssh keys.
-fi
+#    eval 'keychain --eval id_ed25519'
+# else
+#    echo \'keychain\' is not installed, you\'ll have to manually start ssh-agent and add ssh keys.
+# fi
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
