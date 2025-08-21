@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Hyprland (Nvidia)
+Comment=Hyprland running on dgpu can display over multiple monitors.
+Exec=/usr/local/bin/hyprland-nvidia-gpu.sh
+Type=Application
+DesktopNames=Hyprland
+Keywords=tiling;wayland;compositor;

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=BASH
-Comment=Do not start a graphical session, open BASH
+Name=TTY
+Comment=Do not start a graphical session and go to TTY
 Exec=/bin/bash -l
 Type=Application
-DesktopNames=BASH
+DesktopNames=TTY
 Keywords=bash;terminal;tty;console;recovery

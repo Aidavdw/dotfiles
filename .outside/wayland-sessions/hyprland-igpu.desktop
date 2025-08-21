@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Hyprland (igpu)
+Comment=Hyprland running on the igpu cannot run multi-monitor.
+Exec=/usr/local/bin/hyprland-igpu.sh
+Type=Application
+DesktopNames=Hyprland
+Keywords=tiling;wayland;compositor;
