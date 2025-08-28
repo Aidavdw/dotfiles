@@ -1,3 +1,9 @@
+# Always create PDFs and set default engine to LuaLaTeX.
+$pdf_mode = 4;
+# Set the lualatex variable.
+$lualatex = 'lualatex --file-line-error %O %S';
+
+
 add_cus_dep( 'acn', 'acr', 0, 'makeglossaries' );
 add_cus_dep( 'glo', 'gls', 0, 'makeglossaries' );
 $clean_ext .= " acr acn alg glo gls glg";
