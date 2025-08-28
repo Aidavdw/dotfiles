@@ -1,2 +1,0 @@
-zathura # Lightweight reader for markdown, etc. Super useful for documentation.
-zathura-pdf-mupdf # Allow it to read PDFs 
