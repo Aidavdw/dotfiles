@@ -10,8 +10,11 @@ export BROWSER=firefox
 alias grep='grep --color=auto'
 
 # Use eza instead of ls, as it has many more features.
-alias ls='eza -al --color=always --group-directories-first'
+alias ls='eza --color=always --group-directories-first --icons=automatic'
 alias tree='eza --color=always --group-directories-first --tree -L 3'
+alias ll='eza -l --color=always --group-directories-first --icons=automatic --git'
+alias la='eza -a --color=always --group-directories-first --icons=automatic'
+alias lla='eza -la --color=always --group-directories-first --icons=automatic'
 
 # do visudo with vim, without having to edit root's bashrc
 alias visudo='sudo EDITOR=vim visudo'
