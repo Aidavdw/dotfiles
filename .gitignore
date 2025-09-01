@@ -1,3 +1,4 @@
 *.bak
 scripts/calendars.txt
 .cache
+qimgv/.config/qimgv/savedState.conf
