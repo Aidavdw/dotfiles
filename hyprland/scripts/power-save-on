@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "Enabling power saving mode"
+
+# Lower refresh rate of built-in monitor
+hyprctl keyword monitor "eDP-1,2560x1600@240,0x0,1.6"
+
+# Disable animations
+hyprctl keyword animations:enabled false
+
+# Floating windows don't blur windows under them.
+hyprctl keyword decoration:blur:xray true
+
+# Dim screen
+# brightnessctl set 50%
+
+# Example GPU tweak (optional, depends on hardware/drivers)
+# nvidia-smi -pm 1 && nvidia-smi -pl 40

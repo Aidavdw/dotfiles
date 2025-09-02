@@ -1,0 +1,8 @@
+#!/bin/bash
+# If currently in colemak, go to qwerty, and vice versa. To be used for little switcher button.
+if hyprctl getoption input:kb_variant | grep -q graphaida; then
+    ~/scripts/keyboard-hypr-qwerty >/dev/null
+else
+    ~/scripts/keyboard-hypr-qwerty >/dev/null
+fi
+

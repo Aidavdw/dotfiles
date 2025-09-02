@@ -1,0 +1,8 @@
+#!/bin/bash
+# Automatically switch based on AC power status
+
+if on_ac_power; then
+    /usr/local/bin/power-save-off.sh
+else
+    /usr/local/bin/power-save-on.sh
+fi

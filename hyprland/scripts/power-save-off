@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Enabling power saving mode"
+
+hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.6"
+
+hyprctl keyword animations:enabled true
+
+hyprctl keyword decoration:blur:xray true
+
+hyprctl keyword decoration:blur:popup true

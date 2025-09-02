@@ -1,0 +1,6 @@
+#!/bin/bash
+# Change layout of keyboard to qwerty. As a script instead of in hyprland's input because it requires changing options.
+hyprctl keyword input:kb_layout us
+echo "Set keyboard to QWERTY"
+notify-send -i "/usr/share/icons/Papirus/64x64/devices/keyboard.svg" "Keyboard: QWERTY"
+

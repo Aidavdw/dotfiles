@@ -1,0 +1,6 @@
+#!/bin/bash
+# Change layout of keyboard to colemak. As a script instead of in hyprland's input because it requires changing options.
+hyprctl keyword input:kb_layout graphaida
+echo "Set keyboard to modified Graphite."
+notify-send -i "/usr/share/icons/Papirus/64x64/devices/keyboard.svg" "Keyboard: Graphite"
+
