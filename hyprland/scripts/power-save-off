@@ -1,11 +1,12 @@
 #!/bin/bash
 
 echo "Enabling power saving mode"
+rm -f /tmp/power-save-enabled
 
-hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.6"
+hyprctl keyword monitor "eDP-1,2560x1600@240,0x0,1.6" >> /dev/null
 
-hyprctl keyword animations:enabled true
+hyprctl keyword animations:enabled true >> /dev/null
 
-hyprctl keyword decoration:blur:xray true
+hyprctl keyword decoration:blur:xray true >> /dev/null
 
-hyprctl keyword decoration:blur:popup true
+systemctl --user start syncthing >> /dev/null

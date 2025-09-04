@@ -1,8 +1,8 @@
 #!/bin/bash
 # Automatically switch based on AC power status
 
-if on_ac_power; then
-    /usr/local/bin/power-save-off.sh
+if [[ -f "/tmp/power-save-enabled" ]]; then
+    /home/aida/scripts/power-save-off.sh
 else
-    /usr/local/bin/power-save-on.sh
+    /home/aida/scripts/power-save-on.sh
 fi

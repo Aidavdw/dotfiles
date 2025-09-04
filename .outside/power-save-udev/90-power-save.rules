@@ -1,0 +1,5 @@
+# When AC is disconnected, write a marker file /tmp/power-save-enabled.
+SUBSYSTEM=="power_supply" ACTION=="change", ATTR{ONLINE}=="0", RUN+="/usr/bin/touch /tmp/power-save-enabled"
+
+# When AC is connected, delete the marker file /tmp/power-save-enabled.
+SUBSYSTEM=="power_supply" ACTION=="change", ATTR{ONLINE}=="0", RUN+="/usr/bin/rm -f /tmp/power-save-enabled"
