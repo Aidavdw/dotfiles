@@ -4,3 +4,4 @@ scripts/calendars.txt
 qimgv/.config/qimgv/savedState.conf
 # Don't want to accidentally leak password here.
 mpd/.mpdscribble/mpdscribble.conf
+mpd/.config/mpd/database
