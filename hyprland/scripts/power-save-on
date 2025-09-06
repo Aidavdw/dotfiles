@@ -1,18 +1,22 @@
 #!/bin/bash
 
 echo "Enabling power saving mode"
+notify-send "Enabled power saving mode"
 touch /tmp/power-save-enabled
 
 # Lower refresh rate of built-in monitor
-hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.6" >> /dev/null
+hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.6" >>/dev/null
 
 # Disable animations
-hyprctl keyword animations:enabled false >> /dev/null
+hyprctl keyword animations:enabled false >>/dev/null
 
 # Floating windows don't blur windows under them.
-hyprctl keyword decoration:blur:xray true >> /dev/null
+hyprctl keyword decoration:blur:xray true >>/dev/null
 
-systemctl --user stop syncthing >> /dev/null
+# Disable drop shadows
+hyprctl keyword decoration:shadow:enabled false >>/dev/null
+
+systemctl --user stop syncthing >>/dev/null
 
 # Dim screen
 # brightnessctl set 50%

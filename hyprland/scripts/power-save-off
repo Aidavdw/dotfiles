@@ -1,12 +1,10 @@
 #!/bin/bash
 
-echo "Enabling power saving mode"
+echo "Power saving mode turned off"
+notify-send "Power saving mode turned off"
 rm -f /tmp/power-save-enabled
 
-hyprctl keyword monitor "eDP-1,2560x1600@240,0x0,1.6" >> /dev/null
+# Don't need to manually revert all the hyprctl stuff, just reload the config.
+hyprctl reload
 
-hyprctl keyword animations:enabled true >> /dev/null
-
-hyprctl keyword decoration:blur:xray true >> /dev/null
-
-systemctl --user start syncthing >> /dev/null
+systemctl --user start syncthing >>/dev/null
