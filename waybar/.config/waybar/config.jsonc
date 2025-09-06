@@ -7,7 +7,7 @@
     "spacing": 4, // Gaps between modules (4px)
     "output": ["eDP-1"],
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-left": ["hyprland/workspaces", "mpd"],
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray", // For discord, etc-
@@ -23,7 +23,7 @@
     },
     "group/hardware": {
         "orientation": "horizontal",
-        "modules": ["network", "battery", "battery#bat2", "group/hardwaredrawer"]
+        "modules": ["network", "battery", "group/hardwaredrawer"]
     },
     "group/datetime": {
         "orientation": "horizontal",
@@ -36,7 +36,6 @@
             "transition-duration": 500
         },
         "modules": [
-            //"power-profiles-daemon",
             "cpu",
             "memory",
             "temperature",
@@ -66,7 +65,29 @@
         //"on-click": "activate", // According to wiki required for click events work for hyprland, but they seem to be working fine?
         "all-outputs": true,
         //"warp-on-scroll": false, // Styling thing?
-        "format": "<span size='126%'>{icon} </span><span size='94%' color='#9399b2'>{windows}</span>", // Color is @overlay2
+        "workspace-taskbar": {
+            "enable": true,
+
+            // If true, the active/focused window will have an 'active' class. Could cause higher CPU usage due to more frequent redraws. Default: false
+            "update-active-window": true,
+
+            // Format of the windows in the taskbar. Default: "{icon}". Allowed variables: {icon}, {title}
+            "format": "{icon}",
+
+            // Icon size in pixels. Default: 16
+            "icon-size": 16,
+
+
+            // Orientation of the taskbar ("horizontal" or "vertical"). Default: "horizontal".
+            "orientation": "horizontal",
+
+            // List of regexes. A window will NOT be shown if its window class or title match one or more items. Default: []
+            //"ignore-list": [ "code", "Firefox - .*" ],
+
+            // Command to run when a window is clicked. Default: "" (switch to the workspace as usual). Allowed variables: {address}, {button}
+            //"on-click-window": "/some/arbitrary/script {address} {button}"
+        },
+        // Formatting for the workspace identifiers
         "format-icons": {
             "1": "", // Home
             "2": "", // Music
@@ -89,36 +110,30 @@
             "1008": "8",
             "1009": "9"
         },
-        "persistent-workspaces": {
-            "1": [], // always keep the home screen, even when there is nothing on there.
-            "2": [], // Music
-            "9": [], // mail
-            "101": [], // α
-            "102": [] // β
-        },
-        "format-window-separator": "|",
-        "window-rewrite-default": "",
-        // If a certain window exists in a workspace, add a little icon
-        "window-rewrite": {
-            "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
-            "class<firefox>": "", // Windows whose classes are "firefox"
-            "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
-            "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
-            "code": "󰨞",
-            "codium": "󰨞",
-            "discord": "",
-            "webcord": "",
-            "zathura": "󰂺",
-            "thunar": "",
-            "mpv": "",
-            "qimgv": "",
-            "psst-gui": "",
-            "class<dog.unix.cantata.Cantata>": "󰲸",
-            "class<firefox> title<.*Reddit.*>": "",
-            "class<firefox> title<.*duckduckgo.*>": "󰇥",
-            "class<firefox> title<.*Arch.*>": "󰣇",
-            "class<firefox> title<.*wikipedia.*>": "󰖬"
-        }
+        "format": "{icon}  {windows}",
+        // "format-window-separator": "|",
+        // "window-rewrite-default": "",
+        // // If a certain window exists in a workspace, add a little icon
+        // "window-rewrite": {
+        //     "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+        //     "class<firefox>": "", // Windows whose classes are "firefox"
+        //     "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+        //     "kitty": "", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+        //     "code": "󰨞",
+        //     "codium": "󰨞",
+        //     "discord": "",
+        //     "webcord": "",
+        //     "zathura": "󰂺",
+        //     "thunar": "",
+        //     "mpv": "",
+        //     "qimgv": "",
+        //     "psst-gui": "",
+        //     "class<dog.unix.cantata.Cantata>": "󰲸",
+        //     "class<firefox> title<.*Reddit.*>": "",
+        //     "class<firefox> title<.*duckduckgo.*>": "󰇥",
+        //     "class<firefox> title<.*Arch.*>": "󰣇",
+        //     "class<firefox> title<.*wikipedia.*>": "󰖬"
+        // }
     },
     "mpris": {
         "format": "{player_icon} <span color='#b4befe'>{artist}</span> - <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({position}/{length})</span>",
@@ -136,7 +151,7 @@
         // "ignored-players": ["firefox"]
     },
     "mpd": {
-        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span color='#f2cdcd'>({album})</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
         "format-disconnected": "MPD 󱘖",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
         "unknown-tag": "N/A",
@@ -157,7 +172,7 @@
             "paused": "<span color='#94e2d5'></span>",
             "playing": "<span color='#a6e3a1'></span>"
         },
-        "tooltip-format": "Volume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
+        "tooltip-format": "Album: {album}\nVolume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
         "tooltip-format-disconnected": "Not connected to MPD",
         "on-click": "~/scripts/mpd-play-pause-toggle"
     },
@@ -193,14 +208,12 @@
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 70,
-        // "format-critical": "{temperatureC}°C {icon}",
+        "format-critical": "TOO HOT! {temperatureC}°C {icon}",
         "format": "<span size='120%'>{icon}</span> {temperatureC}°C",
         "tooltip-format": "CPU temperature",
-        "format-icons": ["", "", "󱗗"]
+        "format-icons": [""]
     },
     "backlight": {
-        // TODO: Setup and activate.
-        // "device": "acpi_video1",
         "format": "<span size='120%'>{icon}</span> {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
@@ -219,29 +232,15 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-        //TODO: setup & enable
-        "format": "<span size='120%'>{icon}</span>",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "󰓅",
-            "performance": "󰓅",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span size='120%'>{icon}</span> {essid} {signalStrength}%",
+        "format-wifi": "<span size='120%'>{icon}</span>",
         "format-ethernet": "<span size='120%'>󰈀</span>",
-        "tooltip-format": "{ipaddr}/{cidr} through {ifname} via {gwaddr}",
+        "tooltip-format-ethernet": "Wired connection\n{ipaddr}/{cidr} through {ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{ifname}: {essid}, reception {signalStrength}%\n{ipaddr}/{cidr} through {ifname} via {gwaddr}",
         "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
         "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-alt": "{essid}: {signalStrength}%",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "pulseaudio": {

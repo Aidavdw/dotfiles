@@ -76,12 +76,16 @@ window#waybar.firefox {
 #pulseaudio,
 #privacy {
   font-family: FontAwesome, "M Plus 1p", sans-serif, "JetBrainsMono Nerd Font";
-  margin-left: 1em;
+  margin-left: 1.2em;
 }
 
 /* Can't give margins to drawers (#hardwaredrawer and #power) or they will start spazzing upon hover. Apply right margin on the ones that neighbour it. */
 #network {
   margin-right: 1em;
+}
+
+#battery {
+  margin-right: 0.6em;
 }
 
 #datetime {
@@ -92,14 +96,16 @@ window#waybar.firefox {
 #cpu #disk,
 #memory,
 #temperature,
+#backlight,
 #custom-kbtoggle {
-  margin-left: 0.6em;
+  margin-left: 0.8em;
 }
 
 /* Grouping: The contents of the power menu drawer. made larger so you don't misclick. */
 #custom-quit,
 #custom-lock,
 #custom-reboot,
+#custom-kbtoggle,
 #custom-poweroff {
   margin-left: 1em;
   margin-right: 1em;
@@ -178,6 +184,7 @@ button:hover {
 /*********** RIGHT SIDE MODULES ************/
 
 #battery {
+  
 }
 
 #battery.charging,
