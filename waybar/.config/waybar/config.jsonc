@@ -39,7 +39,6 @@
             "cpu",
             "memory",
             "temperature",
-            "custom/kbtoggle",
             "backlight"
         ]
     },
@@ -53,7 +52,8 @@
             "custom/poweroff", // First element is the "group leader" and won't ever be hidden
             "custom/lock",
             "custom/quit",
-            "custom/reboot"
+            "custom/reboot",
+            "custom/kbtoggle",
         ]
     },
     /************* Modules configuration **************/
@@ -327,8 +327,8 @@
     },
     "custom/kbtoggle": {
         "tooltip": true,
-        "tooltip-format": "Toggle QWERTY / CMK",
+        "tooltip-format": "Toggle QWERTY / Graphene keyboard layout",
         "format": "",
-        "on-click": "~/scripts/hyprland-toggle-kb"
+        "on-click": "~/scripts/keyboard-toggle-hypr"
     }
 }
