@@ -5,6 +5,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
+    "output": ["eDP-1"],
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["hyprland/window"],
