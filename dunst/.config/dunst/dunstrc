@@ -1,0 +1,45 @@
+[global]
+# The notifications will be placed on the monitor that contains the window with keyboard focus.
+follow = keyboard
+font = "Avenir Next LT Pro 12"
+width = 400
+height = (80, 380)
+offset = (30, 30)
+gap_size = 12
+padding = 12
+frame_width = 2
+format = <small>%a</small>\n<big><b>%s</b></big>\n%b
+stack_duplicates = false
+corner_radius = 10
+
+# Mouse
+mouse_left_click = do_action, close_current
+mouse_middle_click = open_url
+mouse_right_click = context
+
+dmenu = /usr/bin/rofi -dmenu -theme simple
+
+
+# Icon
+icon_theme = Papirus
+min_icon_size = 64
+icon_corner_radius = 8
+
+# Catppuccin colours
+frame_color = "#A6E3A1"
+separator_color= frame
+highlight = "#89b4fa"
+
+[urgency_low]
+background = "#94E2D5"
+foreground = "#1E1E2E"
+frame_width = 4
+
+[urgency_normal]
+background = "#313244"
+foreground = "#cdd6f4"
+
+[urgency_critical]
+frame_width = 4
+background = "#EBA0AC"
+foreground = "#1E1E2E"
