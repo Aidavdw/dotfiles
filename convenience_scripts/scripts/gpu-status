@@ -1,0 +1,8 @@
+# hyprland variable: if unset, do not display
+echo $AQ_DRM_DEVICES
+
+# Is the dgpu currently on?
+cat /sys/bus/pci/devices/0000:01:00.0/power/runtime_status
+
+# if it is on (active), then also run this
+#nvidia-smi
