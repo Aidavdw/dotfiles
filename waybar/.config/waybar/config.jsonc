@@ -246,20 +246,20 @@
     "pulseaudio": {
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
-        "format": "<span size='120%'>{icon}</span>   {volume:3}% ",
+        "format": "<span size='120%'>{icon} </span> {volume:3}% ",
         "format-bluetooth": "<span size='120%'>{icon} </span> {volume:3}%",
         "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span>",
         "format-muted": "<span size='120%'>󰝟</span>",
         "format-source": " {volume:3}% ",
         "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
-            "headphone": " ",
+            "headphone": ["  ", "  ", "  "],
             "hands-free": "HANDS_FREE",
             "headset": "HEADSET",
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [" ", " ", " "]
         },
         "on-click": "pavucontrol",
         "tooltip-format": "{format_source}\nDevice:{desc}"
