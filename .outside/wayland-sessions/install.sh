@@ -1,17 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
+# Ensure running with root for system-wide install
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root (use sudo)" >&2
+    exit 1
+fi
+
 # Paths
 USER_HOME=$(eval echo "~$SUDO_USER")
 DOTFILES="$USER_HOME/dotfiles/.outside/wayland-sessions"
 BIN_DIR="/usr/local/bin"
 SESSIONS_DIR="/usr/share/wayland-sessions"
 
-# Ensure running with root for system-wide install
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root (use sudo)" >&2
-    exit 1
-fi
 
 echo "Installing Hyprland session scripts and desktop files..."
 
