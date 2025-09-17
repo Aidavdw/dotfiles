@@ -265,16 +265,15 @@
         "tooltip-format": "{format_source}\nDevice:{desc}"
     },
     "bluetooth": {
+        "on-click": "~/scripts/bluetooth-toggle",
         "format-disabled": "<span size='120%'>(󰂲 )</span>",
         "format-off": "<span size='120%'>󰂲 </span>",
         "format-on": "<span size='120%'>󰂯 </span>",
         "format-connected": "<span size='120%'>󰂱 </span>",
         "tooltip-format-connected-battery": "host: {controller_alias}\n{num_connections} connections\n{device_enumerate}",
         "tooltip-format-enumerate-connected-battery": "{device_alias} (󰥉 {device_battery_percentage}%)",
-        // "format-connected-battery": "󰥉 ",
-        // "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage})",
-        // "tooltip-format-enumerate-connected-battery": "{tooltip-format-enumerate-connected-battery}",
-
+        "tooltip-format-connected": "host: {controller_alias}\n{num_connections} connections\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
     },
     "custom/quit": {
         "format": "<span size='120%'>󰗼</span>",

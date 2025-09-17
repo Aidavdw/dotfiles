@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Function to check if Bluetooth is blocked
+is_blocked() {
+    rfkill list bluetooth | grep -q "Soft blocked: yes"
+}
+
+# Function to check if Bluetooth is powered on
+is_powered_on() {
+    bluetoothctl show | grep -q "Powered: yes"
+}
+
+# Unblock Bluetooth if necessary
+if is_blocked; then
+    echo "Unblocking Bluetooth..."
+    sudo rfkill unblock bluetooth
+    sleep 1
+fi
+
+# Toggle Bluetooth
+if is_powered_on; then
+    echo "Turning Bluetooth off..."
+    bluetoothctl power off
+else
+    echo "Turning Bluetooth on..."
+    bluetoothctl power on
+    sleep 2  # Wait for adapter to initialize
+
+    echo "Connecting to known devices..."
+    # Get the list of paired devices' MAC addresses
+    paired_devices=$(bluetoothctl devices | grep '^Device ' | awk '{print $2}')
+
+    for device in $paired_devices; do
+        echo "Connecting to $device..."
+        # Attempt to connect
+        bluetoothctl connect "$device"
+        sleep 2
+    done
+fi
+
