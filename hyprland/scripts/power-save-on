@@ -17,6 +17,9 @@ hyprctl keyword decoration:blur:xray true >>/dev/null
 hyprctl keyword decoration:shadow:enabled false >>/dev/null
 
 systemctl --user stop syncthing >>/dev/null
+sudo systemctl stop nordvpnd.service
+
+sudo pkill evolution
 
 # Dim screen
 # brightnessctl set 50%

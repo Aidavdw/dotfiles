@@ -8,3 +8,4 @@ rm -f /tmp/power-save-enabled
 hyprctl reload
 
 systemctl --user start syncthing >>/dev/null
+sudo systemctl start nordvpnd.service
