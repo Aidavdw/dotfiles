@@ -12,9 +12,9 @@ alias grep='grep --color=auto'
 # Use eza instead of ls, as it has many more features.
 alias ls='eza --color=always --group-directories-first --icons=automatic'
 alias tree='eza --color=always --group-directories-first --tree -L 3'
-alias ll='eza -l --color=always --group-directories-first --icons=automatic --git'
+alias ll='eza -l --color=always --group-directories-first --icons=automatic --git --octal-permissions'
 alias la='eza -a --color=always --group-directories-first --icons=automatic'
-alias lla='eza -la --color=always --group-directories-first --icons=automatic'
+alias lla='eza -la --color=always --group-directories-first --icons=automatic --octal-permissions'
 
 # do visudo with vim, without having to edit root's bashrc
 alias visudo='sudo EDITOR=vim visudo'
@@ -77,6 +77,8 @@ alias kut='sudo "$BASH" -c "$(history -p !!)"'
 
 # When connecting to a live usb, ssh might complain about an invalid hosts file if you have previously connected to that device (but not with the USB). Use this to connect then.
 alias archusb-ssh='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
+
+alias csv='column -t'
 
 # Catppuccin Mocha colour theme for FZF
 export FZF_DEFAULT_OPTS=" \
