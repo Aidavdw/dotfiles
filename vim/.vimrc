@@ -1,7 +1,7 @@
 nnoremap <SPACE> <Nop> " Reset space before allowing it to be leader key
 let mapleader = "\<Space>"
 "Easier way to exit insert mode from colemak.
-:inoremap tn <esc>
+:inoremap hs <esc>
 set number "Show linenumbers
 set relativenumber "Linenumbers relative to where you are now
 set nocp "Vim must not be in compatible mode to be able to use line completion
