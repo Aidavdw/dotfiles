@@ -19,7 +19,7 @@
     /************* Pills **************/
     "group/media": {
         "orientation": "horizontal",
-        "modules": ["custom/swaync", "privacy", "pulseaudio"]
+        "modules": ["privacy", "bluetooth", "pulseaudio"]
     },
     "group/hardware": {
         "orientation": "horizontal",
@@ -214,14 +214,14 @@
         "format-icons": [""]
     },
     "backlight": {
-        "format": "<span size='120%'>{icon}</span> {percent}%",
+        "format": "Display brightness: {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
             // "good": 95,
             "warning": 30,
-            "critical": 15
+            "critical": 18
         },
         "format": "<span size='120%'>{icon}</span> {capacity}%",
         "format-full": "<span size='120%'>{icon}</span> {capacity}%",
@@ -247,13 +247,13 @@
         // Can use this if using pipewire-pulse package.
         // "scroll-step": 1, // %, can be a float
         "format": "<span size='120%'>{icon}</span>   {volume:3}% ",
-        "format-bluetooth": "<span size='120%'>{icon}<span> {volume:3}%",
+        "format-bluetooth": "<span size='120%'>{icon} </span> {volume:3}%",
         "format-bluetooth-muted": "<span size='120%'>󰝟 {icon}</span>",
         "format-muted": "<span size='120%'>󰝟</span>",
         "format-source": " {volume:3}% ",
         "format-source-muted": "<span size='120%'></span>",
         "format-icons": {
-            "headphone": "",
+            "headphone": " ",
             "hands-free": "HANDS_FREE",
             "headset": "HEADSET",
             "phone": "",
@@ -263,6 +263,18 @@
         },
         "on-click": "pavucontrol",
         "tooltip-format": "{format_source}\nDevice:{desc}"
+    },
+    "bluetooth": {
+        "format-disabled": "<span size='120%'>(󰂲 )</span>",
+        "format-off": "<span size='120%'>󰂲 </span>",
+        "format-on": "<span size='120%'>󰂯 </span>",
+        "format-connected": "<span size='120%'>󰂱 </span>",
+        "tooltip-format-connected-battery": "host: {controller_alias}\n{num_connections} connections\n{device_enumerate}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias} (󰥉 {device_battery_percentage}%)",
+        // "format-connected-battery": "󰥉 ",
+        // "tooltip-format-connected-battery": "{device_alias} ({device_battery_percentage})",
+        // "tooltip-format-enumerate-connected-battery": "{tooltip-format-enumerate-connected-battery}",
+
     },
     "custom/quit": {
         "format": "<span size='120%'>󰗼</span>",
