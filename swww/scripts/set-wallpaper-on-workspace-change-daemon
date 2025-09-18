@@ -1,0 +1,49 @@
+#!/bin/bash
+# Change wallpaper when switching workspace, as set using scripts/set-wallpaper
+
+USE_DEFAULT_WALLPAPER=false;
+DEFAULT_WALLPAPER="$HOME/.config/sww-per-workspace/default.png"
+SOURCE_DIR="$HOME/.config/swww-per-workspace"
+
+handle() {
+    case $1 in
+        workspace*) on_change_workspace ;;
+    esac
+}
+
+on_change_workspace() {
+    # gets the id of the currently focused workspace
+    current_workspace=$(echo -e "$(hyprctl -j monitors)" | jq -r '.[0] | "\(.activeWorkspace.id)"')
+    # Check if a temporary wallpaper exists. if it does, use that. If not, use the cached permanent wallpaper for this workspace.
+
+    echo "switching to workspace $current_workspace"
+
+    TEMP_OVERRIDE="/tmp/swww-per-workspace/$current_workspace.png" 
+    # find a file, regardless of extension
+    WS_PATH="$(find "$SOURCE_DIR/" -name "$current_workspace*" | head -n 1)"
+
+    if [ -f "$TEMP_OVERRIDE" ]; then
+        echo "Using temp override at $TEMP_OVERRIDE"
+        file=$TEMP_OVERRIDE
+    elif [ -f "$WS_PATH" ]; then
+        echo "Using dedicated file at $WS_PATH"
+        file="$WS_PATH"
+    else
+      #If there is no wallpaper for this 
+      if "$USE_DEFAULT_WALLPAPER"; then
+        echo "No wallpaper set for this workspace, using default"
+        file="$DEFAULT_WALLPAPER"
+      else
+        echo "No wallpaper set for this workspace, leaving as is."
+        return
+      fi
+    fi
+
+    # we want it at a random location
+    RANDONE="$((RANDOM%(1))).$((RANDOM%999))"
+    RANDTWO="$((RANDOM%(1))).$((RANDOM%999))"
+
+    swww img "$file" --transition-type outer --transition-fps 60 --transition-step 60 --transition-bezier .36,.11,.17,.93 --transition-duration 1.5 --transition-pos "$RANDONE,$RANDTWO"
+}
+
+socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done

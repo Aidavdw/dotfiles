@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Power saving mode turned off"
-notify-send "Power saving mode turned off"
+notify-send -a "Power Save" -i battery "Turned off" "Enjoy pretty animations~"
 rm -f /tmp/power-save-enabled
 
 # Don't need to manually revert all the hyprctl stuff, just reload the config.
@@ -9,3 +9,6 @@ hyprctl reload
 
 systemctl --user start syncthing >>/dev/null
 sudo systemctl start nordvpnd.service
+
+swww-daemon >>/dev/null
+set-wallpaper-on-workspace-change-daemon >>/dev/null

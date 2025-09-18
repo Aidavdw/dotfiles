@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Enabling power saving mode"
-notify-send "Enabled power saving mode"
+notify-send -a "Power Save" -i battery "Turned on" "Disabling features to conserve battery"
 touch /tmp/power-save-enabled
 
 # Lower refresh rate of built-in monitor
@@ -20,6 +20,8 @@ systemctl --user stop syncthing >>/dev/null
 sudo systemctl stop nordvpnd.service
 
 sudo pkill evolution
+pkill swww-daemon
+pkill -f set-wallpaper-on-workspace-change-daemon
 
 # Dim screen
 # brightnessctl set 50%
