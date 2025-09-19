@@ -34,7 +34,7 @@
 
 /* Note that `window` is the text box showing the title of the active window, but `window#waybar` is the entire waybar!*/
 window#waybar {
-  background-color: transparent;
+  background: linear-gradient(180deg, rgba(30, 30, 46, 0.44) 20%, rgba(30, 30, 46, 0) 96%);
   color: @text;
   transition-property: background-color;
   transition-duration: 0.5s;
