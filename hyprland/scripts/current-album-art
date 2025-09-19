@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-playerctl metadata --format '{{mpris:artUrl}}' | cut -c 8-
+playerctl metadata -p mpd --format '{{mpris:artUrl}}' | cut -c 8-
