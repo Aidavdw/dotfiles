@@ -1,0 +1,6 @@
+#!/bin/bash
+# Beeper updates its own files and keeps changing the version name in the AppImage filename
+# This is a wrapper script that finds whatever version and executes it.
+
+APPIMAGE="$(find "$HOME/.local/bin/" -name "Beeper*" | head -n 1)"
+$APPIMAGE --enable-features=UseOzonePlatform,WaylandWindowDecorations --gtk-version=4 --ozone-hint=auto --ozone-platform=wayland --enable-wayland-ime
