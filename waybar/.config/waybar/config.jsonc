@@ -205,7 +205,8 @@
         "format-icons": [""]
     },
     "backlight": {
-        "format": "Display brightness: {percent}%",
+        "format": "{icon}: {percent}%",
+        "tooltip-format": "Display brightness: {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
