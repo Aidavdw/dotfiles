@@ -22,6 +22,7 @@ sudo systemctl stop nordvpnd.service
 sudo pkill evolution
 pkill swww-daemon
 pkill -f set-wallpaper-on-workspace-change-daemon
+pkill beeper
 
 # Dim screen
 # brightnessctl set 50%
