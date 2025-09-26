@@ -10,5 +10,5 @@ hyprctl reload
 systemctl --user start syncthing >>/dev/null
 sudo systemctl start nordvpnd.service
 
-swww-daemon >>/dev/null
-set-wallpaper-on-workspace-change-daemon >>/dev/null
+swww-daemon & >>/dev/null
+set-wallpaper-on-workspace-change-daemon & >>/dev/null
