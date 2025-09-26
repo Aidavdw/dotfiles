@@ -1,0 +1,5 @@
+font-family = "Iosevka Nerd Font"
+theme = catppuccin-mocha
+# In v.1.2.0
+# theme = Catppuccin Mocha
+background-opacity = 0.9
