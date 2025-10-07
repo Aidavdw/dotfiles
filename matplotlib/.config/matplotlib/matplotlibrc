@@ -102,4 +102,5 @@ legend.edgecolor: inherit  # legend edge color (when 'inherit' uses axes.edgecol
 # Vermillion
 # reddis purple
 # black
-axes.prop_cycle: cycler('color', ['E69F00', '56B4E9', '009E73', 'F0E442', '0072B2', 'D55E00', 'CC79A7', '000000'])
+# And then superimposed on different markers.
+axes.prop_cycle: (cycler('color', ['E69F00', '56B4E9', '009E73', 'F0E442', '0072B2', 'D55E00', 'CC79A7', '000000']) + cycler('marker', ['o','s', 'v', 'D', '^', 'h',  '<', '>' ]))
