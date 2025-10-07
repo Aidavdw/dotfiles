@@ -23,7 +23,7 @@
     },
     "group/hardware": {
         "orientation": "horizontal",
-        "modules": ["network", "battery", "group/hardwaredrawer"]
+        "modules": ["network", "battery", "custom/nvidia", "group/hardwaredrawer"]
     },
     "group/datetime": {
         "orientation": "horizontal",
@@ -51,9 +51,10 @@
         "modules": [
             "custom/poweroff", // First element is the "group leader" and won't ever be hidden
             "custom/lock",
+            "custom/suspend",
             "custom/quit",
             "custom/reboot",
-            "custom/kbtoggle",
+            "custom/kbtoggle"
         ]
     },
     /************* Modules configuration **************/
@@ -277,6 +278,11 @@
         "tooltip-format": "Lock screen",
         "on-click": "~/.config/hypr/hyprlock-with-albumart"
     },
+    "custom/suspend": {
+        "format": "<span size='120%'>󰒲</span>",
+        "tooltip-format": "Sleep (Suspend to RAM)",
+        "on-click": "systemctl suspend"
+    },
     "custom/reboot": {
         "format": "<span size='120%'>󰜉</span>",
         "tooltip-format": "Reboot",
@@ -286,6 +292,12 @@
         "format": "<span size='120%'></span>",
         "tooltip-format": "Power off",
         "on-click": "shutdown now"
+    },
+    "custom/nvidia": {
+        "exec": "~/scripts/dgpu-status-waybar.sh",
+        "interval": 5,
+        "return-type": "json",
+        "tooltip": true
     },
     // Showing little icons when mic or camera is accessed, or screen is shared.
     "privacy": {

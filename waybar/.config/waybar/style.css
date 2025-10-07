@@ -84,8 +84,8 @@ window#waybar.firefox {
   margin-right: 1em;
 }
 
-#battery {
-  margin-right: 0.6em;
+#custom-nvidia {
+  margin-right: 0.8em;
 }
 
 #datetime {
@@ -97,13 +97,16 @@ window#waybar.firefox {
 #memory,
 #temperature,
 #backlight,
-#custom-kbtoggle {
+#custom-kbtoggle,
+#custom-nvidia
+{
   margin-left: 0.8em;
 }
 
 /* Grouping: The contents of the power menu drawer. made larger so you don't misclick. */
 #custom-quit,
 #custom-lock,
+#custom-suspend,
 #custom-reboot,
 #custom-kbtoggle,
 #custom-poweroff {
