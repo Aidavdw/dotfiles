@@ -1,0 +1,10 @@
+#!/bin/bash
+# By default everything is expected to run on the igpu.
+# I have hard-coded some driver configs in the root env so that it doesnt
+# constantly wake up the dgpu. This means we have to specifically tell that there are actually nvidia implementations for vulkan and opengl available. 
+__EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json \
+VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json \
+__NV_PRIME_RENDER_OFFLOAD=1 \
+__VK_LAYER_NV_optimus=NVIDIA_only \
+__GLX_VENDOR_LIBRARY_NAME=nvidia \
+"$@"
