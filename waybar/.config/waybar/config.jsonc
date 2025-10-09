@@ -19,7 +19,7 @@
     /************* Pills **************/
     "group/media": {
         "orientation": "horizontal",
-        "modules": ["privacy", "bluetooth", "pulseaudio"]
+        "modules": ["privacy", "custom/swaync", "bluetooth", "pulseaudio"]
     },
     "group/hardware": {
         "orientation": "horizontal",
@@ -319,7 +319,7 @@
     },
     "custom/swaync": {
         "tooltip": false,
-        "format": "{icon} {} ",
+        "format": "{icon}  {0}",
         "format-icons": {
             // #f9e2af is catppuccin mocha yellow.
             "notification": "<span color='#f9e2af'></span>",

@@ -66,8 +66,7 @@ window#waybar.firefox {
 #window,
 #hardware,
 #media,
-#datetime,
-#custom-swaync {
+#datetime {
   margin-left: 2em;
 }
 
@@ -98,7 +97,9 @@ window#waybar.firefox {
 #temperature,
 #backlight,
 #custom-kbtoggle,
-#custom-nvidia
+#custom-nvidia,
+#custom-swaync,
+#bluetooth
 {
   margin-left: 0.8em;
 }
