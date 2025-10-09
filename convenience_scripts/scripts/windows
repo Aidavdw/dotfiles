@@ -1,9 +1,52 @@
-#!/bin/bash
-windows_title=$(grep -i windows /boot/grub/grub.cfg | cut -d "'" -f 2)
-if [[ -z $windows_title ]]; then
-    echo "No windows boot entry found in grub."
-else
-    echo "rebooting to $windows_title"
-    sudo grub-reboot "$windows_title"
-    sudo reboot
+#!/usr/bin/env bash
+
+# Reboot into Windows using efibootmgr
+# Requires: efibootmgr, notify-send
+# Assumes: sudo does not require a password for efibootmgr or reboot commands
+
+REBOOT_DELAY=2
+
+
+# Helper function for errors
+notify_error() {
+    local message="$1"
+    echo "ERROR: $message" >&2
+    notify-send "Reboot to Windows: Error" "$message" -u critical
+    exit 1
+}
+
+# Check for efibootmgr
+if ! command -v efibootmgr &>/dev/null; then
+    notify_error "efibootmgr is not installed. Please install it and try again."
 fi
+
+# Get the Windows boot entry as a number.
+WINDOWS_ENTRY=$(sudo efibootmgr | grep -i "Windows Boot Manager" | sed -E 's/^Boot([0-9A-Fa-f]+)\*.*/\1/' | head -n1)
+
+if [[ -z "$WINDOWS_ENTRY" ]]; then
+    notify_error "Windows Boot Manager entry not found in EFI boot entries."
+fi
+
+# -----------------------------
+# Try setting the next boot option
+# -----------------------------
+
+if ! sudo efibootmgr -n "$WINDOWS_ENTRY" &>/dev/null; then
+    notify_error "Failed to set next boot entry. You may need to run as root or check permissions."
+fi
+
+# -----------------------------
+# Confirm setting worked
+# -----------------------------
+if ! sudo efibootmgr | grep -q "BootNext: $WINDOWS_ENTRY"; then
+    notify_error "Failed to verify BootNext was set correctly."
+fi
+
+notify-send "Rebooting to Windows" "EFI option $WINDOWS_ENTRY, after waiting $REBOOT_DELAY s" -i /usr/share/icons/Papirus/64x64/apps/system-restart.svg
+
+
+# -----------------------------
+# Reboot
+# -----------------------------
+sleep $REBOOT_DELAY
+sudo reboot
