@@ -1,8 +1,31 @@
-/* ==================================================================
-   SwayNC Refined CSS for Cohesive Visuals - github: @iyiolacak
-   ================================================================== */
 
-/* ── 1. Palette & Globals (Using @define-color) ──────────────────── */
+/* Catppuccin colours */
+@define-color rosewater #f5e0dc;
+@define-color flamingo #f2cdcd;
+@define-color pink #f5c2e7;
+@define-color mauve #cba6f7;
+@define-color red #f38ba8;
+@define-color maroon #eba0ac;
+@define-color peach #fab387;
+@define-color yellow #f9e2af;
+@define-color green #a6e3a1;
+@define-color teal #94e2d5;
+@define-color sky #89dceb;
+@define-color sapphire #74c7ec;
+@define-color blue #89b4fa;
+@define-color lavender #b4befe;
+@define-color text #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color subtext0 #a6adc8;
+@define-color overlay2 #9399b2;
+@define-color overlay1 #7f849c;
+@define-color overlay0 #6c7086;
+@define-color surface2 #585b70;
+@define-color surface1 #45475a;
+@define-color surface0 #313244;
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color crust #11111b;
 
 @define-color theme_fg rgba(248, 248, 252, 0.98); /* Primary Text */
 @define-color theme_fg_secondary rgba(215, 220, 225, 0.78); /* Secondary Text */
@@ -28,8 +51,8 @@
 /* ── Base Reset ───────────────────────────────────────────────────── */
 * {
   font-family: "Avenir Next LT Pro", "M PLUS 1p", sans-serif;
-  font-size: 17px;
-  color: @theme_fg;
+  font-size: 14px;
+  color: @text;
   border: none;
   border-radius: 0;
   background: none;
@@ -42,13 +65,14 @@
 
 /* ── 2. Control Center Container ─────────────────────────────────── */
 .control-center {
-  background-color: @theme_bg;
-  border: 1px solid @border_medium;
-  border-top-color: @border_light;
-  border-bottom-color: @border_dark;
-  border-radius: 0px;
+  background-color: alpha(@surface0, 0.50);
+  border: 3px solid @sapphire;
+  border-radius: 12px;
   padding: 28px;
   min-width: 380px;
+  margin-right: 4px;
+  margin-bottom: 26px;
+  margin-top: 18px;
 }
 
 /* ── 3. Widget Modules ───────────────────────────────────────────── */
@@ -57,60 +81,54 @@
 .widget-backlight,
 .widget-buttons-grid,
 .control-center-list > box > *:not(.widget-title) {
-  background-color: @module_bg;
-  border-radius: 18px;
-  padding: 18px;
-  margin-bottom: 14px;
-  border: 1px solid @border_medium;
+  background-color: alpha(@base, 0.8);
+  border-radius: 10px;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid @surface1;
 }
-.widget-volume, .widget-backlight { padding: 14px 18px; }
-.widget-buttons-grid { padding: 12px; }
+.widget-volume, .widget-backlight { padding: 6px 8px; }
+/* Around the buttons, inside the grid container */
+.widget-buttons-grid { padding: 8px; }
 .control-center > box > *:last-child { margin-bottom: 0; }
 
-/* Widget Titles */
+/* The 'Notifications' and 'Clear' things */
 .widget-title {
   background: transparent;
-  border: none;
-  padding: 4px 6px 12px 6px;
-  margin-bottom: 8px;
+  padding: 4px;
+  margin-bottom: 4px;
 }
 .widget-title label {
-  font-family: 'Avenir Next LT Pro';
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
-  color: @theme_fg_secondary;
+  color: @text;
   margin-left: 4px;
-  background: none;
 }
 .widget-title button {
   font-family: inherit;
-  font-size: 16px;
-  color: @theme_fg;
-  background-color: @button_bg;
-  border: none;
+  font-size: 12px;
+  color: @text;
+  background-color: @surface1;
+  border: 1px solid @sky;
   border-radius: 10px;
-  padding: 7px 16px;
+  padding: 4px 8px;
   transition: background-color 0.15s ease;
 }
 .widget-title button:hover,
 .widget-title button:active {
-  background-color: @button_hover_bg;
+  background-color: @surface2;
 }
 
 /* ── 4. MPRIS Widget ────────────────────────────────────────────── */
 .widget-mpris {
   padding: 0;
-  border: none;
-
   border-radius: 18px;
-  background: transparent;
+  border: 1px solid @sky;
 }
 .widget-mpris .widget-mpris-player {
-  background-color: @mpris_player_bg;
-  border-radius: 12px;
-  border: 1px solid @border_medium;
-  padding: 16px;
 }
+
+/* The blurry background */
 .widget-mpris .widget-mpris-album-art {
   background: none;
   min-width: 60px;
@@ -118,11 +136,11 @@
   border-radius: 16px;
   margin-right: 12px;
 }
+/* The song title */
 .widget-mpris .widget-mpris-title {
   font-size: 20px;
   font-weight: 600;
   color: @theme_fg;
-  margin-bottom: 4px;
   background: none;
 }
 .widget-mpris .widget-mpris-subtitle {
@@ -151,37 +169,37 @@
 
 /* ── 5. Sliders (Volume, Backlight) ─────────────────────────────── */
 .widget-volume label, .widget-backlight label {
-  font-size: 24px;
-  color: @icon_primary;
+  font-size: 16px;
+  color: @blue;
   min-width: 24px;
   margin-right: 14px;
 }
 scale trough {
-  min-height: 12px;
-  border-radius: 6px;
+  min-height: 6px;
+  border-radius: 20px;
   background-color: @slider_trough_bg;
 }
 scale trough progress {
-  min-height: 12px;
-  border-radius: 6px;
-  background-color: @accent_color;
+  min-height: 6px;
+  border-radius: 20px;
+  background-color: @blue;
   transition: background-color 0.15s ease;
 }
 scale:hover trough progress {
-  background-color: @accent_color;
+  background-color: @blue;
 }
 trough highlight {
   padding: 5px;
-  background: @accent_color;
+  background: @blue;
   border-radius: 20px;
   box-shadow: 0 0 5px rgba(0, 0, 0, .5);
   transition: all 0.7s ease;
 }
 scale slider {
-  min-width: 14px;
-  min-height: 14px;
+  min-width: 18px;
+  min-height: 8px;
   border-radius: 7px;
-  background-color: @slider_thumb_bg;
+  background-color: @text;
 }
 
 /* ── 6. Button Grid ─────────────────────────────────────────────── */
@@ -196,10 +214,8 @@ scale slider {
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background-color: rgba(0,0,0, 0.7);
   border-radius: 66px;
-  padding: 14px;
-  min-width: 24px;
-  min-height: 24px;
-  color: @icon_secondary;
+  padding: 8px 4px;
+  color: @text;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
@@ -207,8 +223,8 @@ scale slider {
   color: @icon_primary;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-  background-color: @accent_color;
-  color: white;
+  background-color: @red;
+  color: @text;
 }
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
   background-color: @accent_color_hover;
@@ -225,7 +241,7 @@ scale slider {
 .control-center .notification-background {
   background-color: @module_bg;
   border: 1px solid @border_medium;
-  padding: 16px;
+  padding: 12px;
   border-radius: 18px;
   transition: background-color 0.15s ease;
 }
@@ -273,14 +289,14 @@ scale slider {
 }
 /* ── 8. Floating Notifications ─────────────────────────────────── */
 .floating-notifications .notification-row {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .floating-notifications .notification-background {
   background-color: @popup_bg;
   border: 1px solid @border_light;
-  border-radius: 18px;
-  padding: 18px;
-  margin: 8px 14px;
+  border-radius: 14px;
+  padding: 14px;
+  margin: 6px 12px;
   transition: background-color 0.15s ease;
 }
 .floating-notifications .notification-row:hover .notification-background {
