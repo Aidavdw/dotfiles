@@ -53,13 +53,16 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "",
-          "command": "kitty nmtui",
-          "tooltip": "Network"
+          "label": " ",
+          "type": "toggle",
+          "active": true,
+          "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && iwctl adapter phy0 set-property Powered on || iwctl adapter phy0 set-property Powered off'",
+          "update-command": "sh -c '[[ $(iwctl adapter phy0 show | grep Powered) == *\"on\"* ]] && echo true || echo false'",
+          "tooltip": "WiFi"
         },
         {
           "label": "",
-          "command": "blueman-manager",
+          "command": "bluetui",
           "tooltip": "Bluetooth"
         },
         {
@@ -67,36 +70,6 @@
           "command": "swaync-client -d",
           "type": "toggle",
           "tooltip": "DND"
-        },
-        {
-          "label": "󰍜",
-          "command": "gnome-network-displays",
-          "tooltip": "Screens"
-        },
-        {
-          "label": "󰈙",
-          "command": "kitty bash -i -c 'Docs'",
-          "tooltip": "Files"
-        },
-        {
-          "label": "",
-          "command": "kitty bash -i -c 'Settings'",
-          "tooltip": "Settings"
-        },
-        {
-          "label": "",
-          "command": "hyprlock",
-          "tooltip": "Lock"
-        },
-        {
-          "label": "󰜉",
-          "command": "reboot",
-          "tooltip": "Reboot"
-        },
-        {
-          "label": "⏻",
-          "command": "shutdown now",
-          "tooltip": "Power Off"
         }
       ]
     }
