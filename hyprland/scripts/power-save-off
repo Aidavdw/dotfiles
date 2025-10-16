@@ -7,8 +7,11 @@ rm -f /tmp/power-save-enabled
 # Don't need to manually revert all the hyprctl stuff, just reload the config.
 hyprctl reload
 
-systemctl --user start syncthing >>/dev/null
-sudo systemctl start nordvpnd.service
+echo restarting syncthing
+systemctl --user start syncthing
 
-swww-daemon & >>/dev/null
-set-wallpaper-on-workspace-change-daemon & >>/dev/null
+echo restarting backgroud switcher
+swww-daemon &
+>>/dev/null
+set-wallpaper-on-workspace-change-daemon &
+>>/dev/null
