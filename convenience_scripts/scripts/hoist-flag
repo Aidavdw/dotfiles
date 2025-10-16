@@ -1,0 +1,5 @@
+#!/bin/bash
+# Aye, that's enough sailing the seven seas for today matey
+nordvpn disconnect
+sudo systemctl stop nordvpnd
+
