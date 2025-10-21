@@ -1,6 +1,0 @@
-#!/bin/bash
-hyprlock &
-sleep 0.6
-# Forces a reload on the images. Must first sleep because of how it initialises.
-
-pkill -USR2 hyprlock
