@@ -1,6 +1,0 @@
-mpv  # Very minial, but extendible media player. I like to use it instead of VLC.
-xclip  # Dependency of mpv-mpvacious
-
-# aur
-mpv-mpvacious  # Plugin for mpv that allows you to generate anki cards sentence mining.
-

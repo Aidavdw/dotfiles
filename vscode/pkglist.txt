@@ -1,2 +1,0 @@
-vscodium-bin  # Code editor
-vscodium-bin-marketplace  # Easier installing extensions
