@@ -7,6 +7,9 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- NOTE: Colourscheme is loaded in the catppuccin file because of lazy loading.
+-- so not here: vim.cmd.colorscheme "catppuccin-mocha"
+
 -- Always show relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true

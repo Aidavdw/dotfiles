@@ -4,3 +4,5 @@
 require("01-options")
 require("02-keymaps")
 require("03-autocommands")
+require("04-neovide")
+require("05-lazy")
