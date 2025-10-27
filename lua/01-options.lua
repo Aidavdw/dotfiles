@@ -39,7 +39,7 @@ vim.opt.updatetime = 250
 
 -- Time before a key sequence is considered timed out
 -- (e.g <super>if, and you wait a bit between i and f)
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 500
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
