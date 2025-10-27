@@ -48,17 +48,6 @@ vim.opt.timeoutlen = 500
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- Sets how neovim will display certain whitespace characters in the editor.
---  and `:help 'listchars'`
-vim.opt.list = true
-vim.opt.listchars = {
-	tab = "» ",
-	trail = "·",
-	nbsp = "␣",
-	multispace = "·",
-	-- So that space instead of tab for indentation does not mess you up
-	leadmultispace = " ",
-}
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -101,3 +90,29 @@ vim.opt.breakindent = true
 vim.opt.spelllang = { "en_gb", "nl", "de", "cjk" }
 vim.opt.spell = true
 vim.opt.spelloptions = "camel"
+
+
+-----------------------
+-- Tabs and Spaces
+-----------------------
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = {
+	tab = "» ",
+	trail = "·",
+	nbsp = "␣",
+	multispace = "·",
+	-- So that space instead of tab for indentation does not mess you up
+	leadmultispace = " ",
+}
+
+-- Render a tab as 4 spaces
+vim.opt.tabstop=4
+-- pressing `>>` indents by 4 spaces
+vim.opt.shiftwidth=4
+-- When at beginning of line, translate pressing 'tab' to the '>>' command.
+vim.opt.smarttab = true
+-- Turn a 'tab' into a n=shiftwidth spaces.
+vim.opt.expandtab = true
+
