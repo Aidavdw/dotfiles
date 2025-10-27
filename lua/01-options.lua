@@ -109,10 +109,16 @@ vim.opt.listchars = {
 
 -- Render a tab as 4 spaces
 vim.opt.tabstop=4
--- pressing `>>` indents by 4 spaces
+-- amount to indent with `>>` or `<<`
 vim.opt.shiftwidth=4
+-- amount of spaces to enter when pressing `Tab`.
+vim.opt.softtabstop = 4
+
 -- When at beginning of line, translate pressing 'tab' to the '>>' command.
 vim.opt.smarttab = true
--- Turn a 'tab' into a n=shiftwidth spaces.
+vim.opt.smartindent = true
+-- Convert tabs to spaces
 vim.opt.expandtab = true
+-- Keep indentation from previous line.
+vim.opt.autoindent = true
 
