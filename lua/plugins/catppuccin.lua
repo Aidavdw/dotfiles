@@ -1,4 +1,6 @@
 return {
+	-- Always load this colour scheme.
+	lazy = false,
 	"catppuccin/nvim",
 	name = "catppuccin",
 	priority = 1000,
