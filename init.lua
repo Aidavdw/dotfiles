@@ -8,3 +8,4 @@ require("03-autocommands")
 require("04-neovide")
 -- also loads all the plugins in the plugins dir.
 require("05-lazy")
+require("06-lsp")
