@@ -70,7 +70,18 @@ return {
         end,
       },
       indent = { enable = true, disable = { 'ruby' } },
+    -- allows you to select around the cursor and dynamically grow it.
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<Enter>", -- set to `false` to disable one of the mappings
+          node_incremental = "<Enter>",
+          scope_incremental = "<TAB>",
+          node_decremental = "<Backspace>"
+        },
+      },
     },
+
     -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
