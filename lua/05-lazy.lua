@@ -35,6 +35,6 @@ require("lazy").setup({
   install = { colorscheme = { "catppuccin" } },
   defaults = {
     -- Set this to `true` to have all your plugins lazy-loaded by default.
-    lazy = true,
+    lazy = false,
   }
 })
