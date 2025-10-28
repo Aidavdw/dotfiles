@@ -122,3 +122,20 @@ vim.opt.expandtab = true
 -- Keep indentation from previous line.
 vim.opt.autoindent = true
 
+
+--------------------------
+--- Folding
+--------------------------
+vim.o.foldenable = true
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Start folded at this level.
+-- High number = don't start anything folded.
+vim.o.foldlevel = 99
+-- Show a little column on the left with the nesting level.
+-- If you make it wider (>1) then it will be like a contour,
+-- which is cute but takes up a lot of space.
+-- vim.o.foldcolumn = 1
+-- TODO: merge the fold column with indent blankline
+-- https://www.reddit.com/r/neovim/comments/1ag3uta/finally_the_combination_of_foldcolumn/
+
