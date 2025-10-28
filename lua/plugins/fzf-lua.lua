@@ -1,0 +1,105 @@
+return {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    keys = {
+        -- [F]ind pickers. These is the broadest level.
+        {
+            "<leader>fh",
+            function() require('fzf-lua').helptags() end,
+            desc="[F]ind in [H]elp"
+        },
+        {
+            "<leader>fk",
+            function() require('fzf-lua').keymaps() end,
+            desc="[F]ind [K]eymaps"
+        },
+        {
+            "<leader>fo",
+            function() require('fzf-lua').builtin() end,
+            desc="[F]ind [O]ther (picker picker)"
+        },
+        {
+            "<leader>fd",
+            function() require('fzf-lua').diagnostics_document() end,
+            desc="[F]ind in [D]iagnostics (document)"
+        },
+        {
+            "<leader>fD",
+            function() require('fzf-lua').diagnostics_workspace() end,
+            desc="[F]ind in [D]iagnostics (workspace)"
+        },
+        {
+            "<leader>fa",
+            function() require('fzf-lua').resume() end,
+            desc="[F]ind previous search [A]gain"
+        },
+        {
+            "<leader>gfc",
+            function() require('fzf-lua').git_commits() end,
+            desc="[G]it [F]ind [C]ommits"
+        },
+
+        -- [O]pen pickers. For switching buffers, opening new files.
+        {
+            "<leader>of",
+            function() require('fzf-lua').files() end,
+            desc="[O]pen [F]ile"
+        },
+        {
+            "<leader>ob",
+            function() require('fzf-lua').buffers() end,
+            desc="[O]pen [B]uffer"
+        },
+        {
+            "<leader>oo",
+            function() require('fzf-lua').files({cwd = '~/notes' }) end,
+            desc="[O]pen [O]bsidian note"
+        },
+        {
+            "<leader>or",
+            function() require('fzf-lua').oldfiles() end,
+            desc="[O]pen [R]ecent"
+        },
+
+        -- [S]earch pickers. Look through the contents of
+        -- a file or buffer, and jump to it
+        {
+            "<leader>sg",
+            function() require('fzf-lua').live_grep_native() end,
+            desc="Live [G]rep (contents of cwd)"
+        },
+        {
+            "<leader>so",
+            function() require('fzf-lua').live_grep_native({cwd = '~/notes'}) end,
+            desc="[S]earch inside [O]bsidian notes"
+        },
+        {
+            "<leader>sa",
+            function() require('fzf-lua').resume() end,
+            desc="[S]earch previous [A]gain"
+        },
+        {
+            "<leader>sw",
+            function() require('fzf-lua').grep_cword() end,
+            desc="[S]earch for [W]ord under cursor"
+        },
+        {
+            "<leader>gfh",
+            function() require('fzf-lua').git_hunks() end,
+            desc="[G]it [F]ind [H]unks"
+        },
+        {
+            "<leader>ss",
+            function() require('fzf-lua').lsp_workspace_symbols() end,
+            desc="[S]earch [S]ymbols"
+        },
+        -- FIXME: Are the .lsp_definitions the same as telescopes, as in that it automatically resolves it or otherwise opens a fuzzy finder?
+        {
+            "<leader>sd",
+            function() require('fzf-lua').lsp_definitions() end,
+            desc="[S]earch [D]efinitions"
+        },
+    }
+}
