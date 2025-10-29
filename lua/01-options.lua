@@ -23,7 +23,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+    vim.opt.clipboard = "unnamedplus"
 end)
 
 -- Save undo history
@@ -47,7 +47,6 @@ vim.opt.timeoutlen = 500
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
@@ -91,7 +90,6 @@ vim.opt.spelllang = { "en_gb", "nl", "de", "cjk" }
 vim.opt.spell = true
 vim.opt.spelloptions = "camel"
 
-
 -----------------------
 -- Tabs and Spaces
 -----------------------
@@ -99,18 +97,18 @@ vim.opt.spelloptions = "camel"
 --  and `:help 'listchars'`
 vim.opt.list = true
 vim.opt.listchars = {
-	tab = "» ",
-	trail = "·",
-	nbsp = "␣",
-	multispace = "·",
-	-- So that space instead of tab for indentation does not mess you up
-	leadmultispace = " ",
+    tab = "» ",
+    trail = "·",
+    nbsp = "␣",
+    multispace = "·",
+    -- So that space instead of tab for indentation does not mess you up
+    leadmultispace = " ",
 }
 
 -- Render a tab as 4 spaces
-vim.opt.tabstop=4
+vim.opt.tabstop = 4
 -- amount to indent with `>>` or `<<`
-vim.opt.shiftwidth=4
+vim.opt.shiftwidth = 4
 -- amount of spaces to enter when pressing `Tab`.
 vim.opt.softtabstop = 4
 
@@ -121,7 +119,6 @@ vim.opt.smartindent = true
 vim.opt.expandtab = true
 -- Keep indentation from previous line.
 vim.opt.autoindent = true
-
 
 --------------------------
 --- Folding
@@ -138,4 +135,3 @@ vim.o.foldlevel = 99
 -- vim.o.foldcolumn = 1
 -- TODO: merge the fold column with indent blankline
 -- https://www.reddit.com/r/neovim/comments/1ag3uta/finally_the_combination_of_foldcolumn/
-

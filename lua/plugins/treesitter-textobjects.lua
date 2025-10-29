@@ -3,20 +3,20 @@ return {
     -- 'go to next paragraph'
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects"
+        "nvim-treesitter/nvim-treesitter-textobjects",
     },
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
-    main = 'nvim-treesitter.configs',
+    main = "nvim-treesitter.configs",
     opts = {
         textobjects = {
             select = {
                 enable = true,
-                -- e.g. if you are in a class, also allows it to 
+                -- e.g. if you are in a class, also allows it to
                 -- find the next class it can find.
                 lookahead = true,
                 keymaps = {
-                    -- TODO: Update based on 
+                    -- TODO: Update based on
                     -- https://www.josean.com/posts/nvim-treesitter-and-textobjects
                     -- Add combinations that can come after 'v', e.g. 'vaf'
                     -- You can use the capture groups defined in textobjects.scm
@@ -35,9 +35,9 @@ return {
                 -- and should return the mode ('v', 'V', or '<c-v>') or a table
                 -- mapping query_strings to modes.
                 selection_modes = {
-                    ['@parameter.outer'] = 'v', -- charwise
-                    ['@function.outer'] = 'V', -- linewise
-                    ['@class.outer'] = '<c-v>', -- blockwise
+                    ["@parameter.outer"] = "v", -- charwise
+                    ["@function.outer"] = "V", -- linewise
+                    ["@class.outer"] = "<c-v>", -- blockwise
                 },
                 -- If you set this to `true` (default is `false`) then any textobject is
                 -- extended to include preceding or succeeding whitespace.
@@ -47,12 +47,15 @@ return {
             swap = {
                 enable = true,
                 swap_next = {
-                    ["<leader>esa"] = {query = "@parameter.inner", desc = "[S]wap [A]rgs/elements (in function, array)"},
-                    ["<leader>esf"] = {query = "@function.outer", desc = "[S]wap [F]unction with next"},
+                    ["<leader>esa"] = {
+                        query = "@parameter.inner",
+                        desc = "[S]wap [A]rgs/elements (in function, array)",
+                    },
+                    ["<leader>esf"] = { query = "@function.outer", desc = "[S]wap [F]unction with next" },
                 },
                 swap_previous = {
-                    ["<leader>esA"] = {query = "@parameter.inner", desc = "[S]wap [A]rgs/elements backwards"},
-                    ["<leader>esF"] = {query = "@function.outer", desc = "[S]wap [F]unction with previous"},
+                    ["<leader>esA"] = { query = "@parameter.inner", desc = "[S]wap [A]rgs/elements backwards" },
+                    ["<leader>esF"] = { query = "@function.outer", desc = "[S]wap [F]unction with previous" },
                 },
             },
             move = {
@@ -60,7 +63,7 @@ return {
                 set_jumps = true, -- whether to set jumps in the jumplist
                 goto_next_start = {
 
-                    -- TODO: Update based on 
+                    -- TODO: Update based on
                     -- https://www.josean.com/posts/nvim-treesitter-and-textobjects
                     ["]f"] = { query = "@function.outer", desc = "goto next function" },
                     ["]l"] = { query = "@class.outer", desc = "goto next struct/class" },
@@ -85,5 +88,5 @@ return {
                 },
             },
         },
-    }
+    },
 }

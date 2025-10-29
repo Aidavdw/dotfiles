@@ -10,11 +10,11 @@ vim.keymap.set("i", "hs", "<Esc>")
 
 -- Goto the next diagnostic, and open its popup.
 vim.keymap.set("n", "gz", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+    vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic" })
 -- Potato, but back.
 vim.keymap.set("n", "gZ", function()
-	vim.diagnostic.jump({ count = 1, float = true })
+    vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to previous diagnostic" })
 
 -- Switch windows quickly
@@ -26,13 +26,13 @@ vim.keymap.set("n", "<leader>wq", "<cmd>TodoTelescope keywords=TODO,FIX,PERF", {
 -- manually toggle the line wrap. Useful when stuff breaks because of line wrapping or lack thereof. Looking at you, markview.
 local line_wrap = true
 vim.keymap.set("n", "<leader>vw", function()
-	if line_wrap then
-		vim.o.wrap = false
-		line_wrap = false
-	else
-		vim.o.wrap = true
-		line_wrap = true
-	end
+    if line_wrap then
+        vim.o.wrap = false
+        line_wrap = false
+    else
+        vim.o.wrap = true
+        line_wrap = true
+    end
 end, { desc = "toggle [V]iew: Word [W]rap" })
 
 -- Open netrw (file browser)
@@ -58,4 +58,3 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vimdiff commands
 vim.keymap.set("n", "<leader>gp", ":diffput<CR>", { desc = "(diff) apply left (first) side" })
 vim.keymap.set("n", "<leader>gg", ":diffget<CR>", { desc = "(diff) apply right (second) side" })
-
