@@ -4,19 +4,20 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
-    config = function()
-        require("catppuccin").setup({
-            integrations = {
-                -- cmp = true,
-                -- gitsigns = true,
-                -- nvimtree = true,
-                -- notify = false,
-                -- mini = {
-                --    enabled = true,
-                --     indentscope_color = "",
-                -- },
-            },
-        })
+    opts = {
+        integrations = {
+            -- cmp = true,
+            gitsigns = true,
+            -- nvimtree = true,
+            -- notify = false,
+            -- mini = {
+            --    enabled = true,
+            --     indentscope_color = "",
+            -- },
+        },
+    },
+    config = function(_, opts)
+        require("catppuccin").setup(opts)
         -- Actually load the colour scheme
         vim.cmd.colorscheme("catppuccin-mocha")
     end,
