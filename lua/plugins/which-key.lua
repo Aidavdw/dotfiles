@@ -11,7 +11,6 @@ return {
       spec = {
         { '<leader>d', group = '[D]ebugger' },
         { '<leader>r', group = '[R]ename' },
-        { '<leader>a', group = '[A]uto' },
         { '<leader>g', group = '[G]it / [G]oto' },
         { '<leader>gr', group = '[G]it [R]eset' },
         { '<leader>gs', group = '[G]it [S]tash' },

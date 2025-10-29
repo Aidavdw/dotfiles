@@ -91,20 +91,21 @@ return {
             desc="[S]earch for [W]ord under cursor"
         },
         {
+            -- Finds all the misspelled words in the buffer
+            "<leader>st",
+            desc="[S]earch for [T]ypos in buffer",
+            function() require('fzf-lua').spellcheck() end
+        },
+        {
             "<leader>gfh",
             function() require('fzf-lua').git_hunks() end,
             desc="[G]it [F]ind [H]unks"
         },
         {
-            "<leader>ss",
-            function() require('fzf-lua').lsp_workspace_symbols() end,
-            desc="[S]earch [S]ymbols"
-        },
-        -- FIXME: Are the .lsp_definitions the same as telescopes, as in that it automatically resolves it or otherwise opens a fuzzy finder?
-        {
-            "<leader>sd",
-            function() require('fzf-lua').lsp_definitions() end,
-            desc="[S]earch [D]efinitions"
+            -- This is a pop-up to correct the word under the cursor
+            "<leader>et",
+            desc="[E]dit: Correct [T]ypo",
+            function() require('fzf-lua').spell_suggest() end
         },
     }
 }

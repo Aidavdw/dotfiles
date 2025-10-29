@@ -16,6 +16,8 @@ return {
                 -- find the next class it can find.
                 lookahead = true,
                 keymaps = {
+                    -- TODO: Update based on 
+                    -- https://www.josean.com/posts/nvim-treesitter-and-textobjects
                     -- Add combinations that can come after 'v', e.g. 'vaf'
                     -- You can use the capture groups defined in textobjects.scm
                     ["af"] = { query = "@function.outer", desc = "Select around function" },
@@ -45,16 +47,21 @@ return {
             swap = {
                 enable = true,
                 swap_next = {
-                    ["<leader>a"] = {query = "@parameter.inner", desc = "swap→ args, elements"},
+                    ["<leader>esa"] = {query = "@parameter.inner", desc = "[S]wap [A]rgs/elements (in function, array)"},
+                    ["<leader>esf"] = {query = "@function.outer", desc = "[S]wap [F]unction with next"},
                 },
                 swap_previous = {
-                    ["<leader>A"] = {query = "@parameter.inner", desc = "swap← args, elements"},
+                    ["<leader>esA"] = {query = "@parameter.inner", desc = "[S]wap [A]rgs/elements backwards"},
+                    ["<leader>esF"] = {query = "@function.outer", desc = "[S]wap [F]unction with previous"},
                 },
             },
             move = {
                 enable = true,
                 set_jumps = true, -- whether to set jumps in the jumplist
                 goto_next_start = {
+
+                    -- TODO: Update based on 
+                    -- https://www.josean.com/posts/nvim-treesitter-and-textobjects
                     ["]f"] = { query = "@function.outer", desc = "goto next function" },
                     ["]l"] = { query = "@class.outer", desc = "goto next struct/class" },
                     -- e.g. in rust stuff between `{}`.
