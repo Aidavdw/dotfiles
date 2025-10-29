@@ -5,6 +5,8 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects"
     },
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     main = 'nvim-treesitter.configs',
     opts = {
         textobjects = {

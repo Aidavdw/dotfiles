@@ -9,7 +9,8 @@ return {
     -- see https://github.com/nvim-lua/kickstart.nvim/pull/1657
     -- Will eventually change to main branch.
     branch = 'master',
-    lazy = false,
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     -- Whenever a new grammar is added, rebuild everything to ensure it works together.
     build = ':TSUpdate',
     -- Normally, 'opts' below is passed to
