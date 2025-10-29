@@ -1,6 +1,6 @@
 -------------------------------------------------------
 -- Load all the other things in specific order,
--- that's why they're numbered! 
+-- that's why they're numbered!
 -------------------------------------------------------
 require("01-options")
 require("02-keymaps")
