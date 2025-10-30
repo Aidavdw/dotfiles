@@ -135,3 +135,8 @@ vim.o.foldlevel = 99
 -- vim.o.foldcolumn = 1
 -- TODO: merge the fold column with indent blankline
 -- https://www.reddit.com/r/neovim/comments/1ag3uta/finally_the_combination_of_foldcolumn/
+
+-- Customise how the folds look.
+-- https://github.com/neovim/neovim/pull/20750
+vim.o.foldtext = ""
+vim.o.fillchars = "fold:-"
