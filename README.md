@@ -16,6 +16,7 @@ bash-language-server # bashls
 stylua # formatter for lua
 yamlformat
 shfmt # shell formatter
+python-pylatexenc # Rendering latex equations inline for markdown-render
 ```
 
 And these packages from the AUR:
@@ -25,6 +26,7 @@ fortls \ # fortran LSP
 basedpyright # static type checker
 codelldb-bin # debugger for rust
 tex-fmt # latex formatter
+libtexprintf # Rendering latex equations inline for markdown-render
 ```
 
 
