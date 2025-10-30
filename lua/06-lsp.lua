@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map("<leader>rs", vim.lsp.buf.rename, "[R]ename [S]ymbol")
+        map("<leader>er", vim.lsp.buf.rename, "[E]dit: [R]ename symbol")
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
@@ -121,10 +121,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Sometimes the diagnostics that are drawn in virtual text are very long, and go off the screen. Wrapping virtual text is impossible(?), but you can pop-up the entire message in a little window
         map("<leader>pd", vim.diagnostic.open_float, "[P]opup [D]iagnostic")
 
-        map("<leader>h", function()
+        map("<leader>ph", function()
             -- See :h vim.lsp.utils.open_floating_preview.Opts for options here
             vim.lsp.buf.hover()
-        end, "LSP [H]over action")
+        end, "[P]opup: LSP [H]over action")
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
@@ -175,9 +175,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map("<leader>th", function()
+            map("<leader>vi", function()
                 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-            end, "[T]oggle Inlay [H]ints")
+            end, "Toggle [V]iew [I]nlay Hints")
 
             -- Enable inlay hints by default (at startup)
             vim.lsp.inlay_hint.enable()

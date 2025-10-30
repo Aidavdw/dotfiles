@@ -6,15 +6,15 @@ return {
     keys = {
         {
             -- Probably not used as much, since autoformat on save. Still nice to have as a backup.
-            "<leader>bf",
+            "<leader>ef",
             function()
                 require("conform").format({ async = true, lsp_format = "fallback" })
             end,
             mode = "",
-            desc = "[B]uffer: Auto[F]ormat",
+            desc = "[E]dit: auto[F]ormat",
         },
         {
-            "<leader>bF",
+            "<leader>Tf",
             function()
                 vim.b.disable_autoformat = not vim.b.disable_autoformat
                 if vim.b.disable_autoformat then
@@ -23,7 +23,7 @@ return {
                     vim.notify("Autoformat on save enabled for this buffer", vim.log.levels.INFO)
                 end
             end,
-            desc = "[B]uffer: toggle auto[F]ormat on save",
+            desc = "[T]oggle auto[F]ormat on save",
         },
     },
     -- This will provide type hinting with LuaLS

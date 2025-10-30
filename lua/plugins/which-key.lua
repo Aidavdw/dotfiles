@@ -10,10 +10,12 @@ return {
         -- Easiest way to name some groups, without having to repeat the 'group' for every keybind.
         spec = {
             { "<leader>d", group = "[D]ebugger" },
-            { "<leader>r", group = "[R]ename" },
-            { "<leader>g", group = "[G]it / [G]oto" },
+            { "<leader>e", group = "[E]dit action" },
+            { "<leader>es", group = "[E]dit [S]wap" },
+            { "<leader>g", group = "[G]it actions" },
             { "<leader>gr", group = "[G]it [R]eset" },
             { "<leader>gs", group = "[G]it [S]tash" },
+            { "<leader>fg", group = "[F]ind [G]it" },
 
             -- when using a search/find, I arbitrarily make the distinction between:
             -- stuff on a file basis: Finding a file, and opening it. Re-opening an active buffer.
@@ -21,13 +23,11 @@ return {
             -- Content of all files in workspace: Symbols in files, specific strings
             -- Deliberately on 's' in home row for colemak, because easier to reach. Most used.
             { "<leader>s", group = "[S]earch in workspace for (text, symbols)" },
-            { "<leader>b", group = "[B]uffer" },
-            -- Content of this current buffer (same as above but limited)
-            { "<leader>b", group = "search in this [B]uffer for (text, symbols)" },
-            -- External things: Documentation, diagnostic, etc.
+            -- Find things that are not files or parts of text (that can be jumped to): Documentation, diagnostic, etc.
             { "<leader>f", group = "[F]ind in (docs, help, external resources)" },
 
             { "<leader>t", group = "[T]est" },
+            { "<leader>T", group = "[T]oggle operation mode" },
             { "<leader>c", group = "[C]itations" },
             { "<leader>p", group = "[P]opup show" },
             { "<leader>v", group = "toggle [V]iew" },

@@ -58,7 +58,7 @@ local function bind_toggle(lang, key_sequence, desc, short_name)
 end
 
 -- Create bindings for your languages
-bind_toggle("en_gb", "<leader>tse", "English (GB)", "en_gb")
-bind_toggle("nl", "<leader>tsn", "Dutch", "nl")
-bind_toggle("de", "<leader>tsd", "German", "de")
-bind_toggle("cjk", "<leader>tsc", "CJK", "cjk")
+bind_toggle("en_gb", "<leader>Tse", "English (GB)", "en_gb")
+bind_toggle("nl", "<leader>Tsn", "Dutch", "nl")
+bind_toggle("de", "<leader>Tsd", "German", "de")
+bind_toggle("cjk", "<leader>Tsc", "CJK", "cjk")

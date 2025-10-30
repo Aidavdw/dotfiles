@@ -53,11 +53,11 @@ return {
             desc = "[F]ind previous search [A]gain",
         },
         {
-            "<leader>gfc",
+            "<leader>fgc",
             function()
                 require("fzf-lua").git_commits()
             end,
-            desc = "[G]it [F]ind [C]ommits",
+            desc = "[F]ind in [G]it [C]ommits",
         },
 
         -- [O]pen pickers. For switching buffers, opening new files.
@@ -129,11 +129,11 @@ return {
             end,
         },
         {
-            "<leader>gfh",
+            "<leader>fgh",
             function()
                 require("fzf-lua").git_hunks()
             end,
-            desc = "[G]it [F]ind [H]unks",
+            desc = "[F]ind in [G]it [H]unks",
         },
         {
             -- This is a pop-up to correct the word under the cursor

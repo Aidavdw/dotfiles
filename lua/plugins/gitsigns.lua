@@ -48,10 +48,10 @@ return {
             map("n", "<leader>grb", gitsigns.reset_buffer, { desc = "[G]it [R]eset [B]uffer" })
 
             -- Open a little popup window showing what has changed
-            map("n", "<leader>ph", gitsigns.preview_hunk, { desc = "[P]opup git [H]unk" })
+            map("n", "<leader>pgh", gitsigns.preview_hunk, { desc = "[P]opup [G]it [H]unk" })
 
             -- Popup window showing git blame
-            map("n", "<leader>pb", gitsigns.blame_line, { desc = "[P]opup git [B]lame" })
+            map("n", "<leader>pgb", gitsigns.blame_line, { desc = "[P]opup [G]it [B]lame" })
             -- Show changes in trouble window
             -- TODO: Check- I think this is not a thing?
             -- map('n', '<leader>wg', gitsigns.blame_line, { desc = '[W]indow: git hunks' })
