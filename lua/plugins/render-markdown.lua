@@ -23,7 +23,6 @@ return {
             left_margin = 2,
             left_pad = 4,
             right_pad = 2,
-            right_margin = 2,
             border = "thin",
         },
         bullet = {
@@ -35,12 +34,15 @@ return {
         -- https://github.com/MeanderingProgrammer/render-markdown.nvim/wiki/BlockQuotes#break-works
         win_options = {
             showbreak = {
+                default = vim.o.showbreak,
                 rendered = "  ",
             },
             breakindent = {
+                default = vim.o.breakindent,
                 rendered = true,
             },
             breakindentopt = {
+                default = vim.o.breakindentopt,
                 rendered = "",
             },
         },
