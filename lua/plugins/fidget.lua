@@ -2,7 +2,7 @@ return {
     -- in the bottom right, little spinner etc for LSP
     "j-hui/fidget.nvim",
     -- Don't lazy load, as it redirects notifications.
-    lazy = false,
+    event = "VeryLazy",
     opts = {
         notification = {
             -- Automatically override vim.notify() with Fidget
