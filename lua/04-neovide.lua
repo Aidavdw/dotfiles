@@ -9,7 +9,7 @@ if vim.g.neovide then
     vim.keymap.set("v", "<C-S-v>", '"+P') -- Paste from system clipboard (visual mode)
     vim.keymap.set("i", "<C-S-v>", '<ESC>"+P') -- Paste from system clipboard (insert mode)
     vim.keymap.set("c", "<C-S-v>", "<C-R>+") -- Paste from system clipboard (command mode)
-    vim.api.nvim_set_keymap("n", "<C-S-w>", ":let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
+    vim.api.nvim_set_keymap("n", "<C-S-w>", "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<CR>", {})
 
     -- https://neovide.dev/faq.html#how-can-i-dynamically-change-the-scale-at-runtime
     vim.g.neovide_scale_factor = 1.0

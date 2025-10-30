@@ -12,7 +12,7 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     -- Whenever a new grammar is added, rebuild everything to ensure it works together.
-    build = ":TSUpdate",
+    build = "<cmd>TSUpdate",
     -- Normally, 'opts' below is passed to
     -- `require(MAIN_MODULE).setup(opts)`.
     -- For TreeSitter, it actually needs to be passed to:

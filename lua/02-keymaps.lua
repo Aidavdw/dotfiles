@@ -36,7 +36,7 @@ vim.keymap.set("n", "<leader>vw", function()
 end, { desc = "toggle [V]iew: Word [W]rap" })
 
 -- Open netrw (file browser)
-vim.keymap.set("n", "<leader>on", ":Ex<CR>", { desc = "[O]pen [N]etrw (file browser)" })
+vim.keymap.set("n", "<leader>on", "<cmd>Ex<CR>", { desc = "[O]pen [N]etrw (file browser)" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -56,5 +56,5 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- vimdiff commands
-vim.keymap.set("n", "<leader>gp", ":diffput<CR>", { desc = "(diff) apply left (first) side" })
-vim.keymap.set("n", "<leader>gg", ":diffget<CR>", { desc = "(diff) apply right (second) side" })
+vim.keymap.set("n", "<leader>gp", "<cmd>diffput<CR>", { desc = "(diff) apply left (first) side" })
+vim.keymap.set("n", "<leader>gg", "<cmd>diffget<CR>", { desc = "(diff) apply right (second) side" })
