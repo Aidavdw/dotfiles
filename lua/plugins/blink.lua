@@ -1,7 +1,10 @@
 return {
     -- Autocompletion
     "saghen/blink.cmp",
-    event = { "BufReadPre", "BufNewFile" },
+    -- This is pretty integrated:
+    -- automatically extends LSP
+    -- So it must always be loaded, even if it is a heavier plugin :(
+    lazy = false,
     version = "1.*",
     dependencies = {
         "L3MON4D3/LuaSnip",

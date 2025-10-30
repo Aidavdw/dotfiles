@@ -5,6 +5,14 @@
 -- you can still customise it though, for which you'd place a file in the
 -- ../lsp directory.
 -- https://0xunicorn.com/neovim-native-lsp-config/
+
+-- Extend the default client capabilities for all LSP servers
+vim.lsp.config.capabilities = vim.tbl_deep_extend(
+    "force",
+    vim.lsp.protocol.make_client_capabilities(),
+    require("blink.cmp").get_lsp_capabilities()
+)
+
 vim.lsp.enable({
     "lua_ls",
     "clangd",
