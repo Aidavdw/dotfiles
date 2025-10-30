@@ -36,6 +36,7 @@ stylua # formatter for lua
 yamlformat
 shfmt # shell formatter
 python-pylatexenc # Rendering latex equations inline for markdown-render
+imagemagick # needed for the image.nvim plugin
 ```
 
 And these packages from the AUR:
