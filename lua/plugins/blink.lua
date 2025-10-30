@@ -54,6 +54,8 @@ return {
         },
 
         sources = {
+            -- FIXME: With how blink is set up, you can only register sources at config time.
+            -- This means that lazydev must always be loaded, even when you're not in a lua file.
             default = { "lsp", "path", "snippets", "lazydev" },
             providers = {
                 lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
