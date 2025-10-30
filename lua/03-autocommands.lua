@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.comments = {
             "b:- [ ]", -- tasks
             "b:- [x]",
+            "b:- [X]",
             "b:*", -- unordered list
             "b:-",
             "b:+",
