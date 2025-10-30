@@ -1,4 +1,23 @@
-This entire config is made to be very lightweight, while still having some IDE-like features.
+A very lightweight, modern, yet featureful neovim configuration.
+Optimised for note-taking and programming.
+It falls somewhere between a minimal and an IDE-like config:
+
+| Feature | included? | remark |
+| - | - | - |
+| LSP | ✓ | Modern setup, using locally installed LSPs (no Mason) |
+| snippets | ✓ | using LuaSnip |
+| spell checking | ✓ | using built-in nvim spell-checker |
+| code formatting | ✓ | using conform |
+| notifications | ✓ | using fidget.nvim |
+| autocompletion | ✓ | using blink.cmp |
+| file annotation | ✓ | shows LSP things, renders markdown, colour-coded scopes and indentation. |
+| editing extensions | ✓ | select entire functions, swap arguments, etc. |
+| file manager | ✘ | use fzf-lua to search/switch. For file operations, netrw is just fine. |
+| git manager | ✘ | operations like stashing, hunking etc is supported through gitsigns.nvim, |
+| | | but do your committing, branching etc. using a dedicated tool. |
+| | | May I suggest something like lazygit or cli? |
+| | | For merging, just use `nvim -d`|
+
 
 Focus is on integrating with operating system.
 Therefore, it also does not use mason, but relies on you managing your packages using the system package manager.
@@ -35,4 +54,6 @@ It is organised very simply. All 'normal' configuration is in the lua files in t
 
 Being a modern setup, it uses fzf-lua instead of Telescope, and Blink.cmp instead of nvim-cmp.
 It also has a simpler LSP set-up, utilising the built-in lsp functionality instead of deferring everything to lspconfig.
+
+The entire config is commented so you can steal little bits and pieces everywhere <3
 
