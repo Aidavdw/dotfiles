@@ -4,6 +4,22 @@ echo "Enabling power saving mode"
 notify-send -a "Power Save" -i battery "Turned on" "Disabling features to conserve battery"
 touch /tmp/power-save-enabled
 
+# If bluetooth is turned on, but nothing is connected, then shut it down.
+if [ -z "$(bluetoothctl devices Connected)" ]; then
+    echo Nothing connected to bluetooth, so shutting it off.
+    bluetoothctl power off
+else
+    echo Bluetooth connected, leaving on.
+fi
+
+# If not connected to wifi, shut down wifi
+if [ -z "$(iwctl station wlan0 show | grep disconnected)" ]; then
+    echo WiFi connected, leaving on.
+else
+    echo Not connected to wifi, shutting it down
+    iwctl adapter phy0 set-property Powered off
+fi
+
 echo Lowering refresh rate of monitor:
 hyprctl keyword monitor "eDP-1,2560x1600@60,0x0,1.6"
 
@@ -31,21 +47,6 @@ pkill -f set-wallpaper-on-workspace-change-daemon
 
 # killing beeper
 pkill beeper
-
-# If bluetooth is turned on, but nothing is connected, then shut it down.
-if [ -z "$(bluetoothctl devices Connected)" ]; then
-	echo Nothing connected to bluetooth, so shutting it off.
-	bluetoothctl power off
-else
-	echo Bluetooth connected, leaving on.
-fi
-
-# If not connected to wifi, shut down wifi
-if [ -z "$(iwctl station wlan0 show | grep connected)" ]; then
-	echo Not connected to wifi, shutting it down
-else
-	echo WiFi connected, leaving on.
-fi
 
 # Dim screen
 brightnessctl set 20-
