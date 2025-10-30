@@ -29,7 +29,10 @@ tex-fmt # latex formatter
 libtexprintf # Rendering latex equations inline for markdown-render
 ```
 
-
 This config does not use a linter extension like [nvim-lint](https://github.com/mfussenegger/nvim-lint), as most of the linting I need can be done by LSPs.
 
+It is organised very simply. All 'normal' configuration is in the lua files in the root of `./lua`, while all of the plugins (loaded using lazy.nvim) are in `./lua/plugins/`.
+
+Being a modern setup, it uses fzf-lua instead of Telescope, and Blink.cmp instead of nvim-cmp.
+It also has a simpler LSP set-up, utilising the built-in lsp functionality instead of deferring everything to lspconfig.
 
