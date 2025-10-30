@@ -26,6 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
             "b:*", -- unordered list
             "b:-",
             "b:+",
+            "b:>", -- markdown quote
+            "b:\\item", -- latex enumeration/list
         }
     end,
 })
