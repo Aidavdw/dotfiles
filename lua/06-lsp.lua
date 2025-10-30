@@ -27,7 +27,7 @@ vim.lsp.enable({
     -- Python linter
     "ruff",
     -- Obsidian-like markdown
-    "markdown-oxide",
+    "markdown_oxide",
 })
 
 -- Diagnostic Config
