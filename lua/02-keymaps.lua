@@ -9,11 +9,11 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "hs", "<Esc>")
 
 -- Goto the next diagnostic, and open its popup.
-vim.keymap.set("n", "gz", function()
+vim.keymap.set("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to next diagnostic" })
 -- Potato, but back.
-vim.keymap.set("n", "gZ", function()
+vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to previous diagnostic" })
 
