@@ -83,6 +83,22 @@ return {
             desc = "[O]pen [O]bsidian note",
         },
         {
+            "<leader>od",
+            function()
+                require("fzf-lua").files({ cwd = "~/dotfiles" })
+            end,
+            desc = "[O]pen [D]otfiles",
+        },
+        {
+            "<leader>oc",
+            function()
+                local appname = vim.env.NVIM_APPNAME or "nvim"
+                local path = string.format("%s/.config/%s", vim.fn.expand("~"), appname)
+                require("fzf-lua").files({ cwd = path })
+            end,
+            desc = "[O]pen nvim [C]onfig",
+        },
+        {
             "<leader>or",
             function()
                 require("fzf-lua").oldfiles()
