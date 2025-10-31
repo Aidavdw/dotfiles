@@ -5,11 +5,11 @@ vim.opt.spell = true
 vim.opt.spelloptions = "camel"
 
 -- Pure toggle function: returns new_list, enabled (true if language is now enabled)
+-- Return new list and whether the language is enabled after the toggle
 function _G.toggle_spell_language(lang)
     local current = vim.opt.spelllang:get() -- returns a table of active languages
     local new = {}
     local found = false
-
     for _, l in ipairs(current) do
         if l == lang then
             found = true
@@ -17,17 +17,12 @@ function _G.toggle_spell_language(lang)
             table.insert(new, l)
         end
     end
-
     if not found then
-        -- add language
         table.insert(new, lang)
-        found = true -- after adding, found means enabled
+        found = true
     else
-        -- removed, found stays false for "was present" but we want "enabled" after toggle:
         found = false
     end
-
-    -- Return new list and whether the language is enabled after the toggle
     return new, found
 end
 
@@ -36,11 +31,8 @@ end
 local function bind_toggle(lang, key_sequence, desc, short_name)
     -- short_name is optional (shown in notifications); default to lang
     short_name = short_name or lang
-
     vim.keymap.set("n", key_sequence, function()
         local new_list, enabled = toggle_spell_language(lang)
-
-        -- Apply new list to vim option
         vim.opt.spelllang = new_list
 
         -- Notify about toggle action
