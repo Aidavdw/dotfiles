@@ -15,6 +15,11 @@ return {
             border_virtual = true,
             left_pad = 4,
         },
+        -- TODO: Change the header colour scheme:
+        -- 1: blue
+        -- 2: orange
+        -- 3: red
+        -- 4: green-yellow
         code = {
             -- Language icon position
             -- Must be left if you allow line breaking, otherwise it renders outside of the visible area.
@@ -48,7 +53,9 @@ return {
         },
         latex = {
             enabled = true,
-            bottom_pad = 1,
+            -- If you set this different or add padding,
+            -- It will break showing equations inline.
+            position = "center",
         },
     },
 }
