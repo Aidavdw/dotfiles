@@ -290,6 +290,7 @@ scale slider {
 /* ── 8. Floating Notifications ─────────────────────────────────── */
 .floating-notifications .notification-row {
   margin-bottom: 8px;
+  margin-top: 8px;
 }
 .floating-notifications .notification-background {
   background-color: @popup_bg;
