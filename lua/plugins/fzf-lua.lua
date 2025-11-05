@@ -123,6 +123,13 @@ return {
             desc = "[S]earch inside [O]bsidian notes",
         },
         {
+            "<leader>so",
+            function()
+                require("fzf-lua").live_grep_native({ cwd = "~/notes" })
+            end,
+            desc = "[S]earch inside [O]bsidian notes",
+        },
+        {
             "<leader>sa",
             function()
                 require("fzf-lua").resume()
