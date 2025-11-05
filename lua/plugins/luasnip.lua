@@ -30,7 +30,7 @@ return {
         local appname = vim.env.NVIM_APPNAME or "nvim"
         local paths = {
             string.format("%s/.config/%s/lua/snippets", vim.fn.expand("~"), appname),
-            string.format("%s/.config/nvim/lua/snippets", vim.fn.expand("~")), -- fallback/global snippets
+            -- string.format("%s/.config/nvim/lua/snippets", vim.fn.expand("~")), -- fallback/global snippets
         }
         require("luasnip.loaders.from_lua").lazy_load({ paths = paths })
     end,
