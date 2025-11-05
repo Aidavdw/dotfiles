@@ -54,7 +54,3 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
--- vimdiff commands
-vim.keymap.set("n", "<leader>gp", "<cmd>diffput<CR>", { desc = "(diff) apply left (first) side" })
-vim.keymap.set("n", "<leader>gg", "<cmd>diffget<CR>", { desc = "(diff) apply right (second) side" })
