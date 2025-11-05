@@ -123,9 +123,11 @@ return {
             desc = "[S]earch inside [O]bsidian notes",
         },
         {
-            "<leader>so",
+            "<leader>sc",
             function()
-                require("fzf-lua").live_grep_native({ cwd = "~/notes" })
+                local appname = vim.env.NVIM_APPNAME or "nvim"
+                local path = string.format("%s/.config/%s", vim.fn.expand("~"), appname)
+                require("fzf-lua").live_grep_native({ cwd = path })
             end,
             desc = "[S]earch inside [O]bsidian notes",
         },
