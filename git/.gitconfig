@@ -1,0 +1,20 @@
+[user]
+	email = aida@osphire.com
+	name = Aida van de Wetering
+[init]
+    # Using inclusive language is not very hard :)
+	defaultBranch = main
+
+# Do diffing with nvim
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "nvimdiff"]
+  layout = "LOCAL,BASE,REMOTE / MERGED"
+[alias]
+    # Make working with submodules a lot easier.
+    # These also get all the submodules.
+	clone-all = clone --recurse-submodules
+	pull-all = pull --recurse-submodules
