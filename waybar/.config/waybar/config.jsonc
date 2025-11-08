@@ -128,28 +128,28 @@
         // }
     },
     "mpd": {
-        "format": "<span color='#b4befe'>{artist}</span> <span color='#a6e3a1'>{title}</span> <span size='74%' color='#7f849c'>({elapsedTime:%M:%S}/{totalTime:%M:%S})</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
+        "format": "<span size='100%' line_height='0.1' color='#a6e3a1'>{title}</span>\n<span size='80%' line_height='0.1' color='#b4befe'>{artist}</span> {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}",
         "format-disconnected": "MPD 󱘖",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}MPD <span color='#f38ba8'></span>",
+        "format-stopped": "No music.",
         "unknown-tag": "N/A",
         "interval": 5,
         "consume-icons": {
-            "on": " "
+            "on": "⇥ "
         },
         "random-icons": {
             "on": " "
         },
         "repeat-icons": {
-            "on": " "
+            "on": "𝄆"
         },
         "single-icons": {
-            "on": "1 "
+            "on": " "
         },
         "state-icons": {
             "paused": "<span color='#94e2d5'></span>",
             "playing": "<span color='#a6e3a1'></span>"
         },
-        "tooltip-format": "Album: {album}\nVolume: {volume}%\nQueue: ⸨{songPosition}|{queueLength}⸩",
+        "tooltip-format": "Song title: {title}\nFrom album: {album}\nBy:{artist}\n({elapsedTime:%M:%S}/{totalTime:%M:%S})\nVolume: {volume}%\nQueue: ⸨{songPosition} of {queueLength}⸩",
         "tooltip-format-disconnected": "Not connected to MPD",
         "on-click": "~/scripts/mpd-play-pause-toggle"
     },
@@ -279,7 +279,7 @@
         "on-click": "shutdown now"
     },
     "custom/nvidia": {
-        "exec": "~/scripts/dgpu-status-waybar.sh",
+        "exec": "~/auto-scripts/dgpu-status-waybar.sh",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
