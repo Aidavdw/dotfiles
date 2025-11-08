@@ -1,0 +1,26 @@
+#!/bin/bash
+# extract_final_frame.sh
+# Extract the last frame from all MP4 files in the current working directory
+
+# Check if ffmpeg is installed
+if ! command -v ffmpeg &>/dev/null; then
+    echo "Error: ffmpeg is not installed."
+    exit 1
+fi
+
+# Loop through all mp4 files in the current directory
+shopt -s nullglob
+for file in "$PWD"/*.mp4; do
+    # Get the filename without the extension
+    filename="${file%.*}"
+
+    # Define the output filename
+    output="${filename}_final_frame.png"
+
+    # Extract the last frame
+    ffmpeg -sseof -3 -i "$file" -update 1 -q:v 1 "$output" -y
+
+    echo "Extracted final frame from '$file' to '$output'"
+done
+
+echo "Done!"
