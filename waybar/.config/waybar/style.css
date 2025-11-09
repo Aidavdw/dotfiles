@@ -285,13 +285,18 @@ label:focus {
 
 #mpd {
     /* Since I used zero vertical text spacing here, add a little bit of spacing to the top manually*/
-    margin-top: 0.8em;
+    padding-top: 0.9em;
+    font-size: 0.9em;
 
 }
 
+
 #mpd.disconnected {}
 
-#mpd.stopped {}
+#mpd.stopped {
+    padding-top: 0.0em;
+    font-size: 1em;
+}
 
 #mpd.paused {}
 
