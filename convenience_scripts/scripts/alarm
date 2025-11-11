@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+# alarm — set a simple desktop alarm using `at`
+# Supports 'at' and 'in' modes, optional message and sound
+
+SOUND_DIR="$HOME/sounds/alarms"
+SOUND_FILE="$SOUND_DIR/trumpets.mp3"
+MESSAGE=""
+PLAYER=""
+
+usage() {
+    echo "Usage:"
+    echo "  alarm at <time-expression> [-m message] [-s soundfile]"
+    echo "  alarm in <duration> [-m message] [-s soundfile]"
+    echo
+    echo "Examples:"
+    echo "  alarm at 14:00 -m \"Pick up laundry\""
+    echo "  alarm at 'now + 30 minutes' -m \"Check the oven\""
+    echo "  alarm in 20m -m \"Stretch break\""
+    echo "  alarm in 1h30m -s harp-gentle.mp3"
+    echo "  alarm in '1 hour 15 minutes' -m 'Test'"
+    echo
+    echo "Notes:"
+    echo "  - <time-expression> is passed directly to 'at'."
+    echo "  - 'in' durations are expanded to proper 'at' syntax."
+    exit 1
+}
+
+[[ $# -lt 2 ]] && usage
+
+MODE="$1"
+shift
+
+if [[ "$MODE" != "at" && "$MODE" != "in" ]]; then
+    echo "Error: first argument must be 'at' or 'in'"
+    usage
+fi
+
+# --- Parse time spec ---
+if [[ "$MODE" == "at" ]]; then
+    # Collect the rest until next flag
+    TIME_SPEC=""
+    while [[ $# -gt 0 && "$1" != -* ]]; do
+        TIME_SPEC+="$1 "
+        shift
+    done
+    TIME_SPEC="${TIME_SPEC%% }" # trim trailing space
+else
+    # "in" mode: collect all words until next flag
+    DURATION=""
+    while [[ $# -gt 0 && "$1" != -* ]]; do
+        DURATION+="$1 "
+        shift
+    done
+    DURATION="${DURATION%% }" # trim trailing space
+
+    # Convert simple shorthands like 20m, 1h, 30s
+    if [[ "$DURATION" =~ ^([0-9]+)m$ ]]; then
+        TIME_SPEC="now + ${BASH_REMATCH[1]} minutes"
+    elif [[ "$DURATION" =~ ^([0-9]+)h$ ]]; then
+        TIME_SPEC="now + ${BASH_REMATCH[1]} hours"
+    elif [[ "$DURATION" =~ ^([0-9]+)s$ ]]; then
+        TIME_SPEC="now + ${BASH_REMATCH[1]} seconds"
+    else
+        # fallback: just pass everything to `at` as-is
+        TIME_SPEC="now + $DURATION"
+    fi
+fi
+
+# --- Parse remaining flags ---
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+    -m | --message)
+        MESSAGE="$2"
+        shift 2
+        ;;
+    -s | --sound)
+        SOUND_FILE="$SOUND_DIR/$2"
+        shift 2
+        ;;
+    *)
+        echo "Unknown option: $1"
+        usage
+        ;;
+    esac
+done
+
+# --- Defaults ---
+[[ -z "$MESSAGE" ]] && MESSAGE="Alarm set for $TIME_SPEC"
+
+# --- Determine audio player (once, at setup time) ---
+if command -v paplay >/dev/null 2>&1; then
+    PLAYER="paplay"
+elif command -v ffplay >/dev/null 2>&1; then
+    PLAYER="ffplay -nodisp -autoexit -loglevel quiet"
+elif command -v mpg123 >/dev/null 2>&1; then
+    PLAYER="mpg123 -q"
+else
+    PLAYER=""
+fi
+
+# --- Compose command for `at` ---
+CMD="notify-send '⏰ Alarm' '$MESSAGE'"
+if [[ -n "$PLAYER" && -f "$SOUND_FILE" ]]; then
+    CMD="$CMD && $PLAYER '$SOUND_FILE' 2>/dev/null"
+fi
+
+# --- Schedule the alarm ---
+echo "$CMD" | at $TIME_SPEC 2>/dev/null
+
+if [[ $? -eq 0 ]]; then
+    echo "Alarm scheduled for: $TIME_SPEC"
+    echo "Message: \"$MESSAGE\""
+else
+    echo "Failed to schedule alarm. Is 'atd' running?"
+fi
