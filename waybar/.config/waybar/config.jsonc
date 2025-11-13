@@ -88,19 +88,24 @@
             // Command to run when a window is clicked. Default: "" (switch to the workspace as usual). Allowed variables: {address}, {button}
             //"on-click-window": "/some/arbitrary/script {address} {button}"
         },
+        // Do not display these workspaces:
+        // Mail & beeper are always running in the same one anyway, so no need to display them.
+        // NOTE: These must be manually kept synchronised with the entries in ~/dotfiles/hyprland/.config/hypr/workspace-names.conf
+        "ignore-workspaces": ["23", "24", "26"],
         // Formatting for the workspace identifiers
+        // NOTE: These must be manually kept synchronised with the entries in ~/dotfiles/hyprland/.config/hypr/workspace-names.conf
         "format-icons": {
             "1": "", // Home
-            "2": "", // Music
-            "3": "", // SocialOne
-            "4": "󰭹", // Chat
-            "6": "", // Mail/evotion
-            "7": "α", // alpha
-            "8": "β", // beta
-            "9": "γ", // gamma
-            "10": "δ", // delta
+            "2": "α", // alpha
+            "3": "β", // beta
+            "4": "γ", // gamma
+            "5": "δ", // delta
             "11": "󰤇", // fast 1
-            "12": "󱄟" // fast 2
+            "12": "󱄟", // fast 2
+            // Ignored, but just in case
+            "23": "", // SocialOne
+            "24": "󰭹", // Chat
+            "26": "" // Mail/evotion
         },
         "format": "{icon}  {windows}",
         // "format-window-separator": "|",
