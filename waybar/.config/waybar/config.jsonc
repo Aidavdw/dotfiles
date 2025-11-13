@@ -128,7 +128,7 @@
         // }
     },
     "mpd": {
-        "format": "<span line_height='0.1px'><span color='#a6e3a1'>{title}</span>{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}\n<span font_size='90%' color='#b4befe'>{artist}</span></span> ",
+        "format": "<span line_height='0.1px'><span color='#a6e3a1'>{title} </span>{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}\n<span font_size='90%' color='#b4befe'>{artist}</span></span> ",
         "format-disconnected": "MPD 󱘖",
         "format-stopped": "MPD standby",
         "unknown-tag": "N/A",
