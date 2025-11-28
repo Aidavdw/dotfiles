@@ -5,7 +5,7 @@
 # Default programs
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER=firefox
+export BROWSER=floorp
 
 alias grep='grep --color=auto'
 
@@ -37,11 +37,11 @@ lfcd() {
 }
 
 function yazicd() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+    yazi "$@" --cwd-file="$tmp"
+    IFS= read -r -d '' cwd <"$tmp"
+    [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+    rm -f -- "$tmp"
 }
 
 # set a keybind to open yazi with ctrl+o.
@@ -82,6 +82,8 @@ alias csv='column -t'
 
 alias nvimdiff='nvim -d'
 
+alias weather='curl wttr.in'
+
 # Catppuccin Mocha colour theme for FZF
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
@@ -97,7 +99,7 @@ shopt -s autocd
 # Use small program 'keychain' to do it for you if it is installed
 # Right now defer this to gnome-keychain.
 # if [ -x "$(command -v keychain)" ]; then
-    # Assumes you store your ssh key with the default name.
+# Assumes you store your ssh key with the default name.
 #    eval 'keychain --eval id_ed25519'
 # else
 #    echo \'keychain\' is not installed, you\'ll have to manually start ssh-agent and add ssh keys.
@@ -108,3 +110,5 @@ export SUDO_PROMPT="$(tput setaf 1 bold)Password:$(tput sgr0) "
 
 # Extra path directories: Rust programs, own scripts, and local bin programs.
 PATH=$PATH:"$HOME/.cargo/bin:$HOME/.local/bin:$HOME/scripts:$HOME/os/eww/target/release"
+
+alias nnvim='NVIM_APPNAME="nvim-neo" nvim'
