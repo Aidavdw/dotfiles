@@ -19,7 +19,20 @@ A matrix bridging client that allows you to use whatsapp, signal etc. from a sin
 Requires `beeper-bin` from the AUR.
 
 ## blink
-todo. break timer.
+Very cute little minimal break timer.
+get it [here](https://github.com/rijkvp/blink).
+```bash
+cd ~/read-only-repos/
+git clone https://github.com/rijkvp/blink
+cd blink
+cargo build --release
+```
+
+Requires input tracking to be done by root.
+After building, run `./blink/.outside/install.sh`
+
+
+
 
 ## btop
 TUI tool for showing cpu usage etc.

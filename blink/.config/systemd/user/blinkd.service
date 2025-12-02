@@ -1,0 +1,15 @@
+[Install]
+WantedBy=default.target
+
+[Service]
+Type=simple
+# change this to your install location
+# I symlinked this to my local build
+ExecStart=%h/.local/bin/blinkd
+
+[Unit]
+Description=blinkd - break timer daemon
+# Would like to set it to automatically depend on the actived.service,
+# but since that runs as root that wont work.
+# Need to manually enable both.
+After=default.target

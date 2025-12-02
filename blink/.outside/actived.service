@@ -1,0 +1,10 @@
+[Unit]
+Description=actived - activity daemon
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/actived
+
+[Install]
+WantedBy=multi-user.target
