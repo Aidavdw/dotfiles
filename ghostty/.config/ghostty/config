@@ -3,3 +3,8 @@ theme = catppuccin-mocha
 # In v.1.2.0
 # theme = Catppuccin Mocha
 background-opacity = 0.9
+
+# When connecting over SSH to a remote, Ghostty will try to install the terminfo entry first and use the fallback if installation failed. 
+# This must be done to use e.g. tmux
+# TODO: This is added in v1.2, currently held back because of keymapping
+#shell-integration-features = sudo,ssh-env
