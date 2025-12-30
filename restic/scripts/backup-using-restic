@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+
+# Load configuration
+CONFIG_FILE="$HOME/secret/restic_backup.conf"
+
+if [[ ! -f "$CONFIG_FILE" ]]; then
+    echo "Configuration file not found: $CONFIG_FILE"
+    exit 1
+fi
+
+# Source config variables
+source "$CONFIG_FILE"
+
+# Verify required variables are set
+for var in RESTIC_PASSWD BACKUP_SOURCE BACKUP_REPO; do
+    if [[ -z "${!var:-}" ]]; then
+        echo "Error: $var is not set in $CONFIG_FILE"
+        exit 1
+    fi
+done
+
+# Retention policy (how many backups to keep)
+KEEP_OPTIONS="--keep-hourly 2 --keep-daily 5 --keep-weekly 3 --keep-monthly 4"
+
+# Run restic commands
+echo "=== Unlocking repository ==="
+restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" unlock
+
+echo "=== Starting backup of $BACKUP_SOURCE ==="
+# $BACKUP_SOURCE not in quotes so that multiple strings are seen as
+# multiple arguments.
+restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" --compression max backup $BACKUP_SOURCE
+
+#echo "=== Applying retention policy ==="
+#restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" forget $KEEP_OPTIONS --prune --cleanup-cache
+
+echo "=== Backup completed successfully ==="
