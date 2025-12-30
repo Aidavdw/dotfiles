@@ -46,6 +46,7 @@ function yazicd() {
 
 # set a keybind to open yazi with ctrl+o.
 # If yazi is unavailable, fall back to lf.
+# TODO: use `type -q yazi` so it does not run the programs, but only checks for their existence.
 if [ -x "$(command -v yazi)" ]; then
     bind '"\C-o":"\C-uyazicd\C-m"'
 elif [ -x "$(command -v lf)" ]; then
