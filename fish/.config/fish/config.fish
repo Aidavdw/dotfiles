@@ -1,6 +1,14 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+
+    # Automatically start in VI mode in insert
+    fish_vi_key_bindings
 end
+
+function fish_greeting
+    echo (set_color yellow)$USER(set_color normal)@(set_color blue)$hostname(set_color normal) fish session
+end
+
 
 # Add current directory in file manager
 abbr -a --position command exp 'xdg-open .'

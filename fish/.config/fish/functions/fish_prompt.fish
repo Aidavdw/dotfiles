@@ -65,7 +65,7 @@ function fish_prompt --description 'Write out the prompt'
     set -l p_time_elapsed ""
     if test $CMD_DURATION -gt 3000
         set -l seconds (math -s1 "$CMD_DURATION/1000")
-        set p_time_elapsed (set_color blue)"[$seconds"s"]"(set_color normal)
+        set p_time_elapsed (set_color blue)" [$seconds"s"]"(set_color normal)
     end
 
     # Display VI mode if we are not in insert mode.
@@ -75,5 +75,5 @@ function fish_prompt --description 'Write out the prompt'
     # Filter out invalid commands.
 
     set -l reset_color (set_color normal)
-    echo -n -s "$p_user$p_host" (set_color $color_cwd) (prompt_pwd) (set_color blue) (fish_vcs_prompt) (set_color normal) $p_time_elapsed $prompt_status $suffix " "
+    echo -n -s "$p_user$p_host" (set_color $color_cwd) (prompt_pwd) (set_color blue) (fish_vcs_prompt) (set_color normal) $p_time_elapsed $prompt_status "$suffix "
 end

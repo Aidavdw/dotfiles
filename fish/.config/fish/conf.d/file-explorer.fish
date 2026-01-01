@@ -27,7 +27,9 @@ end
 if status is-interactive
     if type -q yazi
         bind \co 'yazicd'
+        bind -M insert \co 'yazicd'
     else if type -q lf
         bind \co 'lfcd'
+        bind -M insert \co 'lfcd'
     end
 end
