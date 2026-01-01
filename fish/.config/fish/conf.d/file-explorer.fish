@@ -9,27 +9,24 @@ function lfcd --description 'Run lf and cd to the selected directory'
     end
 end
 
+# https://yazi-rs.github.io/docs/quick-start/#shell-wrapper
 function yazicd --description 'Run yazi and cd to the selected directory'
-    set -l tmp (mktemp -t yazi-cwd.XXXXXX)
-
-    yazi $argv --cwd-file="$tmp"
-
-    if test -f "$tmp"
-        set -l cwd (string trim -- (cat "$tmp"))
-        if test -n "$cwd" -a "$cwd" != "$PWD"
-            cd "$cwd"
-        end
-        rm -f "$tmp"
-    end
+	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+	command yazi $argv --cwd-file="$tmp"
+	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+		builtin cd -- "$cwd"
+	end
+	rm -f -- "$tmp"
+    stty sane
 end
 
 
 if status is-interactive
     if type -q yazi
-        bind \co 'yazicd'
-        bind -M insert \co 'yazicd'
+        bind \co 'yazicd; commandline -f repaint'
+        bind -M insert \co 'yazicd; commandline -f repaint'
     else if type -q lf
-        bind \co 'lfcd'
-        bind -M insert \co 'lfcd'
+        bind \co 'lfcd; commandline -f repaint'
+        bind -M insert \co 'lfcd; commandline -f repaint'
     end
 end
