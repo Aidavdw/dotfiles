@@ -59,6 +59,7 @@ return {
             sh = { "shfmt" },
             json = { "fixjson" },
             tex = { "tex-fmt" },
+            -- TODO: add one for python
             -- TODO: Add bibtex-tidy for bibtex
             -- Rust uses rustaceanvim, which means it can just fall back on the LSP
             --
