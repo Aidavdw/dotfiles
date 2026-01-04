@@ -54,7 +54,9 @@
             "custom/suspend",
             "custom/quit",
             "custom/reboot",
-            "custom/kbtoggle"
+            "custom/kbtoggle",
+            // A fallback to be able to open a terminal
+            "custom/terminal"
         ]
     },
     /************* Modules configuration **************/
@@ -288,6 +290,11 @@
         "interval": 5,
         "return-type": "json",
         "tooltip": true
+    },
+    "custom/terminal": {
+        "format": "<span size='120%'></span>",
+        "tooltip-format": "Open new terminal window",
+        "on-click": "hyprctl dispatch 'exec ghostty'",
     },
     // Showing little icons when mic or camera is accessed, or screen is shared.
     "privacy": {

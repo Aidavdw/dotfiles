@@ -106,6 +106,7 @@ window#waybar.firefox {}
 #custom-suspend,
 #custom-reboot,
 #custom-kbtoggle,
+#custom-terminal,
 #custom-poweroff {
     margin-left: 1em;
     margin-right: 1em;
