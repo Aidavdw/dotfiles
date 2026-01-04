@@ -14,8 +14,8 @@ return {
         { "<leader>cn", "<cmd>CiteNote<CR>", desc = "Open citation note" },
     },
     opts = {
-        bibtex_path = vim.fn.expand("/alt/code/bibliography/thesis.bib"),
-        pdf_dir = vim.fn.expand("/alt/code/bibliography/files"),
+        bibtex_path = vim.fn.expand("~/repos/bibliography/thesis.bib"),
+        pdf_dir = vim.fn.expand("/alt/literature"),
         notes_dir = vim.fn.expand("~/notes/literature-notes"),
     },
 }
