@@ -77,7 +77,7 @@ return {
             keymaps = {
                 init_selection = "<Enter>", -- set to `false` to disable one of the mappings
                 node_incremental = "<Enter>",
-                scope_incremental = "<TAB>",
+                scope_incremental = "<S-Enter>",
                 node_decremental = "<Backspace>",
             },
         },
