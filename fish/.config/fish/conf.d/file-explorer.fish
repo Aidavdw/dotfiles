@@ -23,8 +23,9 @@ end
 
 if status is-interactive
     if type -q yazi
-        bind \co 'yazicd; commandline -f repaint'
-        bind -M insert \co 'yazicd; commandline -f repaint'
+        # Slightly hacky, but for some reason the EDITOR envvar is not propagated.
+        bind \co 'EDITOR=nvim yazicd; commandline -f repaint'
+        bind -M insert \co 'EDITOR=nvim yazicd; commandline -f repaint'
     else if type -q lf
         bind \co 'lfcd; commandline -f repaint'
         bind -M insert \co 'lfcd; commandline -f repaint'
