@@ -54,3 +54,13 @@ vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left wind
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- `J` joins two lines.
+-- For some reason, there is no default keybind to do the opposite-- split two lines.
+-- So, we'll make a keybind `Q` for it (next to J on my keyboard layout)
+vim.keymap.set(
+    "n",
+    "Q",
+    "i<CR><ESC>k:s/\\s\\+$//e<CR>j<ESC>",
+    { desc = "Split line and remove trailing whitespace on the previous line" }
+)
