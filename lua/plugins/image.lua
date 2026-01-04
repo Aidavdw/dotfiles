@@ -22,11 +22,14 @@ return {
     "3rd/image.nvim",
     -- so that it doesn't build the rock https://github.com/3rd/image.nvim/issues/91#issuecomment-2453430239
     build = false,
+    enabled = false,
     ft = { "markdown" },
     opts = {
         processor = "magick_cli",
         integrations = {
             markdown = {
+                -- TODO: Fix how this tries to search for images. Right now, this is way too slow and kills markdown performance.
+                only_render_image_at_cursor = true,
                 resolve_image_path = function(document_path, local_image_path, fallback)
                     -- Search in for any files in the cwd or any of its sub-folders.
                     -- In addition, search in the extra search paths defined below
