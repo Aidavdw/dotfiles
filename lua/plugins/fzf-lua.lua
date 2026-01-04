@@ -2,7 +2,11 @@ return {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
+    opts = {
+        grep = {
+            rg_opts = "--vimgrep --hidden --follow --column --line-number --no-heading --color=always --smart-case -g '!{.git,node_modules, target}/*'",
+        },
+    },
     config = function(_, opts)
         local fzf = require("fzf-lua")
         fzf.setup(opts)
