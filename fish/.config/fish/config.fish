@@ -5,9 +5,6 @@ if status is-interactive
     fish_vi_key_bindings
 end
 
-function fish_greeting
-    echo (set_color yellow)$USER(set_color normal)@(set_color blue)$hostname(set_color normal) fish session
-end
 
 
 # Add current directory in file manager
