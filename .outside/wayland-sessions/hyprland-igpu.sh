@@ -6,7 +6,7 @@
 # except if explicitly called with prime-run
 
 # Which specific gpu device to run hyprland on.
-# the device is a symlink to the igpu, set up from udev rules. 
+# the device is a symlink to the igpu, set up from udev rules.
 # (see the other modules in this git)
 export AQ_DRM_DEVICES=/dev/dri/intel-igpu
 # OpenGL: used by hyprland itself too!
@@ -26,6 +26,4 @@ export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/intel_icd.x86_64.json
 # For nvidia: /usr/share/vulkan/icd.d/nvidia_icd.json
 
-
-Hyprland
-
+start-hyprland
