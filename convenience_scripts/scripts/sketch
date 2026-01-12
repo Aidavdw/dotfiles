@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# ---- config ----
+WIDTH=800
+HEIGHT=600
+OUT_DIR="$HOME/notes/obsidian media"
+QUALITY=40   # lower = more compression (0–100)
+# ----------------
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $0 <sketch-name>"
+  exit 1
+fi
+
+NAME="$1"
+OUT_FILE="$OUT_DIR/$NAME.webp"
+
+# Abort if target file already exists
+if [[ -e "$OUT_FILE" ]]; then
+  echo "Error: '$OUT_FILE' already exists. Aborting."
+  exit 1
+fi
+
+mkdir -p "$OUT_DIR"
+
+TMP_INPUT="$(mktemp --suffix=.png)"
+TMP_OUTPUT="$(mktemp --suffix=.png)"
+
+cleanup() {
+  rm -f "$TMP_INPUT" "$TMP_OUTPUT"
+}
+trap cleanup EXIT
+
+# Create white canvas
+convert -size "${WIDTH}x${HEIGHT}" xc:white "$TMP_INPUT"
+
+# Open in satty
+satty --filename "$TMP_INPUT" --output-filename "$TMP_OUTPUT"
+
+# Convert to compressed WebP
+convert "$TMP_OUTPUT" -quality "$QUALITY" "$OUT_FILE"
+
+# Copy to clipboard
+if command -v wl-copy >/dev/null 2>&1; then
+  wl-copy < "$OUT_FILE"
+elif command -v xclip >/dev/null 2>&1; then
+  xclip -selection clipboard -t image/webp "$OUT_FILE"
+else
+  echo "Warning: no clipboard tool found (wl-copy or xclip)"
+fi
+
+echo "Saved sketch to: $OUT_FILE"
+
