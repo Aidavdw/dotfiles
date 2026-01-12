@@ -1,0 +1,12 @@
+[Unit]
+Description=Check for vcal reminders every 5 minutes using khal
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=15m
+AccuracySec=5m
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

@@ -1,0 +1,26 @@
+[general]
+status_path = "~/.vdirsyncer/status/"
+
+
+# Calendars on thegood.cloud
+[pair events_personal]
+a = "events_personal_local"
+b = "events_personal_remote"
+# If you have more calendars in this nextcloud, you can add them here.
+# Find them using `vdirsyncer discover`
+collections = ["personal", "uniandwork", "cutateous", "contact_birthdays"] 
+conflict_resolution = "b wins"
+
+[storage events_personal_local]
+type = "filesystem"
+path = "~/.calendars/personal"
+fileext = ".ics"
+
+[storage events_personal_remote]
+type = "caldav"
+url = "https://use08.thegood.cloud/remote.php/dav"
+username = "aida@osphire.com"
+password.fetch = ["command", "secret-tool", "lookup",
+                  "service", "vdirsyncer",
+                  "account", "aida@osphire.com",
+                  "host", "use08.thegood.cloud"]

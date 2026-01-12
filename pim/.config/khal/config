@@ -1,0 +1,31 @@
+[calendars]
+
+[[personal]]
+path=~/.calendars/personal/personal/
+priority = 10
+color = dark red
+
+[[cutateous]]
+path=~/.calendars/personal/cutateous/
+priority = 9
+color = dark blue
+
+[[contact_birthdays]]
+path=~/.calendars/personal/contact_birthdays/
+readonly = True
+priority = 1
+color = light green
+
+[default]
+default_calendar = personal
+timedelta = 3d
+
+[locale]
+timeformat = %H:%M
+dateformat= %d.%m.
+longdateformat= %d日%m月
+datetimeformat= %d.%m. %H:%M
+longdatetimeformat= %d.%m.%Y %H:%M
+
+[view]
+frame = top

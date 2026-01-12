@@ -1,0 +1,7 @@
+[Unit]
+Description=Khal reminder daemon
+
+[Service]
+Type=oneshot
+ExecStart=%h/auto-scripts/khal-reminder-daemon.sh
+
