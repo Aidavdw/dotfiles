@@ -11,6 +11,8 @@ timers:
 - interval: 50:00
   weight: 1
   decline: 0.6
+  # I could see if I can make it check if it's fullscreen and ignore.
+  # But arguably, it's better if I take breaks there anyway.
   command: sleep 5 && loginctl lock-session
   notification:
     title: Breaktime!
