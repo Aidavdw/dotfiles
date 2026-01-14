@@ -1,0 +1,18 @@
+7:00 11:00 = Good morning $USER.
+11:30 13:30 = Time for lunch, $USER?
+13:30 14:30 = Did you have lunch yet, $USER?.
+14:00 15:00 = Maybe it's naptime!
+12:00 15:00 = Good afternoon, $USER.
+5:00 7:00 = Up early, $USER?
+22:00 0:00 = Time for bed, $USER.
+7:00 11:45 = Good morning $USER.
+17:30 19:30 = Good evening $USER! Don't forget to have dinner.
+17:30 19:30 = What's for dinner, $USER?
+1:00 2:30 = JEEZ GO TO BED $USER.
+2:30 4:30 = Being an insomniac, $USER?
+7:00 20:00 = haihai $USER
+7:00 20:00 = Greetings, $USER
+7:00 22:00 = hewwo $USER
+18:00 23:00 = Good evening $USER
+
+
