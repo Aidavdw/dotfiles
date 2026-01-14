@@ -5,6 +5,6 @@
 # So instead, immediately send SIGUSR2, which immediately reloads stuff.
 hyprlock --grace 5 &
 (
-    sleep 0.2
+    sleep 0.35
     pkill --signal USR2 hyprlock
 )
