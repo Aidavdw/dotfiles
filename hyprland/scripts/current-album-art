@@ -1,2 +1,6 @@
 #!/usr/bin/bash
-playerctl metadata -p mpd --format '{{mpris:artUrl}}' | cut -c 8-
+if [ -n "$(mpc status | grep 'paused\|playing')" ]; then
+    playerctl metadata -p mpd --format '{{mpris:artUrl}}' | cut -c 8-
+else
+    echo ""
+fi
