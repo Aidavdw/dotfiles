@@ -22,9 +22,9 @@ timedelta = 3d
 
 [locale]
 timeformat = %H:%M
-dateformat= %d.%m.
-longdateformat= %d日%m月
-datetimeformat= %d.%m. %H:%M
+dateformat= %d.%m.%Y
+longdateformat= %d日%m月%Y
+datetimeformat= %d.%m.%Y %H:%M
 longdatetimeformat= %d.%m.%Y %H:%M
 
 [view]
