@@ -12,9 +12,11 @@
 # Do not force linear modifiers on multi-gpu buffers.
 # source: https://wiki.hypr.land/Nvidia/#multi-gpu-or-hybrid-graphics-not-working-for-monitors-attached-to-nvidia-gpu
 
-# AQ_DRM_DEVICES=/dev/dri/nvidia-gpu
-# Run aquamarine (hyprland backend) on dgpu
-# source: wiki
+# AQ_DRM_DEVICES=/dev/dri/nvidia-gpu:/dev/dri/intel-igpu
+# Which devices are allowed to display?
+# With a laptop that has hard-wired dGPU -> external and iGPU -> internal, setting it to only one stops it from displaying on the other.
+# I think that the order sets the render preference for Hyprland itself.
+# source: partially wiki, partially messing around.
 
 # NVD_BACKEND=direct
 # Use VA_API hardware video acceleration.
@@ -24,7 +26,7 @@
 # Use hardware acceleration for nvidia
 LIBVA_DRIVER_NAME=nvidia \
     __GLX_VENDOR_LIBRARY_NAME=nvidia \
-    AQ_DRM_DEVICES=/dev/dri/nvidia-gpu \
+    AQ_DRM_DEVICES=/dev/dri/nvidia-gpu:/dev/dri/intel-igpu \
     AQ_FORCE_LINEAR_BLIT=0 \
     LIBVA_DRIVER_NAME=nvidia \
     GBM_BACKEND=nvidia-drm \
