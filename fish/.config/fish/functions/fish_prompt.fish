@@ -37,25 +37,19 @@ function fish_prompt --description 'Write out the prompt'
 
     # If we are on the local machine, do not display hostname.
     # If displaying hostname, always have leading `@`
+    set p_host ""
     if set -q SSH_CONNECTION; or set -q SSH_TTY
-        set -l p_host @(set_color green)$hostname(set_color normal)
-    else
-        set -l p_host ""
+        set p_host @(set_color green)$hostname(set_color normal)
     end
 
     # If we are on SSH, display user and hostname.
     # Also hide the username if it's $default_user
-    set user ""
+    set p_user ""
     if test "$USER" != "aida"
         set p_user (set_color red)$USER(set_color normal)
-    else
-        set p_user ""
     end
 
     # NOTE: If `aida@this_machine`, it will be empty.
-
-    #echo "$p_user$p_host"
-
 
     # Display the current time
     set -l clock (date "+[%H:%M]")
