@@ -11,8 +11,19 @@
 1:00 2:30 = JEEZ GO TO BED $USER.
 2:30 4:30 = Being an insomniac, $USER?
 7:00 20:00 = haihai $USER
+7:00 20:00 = hoihoi $USER
+7:00 20:00 = haaaaaai $USER
 7:00 20:00 = Greetings, $USER
 7:00 22:00 = hewwo $USER
 18:00 23:00 = Good evening $USER
+6:00 10:00 = おはおおおお
+6:00 10:00 = Rise and shine, Mr. Freeman
+6:00 10:00 = wakey wakey eggs and bakey
+9:00 22:00 = Don't stare at a screen all day, $USER
+9:00 11:30 = goeiesmogges, $USER
+9:00 11:30 = Goedemorgen, $USER
+9:00 11:30 = おはよー, $USER
+9:00 11:30 = おはよう御座います, $USER!
+4:00 6:30 = Is the sun even up, $USER?
 
 
