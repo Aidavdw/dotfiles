@@ -39,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
     # If displaying hostname, always have leading `@`
     set p_host ""
     if set -q SSH_CONNECTION; or set -q SSH_TTY
-        set p_host @(set_color green)$hostname(set_color normal)
+        set p_host @(set_color blue)$hostname (set_color normal)
     end
 
     # If we are on SSH, display user and hostname.
