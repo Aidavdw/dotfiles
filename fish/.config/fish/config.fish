@@ -16,3 +16,10 @@ abbr -a --position command visudo 'sudo EDITOR=vim visudo'
 abbr -a --position command csv 'column -t'
 abbr -a --position command nvimdiff 'nvim -d'
 abbr -a --position command weather 'curl wttr.in'
+
+# When we view dmesg, we probably want to look at it with pretty colors
+abbr -a --position command dmesg 'sudo dmesg --color=always | less -R'
+
+# When using journalctl, we're probably not interested in all the old stuff.
+# So, only show most recent boot.
+abbr -a --position command journalctl 'journalctl --b 0'
