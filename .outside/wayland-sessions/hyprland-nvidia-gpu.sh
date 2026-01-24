@@ -24,6 +24,10 @@
 
 # LIBVA_DRIVER_NAME=nvidia
 # Use hardware acceleration for nvidia
+
+# __GL_MaxFramesAllowed=1
+# Limits max buffered frames.
+
 LIBVA_DRIVER_NAME=nvidia \
     __GLX_VENDOR_LIBRARY_NAME=nvidia \
     AQ_DRM_DEVICES=/dev/dri/nvidia-gpu:/dev/dri/intel-igpu \
@@ -31,4 +35,6 @@ LIBVA_DRIVER_NAME=nvidia \
     LIBVA_DRIVER_NAME=nvidia \
     GBM_BACKEND=nvidia-drm \
     NVD_BACKEND=direct \
+    __GL_MaxFramesAllowed=1 \
+    VDPAU_DRIVER=nvidia \
     start-hyprland
