@@ -225,7 +225,7 @@
         "tooltip-format-wifi": "{ifname}: {essid}, reception {signalStrength}%\n{ipaddr}/{cidr} through {ifname} via {gwaddr}",
         "format-linked": "<span size='120%'>󰇨</span>  {ifname} (No IP)",
         "format-disconnected": "<span size='120%'>⚠</span> Disconnected",
-        "on-click": "hyprctl dispatch 'exec [float] ghostty -e impala'",
+        "on-click": "hyprctl dispatch 'exec [float] alacritty -e impala'",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
     },
     "pulseaudio": {
@@ -250,7 +250,7 @@
         "tooltip-format": "{format_source}\nDevice:{desc}"
     },
     "bluetooth": {
-        "on-click": "hyprctl dispatch 'exec [float] ghostty -e bluetui'",
+        "on-click": "hyprctl dispatch 'exec [float] alacritty -e bluetui'",
         "format-disabled": "<span size='120%'>(󰂲 )</span>",
         "format-off": "<span size='120%'>󰂲 </span>",
         "format-on": "<span size='120%'>󰂯 </span>",
@@ -294,7 +294,7 @@
     "custom/terminal": {
         "format": "<span size='120%'></span>",
         "tooltip-format": "Open new terminal window",
-        "on-click": "hyprctl dispatch 'exec ghostty'",
+        "on-click": "hyprctl dispatch 'exec alacritty'",
     },
     // Showing little icons when mic or camera is accessed, or screen is shared.
     "privacy": {
