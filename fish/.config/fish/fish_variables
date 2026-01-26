@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR EDITOR:nvim
+SETUVAR --export EDITOR:vim
+SETUVAR --export SUDO_EDITOR:vim
 SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/home/aida/\x2ecargo/bin/\x1e/home/aida/\x2elocal/bin/\x1e/home/aida/scripts/
