@@ -39,6 +39,17 @@ return {
                 "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
                 desc = "[W]indow: [D]iagnostics (no focus)",
             },
+            -- Same, but for entire workspace
+            -- If you are fixing style for your entire project,
+            -- its worth looking at workspace diagnostics,
+            -- even if its a little overwhelming.
+            -- No 'unfocused' version of this, just use it to fix shit
+            {
+                "<leader>ww",
+                "<cmd>Trouble diagnostics toggle focus=true<cr>",
+                desc = "[W]indow: all [W]orkspace Diagnostics",
+            },
+
             -- With markdown-oxide, this is also the TOC.
             {
                 "<leader>ws",
