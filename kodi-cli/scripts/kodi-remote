@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Simple wrapper around kodi-send from kodi-eventclients to play on external kodi instance.
+
+# ---- CONFIG -------------------------------------------------
+KODI_HOST="192.168.50.6"
+
+YOUTUBE_PLUGIN="plugin://plugin.video.youtube/"
+NEBULA_PLUGIN="plugin://plugin.video.nebula/"
+# ------------------------------------------------------------
+
+set -euo pipefail
+
+if [[ $# -ne 1 ]]; then
+    echo "Usage: kodi-remote <video-url>"
+    exit 1
+fi
+
+URL="$1"
+
+play() {
+    local media="$1"
+    kodi-send --host="$KODI_HOST" --action="PlayMedia($media)"
+}
+
+# ---- YouTube ------------------------------------------------
+if [[ "$URL" =~ (youtube\.com/watch\?v=|youtu\.be/) ]]; then
+    VIDEO_ID="$(
+        echo "$URL" |
+            sed -E 's#.*(v=|youtu\.be/)([^&?/]+).*#\2#'
+    )"
+
+    if [[ -z "$VIDEO_ID" ]]; then
+        echo "Could not extract YouTube video ID"
+        exit 1
+    fi
+
+    play "plugin://plugin.video.youtube/?action=play_video&videoid=${VIDEO_ID}"
+    exit 0
+fi
+
+# ---- Nebula -------------------------------------------------
+if [[ "$URL" =~ nebula\.tv ]]; then
+    # Nebula supports direct URL handoff
+    play "${NEBULA_PLUGIN}?action=play_url&url=${URL}"
+    exit 0
+fi
+
+# ---- Fallback ----------------------------------------------
+echo "Unsupported URL: $URL"
+exit 1
