@@ -68,6 +68,21 @@ function fish_prompt --description 'Write out the prompt'
     # Transient prompt: Only show pwd and command.
     # Filter out invalid commands.
 
-    set -l reset_color (set_color normal)
-    echo -n -s "$p_user$p_host" (set_color $color_cwd) (prompt_pwd) (set_color blue) (fish_vcs_prompt) (set_color normal) $p_time_elapsed $prompt_status "$suffix "
+    # shorthand for reset colour
+    set -l r_c (set_color normal)
+
+
+    echo -n -s "$p_user$p_host" \
+    (set_color $color_cwd) \
+    (prompt_pwd) \
+    (set_color normal) \
+    (set_color blue) \
+    (fish_vcs_prompt) \
+    (set_color normal) \
+    $p_time_elapsed \
+    $prompt_status \
+    "$suffix "
+
+    # trailing/leading 4;0m and 4;1m are ConnectBot bug.
+    # Will be fixed in v1.10
 end

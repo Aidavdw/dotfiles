@@ -1,12 +1,3 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-
-    # Automatically start in VI mode in insert
-    fish_vi_key_bindings
-end
-
-
-
 # Add current directory in file manager
 abbr -a --position command exp 'xdg-open .'
 
@@ -23,3 +14,7 @@ abbr -a --position command dmesg 'sudo dmesg --color=always | less -R'
 # When using journalctl, we're probably not interested in all the old stuff.
 # So, only show most recent boot.
 abbr -a --position command journalctl 'journalctl --b 0'
+
+# GREP by default is case-sensitive.
+# Whenever we look for stuff manually, we probably want to find all.
+abbr -a grep 'grep -i'
