@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Euphonica
+Comment=GTK4 libadwaita MPD client
+Categories=AudioVideo;Player;
+
+Icon=io.github.htkhiem.Euphonica
+# If you use a GTK theme, you lose the cool blurry background
+Exec=/home/aida/scripts/euphonica
+Terminal=false

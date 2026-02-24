@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper script
+# Need to run with GTK_THEME=adwaita, otherwise it overrides the pretty blurry backgrounds
+GTK_THEME=adwaita /usr/bin/euphonica
