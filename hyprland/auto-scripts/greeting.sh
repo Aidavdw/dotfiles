@@ -15,7 +15,9 @@
 GREETINGS_FILE="$HOME/auto-scripts/greetings.txt"
 
 # Current time in minutes since midnight
-now_minutes=$(($(date +%H) * 60 + $(date +%M)))
+# Having a leading 0 causes it to be interpreted as octal.
+# Use 10# to force it to read as decimal.
+now_minutes=$((10#$(date +%H) * 60 + 10#$(date +%M)))
 
 valid_greetings=()
 
@@ -34,8 +36,8 @@ while IFS= read -r line; do
     end_h=${end%:*}
     end_m=${end#*:}
 
-    start_minutes=$((start_h * 60 + start_m))
-    end_minutes=$((end_h * 60 + end_m))
+    start_minutes=$((10#$start_h * 60 + 10#$start_m))
+    end_minutes=$((10#$end_h * 60 + 10#$end_m))
 
     if ((start_minutes < end_minutes)); then
         # Normal range
@@ -51,7 +53,7 @@ done <"$GREETINGS_FILE"
 if ((${#valid_greetings[@]})); then
     chosen=$(printf '%s\n' "${valid_greetings[@]}" | shuf -n 1)
 else
-    chosen="hello \$USER"
+    chosen="hello\n\$USER"
 fi
 
 # Expand environment variables
