@@ -4,4 +4,9 @@ hyprctl switchxkblayout all next
 index=$(hyprctl devices | awk -F ': ' '/active layout index:/ {print $2; exit}')
 all_layouts=$(hyprctl getoption input:kb_layout | awk -F ': ' '/str:/ {print $2; exit}')
 new_layout=$(echo $all_layouts | cut -d ',' -f $((index + 1)))
+
+# Also set it for xwayland
+setxkbmap -layout $new_layout
+
+echo set keyboard layout to $new_layout
 notify-send -i /usr/share/icons/Papirus/32x32/devices/input-keyboard.svg -u low "Keyboard: $new_layout" "Switched keyboard layout"
