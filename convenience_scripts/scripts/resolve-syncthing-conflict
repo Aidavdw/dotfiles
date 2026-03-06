@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Find all sync conflict files and pick one
+conflict_file=$(find . -type f -name "*.sync-conflict-*" | fzf --prompt="Select conflict file > ")
+
+# Exit if nothing selected
+if [[ -z "$conflict_file" ]]; then
+    echo "No file selected."
+    exit 0
+fi
+
+# Determine original filename
+# Removes .sync-conflict-YYYYMMDD-HHMMSS-HASH part
+original_file=$(echo "$conflict_file" | sed -E 's/\.sync-conflict-[0-9]{8}-[0-9]{6}-[A-Za-z0-9]+//')
+
+echo "Conflict file : $conflict_file"
+echo "Original file : $original_file"
+
+if [[ ! -f "$original_file" ]]; then
+    echo "⚠ Original file does not exist!"
+    read -p "Create original file from conflict file? (y/N) " ans
+    if [[ "$ans" =~ ^[Yy]$ ]]; then
+        cp "$conflict_file" "$original_file"
+    else
+        exit 1
+    fi
+fi
+
+# Open in nvim diff mode
+nvim -d "$original_file" "$conflict_file"
+
+echo "Checking if files are identical..."
+
+# After closing nvim, check if files are identical
+if cmp -s "$original_file" "$conflict_file"; then
+    echo "Files are identical. Deleting conflict file..."
+    rm "$conflict_file"
+else
+    echo "Files are still different. Please resolve manually."
+fi
