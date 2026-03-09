@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # A simple little script that soft-wraps a string with the given delimiter (\n, <br>, etc) if the length is more than an argument given.
-# Soft-wrap here means that it finds the space that it only breaks at spaces, it does not split up words. 
-# The resulting lines will therefore be as long or shorter than the given max length. 
+# Soft-wrap here means that it finds the space that it only breaks at spaces, it does not split up words.
+# The resulting lines will therefore be as long or shorter than the given max length.
 # If the word is longer than the max length, then it is fine to just split up a word, and insert a hyphen.
 # Works with pipe!
 
@@ -10,53 +10,57 @@
 # wrap_soft "your text here" 20 "\n"
 # wrap_soft "your text here" 20 "<br>"
 
-softwrap() {
-    local text="$1"
-    local maxlen="$2"
-    local delim="$3"
-
-    local line=""
-    local out=""
-
-    for word in $text; do
-        # handle words longer than max length
-        while (( ${#word} > maxlen )); do
-            local part="${word:0:maxlen-1}-"
-            word="${word:maxlen-1}"
-
-            [[ -n "$line" ]] && {
-                out+="$line$delim"
-                line=""
-            }
-
-            out+="$part$delim"
-        done
-
-        if [[ -z "$line" ]]; then
-            line="$word"
-        elif (( ${#line} + 1 + ${#word} <= maxlen )); then
-            line+=" $word"
-        else
-            out+="$line$delim"
-            line="$word"
-        fi
-    done
-
-    [[ -n "$line" ]] && out+="$line"
-
-    printf "%b" "$out"
-}
+#!/usr/bin/env bash
 
 maxlen="$1"
 delim="${2:-\\n}"
+shift 2
 
 if [[ -t 0 ]]; then
-    # no pipe → use argument
-    shift 2
-    text="$*"
+    input="$*"
 else
-    # piped input
-    text="$(cat)"
+    input="$(cat)"
 fi
 
-softwrap "$text" "$maxlen" "$delim"
+awk -v maxlen="$maxlen" -v delim="$delim" '
+function emit(line) {
+    if (printed)
+        printf "%s%s", delim, line
+    else {
+        printf "%s", line
+        printed = 1
+    }
+}
+
+{
+    for (i = 1; i <= NF; i++) {
+        word = $i
+
+        while (length(word) > maxlen) {
+            part = substr(word, 1, maxlen-1) "-"
+            word = substr(word, maxlen)
+
+            if (length(line)) {
+                emit(line)
+                line = ""
+            }
+
+            emit(part)
+        }
+
+        if (line == "")
+            line = word
+        else if (length(line) + 1 + length(word) <= maxlen)
+            line = line " " word
+        else {
+            emit(line)
+            line = word
+        }
+    }
+}
+
+END {
+    if (length(line))
+        emit(line)
+}
+' <<<"$input"
