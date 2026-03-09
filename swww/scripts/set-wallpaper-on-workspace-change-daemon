@@ -2,7 +2,7 @@
 # Change wallpaper when switching workspace, as set using scripts/set-wallpaper
 
 USE_DEFAULT_WALLPAPER=false
-DEFAULT_WALLPAPER="$HOME/.config/sww-per-workspace/default.png"
+DEFAULT_WALLPAPER="$HOME/.config/swww-per-workspace/default.png"
 SOURCE_DIR="$HOME/.config/swww-per-workspace"
 
 handle() {
@@ -11,11 +11,9 @@ handle() {
     esac
 }
 
-on_change_workspace() {
-    # Focused monitor
-    MONITOR=$(hyprctl monitors -j | jq -r --argjson ws "$(hyprctl activeworkspace -j)" '.[] | select(.id == $ws.monitorID) | .name')
-    # gets the id of the currently focused workspace on this monitor
-    current_workspace=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .activeWorkspace.id')
+set_wallpaper_for_monitor() {
+    MONITOR="$1"
+    current_workspace="$2"
     # Check if a temporary wallpaper exists. if it does, use that. If not, use the cached permanent wallpaper for this workspace.
 
     echo "switching to workspace $current_workspace on $MONITOR"
@@ -47,5 +45,32 @@ on_change_workspace() {
 
     swww img --outputs $MONITOR --transition-type outer --transition-fps 60 --transition-step 60 --transition-bezier .36,.11,.17,.93 --transition-duration 1.5 --transition-pos "$RANDONE,$RANDTWO" "$file"
 }
+
+on_change_workspace() {
+    # Focused monitor
+    MONITOR=$(hyprctl monitors -j | jq -r --argjson ws "$(hyprctl activeworkspace -j)" '.[] | select(.id == $ws.monitorID) | .name')
+    # gets the id of the currently focused workspace on this monitor
+    current_workspace=$(hyprctl -j monitors | jq -r '.[] | select(.focused) | .activeWorkspace.id')
+
+    set_wallpaper_for_monitor "$MONITOR" "$current_workspace"
+
+}
+
+# Run it once at start-up
+set_wallpapers_all_monitors() {
+    hyprctl monitors -j | jq -c '.[]' | while read -r mon; do
+        MONITOR=$(echo "$mon" | jq -r '.name')
+        WORKSPACE=$(echo "$mon" | jq -r '.activeWorkspace.id')
+
+        set_wallpaper_for_monitor "$MONITOR" "$WORKSPACE"
+    done
+}
+
+# Wait until swww has started up fully
+while ! swww query &>/dev/null; do
+    sleep 0.2
+done
+
+set_wallpapers_all_monitors
 
 socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do handle "$line"; done
