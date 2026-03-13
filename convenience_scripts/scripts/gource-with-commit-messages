@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Defaults
+repo="."
+day_length=4
+auto_skip=0.5
+
+# Parse arguments
+if [[ $# -gt 0 && ! "$1" =~ ^- ]]; then
+    repo="$1"
+    shift
+fi
+
+while getopts "s:a:" opt; do
+    case "$opt" in
+    s) day_length="$OPTARG" ;;
+    a) auto_skip="$OPTARG" ;;
+    *)
+        echo "Usage: $0 [repo_dir] [-s day_length] [-a auto_skip]"
+        exit 1
+        ;;
+    esac
+done
+
+# Resolve repo path
+repo="$(realpath "$repo")"
+repo_name="$(basename "$repo")"
+
+caption_file="/tmp/gource-commitmsg-${repo_name}.txt"
+
+# Generate commit caption file
+git -C "$repo" log \
+    --pretty=format:"%at|%s" \
+    --reverse \
+    --no-merges >"$caption_file"
+
+echo "Caption file written to: $caption_file"
+
+# Run gource
+gource \
+    --high-dpi \
+    -a "$auto_skip" \
+    -s "$day_length" \
+    --caption-file "$caption_file" \
+    "$repo"
