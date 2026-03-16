@@ -2,17 +2,17 @@
 
 set -e
 
-# Defaults
 repo="."
 day_length=4
 auto_skip=0.5
 
-# Parse arguments
+# First positional argument = repo
 if [[ $# -gt 0 && ! "$1" =~ ^- ]]; then
     repo="$1"
     shift
 fi
 
+# Options
 while getopts "s:a:" opt; do
     case "$opt" in
     s) day_length="$OPTARG" ;;
@@ -24,24 +24,47 @@ while getopts "s:a:" opt; do
     esac
 done
 
-# Resolve repo path
 repo="$(realpath "$repo")"
 repo_name="$(basename "$repo")"
-
 caption_file="/tmp/gource-commitmsg-${repo_name}.txt"
 
-# Generate commit caption file
+# Build caption file with line statistics
 git -C "$repo" log \
-    --pretty=format:"%at|%s" \
     --reverse \
-    --no-merges >"$caption_file"
+    --no-merges \
+    --pretty=format:'COMMIT|%at|%s' \
+    --numstat |
+    awk -F'\t' '
+BEGIN {
+    add=0; del=0;
+}
+$1 ~ /^COMMIT\|/ {
+    if (NR>1) {
+        printf "%s|%s (+%d/-%d)\n", ts, msg, add, del;
+    }
+    split($0, parts, "|");
+    ts = parts[2];
+    msg = parts[3];
+    add=0; del=0;
+    next;
+}
+NF==3 {
+    if ($1 ~ /^[0-9]+$/) add += $1;
+    if ($2 ~ /^[0-9]+$/) del += $2;
+}
+END {
+    printf "%s|%s (+%d/-%d)\n", ts, msg, add, del;
+}
+' >"$caption_file"
 
 echo "Caption file written to: $caption_file"
 
-# Run gource
 gource \
     --high-dpi \
     -a "$auto_skip" \
     -s "$day_length" \
     --caption-file "$caption_file" \
+    --caption-size 24 \
+    --caption-colour FFFFFF \
+    --caption-duration 3 \
     "$repo"
