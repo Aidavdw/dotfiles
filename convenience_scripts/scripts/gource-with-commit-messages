@@ -1,28 +1,13 @@
 #!/usr/bin/env bash
-
 set -e
 
 repo="."
-day_length=4
-auto_skip=0.5
 
-# First positional argument = repo
+# If first argument is not a flag, treat it as repo path
 if [[ $# -gt 0 && ! "$1" =~ ^- ]]; then
     repo="$1"
     shift
 fi
-
-# Options
-while getopts "s:a:" opt; do
-    case "$opt" in
-    s) day_length="$OPTARG" ;;
-    a) auto_skip="$OPTARG" ;;
-    *)
-        echo "Usage: $0 [repo_dir] [-s day_length] [-a auto_skip]"
-        exit 1
-        ;;
-    esac
-done
 
 repo="$(realpath "$repo")"
 repo_name="$(basename "$repo")"
@@ -38,7 +23,7 @@ git -C "$repo" log \
 BEGIN {
     add=0; del=0;
 }
-$1 ~ /^COMMIT\|/ {
+$0 ~ /^COMMIT\|/ {
     if (NR>1) {
         printf "%s|%s (+%d/-%d)\n", ts, msg, add, del;
     }
@@ -59,12 +44,9 @@ END {
 
 echo "Caption file written to: $caption_file"
 
+# Run gource with passthrough args
 gource \
     --high-dpi \
-    -a "$auto_skip" \
-    -s "$day_length" \
     --caption-file "$caption_file" \
-    --caption-size 24 \
-    --caption-colour FFFFFF \
-    --caption-duration 3 \
+    "$@" \
     "$repo"
