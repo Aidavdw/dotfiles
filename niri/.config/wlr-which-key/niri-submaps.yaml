@@ -1,8 +1,8 @@
 # Theming
-font: Iosevka Nerd Font Propo 12
-background: "#282828d0"
-color: "#fbf1c7"
-border: "#8ec07c"
+font: Iosevka Nerd Font Propo 14
+background: "#323244d0"
+color: "#f9e2af"
+border: "#b4befe"
 separator: " ➜ "
 border_width: 2
 corner_r: 10
@@ -11,10 +11,10 @@ rows_per_column: 5 # No limit by default
 column_padding: 25 # Defaults to padding
 
 # Anchor and margin
-anchor: center # One of center, left, right, top, bottom, bottom-left, top-left, etc.
+anchor: bottom # One of center, left, right, top, bottom, bottom-left, top-left, etc.
 # Only relevant when anchor is not center
 margin_right: 0
-margin_bottom: 0
+margin_bottom: 100
 margin_left: 0
 margin_top: 0
 
