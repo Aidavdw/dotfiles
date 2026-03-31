@@ -13,7 +13,7 @@ fi
 source "$CONFIG_FILE"
 
 # Verify required variables are set
-for var in RESTIC_PASSWD BACKUP_SOURCE BACKUP_REPO; do
+for var in RESTIC_PASSWD BACKUP_SOURCE BACKUP_REPO MUSIC_SOURCE PICTURES_SOURCE; do
     if [[ -z "${!var:-}" ]]; then
         echo "Error: $var is not set in $CONFIG_FILE"
         exit 1
@@ -34,5 +34,12 @@ restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" --compression max backup $BACKUP_SO
 
 #echo "=== Applying retention policy ==="
 #restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" forget $KEEP_OPTIONS --prune --cleanup-cache
+
+echo "=== Backing up music from $MUSIC_SOURCE ==="
+# Add trailing / for source dirs: its name might be different from the one on the remote server.
+rsync -aPvh --delete-after --exclude ".snapshots" --out-format="%i | %M |  %n" --stats "$MUSIC_SOURCE/" "$MUSIC_TARGET" 
+
+#echo "=== Backing up pictures from $PICTURE_SOURCE ==="
+#rsync -aPvh --dry-run --out-format="%i | %M |  %n" --stats "$PICTURES_SOURCE/" "$PICTURES_TARGET"
 
 echo "=== Backup completed successfully ==="
