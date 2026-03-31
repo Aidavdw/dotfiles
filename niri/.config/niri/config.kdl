@@ -463,8 +463,10 @@ binds {
     // Here it just makes it smaller anyway.
     // TODO: See if we can make a little wrapper script which checks if it is above, and if so switches the behaviour around
     // Also if they are the only one column.
-    Mod+Ctrl+O { set-window-height "+10%"; }
-    Mod+Ctrl+A { set-window-height "-10%"; }
+    Mod+Ctrl+O { spawn "~/.config/niri/intuitive-resize-up.sh"; }
+    // echo "$(niri msg -j focused-window | jq -e 'if.focus_idx > 0 then "-10%" else "+10%" end')"
+    // But use the property "layout.pos_in_scrolling_layout", which looks like [1,1] if it is the top one or the only one, or [1,N] if it is below it.
+    Mod+Ctrl+A { spawn "~/.config/niri/intuitive-resize-down.sh"; }
 
     // Finer height adjustments when in column with other windows.
     Mod+Ctrl+E { set-column-width "+10%"; }
