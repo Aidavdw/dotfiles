@@ -1,0 +1,122 @@
+# Theming
+font: Iosevka Nerd Font Propo 12
+background: "#282828d0"
+color: "#fbf1c7"
+border: "#8ec07c"
+separator: " ➜ "
+border_width: 2
+corner_r: 10
+padding: 15 # Defaults to corner_r
+rows_per_column: 5 # No limit by default
+column_padding: 25 # Defaults to padding
+
+# Anchor and margin
+anchor: center # One of center, left, right, top, bottom, bottom-left, top-left, etc.
+# Only relevant when anchor is not center
+margin_right: 0
+margin_bottom: 0
+margin_left: 0
+margin_top: 0
+
+# namespace to use for the layer shell surface
+# Not in v1.3.0 release yet, but in git. Uncomment when released!
+# namespace: "wlr_which_key"
+
+# Permits key bindings that conflict with compositor key bindings.
+# Default is `false`.
+inhibit_compositor_keyboard_shortcuts: true
+
+# Try to guess the correct keyboard layout to use. Default is `false`.
+# What does this do??? cannot find docs.
+auto_kbd_layout: true
+
+menu:
+  - key: "n"
+    desc: new window
+    submenu:
+      - key: "t"
+        desc: terminal
+        cmd: alacritty
+      - key: "f"
+        desc: file browser
+        cmd: nautilus
+      - key: "i"
+        desc: internet browser
+        cmd: floorp
+      - key: "n"
+        desc: new launcher 
+        cmd: rofi -show drun -theme grid-launcher
+      - key: "mod4+n"
+        desc: new launcher 
+        cmd: rofi -show drun -theme grid-launcher
+  - key: "d"
+    desc: Modify workspace or window
+    submenu:
+      - key: "f"
+        desc: toggle floating
+        # Does this keep focus?
+        cmd: niri msg action toggle-window-floating
+      - key: "m"
+        desc: maximise (fullscreen)
+        cmd: niri msg action fullscreen-window 
+      - key: "c"
+        desc: center the currently focused column, or if floating, center that.
+        # TODO: detect if floating, and if so change command 
+        cmd: niri msg action center-column 
+      - key: "s"
+        desc: toggle split (compat)
+        cmd: niri msg action consume-or-expel-window-right 
+  - key: "s"
+    desc: switch to workspace
+    submenu:
+      - key: "h"
+        desc: home
+        cmd: niri msg action focus-workspace 1
+      - key: "f"
+        desc: α
+        cmd: niri msg action focus-workspace 2
+      - key: "o"
+        desc: β
+        cmd: niri msg action focus-workspace 3
+      - key: "u"
+        desc: γ
+        cmd: niri msg action focus-workspace 4
+      - key: "_"
+        desc: δ
+        cmd: niri msg action focus-workspace 5
+      - key: "s"
+        desc: social
+        cmd: niri msg action focus-workspace socialone
+      - key: "m"
+        desc: mail
+        cmd: niri msg action focus-workspace mail
+      - key: "c"
+        desc: chat
+        cmd: niri msg action focus-workspace socialtwo
+  - key: "m"
+    desc: move window to to workspace
+    submenu:
+      - key: "h"
+        desc: home
+        cmd: niri msg action move-column-to-workspace 1
+      - key: "f"
+        desc: α
+        cmd: niri msg action move-column-to-workspace 2
+      - key: "o"
+        desc: β
+        cmd: niri msg action move-column-to-workspace 3
+      - key: "u"
+        desc: γ
+        cmd: niri msg action move-column-to-workspace 4
+      - key: "_"
+        desc: δ
+        cmd: niri msg action move-column-to-workspace 5
+      - key: "s"
+        desc: social
+        cmd: niri msg action move-column-to-workspace socialone
+      - key: "m"
+        desc: mail
+        cmd: niri msg action move-column-to-workspace mail
+      - key: "c"
+        desc: chat
+        cmd: niri msg action move-column-to-workspace socialtwo
