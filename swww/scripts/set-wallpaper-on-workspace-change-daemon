@@ -43,7 +43,7 @@ set_wallpaper_for_monitor() {
     RANDONE="$((RANDOM % (1))).$((RANDOM % 999))"
     RANDTWO="$((RANDOM % (1))).$((RANDOM % 999))"
 
-    swww img --outputs $MONITOR --transition-type outer --transition-fps 60 --transition-step 60 --transition-bezier .36,.11,.17,.93 --transition-duration 1.5 --transition-pos "$RANDONE,$RANDTWO" "$file"
+    awww img --outputs $MONITOR --transition-type outer --transition-fps 60 --transition-step 60 --transition-bezier .36,.11,.17,.93 --transition-duration 1.5 --transition-pos "$RANDONE,$RANDTWO" "$file"
 }
 
 on_change_workspace() {
@@ -66,8 +66,8 @@ set_wallpapers_all_monitors() {
     done
 }
 
-# Wait until swww has started up fully
-while ! swww query &>/dev/null; do
+# Wait until awww has started up fully
+while ! awww query &>/dev/null; do
     sleep 0.2
 done
 

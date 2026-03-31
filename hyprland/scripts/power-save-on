@@ -41,7 +41,7 @@ sudo systemctl stop nordvpnd.service
 echo killing evolution
 sudo pkill evolution
 
-echo stopping background switcher, and swww-daemon
+echo stopping background switcher, and awww-daemon
 pkill swww-daemon
 pkill -f set-wallpaper-on-workspace-change-daemon
 
