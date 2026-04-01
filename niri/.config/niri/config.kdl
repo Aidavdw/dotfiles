@@ -214,6 +214,23 @@ window-rule {
     open-floating true
 }
 
+window-rule {
+    // Image previews floating, and a lil smaller
+    match app-id="qimgv"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+
+window-rule {
+    // music thing
+    match app-id="Alacritty" title="rmpc"
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 600; }
+    open-floating true
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -261,7 +278,7 @@ binds {
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Ctrl+Shift+Escape hotkey-overlay-title="Exit niri and return to TTY" { quit; }
     Mod+Backspace hotkey-overlay-title="Lock the Screen" { spawn "~/auto-scripts/hyprlock-immediately-reload.sh"; }
-    Mod+B hotkey-overlay-title="Music" { spawn "alacritty" "-e" "rmpc"; }
+    Mod+B hotkey-overlay-title="Music" { spawn "alacritty" "--title" "rmpc" "-e" "rmpc"; }
 
 
     // niri does not support submaps (yet).
