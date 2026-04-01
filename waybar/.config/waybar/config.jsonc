@@ -7,8 +7,8 @@
     "spacing": 4, // Gaps between modules (4px)
     "output": ["eDP-1"],
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "mpd"],
-    "modules-center": ["hyprland/window"],
+    "modules-left": ["hyprland/workspaces", "niri/workspaces", "mpd"],
+    "modules-center": ["hyprland/window", "niri/window"],
     "modules-right": [
         "tray", // For discord, etc-
         "group/media",
@@ -133,6 +133,23 @@
         //     "class<firefox> title<.*Arch.*>": "󰣇",
         //     "class<firefox> title<.*wikipedia.*>": "󰖬"
         // }
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            // Named workspaces as configured in niri
+            //"browser": "",
+            //"discord": "",
+            "socialone": " ",
+            "socialtwo": "󰻞 ",
+            "mail": " ",
+            "fastone": "󰤇",
+            "fasttwo": "󱄟"
+
+            // Icons by state
+            //"active": "",
+            //"default": ""
+        }
     },
     "mpd": {
         "format": "<span line_height='0.1px'><span color='#a6e3a1'>{title} </span>{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}\n<span font_size='90%' color='#b4befe'>{artist}</span></span> ",
