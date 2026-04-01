@@ -365,12 +365,12 @@ binds {
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
 
-    Mod+Period              { focus-workspace-down; }
-    Mod+Slash              { focus-workspace-up; }
-    Mod+Shift+Period         { move-column-to-workspace-down; }
-    Mod+Shift+Slash         { move-column-to-workspace-up; }
-    Mod+Ctrl+Period         { move-workspace-down; }
-    Mod+Ctrl+Slash         { move-workspace-up; }
+    Mod+Period              { focus-workspace-up; }
+    Mod+Slash              { focus-workspace-down; }
+    Mod+Shift+Period         { move-column-to-workspace-up; }
+    Mod+Shift+Slash         { move-column-to-workspace-down; }
+    Mod+Ctrl+Period         { move-workspace-up; }
+    Mod+Ctrl+Slash         { move-workspace-down; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
