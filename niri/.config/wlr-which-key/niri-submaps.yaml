@@ -42,7 +42,7 @@ menu:
         cmd: nautilus
       - key: "i"
         desc: internet browser
-        cmd: floorp
+        cmd: waterfox
       - key: "n"
         desc: new launcher 
         cmd: rofi -show drun -theme grid-launcher
@@ -94,6 +94,9 @@ menu:
         desc: δ
         cmd: niri msg action focus-workspace 5
       - key: "s"
+        desc: social
+        cmd: niri msg action focus-workspace socialone
+      - key: "mod4+s"
         desc: social
         cmd: niri msg action focus-workspace socialone
       - key: "m"

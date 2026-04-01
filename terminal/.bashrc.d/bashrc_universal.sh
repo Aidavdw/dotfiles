@@ -5,7 +5,7 @@
 # Default programs
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER=floorp
+export BROWSER=waterfox
 
 alias grep='grep --color=auto'
 
