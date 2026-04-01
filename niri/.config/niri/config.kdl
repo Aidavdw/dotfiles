@@ -198,13 +198,20 @@ window-rule {
     draw-border-with-background false
 }
 
+// Matchers:
+// On same line: must have all
+// On new line: either
+
 window-rule {
-    match app-id="Alacritty"
+    // Open wifi menu floating
+    match app-id="Alacritty" title="impala"
+    open-floating true
+}
 
-    border {
-        on
-    }
-
+window-rule {
+    // Open bluetooth menu floating
+    match app-id="Alacritty" title="bluetui"
+    open-floating true
 }
 
 // Work around WezTerm's initial configure bug

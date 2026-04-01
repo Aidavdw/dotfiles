@@ -49,6 +49,15 @@ menu:
       - key: "mod4+n"
         desc: new launcher 
         cmd: rofi -show drun -theme grid-launcher
+      - key: "s"
+        desc: settings
+        submenu:
+          - key: "w"
+            desc: WiFi
+            cmd: ~/auto-scripts/open-wifi-menu.sh
+          - key: "b"
+            desc: Bluetooth
+            cmd: ~/auto-scripts/open-bluetooth-menu.sh
   - key: "d"
     desc: Modify workspace or window
     submenu:
