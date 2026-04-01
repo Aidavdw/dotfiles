@@ -286,7 +286,7 @@
         "on-click": "shutdown now"
     },
     "custom/nvidia": {
-        "exec": "~/auto-scripts/dgpu-status-waybar.sh",
+        "exec": "~/.config/waybar/dgpu-status-icon.sh",
         "interval": 5,
         "return-type": "json",
         "tooltip": true
