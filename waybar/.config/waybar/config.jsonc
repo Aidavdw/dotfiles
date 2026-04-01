@@ -280,7 +280,7 @@
     "custom/quit": {
         "format": "<span size='120%'>󰗼</span>",
         "tooltip-format": "Quit hyperland and return to TTY",
-        "on-click": "hyprctl dispatch exit"
+        "on-click": "~/.config/waybar/exit-wm.sh"
     },
     "custom/lock": {
         "format": "<span size='120%'>󰍁</span>",
