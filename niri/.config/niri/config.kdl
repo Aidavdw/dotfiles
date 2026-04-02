@@ -61,7 +61,7 @@ input {
 
 // get names of monitors and capabilities: `niri msg outputs`
 // Built-in laptop
-/-output "eDP-1" {
+output "eDP-1" {
     mode "2560x1600"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.6
@@ -70,6 +70,24 @@ input {
     position x=0 y=0
     focus-at-startup
 }
+
+
+// Desk monitor nbb
+output "Iiyama North America PL2788Q 0" {
+    // Directly left of main display
+    position x=-2133 y=0
+    scale 1.2
+}
+
+
+// Denon AVR nbb
+output "DENON Ltd. DENON-AVR" {
+    // Directly left of main display
+    position x=-1920 y=0
+    scale 1
+}
+
+
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
@@ -84,7 +102,7 @@ layout {
     center-focused-column "on-overflow"
     always-center-single-column
 
-    background-color "#6c7086"
+    background-color "transparent"//"#6c7086"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -184,11 +202,20 @@ animations {
     // slowdown 3.0
 }
 
+// Ah, the numbers are assigned to my custom workspaces.
+// So, we'll have to make everything fixed I suppose.
+
 workspace "fastone" {}
 workspace "fasttwo" {}
 workspace "socialone" {}
 workspace "socialtwo" {}
 workspace "mail" {}
+
+// Put swaybg inside the overview backdrop.
+layer-rule {
+    match namespace="awww-daemon"
+    place-within-backdrop true
+}
 
 // Default window rules for all
 window-rule {
@@ -292,7 +319,7 @@ binds {
     // quick workspaces are not behind the submap, they are direct mappings
     Mod+P hotkey-overlay-title="switch to fast workspace 1" { focus-workspace "fastone"; }
     Mod+Shift+P hotkey-overlay-title="move windows to fast1" { move-column-to-workspace "fastone"; }
-    Mod+Comma hotkey-overlay-title="switch to fast workspace 2" {focus-workspace "fastone"; }
+    Mod+Comma hotkey-overlay-title="switch to fast workspace 2" {focus-workspace "fasttwo"; }
     Mod+Shift+Comma hotkey-overlay-title="move windows to fast2" { move-column-to-workspace "fasttwo"; }
 
 
