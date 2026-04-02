@@ -72,8 +72,8 @@ def set_wallpaper_for_monitor(monitor, workspace):
             print("No wallpaper found, skipping")
             return
 
-    rand_one = f"{random.random():.3f}"
-    rand_two = f"{random.random():.3f}"
+    # rand_one = f"{random.random():.3f}"
+    # rand_two = f"{random.random():.3f}"
 
     subprocess.run(
         [
@@ -81,18 +81,21 @@ def set_wallpaper_for_monitor(monitor, workspace):
             "img",
             "--outputs",
             monitor,
-            "--transition-type",
-            "outer",
-            "--transition-fps",
-            "60",
             "--transition-step",
-            "60",
-            "--transition-bezier",
-            ".36,.11,.17,.93",
-            "--transition-duration",
-            "1.5",
-            "--transition-pos",
-            f"{rand_one},{rand_two}",
+            "5",
+            # These are for the radial transition, but I found that a little too annoying
+            # "--transition-type",
+            # "outer",
+            # "--transition-fps",
+            # "60",
+            # "--transition-step",
+            # "60",
+            # "--transition-bezier",
+            # ".36,.11,.17,.93",
+            # "--transition-duration",
+            # "1.5",
+            # "--transition-pos",
+            # f"{rand_one},{rand_two}",
             str(file),
         ]
     )
@@ -188,9 +191,6 @@ def run_niri():
         # Send correct request
         request = json.dumps("EventStream") + "\n"
         sock.sendall(request.encode("utf-8"))
-
-        # IMPORTANT: signal we're done sending
-        sock.shutdown(socket.SHUT_WR)
 
         f = sock.makefile()
 
