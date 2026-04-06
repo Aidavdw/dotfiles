@@ -4,8 +4,10 @@
 input {
     keyboard {
         xkb {
-            layout "graphaida,us"
+            // layout "graphaida,us"
+            layout "graphre,graphaida,us"
 
+            // options "grp:win_space_toggle"
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
@@ -62,7 +64,7 @@ input {
 // get names of monitors and capabilities: `niri msg outputs`
 // Built-in laptop
 output "eDP-1" {
-    mode "2560x1600"
+    // mode "2560x1600@60.002"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.6
     transform "normal"
@@ -74,6 +76,7 @@ output "eDP-1" {
 
 // Desk monitor nbb
 output "Iiyama North America PL2788Q 0" {
+    mode "2560x1440"
     // Directly left of main display
     position x=-2133 y=0
     scale 1.2
@@ -170,6 +173,8 @@ layout {
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
+spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
+spawn-at-startup "hypridle"
 
 
 hotkey-overlay {
@@ -257,6 +262,14 @@ window-rule {
     default-column-width { fixed 1200; }
     default-window-height { fixed 600; }
     open-floating true
+}
+
+
+
+window-rule {
+    match app-id="Alacritty" title="nchat"
+    open-on-workspace "socialone"
+    open-focused false
 }
 
 // Work around WezTerm's initial configure bug
