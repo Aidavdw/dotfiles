@@ -67,38 +67,38 @@ default xkb_symbols "basic" {
     // 'z' - x
     // 'x' - 'j'
 
-    key <AD01> {[ b, B, VoidSymbol, VoidSymbol ]};
-    key <AD02> {[ l, L, VoidSymbol, VoidSymbol ]};
-    key <AD03> {[ d, D, VoidSymbol, VoidSymbol ]};
-    key <AD04> {[ w, W, VoidSymbol, VoidSymbol ]};
-    key <AD05> {[ x, X, VoidSymbol, VoidSymbol ]};
+    key <AD01> {[ b, B, asciitilde, VoidSymbol ]};
+    key <AD02> {[ l, L, less, VoidSymbol ]};
+    key <AD03> {[ d, D, greater, VoidSymbol ]};
+    key <AD04> {[ w, W, percent, VoidSymbol ]};
+    key <AD05> {[ x, X, asciicircum, VoidSymbol ]};
     key <AD06> {[ z, Z, VoidSymbol, VoidSymbol, PageUp, VoidSymbol ] };
     key <AD07> {[ f, F, VoidSymbol, VoidSymbol, Home, 7 ]};
     key <AD08> {[ o, O, VoidSymbol, VoidSymbol, Up, 8 ]};
     key <AD09> {[ u, U, VoidSymbol, VoidSymbol, End, 9 ]};
     key <AD10> {[ minus, underscore, VoidSymbol, VoidSymbol, Delete, Plus ]};
-    key <AD11> {[ equals, plus, VoidSymbol, VoidSymbol ] };
-    key <AD12> {[ exclam, aciitilde, VoidSymbol, VoidSymbol ] };
+    key <AD11> {[ equal, plus, VoidSymbol, VoidSymbol ] };
+    key <AD12> {[ exclam, grave, VoidSymbol, VoidSymbol ] };
     key <BKSL> {[ backslash, bar, VoidSymbol, VoidSymbol ]};
-    key <AC01> {[ n, N, VoidSymbol, VoidSymbol ]};
-    key <AC02> {[ r, R, VoidSymbol, VoidSymbol ]};
-    key <AC03> {[ t, T, VoidSymbol, VoidSymbol ]};
-    key <AC04> {[ s, S, VoidSymbol, VoidSymbol ]};
-    key <AC05> {[ g, G, VoidSymbol, VoidSymbol ]};
+    key <AC01> {[ n, N, braceleft, VoidSymbol ]};
+    key <AC02> {[ r, R, bracketleft, VoidSymbol ]};
+    key <AC03> {[ t, T, dollar, VoidSymbol ]};
+    key <AC04> {[ s, S, ampersand, VoidSymbol ]};
+    key <AC05> {[ g, G, numbersign, VoidSymbol ]};
     key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, PageDown, 0 ]};
     key <AC07> {[ h, H, VoidSymbol, VoidSymbol, Left, 4 ]};
     key <AC08> {[ a, A, VoidSymbol, VoidSymbol, Down, 5 ]};
     key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
     key <AC10> {[ i, I, VoidSymbol, VoidSymbol, BackSpace, BackSpace ]};
     key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol ]};
-    key <AB01> {[ q, Q, VoidSymbol, VoidSymbol ]};
-    key <AB02> {[ j, J, VoidSymbol, VoidSymbol ]};
-    key <AB03> {[ m, M, VoidSymbol, VoidSymbol ]};
-    key <AB04> {[ c, C, VoidSymbol, VoidSymbol ]};
-    key <AB05> {[ v, V, VoidSymbol, VoidSymbol ]};
+    key <AB01> {[ q, Q, braceright, VoidSymbol ]};
+    key <AB02> {[ j, J, bracketright, VoidSymbol, XF86AudioLowerVolume ]};
+    key <AB03> {[ m, M, at, VoidSymbol, XF86AudioRaiseVolume ]};
+    key <AB04> {[ c, C, asterisk, VoidSymbol, XF86AudioPlay ]};
+    key <AB05> {[ v, V, EuroSign, VoidSymbol ]};
     key <AB06> {[ k, K, VoidSymbol, VoidSymbol ]};
     key <AB07> {[ p, P, VoidSymbol, VoidSymbol, colon, 1 ]};
-    key <AB08> {[ comma, bracketleft, VoidSymbol, VoidSymbol ]};
+    key <AB08> {[ comma, bracketleft, VoidSymbol, VoidSymbol, semicolon ]};
     key <AB09> {[ period, bracketright, VoidSymbol, VoidSymbol ]};
     key <AB10> {[ slash, question, VoidSymbol, VoidSymbol ]};
 
@@ -109,15 +109,6 @@ default xkb_symbols "basic" {
     // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
     key <NFER> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
 
-    // Because we now use caps as a modifier,
-    // we should have another way to lock to level 2
-    // For some reason it defaults to setting modifier_map Lock to ESC,
-    // which means that no matter how you press esc it will trigger caps.
-    // that is udesired.
-    key <ESC> { [ Escape, Caps_Lock ],
-    type[Group1] = "TWO_LEVEL",
-     actions[Group1] = [ NoAction(), LockMods(mods=Lock) ] };
-    //modifier_map Lock { <CAPS> };
 
 
     // Use Caps Lock to open the Extend (5th level) layer
@@ -137,7 +128,7 @@ default xkb_symbols "basic" {
     include "level3(ralt_switch)"
     // hiragana/katakana
     // No snippet for this, so we make a new one (based on a snippet)
-    key <HKTK> {[ ISO_Level3_Shift ], type[group1]="ONE_LEVEL" };
+    key <HKTG> {[ ISO_Level3_Shift ], type[group1]="ONE_LEVEL" };
 
 
     key <LALT> {[ Super_L ]};
@@ -153,5 +144,14 @@ default xkb_symbols "basic" {
     key <XFER> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
 
 
+    // Because we now use caps as a modifier,
+    // we should have another way to lock to level 2
+    // For some reason it makes ESC trigger the capslock.
+    // It probably comes from some compatibility settings that are automatically loaded.
+    // Regardless, this behaviour is undesired.
+    // Fortunately we can override that behaviour.
+    key <ESC> { [ Escape, Caps_Lock ],
+        type[Group1] = "TWO_LEVEL",
+        actions[Group1] = [ NoAction(), LockMods(mods=Lock) ] };
 
 };
