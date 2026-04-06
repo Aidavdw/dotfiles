@@ -14,61 +14,144 @@
 // label 'basic' is arbitrary, just a name.
 // Pick this as the default layout
 default xkb_symbols "basic" {
+
+    // By default, xkb only expects up to level 4.
+    // We want to add an extend layer (5th level), so we need to make it aware.
+    key.type[Group1] = "EIGHT_LEVEL";
+
+    // The columns are as follows:
+    // Normal | Shift | AltGr (3rd level) | AltGr + shift | Extend (5th level) | Extend + Shift | Extend + Shift + AltGr
+
     // This is already an alias for <HZTG> (zenkaku/hankaku),
     // so that does not have to be defined separately
-    key <TLDE> { [        grave,   asciitilde,   VoidSymbol,   VoidSymbol ] };
-    key <AE01> { [            1,       exclam,   VoidSymbol,   VoidSymbol ] };
-    key <AE02> { [            2,           at,   VoidSymbol,   VoidSymbol ] };
-    key <AE03> { [            3,   numbersign,   VoidSymbol,   VoidSymbol ] };
-    key <AE04> { [            4,       dollar,   VoidSymbol,   VoidSymbol ] };
-    key <AE05> { [            5,      percent,   VoidSymbol,   VoidSymbol ] };
-    key <AE06> { [            6,  asciicircum,   VoidSymbol,   VoidSymbol ] };
-    key <AE07> { [            7,    ampersand,   VoidSymbol,   VoidSymbol ] };
-    key <AE08> { [            8,     asterisk,   VoidSymbol,   VoidSymbol ] };
-    key <AE09> { [            9,    parenleft,   VoidSymbol,   VoidSymbol ] };
-    key <AE10> { [            0,   parenright,   VoidSymbol,   VoidSymbol ] };
-    key <AE11> { [  bracketleft,    braceleft,   VoidSymbol,   VoidSymbol ] };
-    key <AE12> { [ bracketright,   braceright,   VoidSymbol,   VoidSymbol ] };
-    key <AD01> { [            b,            B,   VoidSymbol,   VoidSymbol ] };
-    key <AD02> { [            l,            L,   VoidSymbol,   VoidSymbol ] };
-    key <AD03> { [            d,            D,   VoidSymbol,   VoidSymbol ] };
-    key <AD04> { [            w,            W,   VoidSymbol,   VoidSymbol ] };
-    key <AD05> { [            x,            X,   VoidSymbol,   VoidSymbol ] };
-    key <AD06> { [            z,   Z,   VoidSymbol,   VoidSymbol ] };
-    key <AD07> { [            f,            F,   VoidSymbol,   VoidSymbol ] };
-    key <AD08> { [            o,            O,   VoidSymbol,   VoidSymbol ] };
-    key <AD09> { [            u,            U,   VoidSymbol,   VoidSymbol ] };
-    key <AD10> { [            minus,            underscore,   VoidSymbol,   VoidSymbol ] };
-    key <AD11> { [    equals,        plus,   VoidSymbol,   VoidSymbol ] };
-    key <AD12> { [        exclam,         aciitilde,   VoidSymbol,   VoidSymbol ] };
-    key <BKSL> { [    backslash,          bar,   VoidSymbol,   VoidSymbol ] };
-    key <AC01> { [            n,            N,   VoidSymbol,   VoidSymbol ] };
-    key <AC02> { [            r,            R,   VoidSymbol,   VoidSymbol ] };
-    key <AC03> { [            t,            T,   VoidSymbol,   VoidSymbol ] };
-    key <AC04> { [            s,            S,   VoidSymbol,   VoidSymbol ] };
-    key <AC05> { [            g,            G,   VoidSymbol,   VoidSymbol ] };
-    key <AC06> { [            y,            Y,   VoidSymbol,   VoidSymbol ] };
-    key <AC07> { [            h,            H,   VoidSymbol,   VoidSymbol ] };
-    key <AC08> { [            a,            A,   VoidSymbol,   VoidSymbol ] };
-    key <AC09> { [            e,            E,   VoidSymbol,   VoidSymbol ] };
-    key <AC10> { [            i,            I,   VoidSymbol,   VoidSymbol ] };
-    key <AC11> { [        apostrophe,     quotedbl,   VoidSymbol,   VoidSymbol ] };
-    key <AB01> { [            q,            Q,   VoidSymbol,   VoidSymbol ] };
-    key <AB02> { [            j,            J,   VoidSymbol,   VoidSymbol ] };
-    key <AB03> { [            m,            M,   VoidSymbol,   VoidSymbol ] };
-    key <AB04> { [            c,            C,   VoidSymbol,   VoidSymbol ] };
-    key <AB05> { [            v,            V,   VoidSymbol,   VoidSymbol ] };
-    key <AB06> { [            k,            K,   VoidSymbol,   VoidSymbol ] };
-    key <AB07> { [            p,            P,   VoidSymbol,   VoidSymbol ] };
-    key <AB08> { [       comma,     bracketleft,   VoidSymbol,   VoidSymbol ] };
-    key <AB09> { [        period,    bracketright,   VoidSymbol,   VoidSymbol ] };
-    key <AB10> { [        slash,         question,   VoidSymbol,   VoidSymbol ] };
+    key <TLDE> {[grave, asciitilde, VoidSymbol, VoidSymbol ]};
+    // Number keys and symbols included for completeness, but ideally you'd use the symbol and number layers for them :)
+    key <AE01> {[ 1, exclam, VoidSymbol, VoidSymbol ]};
+    key <AE02> {[ 2, at, VoidSymbol, VoidSymbol ]};
+    key <AE03> {[ 3, numbersign, VoidSymbol, VoidSymbol ]};
+    key <AE04> {[ 4, dollar, VoidSymbol, VoidSymbol ]};
+    key <AE05> {[ 5, percent, VoidSymbol, VoidSymbol ]};
+    key <AE06> {[ 6, asciicircum, VoidSymbol, VoidSymbol ]};
+    key <AE07> {[ 7, ampersand, VoidSymbol, VoidSymbol ]};
+    key <AE08> {[ 8, asterisk, VoidSymbol, VoidSymbol ]};
+    key <AE09> {[ 9, parenleft, VoidSymbol, VoidSymbol ]};
+    key <AE10> {[ 0, parenright, VoidSymbol, VoidSymbol ]};
+    // I don't really use these, they are way too far up.
+    // Just as a backup, they are mapped to [ and ],
+    // because the ( and ) have been moved down.
+    key <AE11> {[ bracketleft, braceleft, VoidSymbol, VoidSymbol ]};
+    key <AE12> {[ bracketright, braceright, VoidSymbol, VoidSymbol ]};
+
+    // Modifications from graphite:
+    // Base graphite has j above the i.
+    // Dutch has the 'ij' bigram (or rather, letter), 
+    // and japanese pretty common 'ji'.
+    // That's pretty awkward with the double pinky.
+    // I tried several variations:
+    // Idea: exchange with uncommonly used character like q or x.
+    // attempt 1: Swap q and j.
+    // sounds nice, but then 'qu' and 'qui', is hard to type.
+    // almost all 'q' follow this trigram, so that sucks.
+    // attempt 2: q -> j, ' -> q, j -> '
+    // This modification doesn't really affect english, but fixes
+    // it for JP and NL.
+    // however, computer use is much heavier on q than you'd think (vim exit etc)
+    // attempt 3: x -> j, ' -> x, j -> '
+    // This works great!
+    // One more issue: x is much more common than z.
+    // Can we make that a little more accessible?
+    // We already remapped 'x', so maybe we can put it where z is instead?
+    // So final mod:
+    // 'j' - -
+    // '-' - Z
+    // 'z' - x
+    // 'x' - 'j'
+
+    key <AD01> {[ b, B, VoidSymbol, VoidSymbol ]};
+    key <AD02> {[ l, L, VoidSymbol, VoidSymbol ]};
+    key <AD03> {[ d, D, VoidSymbol, VoidSymbol ]};
+    key <AD04> {[ w, W, VoidSymbol, VoidSymbol ]};
+    key <AD05> {[ x, X, VoidSymbol, VoidSymbol ]};
+    key <AD06> {[ z, Z, VoidSymbol, VoidSymbol, PageUp, VoidSymbol ] };
+    key <AD07> {[ f, F, VoidSymbol, VoidSymbol, Home, 7 ]};
+    key <AD08> {[ o, O, VoidSymbol, VoidSymbol, Up, 8 ]};
+    key <AD09> {[ u, U, VoidSymbol, VoidSymbol, End, 9 ]};
+    key <AD10> {[ minus, underscore, VoidSymbol, VoidSymbol, Delete, Plus ]};
+    key <AD11> {[ equals, plus, VoidSymbol, VoidSymbol ] };
+    key <AD12> {[ exclam, aciitilde, VoidSymbol, VoidSymbol ] };
+    key <BKSL> {[ backslash, bar, VoidSymbol, VoidSymbol ]};
+    key <AC01> {[ n, N, VoidSymbol, VoidSymbol ]};
+    key <AC02> {[ r, R, VoidSymbol, VoidSymbol ]};
+    key <AC03> {[ t, T, VoidSymbol, VoidSymbol ]};
+    key <AC04> {[ s, S, VoidSymbol, VoidSymbol ]};
+    key <AC05> {[ g, G, VoidSymbol, VoidSymbol ]};
+    key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, PageDown, 0 ]};
+    key <AC07> {[ h, H, VoidSymbol, VoidSymbol, Left, 4 ]};
+    key <AC08> {[ a, A, VoidSymbol, VoidSymbol, Down, 5 ]};
+    key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
+    key <AC10> {[ i, I, VoidSymbol, VoidSymbol, BackSpace, BackSpace ]};
+    key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol ]};
+    key <AB01> {[ q, Q, VoidSymbol, VoidSymbol ]};
+    key <AB02> {[ j, J, VoidSymbol, VoidSymbol ]};
+    key <AB03> {[ m, M, VoidSymbol, VoidSymbol ]};
+    key <AB04> {[ c, C, VoidSymbol, VoidSymbol ]};
+    key <AB05> {[ v, V, VoidSymbol, VoidSymbol ]};
+    key <AB06> {[ k, K, VoidSymbol, VoidSymbol ]};
+    key <AB07> {[ p, P, VoidSymbol, VoidSymbol, colon, 1 ]};
+    key <AB08> {[ comma, bracketleft, VoidSymbol, VoidSymbol ]};
+    key <AB09> {[ period, bracketright, VoidSymbol, VoidSymbol ]};
+    key <AB10> {[ slash, question, VoidSymbol, VoidSymbol ]};
 
 
     // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
     // Muhenkan, left from spacebar
-    key <MUHE> { [ period, VoidSymbol, VoidSymbol, VoidSymbol  ] };
+    key <MUHE> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
     // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
-    key <NFER> { [ period, VoidSymbol, VoidSymbol, VoidSymbol  ] };
+    key <NFER> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
+
+    // Because we now use caps as a modifier,
+    // we should have another way to lock to level 2
+    // For some reason it defaults to setting modifier_map Lock to ESC,
+    // which means that no matter how you press esc it will trigger caps.
+    // that is udesired.
+    key <ESC> { [ Escape, Caps_Lock ],
+    type[Group1] = "TWO_LEVEL",
+     actions[Group1] = [ NoAction(), LockMods(mods=Lock) ] };
+    //modifier_map Lock { <CAPS> };
+
+
+    // Use Caps Lock to open the Extend (5th level) layer
+    // There already are many snippets we can re-use for mod keys in e.g.
+    // `/usr/share/X11/xkb/symbols/level5`.
+    // We use them using an `include`.
+    key <CAPS> { [ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+
+    // We want to have a third-layer opener on both hands.
+    // JP keyboard does not have a ralt.
+    // IBM model M does not have a Meta
+    // importance: Meta (mod) > Third layer > alt (mod)
+    // So: on left hand, l_meta should open layer 3.
+    // l_alt should function as the meta key instead.
+    // On right hand: use ralt. If not available (JP), use Katakana/Hiragana key
+    include "level3(lwin_switch)"
+    include "level3(ralt_switch)"
+    // hiragana/katakana
+    // No snippet for this, so we make a new one (based on a snippet)
+    key <HKTK> {[ ISO_Level3_Shift ], type[group1]="ONE_LEVEL" };
+
+
+    key <LALT> {[ Super_L ]};
+
+    // If we have extra thumb keys (JP layout),
+    // we can use them for easier access to layer 5.
+    // Muhenkan, left from spacebar
+    key <MUHE> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+    // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
+    key <NFER> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+    // Henkan, right of spacebar
+    key <HENK> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+    key <XFER> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+
+
 
 };
