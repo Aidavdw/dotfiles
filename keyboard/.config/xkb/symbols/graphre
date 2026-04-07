@@ -77,7 +77,7 @@ default xkb_symbols "basic" {
     key <AD07> {[ f, F, grave, VoidSymbol, Home, 7 ]};
     key <AD08> {[ o, O, asciicircum, VoidSymbol, Up, 8 ]};
     key <AD09> {[ u, U, VoidSymbol, bar, End, 9 ]};
-    key <AD10> {[ minus, underscore, VoidSymbol, VoidSymbol, Delete, Plus ]};
+    key <AD10> {[ minus, underscore, VoidSymbol, VoidSymbol, Delete, minus ]};
     key <AD11> {[ equal, plus, VoidSymbol, VoidSymbol ] };
     // Compose key
     key <AD12> {[ Multi_key ], type[group1]="ONE_LEVEL" };
@@ -93,7 +93,7 @@ default xkb_symbols "basic" {
     key <AC08> {[ a, A, dollar, VoidSymbol, Down, 5 ]};
     key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
     key <AC10> {[ i, I, VoidSymbol, VoidSymbol, BackSpace, BackSpace ]};
-    key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol ]};
+    key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol, VoidSymbol, plus ]};
     // bottom row
     key <AB01> {[ q, Q, braceright, VoidSymbol ]};
     key <AB02> {[ j, J, bracketright, VoidSymbol, XF86AudioLowerVolume ]};
@@ -101,12 +101,12 @@ default xkb_symbols "basic" {
     key <AB03> {[ m, M, VoidSymbol, VoidSymbol, XF86AudioRaiseVolume ]};
     key <AB04> {[ c, C, asterisk, VoidSymbol, XF86AudioPlay ]};
     key <AB05> {[ v, V, EuroSign, VoidSymbol ]};
-    key <AB06> {[ k, K, VoidSymbol, VoidSymbol ]};
+    key <AB06> {[ k, K, VoidSymbol, VoidSymbol, VoidSymbol, period ]};
     key <AB07> {[ p, P, VoidSymbol, VoidSymbol, colon, 1 ]};
     // TODO: Altgr () is 「」
-    key <AB08> {[ comma, braceleft, VoidSymbol, VoidSymbol, semicolon ]};
-    key <AB09> {[ period, braceright, VoidSymbol, VoidSymbol ]};
-    key <AB10> {[ slash, question, backslash, VoidSymbol ]};
+    key <AB08> {[ comma, parenleft, U300C, VoidSymbol, semicolon, 2 ]};
+    key <AB09> {[ period, parenright, U300D, VoidSymbol, VoidSymbol, 3 ]};
+    key <AB10> {[ slash, question, backslash, VoidSymbol, Return ]};
 
     // Some extra functionality on space. Not on the first two layers,
     // because you might accidentally trigger.
@@ -123,6 +123,11 @@ default xkb_symbols "basic" {
     // Right functions as 'Ro'.
     // Me no likey. Put them back together.
     key <AB11> {[ Shift_R ], type[group1]="ONE_LEVEL" };
+
+    // On JP keyboard, backspace cut in two.
+    // Reset.
+    key <AE13> {[ BackSpace ], type[group1]="ONE_LEVEL" };
+
 
 
     // Use Caps Lock to open the Extend (5th level) layer
