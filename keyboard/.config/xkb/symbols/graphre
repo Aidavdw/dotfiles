@@ -85,7 +85,7 @@ default xkb_symbols "basic" {
     key <AC03> {[ t, T, dollar, VoidSymbol ]};
     key <AC04> {[ s, S, ampersand, VoidSymbol ]};
     key <AC05> {[ g, G, numbersign, VoidSymbol ]};
-    key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, PageDown, 0 ]};
+    key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, Escape, 0 ]};
     key <AC07> {[ h, H, VoidSymbol, VoidSymbol, Left, 4 ]};
     key <AC08> {[ a, A, VoidSymbol, VoidSymbol, Down, 5 ]};
     key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
@@ -102,6 +102,10 @@ default xkb_symbols "basic" {
     key <AB09> {[ period, bracketright, VoidSymbol, VoidSymbol ]};
     key <AB10> {[ slash, question, VoidSymbol, VoidSymbol ]};
 
+    // Some extra functionality on space. Not on the first two layers,
+    // because you might accidentally trigger.
+    key <SPCE> {[ space, space, Tab, VoidSymbol, Return ]};
+
 
     // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
     // Muhenkan, left from spacebar
@@ -109,6 +113,10 @@ default xkb_symbols "basic" {
     // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
     key <NFER> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
 
+    // On JP keyboard, left shift is split in two.
+    // Right functions as 'Ro'.
+    // Me no likey. Put them back together.
+    key <AB11> {[ Shift_R ], type[group1]="ONE_LEVEL" };
 
 
     // Use Caps Lock to open the Extend (5th level) layer
@@ -122,25 +130,33 @@ default xkb_symbols "basic" {
     // IBM model M does not have a Meta
     // importance: Meta (mod) > Third layer > alt (mod)
     // So: on left hand, l_meta should open layer 3.
-    // l_alt should function as the meta key instead.
+    // l_alt should function as the meta key instead (for window manager binds etc)
     // On right hand: use ralt. If not available (JP), use Katakana/Hiragana key
     include "level3(lwin_switch)"
     include "level3(ralt_switch)"
+    key <LALT> {[ Super_L ]};
     // hiragana/katakana
     // No snippet for this, so we make a new one (based on a snippet)
     key <HKTG> {[ ISO_Level3_Shift ], type[group1]="ONE_LEVEL" };
 
+    // We have mapped both l_alt and r_alt to open third layer (AltGr).
+    // I hardly use applications that bind anything to Alt + ... ,
+    // but just in case, it is nice to have one.
+    // I never really use right ctrl (maybe bad form... but whatever!)
+    // So, remap that to alt.
+    // Specifically, Alt_L, because some programs hardcode that.
+    key <RCTL> {[ Alt_L ]};
 
-    key <LALT> {[ Super_L ]};
 
     // If we have extra thumb keys (JP layout),
     // we can use them for easier access to layer 5.
     // Muhenkan, left from spacebar
     key <MUHE> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
-    // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
+    // On some rare keyboards, <MUHE> has the same scancode as <NFER>.
     key <NFER> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
     // Henkan, right of spacebar
     key <HENK> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+    // On some rare keyboards, <HENK> has the same scancode as <XFER>.
     key <XFER> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
 
 
