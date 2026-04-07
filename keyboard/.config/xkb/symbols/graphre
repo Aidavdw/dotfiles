@@ -67,40 +67,46 @@ default xkb_symbols "basic" {
     // 'z' - x
     // 'x' - 'j'
 
-    key <AD01> {[ b, B, asciitilde, VoidSymbol ]};
+    // top row
+    key <AD01> {[ b, B, at, VoidSymbol ]};
     key <AD02> {[ l, L, less, VoidSymbol ]};
     key <AD03> {[ d, D, greater, VoidSymbol ]};
     key <AD04> {[ w, W, percent, VoidSymbol ]};
-    key <AD05> {[ x, X, asciicircum, VoidSymbol ]};
+    key <AD05> {[ x, X, VoidSymbol, VoidSymbol ]};
     key <AD06> {[ z, Z, VoidSymbol, VoidSymbol, PageUp, VoidSymbol ] };
-    key <AD07> {[ f, F, VoidSymbol, VoidSymbol, Home, 7 ]};
-    key <AD08> {[ o, O, VoidSymbol, VoidSymbol, Up, 8 ]};
-    key <AD09> {[ u, U, VoidSymbol, VoidSymbol, End, 9 ]};
+    key <AD07> {[ f, F, grave, VoidSymbol, Home, 7 ]};
+    key <AD08> {[ o, O, asciicircum, VoidSymbol, Up, 8 ]};
+    key <AD09> {[ u, U, VoidSymbol, bar, End, 9 ]};
     key <AD10> {[ minus, underscore, VoidSymbol, VoidSymbol, Delete, Plus ]};
     key <AD11> {[ equal, plus, VoidSymbol, VoidSymbol ] };
-    key <AD12> {[ exclam, grave, VoidSymbol, VoidSymbol ] };
+    // Compose key
+    key <AD12> {[ Multi_key ], type[group1]="ONE_LEVEL" };
     key <BKSL> {[ backslash, bar, VoidSymbol, VoidSymbol ]};
+    // centre row
     key <AC01> {[ n, N, braceleft, VoidSymbol ]};
     key <AC02> {[ r, R, bracketleft, VoidSymbol ]};
-    key <AC03> {[ t, T, dollar, VoidSymbol ]};
+    key <AC03> {[ t, T, exclam, VoidSymbol ]};
     key <AC04> {[ s, S, ampersand, VoidSymbol ]};
     key <AC05> {[ g, G, numbersign, VoidSymbol ]};
     key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, Escape, 0 ]};
-    key <AC07> {[ h, H, VoidSymbol, VoidSymbol, Left, 4 ]};
-    key <AC08> {[ a, A, VoidSymbol, VoidSymbol, Down, 5 ]};
+    key <AC07> {[ h, H, asciitilde, VoidSymbol, Left, 4 ]};
+    key <AC08> {[ a, A, dollar, VoidSymbol, Down, 5 ]};
     key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
     key <AC10> {[ i, I, VoidSymbol, VoidSymbol, BackSpace, BackSpace ]};
     key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol ]};
+    // bottom row
     key <AB01> {[ q, Q, braceright, VoidSymbol ]};
     key <AB02> {[ j, J, bracketright, VoidSymbol, XF86AudioLowerVolume ]};
-    key <AB03> {[ m, M, at, VoidSymbol, XF86AudioRaiseVolume ]};
+    // Arguably the most annoying key to reach on a staggered keyboard
+    key <AB03> {[ m, M, VoidSymbol, VoidSymbol, XF86AudioRaiseVolume ]};
     key <AB04> {[ c, C, asterisk, VoidSymbol, XF86AudioPlay ]};
     key <AB05> {[ v, V, EuroSign, VoidSymbol ]};
     key <AB06> {[ k, K, VoidSymbol, VoidSymbol ]};
     key <AB07> {[ p, P, VoidSymbol, VoidSymbol, colon, 1 ]};
-    key <AB08> {[ comma, bracketleft, VoidSymbol, VoidSymbol, semicolon ]};
-    key <AB09> {[ period, bracketright, VoidSymbol, VoidSymbol ]};
-    key <AB10> {[ slash, question, VoidSymbol, VoidSymbol ]};
+    // TODO: Altgr () is 「」
+    key <AB08> {[ comma, braceleft, VoidSymbol, VoidSymbol, semicolon ]};
+    key <AB09> {[ period, braceright, VoidSymbol, VoidSymbol ]};
+    key <AB10> {[ slash, question, backslash, VoidSymbol ]};
 
     // Some extra functionality on space. Not on the first two layers,
     // because you might accidentally trigger.
@@ -109,9 +115,9 @@ default xkb_symbols "basic" {
 
     // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
     // Muhenkan, left from spacebar
-    key <MUHE> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
+    key <MUHE> {[ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
     // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
-    key <NFER> { [ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
+    key <NFER> {[ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
 
     // On JP keyboard, left shift is split in two.
     // Right functions as 'Ro'.
@@ -123,7 +129,7 @@ default xkb_symbols "basic" {
     // There already are many snippets we can re-use for mod keys in e.g.
     // `/usr/share/X11/xkb/symbols/level5`.
     // We use them using an `include`.
-    key <CAPS> { [ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
+    key <CAPS> {[ ISO_Level5_Shift ], type[group1]="ONE_LEVEL" };
 
     // We want to have a third-layer opener on both hands.
     // JP keyboard does not have a ralt.
@@ -166,8 +172,8 @@ default xkb_symbols "basic" {
     // It probably comes from some compatibility settings that are automatically loaded.
     // Regardless, this behaviour is undesired.
     // Fortunately we can override that behaviour.
-    key <ESC> { [ Escape, Caps_Lock ],
+    key <ESC> {[ Escape, Caps_Lock ],
         type[Group1] = "TWO_LEVEL",
-        actions[Group1] = [ NoAction(), LockMods(mods=Lock) ] };
+        actions[Group1] = [ NoAction(), LockMods(mods=Lock) ]};
 
 };
