@@ -42,7 +42,7 @@ echo killing evolution
 sudo pkill evolution
 
 echo stopping background switcher, and awww-daemon
-pkill swww-daemon
+pkill awww-daemon
 pkill -f set-wallpaper-on-workspace-change-daemon
 
 # killing beeper
