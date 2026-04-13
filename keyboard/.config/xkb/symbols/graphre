@@ -2,7 +2,6 @@
 
 // Putting it the user directory makes it visible to some things, but not all.
 // Notably, localectl is unaware of anything in `~/.config/xkb`.
-// Therefore, you probably want to symlink this file to `/usr/share/X11/xkb/symbols/graphre`.
 
 // Good references of how making a custom layout in xkb works:
 // https://xkbcommon.org/doc/current/user-configuration.html#md_doc_2user-configuration
@@ -103,7 +102,6 @@ default xkb_symbols "basic" {
     key <AB05> {[ v, V, EuroSign, VoidSymbol ]};
     key <AB06> {[ k, K, VoidSymbol, VoidSymbol, VoidSymbol, period ]};
     key <AB07> {[ p, P, VoidSymbol, VoidSymbol, colon, 1 ]};
-    // TODO: Altgr () is 「」
     key <AB08> {[ comma, parenleft, U300C, VoidSymbol, semicolon, 2 ]};
     key <AB09> {[ period, parenright, U300D, VoidSymbol, VoidSymbol, 3 ]};
     key <AB10> {[ slash, question, backslash, VoidSymbol, Return ]};
