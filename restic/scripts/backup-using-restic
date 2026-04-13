@@ -23,11 +23,10 @@ done
 # Retention policy (how many backups to keep)
 KEEP_OPTIONS="--keep-hourly 2 --keep-daily 5 --keep-weekly 3 --keep-monthly 4"
 
-# Run restic commands
 echo "=== Unlocking repository ==="
 restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" unlock
 
-echo "=== Starting backup of $BACKUP_SOURCE ==="
+echo "=== Starting backup of $BACKUP_SOURCE using restic ==="
 # $BACKUP_SOURCE not in quotes so that multiple strings are seen as
 # multiple arguments.
 restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" --compression max backup $BACKUP_SOURCE
@@ -35,11 +34,13 @@ restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" --compression max backup $BACKUP_SO
 #echo "=== Applying retention policy ==="
 #restic -p "$RESTIC_PASSWD" -r "$BACKUP_REPO" forget $KEEP_OPTIONS --prune --cleanup-cache
 
-echo "=== Backing up music from $MUSIC_SOURCE ==="
+echo "=== Synchronising music from $MUSIC_SOURCE ==="
 # Add trailing / for source dirs: its name might be different from the one on the remote server.
-rsync -aPvh --delete-after --exclude ".snapshots" --out-format="%i | %M |  %n" --stats "$MUSIC_SOURCE/" "$MUSIC_TARGET" 
+# rsync does *not* support renaming files/reorganising directory structures. It will just re-copy stuff.
+# --fuzzy --delay-updates --delete-delay at least alleviates some of the deduplication.
+rsync -aPvh --delay-updates --delete-delay --exclude ".snapshots" --out-format="%i | %M |  %n" --stats "$MUSIC_SOURCE/" "$MUSIC_TARGET"
 
-#echo "=== Backing up pictures from $PICTURE_SOURCE ==="
-#rsync -aPvh --dry-run --out-format="%i | %M |  %n" --stats "$PICTURES_SOURCE/" "$PICTURES_TARGET"
+echo "=== Synchronising pictures from $PICTURES_SOURCE ==="
+rsync -aPvh --delay-updates --delete-delay --exclude ".snapshots" --out-format="%i | %M |  %n" --stats "$PICTURES_SOURCE/" "$PICTURES_TARGET"
 
 echo "=== Backup completed successfully ==="
