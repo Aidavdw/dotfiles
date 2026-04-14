@@ -41,7 +41,8 @@ background = "#f5e0dc"
 [colors.normal]
 black = "#45475a"
 red = "#f38ba8"
-green = "#a6e3a1"
+# This is actually Peach, because my colourblind ass cannot see the difference too well.
+green = "#fab387"
 yellow = "#f9e2af"
 blue = "#89b4fa"
 magenta = "#f5c2e7"
@@ -54,9 +55,10 @@ red = "#f38ba8"
 green = "#a6e3a1"
 yellow = "#f9e2af"
 blue = "#89b4fa"
-magenta = "#f5c2e7"
+magenta = "#cba6f7"
 cyan = "#94e2d5"
-white = "#a6adc8"
+# Much darker. People usually use this to make white stand out on coloured background.
+white = "#313244"
 
 [[colors.indexed_colors]]
 index = 16
