@@ -1,0 +1,79 @@
+# Global settings
+Create Both
+Expunge Both
+SyncState *
+
+# Account definition
+IMAPAccount accounts
+Host imap.strato.com
+Port 993
+User accounts@osphire.com
+PassCmd "secret-tool lookup password accountsmail"
+SSLType IMAPS
+
+# Remote store
+IMAPStore accounts-remote
+Account accounts
+
+# Local store
+MaildirStore accounts-local
+SubFolders Verbatim
+Path ~/mail/accounts/
+Inbox ~/mail/accounts/INBOX
+
+# Channel (sync definition)
+Channel accounts
+Far :accounts-remote:
+Near :accounts-local:
+Patterns *
+
+
+
+# Account definition
+IMAPAccount personal
+Host imap.strato.com
+Port 993
+User aida@osphire.com
+PassCmd "secret-tool lookup password personalmail"
+SSLType IMAPS
+
+# Remote store
+IMAPStore personal-remote
+Account personal
+
+# Local store
+MaildirStore personal-local
+SubFolders Verbatim
+Path ~/mail/personal/
+Inbox ~/mail/personal/INBOX
+
+# Channel (sync definition)
+Channel personal
+Far :personal-remote:
+Near :personal-local:
+Patterns *
+
+
+# Account definition
+IMAPAccount gforward
+Host imap.strato.com
+Port 993
+User forward@osphire.com
+PassCmd "secret-tool lookup password forwardgmail"
+SSLType IMAPS
+
+# Remote store
+IMAPStore gforward-remote
+Account gforward
+
+# Local store
+MaildirStore gforward-local
+SubFolders Verbatim
+Path ~/mail/gforward/
+Inbox ~/mail/gforward/INBOX
+
+# Channel (sync definition)
+Channel gforward
+Far :gforward-remote:
+Near :gforward-local:
+Patterns *
