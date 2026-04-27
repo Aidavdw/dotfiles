@@ -53,3 +53,11 @@ noremap j gj
 noremap k gk
 
 syntax on "Enable syntax highlighting
+
+" When opening a new file or buffer that is empty,
+" automatically enter insert mode.
+au BufNewFile * startinsert
+
+" Use 'Q' to save an exit.
+" This overrides the 'Ex mode' bind, which I never use anyway.
+map Q :wq!<CR>
