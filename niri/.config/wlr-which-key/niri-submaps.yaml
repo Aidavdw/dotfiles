@@ -58,6 +58,9 @@ menu:
           - key: "b"
             desc: Bluetooth
             cmd: ~/auto-scripts/open-bluetooth-menu.sh
+          - key: "a"
+            desc: "Audio"
+            cmd: pavucontrol
   - key: "d"
     desc: Modify workspace or window
     submenu:
