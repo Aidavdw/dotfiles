@@ -17,6 +17,9 @@ input {
             // localectl set-x11-keymap.
         }
 
+        repeat-delay 200
+        repeat-rate 30
+
         // Enable numlock on startup, omitting this setting disables it.
         numlock
 
@@ -86,6 +89,7 @@ output "Iiyama North America PL2788Q 0" {
 // Denon AVR nbb
 output "DENON Ltd. DENON-AVR" {
     // Directly left of main display
+    mode "1920x1080"
     position x=-1920 y=0
     scale 1
 }
