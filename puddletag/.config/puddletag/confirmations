@@ -1,0 +1,12 @@
+{
+  "Config0": {
+    "name": "preview_mode",
+    "value": true,
+    "description": "Confirm when exiting preview mode."
+  },
+  "Config1": {
+    "name": "delete_files",
+    "value": true,
+    "description": "Confirm when deleting files."
+  }
+}

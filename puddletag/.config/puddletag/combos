@@ -1,0 +1,43 @@
+{
+  "filter_text": {
+    "values": [
+      "",
+      ""
+    ]
+  },
+  "&Text": {
+    "values": [
+      "",
+      ""
+    ]
+  },
+  "&Pattern": {
+    "values": [
+      "",
+      ""
+    ]
+  },
+  "&Output": {
+    "values": [
+      "",
+      ""
+    ]
+  },
+  "&Field list (; separated):": {
+    "values": [
+      ""
+    ]
+  },
+  "&Format string": {
+    "values": [
+      "%title%",
+      "%comment%",
+      "%comment%"
+    ]
+  },
+  "&Separator": {
+    "values": [
+      ";"
+    ]
+  }
+}

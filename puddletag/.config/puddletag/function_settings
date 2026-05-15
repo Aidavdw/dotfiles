@@ -1,0 +1,47 @@
+{
+  "puddlestuff.functions_autonumbering": {
+    "arguments": [
+      1,
+      false,
+      1
+    ],
+    "fields": [
+      "__selected"
+    ]
+  },
+  "puddlestuff.functions_update_from_tag": {
+    "arguments": [
+      "",
+      "ID3"
+    ],
+    "fields": [
+      "just nothing to do with this"
+    ]
+  },
+  "puddlestuff.functions_texttotag": {
+    "arguments": [
+      "",
+      "",
+      ""
+    ],
+    "fields": [
+      "__selected"
+    ]
+  },
+  "puddlestuff.functions_formatValue": {
+    "arguments": [
+      "%comment%"
+    ],
+    "fields": [
+      "version"
+    ]
+  },
+  "puddlestuff.functions_split_by_sep": {
+    "arguments": [
+      ";"
+    ],
+    "fields": [
+      "__all"
+    ]
+  }
+}
