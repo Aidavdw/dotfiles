@@ -1,33 +1,30 @@
+// Beware! Arch repo uses the git version of rmpc.
+// Use the right version of the documentation!
 #![enable(implicit_some)]
 #![enable(unwrap_newtypes)]
 #![enable(unwrap_variant_newtypes)]
 (
-    address: "127.0.0.1:6600",
-    password: None,
     // haven't found the need to customise this yet.
     // Bootstrapped file is already in place though.
     theme: None,
-    cache_dir: None,
-    on_song_change: None,
+    // When skipping track, immediately start playback again instead of staying paused.
+    keep_state_on_song_change: false,
+    // rmpc gives a bunch of callbacks.
+    // Most I'd want to be on mpd directly though, not on just rmpc.
     volume_step: 5,
     max_fps: 30,
     scrolloff: 4,
     wrap_navigation: true,
     ignore_leading_the: true,
-    enable_mouse: true,
-    enable_config_hot_reload: true,
+    enable_mouse: false,
+    enable_config_hot_reload: false,
     status_update_interval_ms: 1000,
-    rewind_to_start_sec: None,
+    rewind_to_start_sec: Some(25),
     reflect_changes_to_playlist: false,
-    select_current_song_on_change: false,
-    browser_song_sort: [Disc, Track, Artist, Title],
+    browser_song_sort: [Disc, Track, Other("artistsort"), Artist, Title, Other("titlesort")],
     directories_sort: SortFormat(group_by_type: true, reverse: false),
     album_art: (
         method: Auto,
-        max_size_px: (width: 1200, height: 1200),
-        disabled_protocols: ["http://", "https://"],
-        vertical_align: Center,
-        horizontal_align: Center,
     ),
     keybinds: (
         global: {
@@ -110,9 +107,14 @@
             (value: "any",         label: "Any Tag"),
             (value: "artist",      label: "Artist"),
             (value: "album",       label: "Album"),
+            (value: "albumsort", label: "Album (Sort)"),
             (value: "albumartist", label: "Album Artist"),
+            (value: "albumartistsort", label: "Album Artist (Sort)"),
             (value: "title",       label: "Title"),
-            (value: "genre",       label: "Genre"),
+            (value: "titlesort", label: "Title (Sort)"),
+            (value: "genre",       label: "genre"),
+            (value: "composer", label: "Composer"),
+            (value: "composersort", label: "Composer (Sort)"),
         ],
     ),
     artists: (
@@ -124,12 +126,88 @@
             name: "Queue",
             pane: Split(
                 direction: Horizontal,
-                panes: [(size: "40%", pane: Pane(AlbumArt)), (size: "60%", pane: Pane(Queue))],
+                panes: [
+                    ( size: "2.8r", pane: Pane(AlbumArt)),
+                    (
+                        size: "65%",
+                        pane: Split(
+                            direction: Vertical,
+                            panes: [
+                                (
+                                    size: "3",
+                                    borders: "ALL",
+                                    border_symbols: Inherited(parent: Rounded, bottom_left: "├", bottom_right: "┤",),
+                                    pane: Split(
+                                        direction: Horizontal,
+                                        panes: [
+                                            (
+                                                size: "1",
+                                                pane: Pane(Empty())
+                                            ),
+                                            (
+                                                size: "100%",
+                                                pane: Pane(QueueHeader())
+                                            ),
+                                        ]
+                                    )
+                                ),
+                                (
+                                    size: "100%",
+                                    borders: "LEFT | RIGHT",
+                                    border_symbols: Rounded,
+                                    pane: Split(
+                                        direction: Horizontal,
+                                        panes: [
+                                            (
+                                                size: "1",
+                                                pane: Pane(Empty())
+                                            ),
+                                            (
+                                                size: "100%",
+                                                pane: Pane(Queue)
+                                            ),
+                                        ]
+                                    )
+                                ),
+                                (
+                                    size: "7",
+                                    borders: "ALL",
+                                    border_symbols: Inherited(parent: Rounded, top_left: "├", top_right: "┤",),
+                                    border_title: [(kind: Text(" Lyrics "))],
+                                    border_title_alignment: Right,
+                                    pane: Pane(Lyrics)
+                                ),
+
+                            ],
+                        )
+                    ),
+                ],
             ),
         ),
+        // TODO: When it updates, use a sort-by-artist pane
         (
             name: "Artists",
             pane: Pane(Artists),
+        ),
+//        (
+//            // Default "artists" panel
+//            name: "Artists",
+//            pane: Pane(Browser(
+//                levels: [
+//                    (
+//                        group_by: [[Artist]],
+//                        sort_by: [[Other("sortartist"), Artist]],
+//                    ),
+//                    (
+//                        group_by[[Album]],
+//                        sort_by: [[Other("originaldate"), Other("date")]],
+//                    ),
+//                ],
+//            )),
+//        ),
+        (
+            name: "Genres",
+            pane: Pane(Browser(root_tag: "genre", separator: ";")),
         ),
         (
             name: "Albums",
