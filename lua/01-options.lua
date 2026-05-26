@@ -86,7 +86,7 @@ vim.opt.breakindent = true
 vim.opt.list = true
 vim.opt.listchars = {
     tab = "» ",
-    trail = "·",
+    trail = "␣",
     nbsp = "␣",
     multispace = "·",
     -- So that space instead of tab for indentation does not mess you up

@@ -55,9 +55,9 @@ return {
         end,
         formatters_by_ft = {
             lua = { "stylua" },
-            yaml = { "yamlformat" },
+            yaml = { "yamlfmt" },
             sh = { "shfmt" },
-            json = { "fixjson" },
+            json = { "jq" },
             tex = { "tex-fmt" },
             -- TODO: add one for python
             -- TODO: Add bibtex-tidy for bibtex
@@ -77,6 +77,9 @@ return {
                     "--indent-type",
                     "Spaces",
                 },
+            },
+            jq = {
+                args = { "--indent", "2" },
             },
         },
     },

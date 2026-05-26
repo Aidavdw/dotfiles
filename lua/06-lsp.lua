@@ -28,6 +28,8 @@ vim.lsp.enable({
     "ruff",
     -- Obsidian-like markdown
     "markdown_oxide",
+    "fortls",
+    "fortitude",
 })
 
 -- Diagnostic Config

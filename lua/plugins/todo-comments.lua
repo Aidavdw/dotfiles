@@ -4,4 +4,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
+    keys = {
+        { "<leader>wt", "<cmd>Trouble todo focus=true<CR>", desc = "[W]indow: [T]odos" },
+    },
 }

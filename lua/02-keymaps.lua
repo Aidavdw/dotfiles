@@ -20,9 +20,6 @@ end, { desc = "Go to previous diagnostic" })
 -- Switch windows quickly
 vim.api.nvim_set_keymap("n", "<leader>n", "<C-w>w", { noremap = true, silent = true, desc = "Switch active split" })
 
--- Search through all todos, as marked with 'TODO_:', 'WARN_:' etc
-vim.keymap.set("n", "<leader>wq", "<cmd>TodoTelescope keywords=TODO,FIX,PERF<cr>", { desc = "[F]ind open [T]odos" })
-
 -- manually toggle the line wrap. Useful when stuff breaks because of line wrapping or lack thereof. Looking at you, markview.
 local line_wrap = true
 vim.keymap.set("n", "<leader>vw", function()

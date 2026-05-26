@@ -4,7 +4,8 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
         grep = {
-            rg_opts = "--vimgrep --hidden --follow --column --line-number --no-heading --color=always --smart-case -g '!{.git,node_modules, target}/*'",
+            -- Do not use --color=always, this will break it.
+            rg_opts = "--hidden --follow --column --line-number --no-heading --smart-case -g '!{.git,node_modules, target}/*'",
         },
     },
     config = function(_, opts)
