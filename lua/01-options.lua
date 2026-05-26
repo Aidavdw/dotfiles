@@ -128,3 +128,16 @@ vim.o.foldlevel = 99
 -- https://github.com/neovim/neovim/pull/20750
 vim.o.foldtext = ""
 vim.o.fillchars = "fold:-"
+
+-- TODO: Incremental selection with treesitter
+-- with treesitter.nvim I had this:
+-- allows you to select around the cursor and dynamically grow it.
+-- incremental_selection = {
+--     enable = true,
+--     keymaps = {
+--         init_selection = "<Enter>", -- set to `false` to disable one of the mappings
+--         node_incremental = "<Enter>",
+--         scope_incremental = "<S-Enter>",
+--         node_decremental = "<Backspace>",
+--     },
+-- },

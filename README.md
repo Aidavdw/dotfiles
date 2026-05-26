@@ -1,4 +1,6 @@
-A very lightweight, modern, yet featureful neovim configuration.
+My personal neovim configuration.
+A very lightweight, modern, yet featureful setup.
+Inspired by [kickstart](https://github.com/nvim-lua/kickstart.nvim), but built from the ground up.
 Optimised for note-taking and programming.
 It falls somewhere between a minimal and an IDE-like config:
 
