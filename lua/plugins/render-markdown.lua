@@ -1,7 +1,7 @@
 -- Fancy rendering of markdown
 return {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     filetypes = { "markdown" },
     ft = { "markdown" },
     ---@module 'render-markdown'

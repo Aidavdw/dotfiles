@@ -2,10 +2,6 @@
 return {
     "hiphish/rainbow-delimiters.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-    },
-
     -- This plugin also has a .setup() function,
     -- while actually storing its info directly in vim.g.rainbow_delimiters
     -- as it is merely a TreeSitter extension.
