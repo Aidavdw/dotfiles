@@ -26,6 +26,7 @@ input {
         // Switch layout does it for every window
         track-layout "global"
     }
+    
 
     touchpad {
         // tap to click
@@ -174,11 +175,13 @@ layout {
 
 }
 
+
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "waybar"
 spawn-at-startup "awww-daemon"
 spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
+spawn-at-startup "evolution"
 spawn-at-startup "hypridle"
 
 
@@ -213,14 +216,26 @@ animations {
     // slowdown 3.0
 }
 
-// Ah, the numbers are assigned to my custom workspaces.
-// So, we'll have to make everything fixed I suppose.
+
+// In niri, named workspaces are assigned the first couple of numbers.
+// They will also always be open.
+// At some point, when this gets merged (https://github.com/niri-wm/niri/pull/2997),
+// you can make them hidden (& gives negative workspace number)
+// Therefore break with hyprland setup:
+// fast1 and fast2 are now the 'home' ones, most easily accessible.
+// No dedicated 'home' on 'h'.
 
 workspace "fastone" {}
 workspace "fasttwo" {}
-workspace "socialone" {}
-workspace "socialtwo" {}
-workspace "mail" {}
+workspace "mail" {
+    open-on-output "eDP-1"
+}
+workspace "socialone" {
+    // This is where Discord, chats etc will open
+    open-on-output "eDP-1"
+}
+
+// TODO: Put waybar on top layer, so that it stays there when you go to Overview
 
 // Put swaybg inside the overview backdrop.
 layer-rule {
@@ -234,6 +249,13 @@ window-rule {
     clip-to-geometry true
     // If you set this to true, transparent windows will be fucked
     draw-border-with-background false
+}
+
+window-rule {
+    // Steam notifications should show up bottom-right, instead of centered.
+    // Taken from https://niri-wm.github.io/niri/Application-Issues.html#Steam
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
 }
 
 // Matchers:
@@ -262,7 +284,7 @@ window-rule {
 
 
 window-rule {
-    // music thing
+    // rmpc mpd client in small popup window
     match app-id="Alacritty" title="rmpc"
     default-column-width { fixed 1200; }
     default-window-height { fixed 600; }
@@ -271,10 +293,38 @@ window-rule {
 
 
 
+// Nchat locked to its own workspace
 window-rule {
     match app-id="Alacritty" title="nchat"
     open-on-workspace "socialone"
     open-focused false
+    block-out-from "screencast"
+    open-maximized-to-edges true
+}
+
+// HACK: Since the title changes and the app name stays the same,
+// it is impossible to match on just the 'new' windows or the 'main' window.
+// So instead, we'll just only open as fullscreen at start-up.
+
+// Evolution main window that auto-starts at boot: Open in fullscreen
+window-rule {
+    match app-id="org.gnome.Evolution" at-startup=true
+    open-on-workspace "mail"
+    open-focused false
+    block-out-from "screencast"
+    open-fullscreen true
+}
+
+/// Evolution pop-up windows: Open on top.
+window-rule {
+    match app-id="org.gnome.Evolution" at-startup=false
+    open-on-workspace "mail"
+    open-focused true
+    open-fullscreen false
+    block-out-from "screencast"
+    open-floating true
+    default-column-width { proportion 0.75; }
+    default-window-height { proportion 0.75; }
 }
 
 // Work around WezTerm's initial configure bug
@@ -397,43 +447,11 @@ binds {
     Mod+Shift+O     { move-window-up-or-to-workspace-up; }
     Mod+Shift+E     { move-column-right-or-to-monitor-right; }
 
-    // Alternative commands that move across workspaces when reaching
-    // the first or last window in a column.
-    // Mod+J     { focus-window-or-workspace-down; }
-    // Mod+K     { focus-window-or-workspace-up; }
-    // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
-    // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
-
-    // Mod+Home { focus-column-first; }
-    // Mod+End  { focus-column-last; }
-    // Mod+Ctrl+Home { move-column-to-first; }
-    // Mod+Ctrl+End  { move-column-to-last; }
-    //
-    // Mod+Shift+Left  { focus-monitor-left; }
-    // Mod+Shift+Down  { focus-monitor-down; }
-    // Mod+Shift+Up    { focus-monitor-up; }
-    // Mod+Shift+Right { focus-monitor-right; }
-    // Mod+Shift+H     { focus-monitor-left; }
-    // Mod+Shift+J     { focus-monitor-down; }
-    // Mod+Shift+K     { focus-monitor-up; }
-    // Mod+Shift+L     { focus-monitor-right; }
-    //
-    // Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    // Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    // Alternatively, there are commands to move just a single window:
-    // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
-    // ...
-
     // And you can also move a whole workspace to another monitor:
     // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
     // ...
+
+    // TODO: keybind for swapping monitors on workspaces
 
     Mod+Period              { focus-workspace-up; }
     Mod+Slash              { focus-workspace-down; }
