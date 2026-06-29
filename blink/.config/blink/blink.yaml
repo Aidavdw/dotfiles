@@ -21,3 +21,4 @@ timers:
 input_tracking:
   pause_after: 00:30
   reset_after: 02:00
+show_startup_notification: false

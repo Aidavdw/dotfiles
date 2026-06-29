@@ -32,7 +32,8 @@
     "values": [
       "%title%",
       "%comment%",
-      "%comment%"
+      "%isrc%",
+      "%isrc%"
     ]
   },
   "&Separator": {

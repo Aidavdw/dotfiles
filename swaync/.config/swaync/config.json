@@ -23,7 +23,6 @@
   "transition-time": 150,
   "hide-on-clear": true,
   "hide-on-action": true,
-  "script-fail-notify": true,
   "widgets": [
     "mpris",
     "title",
@@ -76,5 +75,16 @@
         }
       ]
     }
-  }
+  },
+  "scripts": {
+    "calendar-reminders": {
+      "exec": "~/.config/swaync/play-sound.sh ~/sounds/notifications/marimba-chord-low.ogg",
+      "app-name": "evolution-alarm-notify"
+    },
+    "blink-break-reminder": {
+      "exec": "~/.config/swaync/play-sound.sh ~/sounds/notifications/soft-harp-down.ogg",
+      "app-name": "blink"
+    }
+  },
+  "script-fail-notify": true
 }

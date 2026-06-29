@@ -30,10 +30,10 @@
   },
   "puddlestuff.functions_formatValue": {
     "arguments": [
-      "%comment%"
+      "%isrc%"
     ],
     "fields": [
-      "version"
+      "itunescomposersortorder"
     ]
   },
   "puddlestuff.functions_split_by_sep": {

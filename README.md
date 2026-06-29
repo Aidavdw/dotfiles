@@ -80,7 +80,7 @@ xdg-desktop-portal-hyprland \
 hypridle \
 hyprlock \
 pipewire \
-swww \
+awww \
 gnome-keyring \
 ```
 
@@ -150,7 +150,7 @@ Screenshot editor
 ## swaync
 Notification centre
 
-## swww
+## awww
 Pretty backgrourds for hyprland with animations
 
 ## Terminal

@@ -1,0 +1,17 @@
+{
+  # You probably want to disable yaml auto formatting on this file
+  "host": "imap.strato.de",
+  "port": 993,
+  "tls": true,
+  "tlsOptions": {
+    "rejectUnauthorized": false,
+    "starttls": true
+  },
+  "username": "aida@osphire.com",
+  "password": "",
+    "passwordCmd": "secret-tool lookup password personalmail",
+  "onNewMail": "notify-send New email!! ",
+  "onNewMailPost": "",
+  # None stated -> All should be monitored
+  "boxes": [ ]
+}
