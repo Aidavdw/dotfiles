@@ -4,17 +4,9 @@
 input {
     keyboard {
         xkb {
-            // layout "graphaida,us"
-            layout "graphre,graphaida,us"
-
-            // options "grp:win_space_toggle"
-            // For example:
-            // layout "us,ru"
-            // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-
-            // If this section is empty, niri will fetch xkb settings
-            // from org.freedesktop.locale1. You can control these using
-            // localectl set-x11-keymap.
+            // My layout has options baked in so that they are not activated on us.
+            // graphre is located at ~/.config/xkb/symbols/graphre
+            layout "graphre,us"
         }
 
         repeat-delay 200
@@ -26,7 +18,6 @@ input {
         // Switch layout does it for every window
         track-layout "global"
     }
-    
 
     touchpad {
         // tap to click
@@ -54,6 +45,7 @@ input {
     disable-power-key-handling
 
     trackball {
+        // TODO: trackball tuning
 
     }
 
@@ -62,7 +54,7 @@ input {
     warp-mouse-to-focus
     // Only focus on mouse-over if window is at least N% on screen.
     // 0% = fully on screen
-    focus-follows-mouse max-scroll-amount="20%"
+    focus-follows-mouse max-scroll-amount="10%"
 }
 
 // get names of monitors and capabilities: `niri msg outputs`
@@ -101,11 +93,18 @@ output "DENON Ltd. DENON-AVR" {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
-    gaps 12
+    gaps 18
     struts {
         // Emulate outer gaps
-        left -6
-        right -6
+        // Using positive values here means you always see
+        // a bit of the next window outside of the screen.
+
+        left 20
+        right 20
+        // compensate for height of waybar
+        top -16
+        bottom -8
+
     }
     center-focused-column "on-overflow"
     always-center-single-column
@@ -118,7 +117,7 @@ layout {
         // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         // Better be slightly undercutting for rounding purposes
-        proportion 0.48
+        proportion 0.50
         proportion 0.66664
         proportion 1.0
 
@@ -126,7 +125,7 @@ layout {
         // fixed 1920
     }
 
-    // You can change the default width of the new windows.
+    // Just under 0.5 fixes some bugs with slight overlap
     default-column-width { proportion 0.5; }
 
     // focus-ring: special border around active window, nothing around non-focused.
@@ -597,9 +596,20 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+Backspace { power-off-monitors; }
 
+    // Act like as if fullscreen, but do not resize
+    Mod+U { toggle-windowed-fullscreen; }
+    // Fullscreen
+    Mod+Shift+F { fullscreen-window; }
+    // Fullscreen while keeping bar up. Also no fullscreen mode
+    Mod+F { maximize-window-to-edges; }
+
 }
 
 switch-events {
-//    lid-close { spawn-sh "playerctl pause; systemctl suspend"; }
+    // I can't just use the following:
+    // lid-close { spawn "hyprlock"; }
+    // Hyprlock is slow to boot.
+    // It goes to sleep (because of logind) before hyprlock can start.
+    lid-close { spawn "playerctl" "pause"; }
     // lid-open { spawn "notify-send" "The laptop lid is open!"; }
 }
