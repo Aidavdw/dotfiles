@@ -14,6 +14,12 @@
 // Pick this as the default layout
 default xkb_symbols "basic" {
 
+    // Sessions that do not use the evdev extension for discovery still need a little bit of information.
+    // We put a name here for them to use.
+    // This is for example used by libxkbcommon (used in Niri and veila)
+    // Prompted by this bug: https://github.com/naurissteins/Veila/issues/9#issuecomment-4863479359
+    name[Group1] = "Graphre";
+
     // By default, xkb only expects up to level 4.
     // We want to add an extend layer (5th level), so we need to make it aware.
     key.type[Group1] = "EIGHT_LEVEL";
