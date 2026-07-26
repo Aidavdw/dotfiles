@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Selects an item using fzf.
+# Replaces the password in the printout, and copies it to the clipboard.
+# If you run the script with an additional string argument, it is used as an entry name directly, skipping fzf.
+
+set -euo pipefail
+
+# Determine the entry name.
+if [[ $# -gt 0 ]]; then
+    entry="$*"
+else
+    entry="$(rbw ls | fzf)"
+    [[ -n "$entry" ]] || exit 1
+fi
+
+# First, try copying the password to the clipboard.
+# If this succeeds, we know the entry has a password.
+if rbw get --clipboard "$entry" >/dev/null 2>&1; then
+    has_password=true
+else
+    has_password=false
+fi
+
+# Fetch the full entry.
+if ! full="$(rbw get --full "$entry" 2>/dev/null)"; then
+    echo "Error: entry '$entry' not found." >&2
+    exit 1
+fi
+
+# Print the entry.
+if $has_password; then
+    printf '%s\n' "$full" |
+        sed \
+            -e '1s/.*/Password: \[copied to clipboard\]/' \
+            -e '/^[[:space:]]*$/d'
+else
+    printf '%s\n' "$full" |
+        sed '/^[[:space:]]*$/d'
+fi
