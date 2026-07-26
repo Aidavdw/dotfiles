@@ -1,7 +1,7 @@
 # Use eza instead of ls.
 # Can show colours and icons.
 
-alias ls="eza --color=always --group-directories-first --icons=automatic"
+alias ls="eza --color=always --group-directories-first --icons=auto --smart-group -M"
 
 abbr -a --position command tree 'ls --tree -L 3'
 abbr -a --position command ll   'ls -l --git --octal-permissions --header'
