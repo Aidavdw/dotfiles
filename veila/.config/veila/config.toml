@@ -1,0 +1,5 @@
+theme = "seceda"
+
+[visuals.now_playing]
+enabled = false
+fade_duration_ms = 320
