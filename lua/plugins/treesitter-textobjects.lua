@@ -2,12 +2,9 @@ return {
     -- functionality like 'go to next function' or
     -- 'go to next paragraph'
     "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-    },
+    dependencies = {},
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
-    main = "nvim-treesitter.configs",
     opts = {
         textobjects = {
             select = {
