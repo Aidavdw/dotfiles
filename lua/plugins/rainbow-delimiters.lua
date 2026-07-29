@@ -7,10 +7,11 @@ return {
     -- as it is merely a TreeSitter extension.
     opts = {
         highlight = {
-            "RainbowDelimiterRed",
+            -- Red is not very legible I think
+            -- "RainbowDelimiterRed",
+            "RainbowDelimiterOrange",
             "RainbowDelimiterYellow",
             "RainbowDelimiterBlue",
-            "RainbowDelimiterOrange",
             "RainbowDelimiterGreen",
             "RainbowDelimiterViolet",
             "RainbowDelimiterCyan",
