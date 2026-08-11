@@ -182,6 +182,7 @@ spawn-at-startup "awww-daemon"
 spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
 spawn-at-startup "evolution"
 spawn-at-startup "hypridle"
+spawn-at-startup "veilad"
 
 
 hotkey-overlay {
@@ -372,7 +373,7 @@ binds {
     Ctrl+Escape { spawn "alacritty"; }
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Ctrl+Shift+Escape hotkey-overlay-title="Exit niri and return to TTY" { quit; }
-    Mod+Backspace hotkey-overlay-title="Lock the Screen" { spawn "~/auto-scripts/hyprlock-immediately-reload.sh"; }
+    Mod+Backspace hotkey-overlay-title="Lock the Screen" { spawn "veila" "lock"; }
     Mod+B hotkey-overlay-title="Music" { spawn "alacritty" "--title" "rmpc" "-e" "rmpc"; }
 
 
@@ -610,6 +611,6 @@ switch-events {
     // lid-close { spawn "hyprlock"; }
     // Hyprlock is slow to boot.
     // It goes to sleep (because of logind) before hyprlock can start.
-    lid-close { spawn "playerctl" "pause"; }
+    lid-close { spawn "playerctl" "pause" "&&" "veila" "lock"; }
     // lid-open { spawn "notify-send" "The laptop lid is open!"; }
 }
