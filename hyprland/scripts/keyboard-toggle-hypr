@@ -1,12 +1,56 @@
-#!/bin/bash
-hyprctl switchxkblayout all next
+#!/usr/bin/env bash
 
-index=$(hyprctl devices | awk -F ': ' '/active layout index:/ {print $2; exit}')
-all_layouts=$(hyprctl getoption input:kb_layout | awk -F ': ' '/str:/ {print $2; exit}')
-new_layout=$(echo $all_layouts | cut -d ',' -f $((index + 1)))
+session=""
+new_layout=""
 
-# Also set it for xwayland
-setxkbmap -layout $new_layout
+handle_hyprland() {
+    hyprctl switchxkblayout all next
+    index=$(hyprctl devices | awk -F ': ' '/active layout index:/ {print $2; exit}')
+    all_layouts=$(hyprctl getoption input:kb_layout | awk -F ': ' '/str:/ {print $2; exit}')
+    new_layout=$(echo $all_layouts | cut -d ',' -f $((index + 1)))
+    # Also set it for xwayland
+    setxkbmap -layout $new_layout
+}
 
-echo set keyboard layout to $new_layout
+handle_niri() {
+    niri msg action switch-layout next
+    new_layout=$(niri msg keyboard-layouts | sed -n 's/^ *\* *[0-9]\+ //p')
+}
+
+# Detect session via env vars (fast path)
+for var in "$XDG_CURRENT_DESKTOP" "$XDG_SESSION_DESKTOP" "$DESKTOP_SESSION"; do
+    case "$var" in
+    *[Hh]yprland*)
+        session="hyprland"
+        break
+        ;;
+    *[Nn]iri*)
+        session="niri"
+        break
+        ;;
+    esac
+done
+
+# Fallback detection (only if needed)
+if [[ -z "$session" ]]; then
+    if pgrep -x Hyprland >/dev/null; then
+        session="hyprland"
+    elif pgrep -x niri >/dev/null; then
+        session="niri"
+    fi
+fi
+
+# Dispatch cleanly
+case "$session" in
+hyprland)
+    handle_hyprland
+    ;;
+niri)
+    handle_niri
+    ;;
+*)
+    notify-send "cannot determine if you are in niri or hyprland :("
+    ;;
+esac
+
 notify-send -i /usr/share/icons/Papirus/32x32/devices/input-keyboard.svg -u low "Keyboard: $new_layout" "Switched keyboard layout"
