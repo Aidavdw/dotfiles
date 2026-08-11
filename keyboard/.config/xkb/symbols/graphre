@@ -93,12 +93,12 @@ default xkb_symbols "basic" {
     key <AC03> {[ t, T, exclam, VoidSymbol ]};
     key <AC04> {[ s, S, ampersand, VoidSymbol ]};
     key <AC05> {[ g, G, numbersign, VoidSymbol ]};
-    key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, Escape, 0 ]};
+    key <AC06> {[ y, Y, VoidSymbol, VoidSymbol, Tab, 0 ]};
     key <AC07> {[ h, H, asciitilde, VoidSymbol, Left, 4 ]};
     key <AC08> {[ a, A, dollar, VoidSymbol, Down, 5 ]};
     key <AC09> {[ e, E, VoidSymbol, VoidSymbol, Right, 6 ]};
     key <AC10> {[ i, I, VoidSymbol, VoidSymbol, BackSpace, BackSpace ]};
-    key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol, VoidSymbol, plus ]};
+    key <AC11> {[ apostrophe, quotedbl, VoidSymbol, VoidSymbol, Escape, plus ]};
     // bottom row
     key <AB01> {[ q, Q, braceright, VoidSymbol ]};
     key <AB02> {[ j, J, bracketright, VoidSymbol, XF86AudioLowerVolume ]};
@@ -114,7 +114,7 @@ default xkb_symbols "basic" {
 
     // Some extra functionality on space. Not on the first two layers,
     // because you might accidentally trigger.
-    key <SPCE> {[ space, space, Tab, VoidSymbol, Return ]};
+    key <SPCE> {[ space, space, space, VoidSymbol, Return ]};
 
 
     // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
