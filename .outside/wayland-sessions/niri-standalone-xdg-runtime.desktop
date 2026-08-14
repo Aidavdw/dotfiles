@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Niri (Void session)
+Comment=A scrollable-tiling Wayland compositor
+Exec=niri-void-session.sh
+Type=Application
+DesktopNames=niri

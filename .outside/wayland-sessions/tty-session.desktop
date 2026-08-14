@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=TTY
 Comment=Do not start a graphical session and go to TTY
-Exec=/bin/bash -l
+Exec=$SHELL
 Type=Application
 DesktopNames=TTY
 Keywords=bash;terminal;tty;console;recovery

@@ -16,26 +16,13 @@ SESSIONS_DIR="/usr/share/wayland-sessions"
 
 echo "Installing Hyprland session scripts and desktop files..."
 
-
-# Install wrapper scripts with explicit .sh extension
-install -m 0755 "$DOTFILES/hyprland-igpu.sh" "$BIN_DIR/hyprland-igpu.sh"
-echo " -> Installed wrapper: $BIN_DIR/hyprland-igpu.sh"
-
-install -m 0755 "$DOTFILES/hyprland-nvidia-gpu.sh" "$BIN_DIR/hyprland-nvidia-gpu.sh"
-echo " -> Installed wrapper: $BIN_DIR/hyprland-nvidia-gpu.sh"
-
-# install -m 0755 "$DOTFILES/hyprland-powersave.sh" "$BIN_DIR/hyprland-powersave.sh"
-# echo " -> Installed wrapper: $BIN_DIR/hyprland-powersave.sh"
-
-# Install desktop files explicitly
-install -m 0644 "$DOTFILES/hyprland-igpu.desktop" "$SESSIONS_DIR/hyprland-igpu.desktop"
-echo " -> Installed session: $SESSIONS_DIR/hyprland-igpu.desktop"
-
-install -m 0644 "$DOTFILES/hyprland-nvidia-gpu.desktop" "$SESSIONS_DIR/hyprland-nvidia-gpu.desktop"
-echo " -> Installed session: $SESSIONS_DIR/hyprland-nvidia-gpu.desktop"
-
-#install -m 0644 "$DOTFILES/hyprland-powersave.desktop" "$SESSIONS_DIR/hyprland-powersave.desktop"
-#echo " -> Installed session: $SESSIONS_DIR/hyprland-powersave.desktop"
+install -m 0755 "$DOTFILES/hyprland-igpu.sh" "$BIN_DIR/"
+install -m 0755 "$DOTFILES/hyprland-nvidia-gpu.sh" "$BIN_DIR/"
+install -m 0644 "$DOTFILES/hyprland-igpu.desktop" "$SESSIONS_DIR/"
+install -m 0644 "$DOTFILES/hyprland-nvidia-gpu.desktop" "$SESSIONS_DIR/"
+install -m 0644 "$DOTFILES/tty-session.desktop" "$SESSIONS_DIR/"
+install -m 0755 "$DOTFILES/niri-void-session.sh" "$BIN_DIR/"
+install -m 0644 "$DOTFILES/niri-void.desktop" "$SESSIONS_DIR/"
 
 echo "Done. You should now see the new Hyprland sessions in your greeter."
 
