@@ -135,6 +135,8 @@
         // }
     },
     "niri/workspaces": {
+        // Waiting for a hide-empty option
+        // https://github.com/Alexays/Waybar/issues/4965
         "format": "{icon}",
         "format-icons": {
             // Named workspaces as configured in niri
