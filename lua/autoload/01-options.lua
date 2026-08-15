@@ -15,8 +15,13 @@ vim.opt.updatetime = 250
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
--- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+vim.opt.autoread = true -- Automatically apply externally applied changes to open files.
+
+vim.opt.autochdir = false
+vim.opt.selection = "inclusive" -- When in visual mode, include the character under the cursor.
+-- vim.opt.iskeyword:append("-") -- When selecting words with `w`, consider `-` to not be a separator.
+
+vim.opt.maxmempattern = 20000 -- Allow more ram usage.
 
 -- Sync clipboard between OS and Neovim.
 -- Schedule the setting after `UiEnter` because it can increase startup-time.

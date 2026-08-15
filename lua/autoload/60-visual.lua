@@ -10,17 +10,21 @@ vim.cmd.colorscheme("catppuccin")
 -- or make it black (high-contrast) using:
 -- `vim.cmd.highlight({ "Normal", "guibg=black" })`
 
--- Always show relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
+vim.opt.colorcolumn = "100" -- Show a coloured line at N characters. Helps us not make stuff too long.
+
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+vim.opt.showmode = false -- Don't show the mode, since it's already in the status line
+
 -- Minimal number of screen lines to keep above and below the cursor.
+-- We don't need sidescrolloff because we use wrapping.
 vim.opt.scrolloff = 8
 
 -- Highlight when yanking (copying) text
