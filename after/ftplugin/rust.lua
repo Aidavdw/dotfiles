@@ -1,5 +1,10 @@
 -- This file contains settings that are only applied to rust files.
 -- Keybinds must be set with `buffer = true`, if you don't want the bindings to be permanent for all buffers once it's been loaded.
+
+vim.treesitter.start()
+vim.wo[0][0].foldmethod = "expr"
+vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
 vim.keymap.set("n", "<leader>ts", function()
     vim.cmd.RustLsp({ "testables" })
 end, { desc = "[T]ests: [S]how all in buffer ", buffer = true })

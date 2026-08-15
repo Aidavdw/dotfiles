@@ -34,13 +34,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Start (built-in) treesitter on opening some file types
-vim.api.nvim_create_autocmd("FileType", {
-    -- Cannot just do this on *any* filetype, as it will also trigger with temporary / virtual files such as the spinner, fzf window.
-    -- Instead, you have to manually keep this in sync with your enabled treesitter parsers.
-    -- TODO: See if I can store this table higher up, and reference it for both the installer plugin and this guy.
-    pattern = { "python", "javascript", "typescript", "typescriptreact", "rust", "go", "c", "c++" },
-    callback = function()
-        vim.treesitter.start()
-    end,
-})
+-- If you are looking for treesitter, we start those in ftplugin,
+-- not with an autocommand.
+-- This way we don't have language-specific things in here.
