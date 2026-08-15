@@ -1,10 +1,5 @@
--- Fold methods are defined per-filetype, so see ftplugin for that.\
--- Generally I prefer to use the Treesitter functions for it.
--- Can use the same snippet for it everywhere.
--- Set this per ftplugin
--- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
--- vim.wo[0][0].foldmethod = 'expr'
--- https://github.com/nvim-treesitter/nvim-treesitter#folds
+-- NOTE: For fold methods, I prefer to use treesitter's.
+-- See the treesitter config.
 
 vim.o.foldenable = true
 -- Start folded at this level.
@@ -21,16 +16,3 @@ vim.o.foldlevel = 99
 -- https://github.com/neovim/neovim/pull/20750
 vim.o.foldtext = ""
 vim.o.fillchars = "fold:-"
-
--- TODO: Incremental selection with treesitter
--- with treesitter.nvim I had this:
--- allows you to select around the cursor and dynamically grow it.
--- incremental_selection = {
---     enable = true,
---     keymaps = {
---         init_selection = "<Enter>", -- set to `false` to disable one of the mappings
---         node_incremental = "<Enter>",
---         scope_incremental = "<S-Enter>",
---         node_decremental = "<Backspace>",
---     },
--- },
