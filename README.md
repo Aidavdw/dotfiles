@@ -1,4 +1,4 @@
-My personal neovim configuration.
+My personal, opinionated neovim configuration.
 I use this mostly for programming and taking notes!
 I intend for it to be pretty lightweight, yet still have all the features I need.
 With that, it falls somewhere between a minimal and an IDE-like config.
@@ -10,7 +10,8 @@ No installer scripts, no extra config files. If you want to edit anything, the c
 | Feature | included? | remark |
 | - | - | - |
 | plugin dependency management | ◯ | Using lazy.nvim, because vim.pack does not yet support lazy loading. |
-| external dependency management | ✘ | Bring your own tools. See installation steps. If you want, you can definitely still use mason, it is not required. |
+| LSP dependency management | ✘ | Bring your own tools. See installation steps. If you want, you can definitely still use mason, it is not required. |
+| Treesitter dependency management | ◯ | Uses tree-sitter-manager to install treesitter things. Auto-install is disabled. |
 | LSP | ◯ | Uses neovim's built-in LSP. Still uses `lspconfig` for stubs of configuration files for brevity. |
 | snippets | ◯ | using LuaSnip |
 | spell checking | ◯ | using built-in nvim spell-checker |
@@ -19,7 +20,7 @@ No installer scripts, no extra config files. If you want to edit anything, the c
 | autocompletion | ◯ | using blink.cmp |
 | file annotation and linking | ◯ | shows LSP things, renders markdown, colour-coded scopes and indentation. |
 | editing extensions | ◯ | select entire functions, swap arguments, etc. |
-| tree view | ✘ | use fzf-lua to search/switch. For file operations, netrw is just fine. |
+| tree file view / sidebar | ✘ | use fzf-lua to search/switch. For file operations, netrw is just fine. |
 | basic git | ◯ | shows new lines etc. Some keybinds to make working with git *inside the buffer* easier. |
 | complex git manager | ✘ | do your merging/commiting/branching externally. May I suggest `lazygit`? |
 | linter extension | ✘ | This config does not use a linter extension like nvim-lint, as most of the linting I need can be done by LSPs.|
