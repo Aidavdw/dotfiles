@@ -9,7 +9,7 @@ return {
             change = { text = "~" },
             delete = { text = "┷" },
             topdelete = { text = "┯" },
-            changedelete = { text = "~" },
+            changedelete = { text = ";" },
             untracked = { text = "┆" },
         },
         -- Add keybinds for this git signs here, because not lazily loaded anyway
@@ -24,48 +24,43 @@ return {
             end
 
             -- Navigation
-            map("n", "]c", function()
+            map("n", "]g", function()
                 if vim.wo.diff then
-                    vim.cmd.normal({ "]c", bang = true })
+                    vim.cmd.normal({ "]g", bang = true })
                 else
                     gitsigns.nav_hunk("next")
                 end
-            end, { desc = "Jump to next git [c]hange" })
+            end, { desc = "Jump to next [g]it change" })
 
-            map("n", "[c", function()
+            map("n", "[g", function()
                 if vim.wo.diff then
-                    vim.cmd.normal({ "[c", bang = true })
+                    vim.cmd.normal({ "[g", bang = true })
                 else
                     gitsigns.nav_hunk("prev")
                 end
             end, { desc = "Jump to previous git [c]hange" })
 
             -- git stage
-            map("n", "<leader>gsh", gitsigns.stage_hunk, { desc = "[G]it [S]tage [H]unk (toggle)" })
-            map("n", "<leader>gsb", gitsigns.stage_buffer, { desc = "[G]it [S]tage [B]uffer" })
+            map("n", "<leader>gsh", gitsigns.stage_hunk, { desc = " git stage [H]unk (toggle)" })
+            map("n", "<leader>gsb", gitsigns.stage_buffer, { desc = "git stage entire [B]uffer" })
             -- git reset
-            map("n", "<leader>grh", gitsigns.reset_hunk, { desc = "[G]it [R]eset [H]unk" })
-            map("n", "<leader>grb", gitsigns.reset_buffer, { desc = "[G]it [R]eset [B]uffer" })
+            map("n", "<leader>grh", gitsigns.reset_hunk, { desc = "git reset [H]unk" })
+            map("n", "<leader>grb", gitsigns.reset_buffer, { desc = "git reset entire [B]uffer" })
 
             -- Open a little popup window showing what has changed
-            map("n", "<leader>pgh", gitsigns.preview_hunk, { desc = "[P]opup [G]it [H]unk" })
+            map("n", "<leader>gc", gitsigns.preview_hunk, { desc = "git pop-up [C]hanges" })
 
             -- Popup window showing git blame
-            map("n", "<leader>pgb", gitsigns.blame_line, { desc = "[P]opup [G]it [B]lame" })
+            map("n", "<leader>gb", gitsigns.blame_line, { desc = "git pop-up [B]lame" })
             -- Show changes in trouble window
             -- TODO: Check- I think this is not a thing?
             -- map('n', '<leader>wg', gitsigns.blame_line, { desc = '[W]indow: git hunks' })
-            map("n", "<leader>wg", gitsigns.diffthis, { desc = "[W]indow: [G]it changes" })
-            map("n", "<leader>wG", function()
+            map("n", "<leader>d", gitsigns.diffthis, { desc = "open [D]iff view (window)" })
+            map("n", "<leader>D", function()
                 gitsigns.diffthis("@")
-            end, { desc = "[W]indow: [G]it changes (since last commit)" })
+            end, { desc = "open [D]iff view (window, since last commit)" })
             -- Toggles display
-            map(
-                "n",
-                "<leader>vgb",
-                gitsigns.toggle_current_line_blame,
-                { desc = "toggle [V]iew: [G]it [B]lame in line" }
-            )
+            map("n", "<leader>gB", gitsigns.toggle_current_line_blame, { desc = "toggle view inline [B]lame" })
         end,
     },
 }
