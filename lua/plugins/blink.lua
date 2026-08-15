@@ -5,11 +5,15 @@ return {
     -- automatically extends LSP
     -- So it must always be loaded, even if it is a heavier plugin :(
     lazy = false,
+    -- They are doing a rework as V2.
+    -- Should keep an eye out for that.
     version = "1.*",
     dependencies = {
         "L3MON4D3/LuaSnip",
-        "folke/lazydev.nvim",
     },
+
+    opts_extend = { "sources.default" },
+
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
@@ -54,11 +58,13 @@ return {
         },
 
         sources = {
-            -- FIXME: With how blink is set up, you can only register sources at config time.
-            -- This means that lazydev must always be loaded, even when you're not in a lua file.
-            default = { "lsp", "path", "snippets", "lazydev" },
+            default = { "lsp", "path", "snippets", "buffer" },
+
             providers = {
-                lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+                lazydev = {
+                    module = "lazydev.integrations.blink",
+                    score_offset = 100,
+                },
             },
         },
 

@@ -3,4 +3,5 @@ return {
     -- The purpose of lspconfig is now only to be a preset for the config files.
     -- https://boltless.me/posts/neovim-config-without-plugins-2025/
     "neovim/nvim-lspconfig",
+    event = "BufReadPre",
 }
