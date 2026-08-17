@@ -3,7 +3,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     filetypes = { "markdown" },
-    ft = { "markdown" },
+    ft = { "markdown", "codecompanion" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
