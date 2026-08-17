@@ -5,9 +5,6 @@
 -- See `:help hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Exit insert mode for graphite bros
-vim.keymap.set("i", "hs", "<Esc>")
-
 -- Goto the next diagnostic, and open its popup.
 vim.keymap.set("n", "]d", function()
     vim.diagnostic.jump({ count = 1, float = true })

@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 
 -- Time before a key sequence is considered timed out
 -- (e.g <super>if, and you wait a bit between i and f)
-vim.opt.timeoutlen = 500
+vim.opt.timeoutlen = 280
 
 -- Time before cursorhold is triggered
 -- Also inactivity time before swap file is written to
