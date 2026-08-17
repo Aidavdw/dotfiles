@@ -1,6 +1,7 @@
 return {
     -- in the bottom right, little spinner etc for LSP
     "j-hui/fidget.nvim",
+    enabled = false,
     -- Don't lazy load, as it redirects notifications.
     event = "VeryLazy",
     opts = {
