@@ -15,7 +15,7 @@ return {
         -- `sa$'` - add `'` from this point up until the end of the line.
         -- `sr[(` - replace surrounding '[]' with '()', e.g. 'some (text  and) more' ￫ 'some [text and] more'
         -- `sd[` - replace surrounding '[]' with '()', e.g. 'some (text  and) more' ￫ 'some text and]more'
-        require("mini.surround").setup()
+        -- require("mini.surround").setup()
 
         -- Simple and easy statusline.
         --  You could remove this setup call if you don't like it,
