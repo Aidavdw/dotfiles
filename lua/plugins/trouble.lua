@@ -53,7 +53,7 @@ return {
             {
                 "<leader>sw",
                 "<cmd>Trouble symbols toggle focus=true<cr>",
-                desc = "[W]indow: [S]ymbols outline",
+                desc = "toggle sidebar with symbols",
             },
         },
     },

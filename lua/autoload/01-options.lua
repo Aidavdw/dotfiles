@@ -10,7 +10,7 @@ vim.opt.timeoutlen = 280
 
 -- Time before cursorhold is triggered
 -- Also inactivity time before swap file is written to
-vim.opt.updatetime = 250
+vim.opt.updatetime = 480
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
