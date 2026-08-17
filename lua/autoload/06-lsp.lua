@@ -104,12 +104,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gI", fzf.lsp_implementations, "[G]oto [I]mplementation")
 
         -- Keeps paradigm of capital = workspace, small is this buffer
-        map("<leader>ss", fzf.lsp_document_symbols, "[S]earch LSP [S]ymbols (document)")
+        map("<leader>ss", fzf.lsp_document_symbols, "Search LSP Symbols (document)")
         map("<leader>sS", fzf.lsp_live_workspace_symbols, "[S]earch LSP [S]ymbols (workspace)")
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
-        map("<leader>er", vim.lsp.buf.rename, "[E]dit: [R]ename symbol")
+        map("<leader>sr", vim.lsp.buf.rename, "rename symbol")
 
         -- Execute a code action, usually your cursor needs to be on top of an error
         -- or a suggestion from your LSP for this to activate.
@@ -121,12 +121,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Sometimes the diagnostics that are drawn in virtual text are very long, and go off the screen. Wrapping virtual text is impossible(?), but you can pop-up the entire message in a little window
-        map("<leader>pd", vim.diagnostic.open_float, "[P]opup [D]iagnostic")
+        map("<leader>dp", vim.diagnostic.open_float, "popup [D]iagnostic")
 
-        map("<leader>ph", function()
+        map("<leader>sh", function()
+            -- TODO: Autocommand that does this after like 5 seconds?
             -- See :h vim.lsp.utils.open_floating_preview.Opts for options here
             vim.lsp.buf.hover()
-        end, "[P]opup: LSP [H]over action")
+        end, "LSP [H]over action")
 
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client

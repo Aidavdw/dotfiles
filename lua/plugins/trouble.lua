@@ -17,27 +17,26 @@ return {
             -- Not to get distracted with warnings, first just errors!
             -- also binding without auto-focus on capital.
             {
-                "<leader>we",
-                "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR focus=true<cr>",
-                desc = "[W]indow: [E]rrors",
+                "<leader>dwe",
+                "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR filter.buf=0 focus=true<cr>",
+                desc = "sidebar w/ errors (buffer, focused)",
             },
+            -- Same, but for entire workspace
+            -- If you are fixing style for your entire project,
+            -- its worth looking at workspace diagnostics,
+            -- even if its a little overwhelming.
             {
-                "<leader>wE",
-                "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR<cr>",
-                desc = "[W]indow: [E]rrors (no focus)",
+                "<leader>dwD",
+                "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR focus=true<cr>",
+                desc = "sidebar w/ diagn. (workspace, focused)",
             },
             -- Basically same as error window, but now also hints and warnings.
             -- filter.buf=0 → Link to active buffer,
             -- otherwise you get overwhelmed quickly
             {
-                "<leader>wd",
+                "<leader>dwd",
                 "<cmd>Trouble diagnostics toggle filter.buf=0 focus=true<cr>",
-                desc = "[W]indow: [D]iagnostics",
-            },
-            {
-                "<leader>wD",
-                "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-                desc = "[W]indow: [D]iagnostics (no focus)",
+                desc = "sidebar w/ diagn. (buffer, focused)",
             },
             -- Same, but for entire workspace
             -- If you are fixing style for your entire project,
@@ -45,21 +44,16 @@ return {
             -- even if its a little overwhelming.
             -- No 'unfocused' version of this, just use it to fix shit
             {
-                "<leader>ww",
+                "<leader>dwD",
                 "<cmd>Trouble diagnostics toggle focus=true<cr>",
-                desc = "[W]indow: all [W]orkspace Diagnostics",
+                desc = "sidebar w/ diagn. (workspace, focused)",
             },
 
             -- With markdown-oxide, this is also the TOC.
             {
-                "<leader>ws",
+                "<leader>sw",
                 "<cmd>Trouble symbols toggle focus=true<cr>",
                 desc = "[W]indow: [S]ymbols outline",
-            },
-            {
-                "<leader>wS",
-                "<cmd>Trouble symbols toggle<cr>",
-                desc = "[W]indow: [S]ymbols outline (no focus)",
             },
         },
     },

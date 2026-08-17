@@ -5,6 +5,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
     keys = {
-        { "<leader>wt", "<cmd>Trouble todo focus=true<CR>", desc = "[W]indow: [T]odos" },
+        { "<leader>Tw", "<cmd>Trouble todo focus=true<CR>", desc = "Open side-panel with todos" },
     },
 }

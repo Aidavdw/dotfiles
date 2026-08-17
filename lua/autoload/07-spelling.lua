@@ -46,11 +46,11 @@ local function bind_toggle(lang, key_sequence, desc, short_name)
         vim.notify(
             "current spell languages: " .. (vim.tbl_isempty(new_list) and "<none>" or table.concat(new_list, ", "))
         )
-    end, { desc = "[T]oggle [S]pelling: " .. desc })
+    end, { desc = "toggle spellcheck lang: " .. desc })
 end
 
 -- Create bindings for your languages
-bind_toggle("en_gb", "<leader>Tse", "English (GB)", "en_gb")
-bind_toggle("nl", "<leader>Tsn", "Dutch", "nl")
-bind_toggle("de", "<leader>Tsd", "German", "de")
-bind_toggle("cjk", "<leader>Tsc", "CJK", "cjk")
+bind_toggle("en_gb", "<leader>CTe", "English (GB)", "en_gb")
+bind_toggle("nl", "<leader>CTn", "Dutch", "nl")
+bind_toggle("de", "<leader>CTd", "German", "de")
+bind_toggle("cjk", "<leader>CTc", "CJK", "cjk")

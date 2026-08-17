@@ -9,36 +9,40 @@ return {
         delay = 0,
         -- Easiest way to name some groups, without having to repeat the 'group' for every keybind.
         spec = {
-            { "<leader>d", group = "[D]ebugger" },
+            { "<leader>d", group = "[D]iagnostics" },
+            { "<leader>dw", group = "[D]iagnostics: Toggle window" },
+            { "<leader>D", group = "[D]ebugger" },
+            { "<leader>v", group = "[V]isual" },
             { "<leader>e", group = "[E]dit action" },
             { "<leader>es", group = "[E]dit [S]wap" },
-            { "<leader>g", group = "[G]it actions" },
+            { "<leader>g", group = "[G]it" },
+            { "<leader>gs", group = "[G]it: [S]earch in" },
             { "<leader>gr", group = "[G]it [R]eset" },
             { "<leader>gs", group = "[G]it [S]tash" },
+            { "<leader>gf", group = "[G]it [F]ind" },
             { "<leader>fg", group = "[F]ind [G]it" },
 
             -- when using a search/find, I arbitrarily make the distinction between:
             -- stuff on a file basis: Finding a file, and opening it. Re-opening an active buffer.
-            { "<leader>o", group = "[O]pen (file, buffer)" },
+            { "<leader>o", group = "Open file" },
+            { "<leader>n", group = "Notes (obsidian)" },
+            { "<leader>?", group = "help" },
             -- Content of all files in workspace: Symbols in files, specific strings
             -- Deliberately on 's' in home row for colemak, because easier to reach. Most used.
-            { "<leader>s", group = "[S]earch in workspace for (text, symbols)" },
+            { "<leader>s", group = "[S]earch" },
             -- Find things that are not files or parts of text (that can be jumped to): Documentation, diagnostic, etc.
-            { "<leader>f", group = "[F]ind in (docs, help, external resources)" },
+            { "<leader>/", group = "Search in.." },
 
             { "<leader>t", group = "[T]est" },
             { "<leader>T", group = "[T]oggle operation mode" },
             { "<leader>c", group = "[C]itations" },
-            { "<leader>p", group = "[P]opup show" },
-            { "<leader>v", group = "toggle [V]iew" },
-            { "<leader>vg", group = "toggle [V]iew [G]it" },
-            { "<leader>w", group = "show/hide [W]indow" },
-            { "<leader>ts", group = "[T]oggle [S]pellcheck languages" },
+            { "<leader>C", group = "spell [C]heck" },
+            { "<leader>CT", group = "spell [C]heck: Toggle language" },
         },
     },
     keys = {
         {
-            "<leader>?",
+            "<leader>?b",
             function()
                 require("which-key").show({ global = false })
             end,

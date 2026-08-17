@@ -14,7 +14,7 @@ return {
             desc = "[E]dit: auto[F]ormat",
         },
         {
-            "<leader>Tf",
+            "<leader>eF",
             function()
                 vim.b.disable_autoformat = not vim.b.disable_autoformat
                 if vim.b.disable_autoformat then
@@ -23,7 +23,7 @@ return {
                     vim.notify("Autoformat on save enabled for this buffer", vim.log.levels.INFO)
                 end
             end,
-            desc = "[T]oggle auto[F]ormat on save",
+            desc = "Toggle auto-format on save",
         },
     },
     -- This will provide type hinting with LuaLS

@@ -15,6 +15,7 @@ vim.opt.tabstop = 4
 -- amount to indent with `>>` or `<<`
 vim.opt.shiftwidth = 4
 -- amount of spaces to enter when pressing `Tab`.
+-- NOTE: This is overridden by the 'guess-indentation plugin'
 vim.opt.softtabstop = 4
 
 -- When at beginning of line, translate pressing 'tab' to the '>>' command.

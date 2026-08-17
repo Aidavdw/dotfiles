@@ -18,7 +18,7 @@ vim.keymap.set("n", "[d", function()
 end, { desc = "Go to previous diagnostic" })
 
 -- Switch windows quickly
-vim.api.nvim_set_keymap("n", "<leader>n", "<C-w>w", { noremap = true, silent = true, desc = "Switch active split" })
+vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>w", { noremap = true, silent = true, desc = "Switch active split" })
 
 -- manually toggle the line wrap. Useful when stuff breaks because of line wrapping or lack thereof. Looking at you, markview.
 local line_wrap = true
@@ -30,10 +30,10 @@ vim.keymap.set("n", "<leader>vw", function()
         vim.o.wrap = true
         line_wrap = true
     end
-end, { desc = "toggle [V]iew: Word [W]rap" })
+end, { desc = "Toggle word [W]rap" })
 
 -- Open netrw (file browser)
-vim.keymap.set("n", "<leader>on", "<cmd>Ex<CR>", { desc = "[O]pen [N]etrw (file browser)" })
+vim.keymap.set("n", "<leader>on", "<cmd>Ex<CR>", { desc = "open netrw (file browser)" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

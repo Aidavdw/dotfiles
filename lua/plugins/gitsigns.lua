@@ -55,8 +55,8 @@ return {
             -- Show changes in trouble window
             -- TODO: Check- I think this is not a thing?
             -- map('n', '<leader>wg', gitsigns.blame_line, { desc = '[W]indow: git hunks' })
-            map("n", "<leader>d", gitsigns.diffthis, { desc = "open [D]iff view (window)" })
-            map("n", "<leader>D", function()
+            map("n", "<leader>gd", gitsigns.diffthis, { desc = "open [D]iff view (window)" })
+            map("n", "<leader>gD", function()
                 gitsigns.diffthis("@")
             end, { desc = "open [D]iff view (window, since last commit)" })
             -- Toggles display

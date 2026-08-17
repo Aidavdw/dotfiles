@@ -55,4 +55,4 @@ function OpenInObsidian()
     end
 end
 
-vim.keymap.set("n", "<leader>wo", OpenInObsidian, { desc = "Open current note in [O]bsidian" })
+vim.keymap.set("n", "<leader>nx", OpenInObsidian, { desc = "Open current buffer externally in [O]bsidian" })

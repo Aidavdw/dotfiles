@@ -14,64 +14,89 @@ return {
         fzf.register_ui_select()
     end,
     keys = {
-        -- [F]ind pickers. These is the broadest level.
+        -- Help
         {
-            "<leader>fh",
+            "<leader>?n",
             function()
                 require("fzf-lua").helptags()
             end,
-            desc = "[F]ind in [H]elp",
+            desc = "search in [N]eovim help",
         },
         {
-            "<leader>fk",
+            "<leader>?k",
             function()
                 require("fzf-lua").keymaps()
             end,
-            desc = "[F]ind [K]eymaps",
+            desc = "search in [K]eymaps",
         },
+        -- Diagnostics
         {
-            "<leader>fo",
-            function()
-                require("fzf-lua").builtin()
-            end,
-            desc = "[F]ind [O]ther (picker picker)",
-        },
-        {
-            "<leader>fd",
+            "<leader>ds",
             function()
                 require("fzf-lua").diagnostics_document()
             end,
-            desc = "[F]ind in [D]iagnostics (document)",
+            desc = "search in diagnostics (of buffer)",
         },
         {
-            "<leader>fD",
+            "<leader>dS",
             function()
                 require("fzf-lua").diagnostics_workspace()
             end,
-            desc = "[F]ind in [D]iagnostics (workspace)",
+            desc = "search in diagnostics (of workspace)",
         },
+        -- Broad 'Search'/find category
+        -- 'find' rather than 'search', so I can use 's' for lsp symbols
         {
-            "<leader>fa",
+            "<leader>/a",
             function()
                 require("fzf-lua").resume()
             end,
-            desc = "[F]ind previous search [A]gain",
+            desc = "repeat search (prev)",
         },
         {
-            "<leader>fgc",
+            "<leader>/f",
             function()
-                require("fzf-lua").git_commits()
+                require("fzf-lua").builtin()
             end,
-            desc = "[F]ind in [G]it [C]ommits",
+            desc = "find among finds (picker picker)",
         },
-
-        -- [O]pen pickers. For switching buffers, opening new files.
+        {
+            "<leader>//",
+            function()
+                require("fzf-lua").live_grep_native()
+            end,
+            desc = "Live Grep (contents of cwd)",
+        },
+        {
+            "<leader>/a",
+            function()
+                require("fzf-lua").resume()
+            end,
+            desc = "[S]earch previous [A]gain",
+        },
+        {
+            "<leader>/w",
+            function()
+                require("fzf-lua").grep_cword()
+            end,
+            desc = "[S]earch for [W]ord under cursor",
+        },
+        {
+            "<leader>/c",
+            function()
+                local appname = vim.env.NVIM_APPNAME or "nvim"
+                local path = string.format("%s/.config/%s", vim.fn.expand("~"), appname)
+                require("fzf-lua").live_grep_native({ cwd = path })
+            end,
+            desc = "[S]earch within neovim config",
+        },
+        -- Broad 'open' category
         {
             "<leader>of",
             function()
                 require("fzf-lua").files()
             end,
-            desc = "[O]pen [F]ile",
+            desc = "[O]pen [F]ile in cwd",
         },
         {
             "<leader>ob",
@@ -81,18 +106,11 @@ return {
             desc = "[O]pen [B]uffer",
         },
         {
-            "<leader>oo",
-            function()
-                require("fzf-lua").files({ cwd = "~/notes" })
-            end,
-            desc = "[O]pen [O]bsidian note",
-        },
-        {
             "<leader>od",
             function()
                 require("fzf-lua").files({ cwd = "~/dotfiles" })
             end,
-            desc = "[O]pen [D]otfiles",
+            desc = "[O]pen [D]otfile",
         },
         {
             "<leader>oc",
@@ -101,74 +119,59 @@ return {
                 local path = string.format("%s/.config/%s", vim.fn.expand("~"), appname)
                 require("fzf-lua").files({ cwd = path })
             end,
-            desc = "[O]pen nvim [C]onfig",
+            desc = "open nvim config file",
         },
         {
             "<leader>or",
             function()
                 require("fzf-lua").oldfiles()
             end,
-            desc = "[O]pen [R]ecent",
+            desc = "open [R]ecent",
         },
-
-        -- [S]earch pickers. Look through the contents of
-        -- a file or buffer, and jump to it
+        -- Git
         {
-            "<leader>sg",
+            "<leader>gsc",
             function()
-                require("fzf-lua").live_grep_native()
+                require("fzf-lua").git_commits()
             end,
-            desc = "Live [G]rep (contents of cwd)",
+            desc = "[S]earch in [C]ommits",
         },
         {
-            "<leader>so",
+            "<leader>gsh",
+            function()
+                require("fzf-lua").git_hunks()
+            end,
+            desc = "[F]ind in [G]it [H]unks",
+        },
+        -- Notes (Obsidian)
+        {
+            "<leader>nf",
+            function()
+                require("fzf-lua").files({ cwd = "~/notes" })
+            end,
+            desc = "[O]pen note [F]ile",
+        },
+        {
+            "<leader>n",
             function()
                 require("fzf-lua").live_grep_native({ cwd = "~/notes" })
             end,
-            desc = "[S]earch inside [O]bsidian notes",
+            desc = "[O]bsidian notes: [S]earch within",
         },
-        {
-            "<leader>sc",
-            function()
-                local appname = vim.env.NVIM_APPNAME or "nvim"
-                local path = string.format("%s/.config/%s", vim.fn.expand("~"), appname)
-                require("fzf-lua").live_grep_native({ cwd = path })
-            end,
-            desc = "[S]earch inside [O]bsidian notes",
-        },
-        {
-            "<leader>sa",
-            function()
-                require("fzf-lua").resume()
-            end,
-            desc = "[S]earch previous [A]gain",
-        },
-        {
-            "<leader>sw",
-            function()
-                require("fzf-lua").grep_cword()
-            end,
-            desc = "[S]earch for [W]ord under cursor",
-        },
+
+        -- Spellcheck
         {
             -- Finds all the misspelled words in the buffer
-            "<leader>st",
+            "<leader>Cs",
             desc = "[S]earch for [T]ypos in buffer",
             function()
                 require("fzf-lua").spellcheck()
             end,
         },
         {
-            "<leader>fgh",
-            function()
-                require("fzf-lua").git_hunks()
-            end,
-            desc = "[F]ind in [G]it [H]unks",
-        },
-        {
             -- This is a pop-up to correct the word under the cursor
-            "<leader>et",
-            desc = "[E]dit: Correct [T]ypo",
+            "<leader>CC",
+            desc = "fuzzy-search spelling corr. for word under cursor",
             function()
                 require("fzf-lua").spell_suggest()
             end,
