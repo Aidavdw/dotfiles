@@ -130,14 +130,14 @@ return {
         },
         -- Git
         {
-            "<leader>gsc",
+            "<leader>g/c",
             function()
                 require("fzf-lua").git_commits()
             end,
             desc = "[S]earch in [C]ommits",
         },
         {
-            "<leader>gsh",
+            "<leader>g/h",
             function()
                 require("fzf-lua").git_hunks()
             end,
