@@ -152,7 +152,7 @@ return {
             desc = "[O]pen note [F]ile",
         },
         {
-            "<leader>n",
+            "<leader>ns",
             function()
                 require("fzf-lua").live_grep_native({ cwd = "~/notes" })
             end,
