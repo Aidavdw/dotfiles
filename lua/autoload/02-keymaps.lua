@@ -14,9 +14,6 @@ vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Go to previous diagnostic" })
 
--- Switch windows quickly
-vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>w", { noremap = true, silent = true, desc = "Switch active split" })
-
 -- manually toggle the line wrap. Useful when stuff breaks because of line wrapping or lack thereof. Looking at you, markview.
 local line_wrap = true
 vim.keymap.set("n", "<leader>vw", function()
@@ -40,15 +37,6 @@ vim.keymap.set("n", "<leader>on", "<cmd>Ex<CR>", { desc = "open netrw (file brow
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Keybinds to make split navigation easier.
---  Use CTRL+<hjkl> to switch between windows
---
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
 -- `J` joins two lines.
 -- For some reason, there is no default keybind to do the opposite-- split two lines.
 -- So, we'll make a keybind `Q` for it (next to J on my keyboard layout)
@@ -58,3 +46,7 @@ vim.keymap.set(
     "i<CR><ESC>k:s/\\s\\+$//e<CR>j<ESC>",
     { desc = "Split line and remove trailing whitespace on the previous line" }
 )
+
+-- This is needed for treesitter-textobjects.
+-- Also, I like to override them anyway.
+vim.g.no_plugin_maps = true
