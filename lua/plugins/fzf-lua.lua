@@ -145,7 +145,7 @@ return {
         },
         -- Notes (Obsidian)
         {
-            "<leader>nf",
+            "<leader>no",
             function()
                 require("fzf-lua").files({ cwd = "~/notes" })
             end,
