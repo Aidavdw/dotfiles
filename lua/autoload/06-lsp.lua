@@ -129,6 +129,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.buf.hover()
         end, "LSP [H]over action")
 
+        -- Modified from https://www.joshmedeski.com/posts/underrated-square-bracket/
+        local map_diagnostic_goto = function(partial_keys, severity, label)
+            vim.keymap.set("n", "[" .. partial_keys, function()
+                vim.diagnostic.jump({ count = -1, float = true, severity = severity })
+            end, { desc = "Goto previous" .. label })
+            vim.keymap.set("n", "]" .. partial_keys, function()
+                vim.diagnostic.jump({ count = 1, float = true, severity = severity })
+            end, { desc = "Goto next" .. label })
+        end
+        -- [d is a built-in now, so no need to add it.
+        map_diagnostic_goto("e", "ERROR", "Error (diagnostic)")
+        map_diagnostic_goto("w", "WARN", "Warning (diagnostic)")
+
         -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
         ---@param client vim.lsp.Client
         ---@param method vim.lsp.protocol.Method

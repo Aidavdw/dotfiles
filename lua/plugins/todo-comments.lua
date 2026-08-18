@@ -6,5 +6,19 @@ return {
     opts = { signs = false },
     keys = {
         { "<leader>Tw", "<cmd>Trouble todo focus=true<CR>", desc = "Open side-panel with todos" },
+        {
+            "]t",
+            function()
+                require("todo-comments").jump_next()
+            end,
+            desc = "Next todo",
+        },
+        {
+            "[t",
+            function()
+                require("todo-comments").jump_next()
+            end,
+            desc = "Previous todo",
+        },
     },
 }
