@@ -9,8 +9,12 @@ return {
             chat = {
                 adapter = {
                     name = "openrouter",
+                    --- best value/money for coding, high quality.
+                    model = "openai/gpt-5.6-luna",
+                    --- Cheaper, still very good code
+                    --- model = "deepseek/deepseek-v4-pro",
                     -- A super simple free one
-                    model = "nvidia/nemotron-3-nano-30b-a3b:free",
+                    -- model = "nvidia/nemotron-3-nano-30b-a3b:free",
                     -- A more  detailed one
                     --model = "anthropic/claude-sonnet-4.5",
                 },
@@ -18,8 +22,8 @@ return {
             inline = {
                 adapter = {
                     name = "openrouter",
-                    -- A super simple free one
-                    model = "nvidia/nemotron-3-nano-30b-a3b:free",
+                    --- Cheaper, still very good code
+                    model = "deepseek/deepseek-v4-pro",
                 },
             },
         },
