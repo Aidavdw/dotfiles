@@ -5,5 +5,5 @@ vim.keymap.set("n", "S", "[", { remap = true })
 
 -- We also remap specifically 'go to next spelling error', because we want to have `ss` and `Ss` etc. for symbols/classes/headers.
 
-vim.keymap.set("n", "sw", "]s")
-vim.keymap.set("n", "Sw", "[s")
+vim.keymap.set("n", "sT", "]s", { desc = "Next typo" })
+vim.keymap.set("n", "ST", "[s", { desc = "Previous typo" })

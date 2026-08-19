@@ -37,22 +37,31 @@ local function map_goto_prev_start(partial_key, capture, label)
         require("nvim-treesitter-textobjects.move").goto_previous_start(capture, "textobjects")
     end, { desc = "Goto start of previous " .. label })
 end
-map_goto_prev_start("f", "@function.inner", "function")
-map_goto_prev_start("s", "@class.inner", "class")
+map_goto_prev_start("F", "@function.inner", "function")
+map_goto_prev_start("S", "@class.inner", "class")
 
 -- bring you to the end of the current {function}
-local function map_goto_end_textobject(partial_key, capture, label)
+local function map_goto_next_end_textobject(partial_key, capture, label)
     vim.keymap.set({ "n", "x", "o" }, "]" .. partial_key, function()
         require("nvim-treesitter-textobjects.move").goto_next_end(capture, "textobjects")
     end, { desc = "Goto end of next " .. label })
+end
+-- I swapped the capitalisation on this:
+-- If you now do 'SS', you can go back to the start.
+-- This is the more common operation.
+-- Having to do the 'Ss' is a lot more finger yoga.
+map_goto_next_end_textobject("F", "@function.outer", "function")
+map_goto_next_end_textobject("S", "@class.outer", "class")
+
+local function map_goto_previous_end_textobject(partial_key, capture, label)
     -- Does not make too much sense to map 'goto_next_end',
     -- you probably call this when you are inside a function
     vim.keymap.set({ "n", "x", "o" }, "[" .. partial_key, function()
         require("nvim-treesitter-textobjects.move").goto_previous_end(capture, "textobjects")
     end, { desc = "Goto end of previous " .. label })
 end
-map_goto_end_textobject("F", "@function.outer", "function")
-map_goto_end_textobject("S", "@class.outer", "class")
+map_goto_previous_end_textobject("f", "@function.outer", "function")
+map_goto_previous_end_textobject("s", "@class.outer", "class")
 
 -- The folds setting isn't too useful, as it just jumps to something that *can be* folded.
 -- vim.keymap.set({ "n", "x", "o" }, "]z", function()
