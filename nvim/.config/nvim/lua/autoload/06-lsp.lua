@@ -7,11 +7,9 @@
 -- https://0xunicorn.com/neovim-native-lsp-config/
 
 -- Extend the default client capabilities for all LSP servers
-vim.lsp.config.capabilities = vim.tbl_deep_extend(
-    "force",
-    vim.lsp.protocol.make_client_capabilities(),
-    require("blink.cmp").get_lsp_capabilities()
-)
+vim.lsp.config("*", {
+    require("blink.cmp").get_lsp_capabilities(),
+})
 
 vim.lsp.enable({
     "lua_ls",
@@ -38,6 +36,7 @@ vim.diagnostic.config({
     severity_sort = true,
     float = { border = "rounded", source = "if_many" },
     underline = { severity = vim.diagnostic.severity.ERROR },
+    -- NOTE: This means this must be called AFTER the nerd font is set, which is done in visuals.
     signs = vim.g.have_nerd_font and {
         text = {
             [vim.diagnostic.severity.ERROR] = "󰅚 ",
