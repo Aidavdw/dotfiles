@@ -71,6 +71,8 @@ Be sure you have `unzip` and `npm` installed, as they are required for lua & lat
 
 ## Rustaceanvim
 [ mrcjkb/rustaceanvim](https://github.com/mrcjkb/rustaceanvim?tab=readme-ov-file#books-usage--features) runs better with the VSCode version of LLDB, so that must be installed with `paru -S codelldb-bin`.
+This might be a little harder to do on void.
+
 In addition, it runs with the **local** Rust toolchain. Trying to install rust-analyzer through mason will cause conflicts. So, **do not install rust-analyzer through mason**.
 Also note that you must have `rust-analyser` installed, it does not come with the toolchain by default!
 
