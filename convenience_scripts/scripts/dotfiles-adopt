@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Adopt a file or directory into a GNU Stow dotfiles package.
+#
+# Usage:
+# `dotfiles-adopt <path> <stow-folder>`
+#
+# Example:
+# `dotfiles-adopt ~/.config/mpd/mpd.conf my-mpd`
+
+set -euo pipefail
+
+# Root directory containing all Stow packages.
+DOTFILES_DIR="$HOME/dotfiles"
+
+usage() {
+    echo "Usage: $(basename "$0") <path> <stow-folder>" >&2
+    exit 2
+}
+
+if [[ $# -ne 2 ]]; then
+    usage
+fi
+
+# Expand ~ and environment variables in the arguments.
+eval "SOURCE=\"$1\""
+eval "STOW_FOLDER=\"$2\""
+
+STOW_DIR="$DOTFILES_DIR/$STOW_FOLDER"
+
+# The requested Stow package must already exist.
+if [[ ! -d "$STOW_DIR" ]]; then
+    echo "Error: Stow folder does not exist: $STOW_DIR" >&2
+    exit 1
+fi
+
+# Make sure the source exists. The -L check also allows symbolic links.
+if [[ ! -e "$SOURCE" && ! -L "$SOURCE" ]]; then
+    echo "Error: source does not exist: $SOURCE" >&2
+    exit 1
+fi
+
+# Resolve the source to an absolute path.
+SOURCE="$(realpath "$SOURCE")"
+
+# The source must be somewhere below $HOME, since Stow will recreate
+# its path relative to the home directory.
+if [[ "$SOURCE" != "$HOME"/* ]]; then
+    echo "Error: source must be inside your home directory: $SOURCE" >&2
+    exit 1
+fi
+
+# Get the path relative to $HOME.
+RELATIVE_PATH="$(realpath --relative-to="$HOME" "$SOURCE")"
+DESTINATION="$STOW_DIR/$RELATIVE_PATH"
+mkdir -p "$(dirname "$DESTINATION")"
+mv "$SOURCE" "$DESTINATION"
+
+# Run Stow from the dotfiles directory.
+cd "$DOTFILES_DIR"
+stow --no-folding --restow "$STOW_FOLDER"
