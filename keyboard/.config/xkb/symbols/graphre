@@ -1,16 +1,19 @@
 // Based on https://github.com/rdavison/graphite-layout, but with a couple of modifications.
 
-// Putting it the user directory makes it visible to some things, but not all.
+// Putting it the user directory makes it visible to some applications that use xkb, but not all.
 // Notably, localectl is unaware of anything in `~/.config/xkb`.
+// Niri and Hyprland are though.
 
 // Good references of how making a custom layout in xkb works:
 // https://xkbcommon.org/doc/current/user-configuration.html#md_doc_2user-configuration
 // https://codeaffen.org/2023/09/16/custom-keyboard-layouts-with-xkb/
 
-// You can check if it compiles correctly by running `xkbcli compile-keymap --include ~/.config/xkb --include-defaults --test --layout graphre` (assuming this file is in ~/.config/xkb).
+// You can check if it compiles correctly by running (assuming this file is in ~/.config/xkb).
+// `xkbcli compile-keymap --include ~/.config/xkb --include-defaults --test --layout graphre`
 // If this file is picked up by libxkbcommon, then you should also be able to just run `xkbcli compile-keymap --layout graphre`
 
 // label 'basic' is arbitrary, just a name.
+// We don't use variants, so it does not matter.
 // Pick this as the default layout
 default xkb_symbols "basic" {
 
@@ -25,7 +28,7 @@ default xkb_symbols "basic" {
     key.type[Group1] = "EIGHT_LEVEL";
 
     // The columns are as follows:
-    // Normal | Shift | AltGr (3rd level) | AltGr + shift | Extend (5th level) | Extend + Shift | Extend + Shift + AltGr
+    // Normal | Shift | AltGr (3rd level) | AltGr + shift | Extend (5th level) | Extend + Shift | Extend + AltGr | Extend + Shift + AltGr
 
     // This is already an alias for <HZTG> (zenkaku/hankaku),
     // so that does not have to be defined separately
@@ -117,13 +120,7 @@ default xkb_symbols "basic" {
     key <SPCE> {[ space, space, space, VoidSymbol, Return ]};
 
 
-    // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
-    // Muhenkan, left from spacebar
-    key <MUHE> {[ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
-    // On some rare keyboard, <MUHE> has the same scancode as <NFER>.
-    key <NFER> {[ period, VoidSymbol, VoidSymbol, VoidSymbol ]};
-
-    // On JP keyboard, left shift is split in two.
+    // On Japanese keyboard layout, left shift is split in two.
     // Right functions as 'Ro'.
     // Me no likey. Put them back together.
     key <AB11> {[ Shift_R ], type[group1]="ONE_LEVEL" };
@@ -163,6 +160,7 @@ default xkb_symbols "basic" {
     key <RCTL> {[ Alt_L ]};
 
 
+    // Extra keys on jp106 layout. See: https://kbdlayout.info/kbd106
     // If we have extra thumb keys (JP layout),
     // we can use them for easier access to layer 5.
     // Muhenkan, left from spacebar
