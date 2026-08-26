@@ -30,6 +30,10 @@ default xkb_symbols "basic" {
     // We want to add an extend layer (5th level), so we need to make it aware.
     key.type[Group1] = "TWO_LEVEL";
 
+    // Remove modifier assignments inherited from the base layout.
+    // We want the keysym on each layout to determine the modifier.
+    modifier_map None { <LALT>, <RCTL> };
+
     // The columns are as follows:
     // Normal | Shift | AltGr (3rd level) | AltGr + shift | Extend (5th level) | Extend + Shift | Extend + AltGr | Extend + Shift + AltGr
 
@@ -37,7 +41,7 @@ default xkb_symbols "basic" {
     // so that does not have to be defined separately
     key <TLDE> {[ grave, asciitilde ]};
     // Number keys and symbols included for completeness, but ideally you'd use the symbol and number layers for them :)
-    key <AE01> {[ 9, exclam ]};
+    key <AE01> {[ 1, exclam ]};
     key <AE02> {[ 2, at ]};
     key <AE03> {[ 3, numbersign ]};
     key <AE04> {[ 4, dollar ]};
@@ -154,8 +158,6 @@ default xkb_symbols "basic" {
     // If we have extra thumb keys (JP layout),
     // we can use them for easier access to layer 5.
     // No snippet for this, but we can do it manually.
-    // Muhenkan, left from spacebar
-    key <MUHE> {[ ISO_Level5_Shift ]};
     // On some rare keyboards, <MUHE> has the same scancode as <NFER>.
     key <NFER> {[ ISO_Level5_Shift ]};
     // Henkan, right of spacebar
@@ -176,36 +178,15 @@ default xkb_symbols "basic" {
         actions[Group1] = [ NoAction(), LockMods(mods=Lock) ]};
 
     // Layer 3: Symbol layer.
-    // We want to have a third-layer opener on both hands.
-    // Normally this is on AltGr.
-    // JP keyboard does not have a ralt.
-    // IBM model M does not have a Meta
-    // importance: Meta (mod) > Third layer > alt (mod)
-    // So: on left hand, l_meta should open layer 3.
-    // l_alt should function as the meta key instead (for window manager binds etc)
     // On right hand: use ralt. If not available (JP), use Katakana/Hiragana key
-
     // See `/usr/share/X11/xkb/symbols/level3`
     // These contain the following:
     // key <RALT> {[  ISO_Level3_Shift  ], type[group1]="ONE_LEVEL" };
-    // key <LWIN> {[  ISO_Level3_Shift  ], type[group1]="ONE_LEVEL" };
+    // This is your standard 'AltGr'
     include "level3(ralt_switch)"
-    include "level3(lwin_switch)"
     // hiragana/katakana
     key <HKTG> {[ ISO_Level3_Shift ]};
-
-    // Left alt becomes Super.
-    // Normally, pressing 'Super' also doubles as Mod4.
-    key <LALT> {[ Super_L ]};
-
-    // Right Ctrl becomes ordinary Alt.
-    // We have mapped both l_alt and r_alt to open third layer (AltGr).
-    // I hardly use applications that bind anything to Alt + ... ,
-    // but just in case, it is nice to have one.
-    // I never really use right ctrl (maybe bad form... but whatever!)
-    // So, remap that to alt.
-    // Specifically, Alt_L, because some programs hardcode that.
-    // On qwerty l_alt also triggerS mod1
-    key <RCTL> {[ Alt_L ]};
+    // Muhenkan, left from spacebar
+    key <MUHE> {[ ISO_Level3_Shift ]};
 
 };

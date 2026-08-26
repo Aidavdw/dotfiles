@@ -8,9 +8,13 @@ environment {
 input {
     keyboard {
         xkb {
+            // If you change this, keyboard config will be reloaded
+            // In case of custom keyboard layout, this will also recompile it.
+            // (no need to restart niri)
             // My layout has options baked in so that they are not activated on us.
             // graphre is located at ~/.config/xkb/symbols/graphre
             layout "graphre,us"
+            options "altwin:swap_lalt_lwin"
         }
 
         repeat-delay 200
