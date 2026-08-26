@@ -54,14 +54,12 @@ return {
             end
         end,
         formatters_by_ft = {
+            -- Python, rust etc. are already done by LSP.
             lua = { "stylua" },
             yaml = { "yamlfmt" },
             sh = { "shfmt" },
             json = { "jq" },
             tex = { "tex-fmt" },
-            -- TODO: add one for python
-            -- TODO: Add bibtex-tidy for bibtex
-            -- Rust uses rustaceanvim, which means it can just fall back on the LSP
             --
             -- Conform can also run multiple formatters sequentially
             -- python = { "isort", "black" },

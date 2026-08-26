@@ -21,13 +21,15 @@ vim.lsp.enable({
     "html",
     "texlab",
     -- Python static type checker
-    "basedpyright",
+    "ty",
     -- Python linter
     "ruff",
     -- Obsidian-like markdown
     "markdown_oxide",
     "fortls",
     "fortitude",
+    -- Markdown linter and formatter
+    "rumdl",
 })
 
 -- Diagnostic Config
