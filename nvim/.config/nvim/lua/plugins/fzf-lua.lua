@@ -2,10 +2,19 @@ return {
     "ibhagwan/fzf-lua",
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    ---@module "fzf-lua"
+    ---@type fzf-lua.Config|{}
+    ---@diagnostic disable: missing-fields
     opts = {
         grep = {
             -- Do not use --color=always, this will break it.
-            rg_opts = "--hidden --follow --column --line-number --no-heading --smart-case -g '!{.git,node_modules, target}/*'",
+            -- rg_opts = "--hidden --follow --column --line-number --no-heading --smart-case -g '!{.git,node_modules, target}/*'",
+            follow = false, -- Follow symlinks
+            hidden = true, -- Also search inside hidden files
+        },
+        files = {
+            follow = false, -- Follow symlinks
+            hidden = true, -- Also search inside hidden files
         },
     },
     config = function(_, opts)
