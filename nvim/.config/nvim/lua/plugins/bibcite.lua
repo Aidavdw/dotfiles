@@ -1,7 +1,10 @@
 -- My own plugin for adding bibtex references
 return {
-    -- path to your local plugin
-    dir = "/home/aida/repos/bibcite.nvim/",
+    -- Alternatively use this:
+    -- path to my local dev copy of the plugin
+    -- dir = "/home/aida/repos/bibcite.nvim/",
+    "aidavdw/bibcite.nvim",
+
     -- optional name if it's not in a Git repo
     name = "bibcite",
     -- Running these commands triggers lazy load. They are still auto-completed.
