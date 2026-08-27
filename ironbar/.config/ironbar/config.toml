@@ -1,0 +1,164 @@
+position = "top"
+height = 42
+icon_theme = "Papirus-Dark"
+# Don't center the bar, put things to sides
+anchor_to_edges = true
+
+[[start]]
+type = "workspaces"
+truncate.mode = "end"
+truncate.max_length = 30
+name_map = {
+    "socialone"= " ",
+    "socialtwo"= "󰻞 ",
+    "mail"= " ",
+    "fastone"= "󰤇",
+    "fasttwo"= "󱄟"
+}
+sort = "index"
+
+[[start]]
+type = "music"
+player_type = "mpd"
+# If you use marquee in the main panel, it will constantly eat a bit of cpu.
+# Instead, we use truncate.
+truncate = {
+    mode = "end",
+    max_length = 28
+}
+on_click_right = "mpc toggle"
+
+# Pop-up window
+# in the popup, we care more about looks than performance.
+marquee_popup_title = {
+    enable = true,
+    max_length = 28,
+    scroll_speed = 0.5,
+    pause_duration = 2000, # ms
+    on_hover = "pause"
+}
+marquee_popup_artist = {
+    enable = true,
+    max_length = 28,
+    scroll_speed = 0.5,
+    pause_duration = 2000, # ms
+    on_hover = "pause"
+}
+marquee_popup_album = {
+    enable = true,
+    max_length = 28,
+    scroll_speed = 0.5,
+    pause_duration = 2000, # ms
+    on_hover = "pause"
+}
+
+cover_image_size = 224
+
+[[center]]
+type = "focused"
+icon_size = 32
+truncate = {
+    mode = "middle",
+    max_length = 40
+}
+
+
+[[end]]
+type = "tray"
+icon_size = 13
+
+[[end]]
+type = "volume"
+mute_format = "{icon}"
+# BUG: This doesn't seem to work.
+# [truncate_popup]
+# mode = "middle"
+# max_length = 22
+
+# There does not seem to be an option to only show sources in the pop-up, 
+# only toggle them completely.
+# show_sources = false
+
+[end.profiles]
+[end.low]
+when = 20.0
+icons.volume = "󰕿"
+[end.medium]
+when = 40.0
+icons.volume = "󰖀"
+[end.high]
+when = 60.0
+icons.volume = ""
+
+[[end]]
+# https://github.com/JakeStanger/ironbar/wiki/bluetooth
+type = "bluetooth"
+format.not_found = "?"
+format.disabled = "󰂲"
+# BUG: right now always shows the 'enabled' state, even if connected?
+format.enabled = ""
+format.connected = "󰂱 {device_alias}"
+format.connected_battery = "󰥉 {device device_battery_percent}%"
+
+[[end]]
+# Requires `upower`
+type = "battery"
+
+# TODO: there is no iwd module yet.
+# Something I can make?
+
+[[end]]
+# The power popup menu
+type = "custom"
+name = "power-menu"
+class = "power-menu"
+[[end.bar]]
+type = "button"
+name = "power-btn"
+label = ""
+on_click = "popup:toggle"
+[[end.popup]]
+type = "box"
+# BUG: not vertically respected
+orientation = "vertical"
+[[end.popup.widgets]]
+type = "label"
+name = "header"
+label = "Power menu"
+[[end.popup.widgets]]
+type = "box"
+name = "buttons"
+[[end.popup.widgets.widgets]]
+type = "button"
+class = "power-btn"
+label = "󰐥"
+on_click = "!halt"
+[[end.popup.widgets.widgets]]
+type = "button"
+class = "power-btn"
+label = "󰜉"
+on_click = "!reboot"
+[[end.popup.widgets.widgets]]
+type = "button"
+class = "power-btn"
+label = ""
+on_click = "!~/scripts/keyboard-toggle-hypr"
+
+
+[[end]]
+# clock (date)
+type = "clock"
+justify = "center"
+format = "%d日%m月"
+class = "dateclock"
+
+[[end]]
+# clock (time)
+type = "clock"
+justify = "center"
+format = "%H:%M"
+disable_popup = true
+class = "timeclock"
+
+[[end]]
+type = "notifications"
