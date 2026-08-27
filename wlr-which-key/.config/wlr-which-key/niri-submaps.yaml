@@ -41,10 +41,10 @@ menu:
         cmd: waterfox
       - key: "n"
         desc: new launcher
-        cmd: rofi -show drun -theme grid-launcher
+        cmd: run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
       - key: "mod4+n"
         desc: new launcher
-        cmd: rofi -show drun -theme grid-launcher
+        cmd: run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
       - key: "s"
         desc: settings
         submenu:
