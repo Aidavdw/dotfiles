@@ -1,0 +1,24 @@
+# Cannot use a bunch of the events (before-sleep, after-resume) etc because no systemd in void.
+
+# Monitor backlight
+timeout 150 'brightnessctl -s set 10' resume 'brightnessctl -r'
+
+
+# Keyboard backlight
+timeout 150 'brightnessctl -sd rgb:kbd_backlight set 0' resume 'brightnessctl -rd rgb:kbd_backlight'
+
+# Lock after 8 minutes
+timeout 480 '~/auto-scripts/suspend-agnostic.sh lock'
+
+# 10 minutes
+timeout 600 '~/auto-scripts/suspend-agnostic.sh --if-not-playing-music --if-not-plugged-in'
+
+# 30m even if playing music, if we're not plugged in this is not good.
+timeout 1800 '~/auto-scripts/suspend-agnostic.sh --if-not-plugged-in'
+
+# 45 minutes if music is not playing
+timeout 2700 '~/auto-scripts/suspend-agnostic.sh --if-not-playing-music'
+
+# Always suspend after 3 hours, even if music is playing.
+timeout 2700 '~/auto-scripts/suspend-agnostic.sh'
+

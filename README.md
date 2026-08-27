@@ -7,13 +7,13 @@ I use stow, so expect all files in named directories to be relative to `~`.
 ## Niri
 
 Depends on modules:
-
 - `wayland`
 - `veila`
 - `wlr-which-key`
 - `keyboard`
 - `waybar`
 - `convenience_scripts`
+- `swayidle`
 
 ### .outside
 

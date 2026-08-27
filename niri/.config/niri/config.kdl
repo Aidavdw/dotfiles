@@ -197,7 +197,7 @@ spawn-at-startup "evolution"
 // Works nicely on systemd, but not so well on runit.
 
 spawn-at-startup "waybar"
-spawn-at-startup "hypridle"
+spawn-at-startup "swayidle"
 // TODO: Try out [wbg](https://codeberg.org/dnkl/wbg). Not packaged for arch or void.
 spawn-at-startup "~/.local/bin/swaybg-random-wallpaper"
 // TODO: Make a service for veila. Could even package it in void.
