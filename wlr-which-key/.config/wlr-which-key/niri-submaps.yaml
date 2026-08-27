@@ -38,13 +38,14 @@ menu:
         cmd: nautilus
       - key: "i"
         desc: internet browser
-        cmd: waterfox
+        # Need to provide full paths. Can't just assume that a command is in PATH.
+        cmd: ~/scripts/run-with-fallback 'waterfox' 'firefox'
       - key: "n"
         desc: new launcher
-        cmd: run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
+        cmd: ~/scripts/run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
       - key: "mod4+n"
         desc: new launcher
-        cmd: run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
+        cmd: ~/scripts/run-with-fallback 'rofi -show drun -theme grid-launcher' 'fuzzel'
       - key: "s"
         desc: settings
         submenu:
