@@ -66,8 +66,8 @@ input {
 }
 
 // get names of monitors and capabilities: `niri msg outputs`
-// Built-in laptop
-output "eDP-1" {
+// Built-in laptop of Lenovo Legion (monokuro)
+output "BOE 0x0B8B 0x00000001" {
     mode "2560x1600@60.002"
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1.6
@@ -182,14 +182,23 @@ layout {
 
 }
 
-
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-spawn-at-startup "waybar"
-spawn-at-startup "awww-daemon"
+
+// Opening windows: not a service.
 spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
 spawn-at-startup "evolution"
-spawn-at-startup "hypridle"
+
+
+// 'persistent' things should be done as services.
+// WARNING: There is also some stuff in `/etc/xdg/autostart/` placed by packages themselves.
+spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd waybar.service"
+// TODO: Try out [wbg](https://codeberg.org/dnkl/wbg). Not packaged for arch or void.
+spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd hypridle.service"
+spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd swaybg-random-wallpaper"
+
+
+// TODO: Make a service for veila. Could even package it in void.
 spawn-at-startup "veilad"
 
 
@@ -245,9 +254,17 @@ workspace "socialone" {
 
 // TODO: Put waybar on top layer, so that it stays there when you go to Overview
 
-// Put swaybg inside the overview backdrop.
+// Put awww background inside the overview backdrop.
+// Then it does not move when you switch workspaces.
 layer-rule {
     match namespace="awww-daemon"
+    place-within-backdrop true
+}
+
+// Put swaybg inside the overview backdrop.
+// Then it does not move when you switch workspaces.
+layer-rule {
+    match namespace="wallpaper"
     place-within-backdrop true
 }
 
