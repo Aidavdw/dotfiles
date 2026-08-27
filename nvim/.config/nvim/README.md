@@ -51,25 +51,27 @@ You can also supplement with Mason.
 
 | Arch package | Void package | Mason | reason |
 | - | - | - | - |
-| fzf | fzf | - | fuzzy finder |
-| rg | ? | - | ripgrep, better grep utility. Used by fzf |
-| bat | ? | - | used for higlighting previews in fzf |
-| tree-sitter-cli | tree-sitter-cli | ? | dependency of texlab |
-| clang | clang | - | clang contains the `clangd` LSP for c.|
+| fzf | . | - | fuzzy finder |
+| wl-clipboard | . | - | Copying to the system clipboard (wayland) |
+| rg | ripgrep | - | ripgrep, better grep utility. Used by fzf |
+| bat | . | - | used for higlighting previews in fzf |
+| tree-sitter-cli | . | ? | dependency of texlab |
+| clang | . | - | clang contains the `clangd` LSP for c. You also need this or `gcc` for Luasnip.|
 | vscode-css-languageserver | - | ? | # css LSP |
 | dot-language-server | - | ? | dot (graph) ls |
 | vscode-html-languageserver | - | ? | |
-| texlab | texlab | ? | LSP for latex|
-| ruff | ruff | ? | Linter for python|
-| ty | ty | ? | python static type checker|
-| rumdl | - | ? | markdown linter and formatter |
-| bash-language-server | bash-language-server | ? | bashls|
+| texlab | . | ? | LSP for latex|
+| ruff | . | ? | Linter for python|
+| ty | . | ? | python static type checker|
+| rumdl | (self-packaged) | ? | markdown linter and formatter |
+| markdown-oxide | . | ? | LSP for markdown in my notes |
+| bash-language-server | . | ? | bashls|
 | stylua | StyLua | ? | formatter for lua|
 | yamlformat | yamlfmt | ? | |
-| shfmt | shfmt | ? | shell formatter|
+| shfmt | . | ? | shell formatter|
 | python-pylatexenc | - | ? | Rendering latex equations inline for markdown-render|
-| imagemagick | imagemagick | ? | needed for the image.nvim plugin|
-| unzip | unzip | ? | used to use the lua lsp.|
+| imagemagick | . | ? | needed for the image.nvim plugin|
+| unzip | . | ? | used to use the lua lsp.|
 | fortls (AUR) | - | ? | fortran LSP|
 | fortitude-bin (AUR) | - | ? | fortran linter|
 | codelldb-bin (AUR) | - | ? | debugger. Rustaceanvim works best with this specific build. |
