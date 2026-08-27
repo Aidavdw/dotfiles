@@ -4,23 +4,40 @@ I use stow, so expect all files in named directories to be relative to `~`.
 
 # Modules
 
-## .outside
+## Niri
+
+Depends on modules:
+
+- `wayland`
+- `veila`
+- `wlr-which-key`
+- `keyboard`
+- `waybar`
+- `convenience_scripts`
+
+### .outside
+
 These are **not** stow files! These are to be placed outside of the `~` dir.
 It contains a couple things:
+
 - udev rules to write a temporary marker file when power shaving is enabled
 - Desktop files for Hyprland wayland sessions running on specific GPUs.
 Both have installers.
 
-## bat
+#### bat
+
 Like `cat`, but syntax-highlighted.
 
-## beeper
+#### beeper
+
 A matrix bridging client that allows you to use whatsapp, signal etc. from a single client.
 Requires `beeper-bin` from the AUR.
 
-## blink
+#### blink
+
 Very cute little minimal break timer.
 get it [here](https://github.com/rijkvp/blink).
+
 ```bash
 cd ~/read-only-repos/
 git clone https://github.com/rijkvp/blink
@@ -31,39 +48,45 @@ cargo build --release
 Requires input tracking to be done by root.
 After building, run `./blink/.outside/install.sh`
 
+#### btop
 
-
-
-## btop
 TUI tool for showing cpu usage etc.
 
-## covenience-scripts
+#### covenience-scripts
+
 Contains a whole bunch of scripts that are useful to be able to run directly from the terminal.
 
+#### engineering-scripts
 
-## engineering-scripts
 Tools for engineering tasks that I do often. Doubt these are going to be useful to anyone but me lol.
 
-## fcitx5-wayland
+#### fcitx5-wayland
+
 Input method, set up for wayland (used for hyprland)
 Contains config files for other programs to ensure they launch in a way that fcitx can access them too.
 
-## fonts
+#### fonts
+
 My fontconfig prefences.
 
-## ghostty
+#### ghostty
+
 Terminal emulator
 
-## go
+#### go
+
 Settings for goland
 
-## hunspell
+#### hunspell
+
 command-line spell checker
 
-## Hyprland
+#### Hyprland
+
 The meat of my hyprland setup.
 Expects you to run a nvidia/intel igpu combo.
 Requires quite most of the other modules:
+
 - fcitx5-wayland
 - convenience_scripts
 - waybar
@@ -71,6 +94,7 @@ Requires quite most of the other modules:
 - satty
 
 and the following packages:
+
 ```bash
 pacman -S \
 hyprland \
@@ -84,23 +108,29 @@ awww \
 gnome-keyring \
 ```
 
-## JOSM
+#### JOSM
+
 open street map editor
 
-## kodi-cli
+#### kodi-cli
+
 Simple script that allows you to send stuff to kodi
 Instead of stowing, just run the installer script..
 `~/.kodirc` must have the password of the user that kodi is run as on the other machine in cleartext.
 Change where it says `<password>` to the password of the user you run kodi as.
 
-## latex
+#### latex
+
 science documents.
 
-## matplotlib
+#### matplotlib
+
 Standard plotting styles
 
-## mpd
+#### mpd
+
 Music player with server-client architecture.
+
 ```bash
 pacman -S \
 mpd \
@@ -113,13 +143,17 @@ playerctl
 
 After stowing:
 Config file requires a password, so you need to manually set it.
+
 ```shell
 cp .outside/mpdscribble.conf.example /etc/mpdscribble.conf
 ```
+
 edit to use lastfm password.
 
-## mpv
+#### mpv
+
 video player
+
 ```bash
 pacman -S \
 mpv \ 
@@ -128,110 +162,135 @@ xclip # dependency of mpvacious
 
 Also requires `mpv-mpvacious` from the AUR
 
-## nautilus
+#### nautilus
+
 simple gui file browser
 
-## nvim
+#### nvim
+
 See neovim config
 
-## paru
+#### paru
+
 AUR helper.
 
-## qimgv
+#### qimgv
+
 super lightweight image viewer.
 install from AUR `qimgv`.
 
-## rofi
+#### rofi
+
 application launcher etc
 
-## satty
+#### satty
+
 Screenshot editor
 
-## swaync
+#### swaync
+
 Notification centre
 
-## awww
+#### awww
+
 Pretty backgrourds for hyprland with animations
 
-## Terminal
+#### Terminal
+
 Terminal goodies for shortcuts, SSH keys.
-Contains a modular bashrc. 
+Contains a modular bashrc.
 Deliberately not a `~/.bashrc`, because that would break using this on some distros that put a lot of info in their bashrc.
 If loading this on another distro, be sure to put the following snippet into your `~/.bashrc`
-```
+
+```text
 # Load sub files as managed in dotfiles in `.bashrc.d` folder.
 [ -d ~/.bashrc.d ] && for f in ~/.bashrc.d/*.sh; do . "$f"; done
 
 ```
 
 And similar for `bash_profile`:
-```
+
+```text
 # Load sub files as managed in dotfiles in `.bash_profile.d` folder.
 [ -d ~/.bash_profile.d ] && for f in ~/.bash_profile.d/*.sh; do . "$f"; done
 ```
 
-## Required programs
-```
+#### Required programs
+
+```text
 fzf # fuzzy file finder
 eza # modern ls replacement
 yazi # modern ranger replacement (terminal file browser)
 ```
 
-## Vesktop
+#### Vesktop
+
 better discord client
 
-## vim
+#### vim
+
 classic text editor.
 
-## waybar
+#### waybar
+
 status bar for hyprland
 
-## zathura
+#### zathura
+
 super fast pdf viewer with vim keybinds
 
+### Currently unused
 
+#### dunst
 
-# Currently unused:
-
-## dunst
 Wayland notification manager
 replaced by swaync
 
-## kde-pim
+#### kde-pim
+
 akonadi etc, email clients from kde.
 Curretly using evolution.
 
-## kitty
+#### kitty
+
 terminal emulator
 replaced by ghostty
 
-## nchat
+#### nchat
+
 TUI whatsapp and telegram client.
 replaced by beeper.
 
-## obsidian
+#### obsidian
+
 PKM. Notes etc.
 Currently just using nvim.
 
-## papis
+#### papis
+
 python reference manager.
 Replaced by nvim+bibcite, jabref
 
-## quickshell
+#### quickshell
+
 pretty desktop.
 Never got the time to set this up
 
-## safeeyes
+#### safeeyes
+
 forces you to take breaks
 
-## thunar
+#### thunar
+
 file manager.
 Using nautilus now.
 
-## vscode
+#### vscode
+
 code editor.
 nvim now.
 
-## zed
+#### zed
+
 code editor
 using nvim now.
