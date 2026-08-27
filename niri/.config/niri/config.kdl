@@ -189,15 +189,17 @@ layout {
 spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
 spawn-at-startup "evolution"
 
-
-// 'persistent' things should be done as services.
 // WARNING: There is also some stuff in `/etc/xdg/autostart/` placed by packages themselves.
-spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd waybar.service"
+// NOTE: do not assume that a script is in path. You need to give a full path.
+
+// TODO: Try to convert to services again.
+// I tried to look into starting these as services.
+// Works nicely on systemd, but not so well on runit.
+
+spawn-at-startup "waybar"
+spawn-at-startup "hypridle"
 // TODO: Try out [wbg](https://codeberg.org/dnkl/wbg). Not packaged for arch or void.
-spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd hypridle.service"
-spawn-at-startup "~/auto-scripts/start-service-systemd-runit.sh --systemd swaybg-random-wallpaper"
-
-
+spawn-at-startup "~/.local/bin/swaybg-random-wallpaper"
 // TODO: Make a service for veila. Could even package it in void.
 spawn-at-startup "veilad"
 
