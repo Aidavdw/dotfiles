@@ -18,7 +18,17 @@ return {
                     -- A more  detailed one
                     --model = "anthropic/claude-sonnet-4.5",
                 },
+                editor_context = {
+                    ["buffer"] = {
+                        opts = {
+                            -- Always sync the buffer by sharing its "diff"
+                            -- Or choose "all" to share the entire buffer
+                            default_params = "diff",
+                        },
+                    },
+                },
             },
+
             inline = {
                 adapter = {
                     name = "openrouter",
