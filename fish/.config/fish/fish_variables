@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:vim
+SETUVAR --export POLARS_DOT_SVG_VIEWER:xdg\x2dopen\x20\x25file\x25
 SETUVAR --export SUDO_EDITOR:vim
 SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/home/aida/\x2ecargo/bin/\x1e/home/aida/\x2elocal/bin/\x1e/home/aida/scripts/
