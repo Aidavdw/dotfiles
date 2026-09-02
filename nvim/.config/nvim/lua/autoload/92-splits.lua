@@ -4,12 +4,12 @@ vim.keymap.set("n", "<C-h>", "<C-w>w", { noremap = true, silent = true })
 
 -- Resize splits with Ctrl+h/a
 -- Only provide keys for increase,
-vim.keymap.set("n", "<C-e>", "4<C-W>+", {
+vim.keymap.set("n", "<C-p>", "4<C-W>+", {
     noremap = true,
     silent = true,
     desc = "Increase split height",
 })
-vim.keymap.set("n", "<C-i>", "4<C-W>>", {
+vim.keymap.set("n", "<C-,>", "4<C-W>>", {
     noremap = true,
     silent = true,
     desc = "Increase split width",
