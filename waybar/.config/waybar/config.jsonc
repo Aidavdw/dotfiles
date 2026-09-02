@@ -360,6 +360,6 @@
         "tooltip": true,
         "tooltip-format": "Toggle QWERTY / Graphene keyboard layout",
         "format": "",
-        "on-click": "~/scripts/keyboard-toggle-hypr"
+        "on-click": "~/scripts/keyboard-toggle-agnostic"
     }
 }
