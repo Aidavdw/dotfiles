@@ -97,6 +97,16 @@ using the ensure_installed flag does not actually force installation until you o
 
 the latex one requires you to build the grammar, which means that you need to have nodejs installed.
 
+### CodeCompanion
+
+CodeCompanion connects to external AI providers. It checks for keys using `secret-tool`. Be sure to register what you need:
+
+```sh
+# These are interactive prompts. You can ctrl-v your keys.
+secret-tool store --label="Openrouter API key for my account" password openrouterapi
+
+```
+
 ## Troubleshooting
 
 If you get an error like `[fzf-lua] Unable to add buffer`, you should probably wait for `TSManager` to finish installing all the treesitter grammars. It does not load automatically (lazy)!
