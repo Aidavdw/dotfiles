@@ -66,6 +66,8 @@ input {
 }
 
 // get names of monitors and capabilities: `niri msg outputs`
+// Monitor positions are based on the *logical size* (affected by scale), not the resolution
+
 // Built-in laptop of Lenovo Legion (monokuro)
 output "BOE 0x0B8B 0x00000001" {
     mode "2560x1600@60.002"
@@ -75,6 +77,22 @@ output "BOE 0x0B8B 0x00000001" {
     // For some reason defaulted to non-zero. Check?
     position x=0 y=0
     focus-at-startup
+}
+
+output "Lenovo Group Limited 0x8AB1 Unknown" {
+    mode "3072x1920@60.000" 
+    // Also supports 120hz
+    //mode "3072x1920@120.002"
+    scale 2.0
+    position x=0 y=0
+    focus-at-startup
+
+}
+
+// Screen at polars work desk
+output "LG Electronics LG ULTRAFINE 606NTKFHU845" {
+    scale 2.0
+    position x=0 y=-1080
 }
 
 
