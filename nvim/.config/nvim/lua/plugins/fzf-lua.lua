@@ -9,7 +9,7 @@ return {
         grep = {
             -- Do not use --color=always, this will break it.
             -- rg_opts = "--hidden --follow --column --line-number --no-heading --smart-case -g '!{.git,node_modules, target}/*'",
-            follow = false, -- Follow symlinks
+            follow = true, -- Follow symlinks
             hidden = true, -- Also search inside hidden files
         },
         files = {
