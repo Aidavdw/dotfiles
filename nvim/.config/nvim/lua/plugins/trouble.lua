@@ -21,6 +21,11 @@ return {
                 "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR filter.buf=0 focus=true<cr>",
                 desc = "sidebar w/ errors (buffer, focused)",
             },
+            {
+                "<leader>dwE",
+                "<cmd>Trouble diagnostics toggle filter.severity=vim.diagnostic.severity.ERROR focus=true<cr>",
+                desc = "sidebar w/ errors (workspace, focused)",
+            },
             -- Same, but for entire workspace
             -- If you are fixing style for your entire project,
             -- its worth looking at workspace diagnostics,
