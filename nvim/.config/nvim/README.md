@@ -53,7 +53,7 @@ You can also supplement with Mason.
 | - | - | - | - |
 | fzf | . | - | fuzzy finder |
 | wl-clipboard | . | - | Copying to the system clipboard (wayland) |
-| rg | ripgrep | - | ripgrep, better grep utility. Used by fzf |
+| ripgrep | ripgrep | - | ripgrep, better grep utility. Used by fzf |
 | bat | . | - | used for higlighting previews in fzf |
 | tree-sitter-cli | . | ? | dependency of texlab |
 | clang | . | - | clang contains the `clangd` LSP for c. You also need this or `gcc` for Luasnip.|
@@ -67,7 +67,7 @@ You can also supplement with Mason.
 | markdown-oxide | . | ? | LSP for markdown in my notes |
 | bash-language-server | . | ? | bashls|
 | stylua | StyLua | ? | formatter for lua|
-| yamlformat | yamlfmt | ? | |
+| yamlfmt | yamlfmt | ? | |
 | shfmt | . | ? | shell formatter|
 | python-pylatexenc | - | ? | Rendering latex equations inline for markdown-render|
 | imagemagick | . | ? | needed for the image.nvim plugin|
