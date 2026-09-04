@@ -1,0 +1,60 @@
+{
+  "theme": "auto",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "permissions": {
+    "deny": [
+      "Read(~/notes/**)",
+      "Edit(~/notes/**)",
+      "Read(~/notes/**)",
+      "Edit(~/notes/**)",
+      "Read(~/.ssh/**)",
+      "Edit(~/.ssh/**)",
+      "Bash(secret-tool *)",
+      "Bash(secret-tool)",
+      "Read(.git/**)",
+      "Edit(.git/**)",
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(git checkout *)",
+      "Bash(git switch *)",
+      "Bash(git merge *)",
+      "Bash(git rebase *)",
+      "Bash(git reset *)",
+      "Bash(git revert *)",
+      "Bash(git cherry-pick *)",
+      "Bash(git pull *)",
+      "Bash(git stash pop *)",
+      "Bash(git stash drop *)",
+      "Bash(git branch -d *)",
+      "Bash(git branch -D *)",
+      "Bash(git branch -m *)",
+      "Bash(git branch -M *)",
+      "Bash(git tag -d *)",
+      "Bash(git remote *)",
+      "Bash(git submodule *)",
+      "Bash(git filter-branch *)",
+      "Bash(git clean -f *)"
+    ],
+    "ask": [
+      "Bash(git branch *)",
+      "Bash(git commit *)",
+      "Bash(git commit)"
+    ],
+    "autoAllow": [
+      "Bash(sandboxed)"
+    ],
+    "excludedCommands": [
+      "docker *"
+    ]
+  },
+  "sandbox": {
+    "enabled": true
+  },
+  "network": {
+    "allowLocalPortBinding": true
+  }
+}
