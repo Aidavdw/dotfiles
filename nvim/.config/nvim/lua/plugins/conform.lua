@@ -54,15 +54,16 @@ return {
             end
         end,
         formatters_by_ft = {
-            -- Python, rust etc. are already done by LSP.
+            -- Rust etc. are already done by LSP.
             lua = { "stylua" },
             yaml = { "yamlfmt" },
             sh = { "shfmt" },
             json = { "jq" },
             tex = { "tex-fmt" },
-            --
-            -- Conform can also run multiple formatters sequentially
-            -- python = { "isort", "black" },
+            -- python needs to explicitly use ruff.
+            -- We cannot fall back to lsp, because we have two LSPs attached to python (ruff, ty).
+            -- Order matters: fix lints, then format, then sort imports.
+            python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
             --
             -- You can use 'stop_after_first' to run the first available formatter from the list
             -- javascript = { "prettierd", "prettier", stop_after_first = true },
