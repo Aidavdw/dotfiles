@@ -8,7 +8,7 @@
 
 -- Extend the default client capabilities for all LSP servers
 vim.lsp.config("*", {
-    require("blink.cmp").get_lsp_capabilities(),
+    capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
 vim.lsp.enable({
