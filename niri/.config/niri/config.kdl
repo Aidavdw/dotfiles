@@ -206,6 +206,7 @@ layout {
 // Opening windows: not a service.
 spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
 spawn-at-startup "evolution"
+spawn-at-startup "gtk-launch slack"
 
 // WARNING: There is also some stuff in `/etc/xdg/autostart/` placed by packages themselves.
 // NOTE: do not assume that a script is in path. You need to give a full path.
@@ -218,7 +219,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "swayidle"
 // TODO: Try out [wbg](https://codeberg.org/dnkl/wbg). Not packaged for arch or void.
 spawn-at-startup "~/.local/bin/swaybg-random-wallpaper"
-// TODO: Make a service for veila. Could even package it in void.
+// TODO: Make a service for veila. Could even package it.
 spawn-at-startup "veilad"
 
 
@@ -345,6 +346,15 @@ window-rule {
     open-focused false
     block-out-from "screencast"
     open-maximized-to-edges true
+}
+
+
+// Nchat locked to its own workspace
+window-rule {
+    match app-id="slack" 
+    open-on-workspace "socialone"
+    open-focused false
+    block-out-from "screencast"
 }
 
 // HACK: Since the title changes and the app name stays the same,
