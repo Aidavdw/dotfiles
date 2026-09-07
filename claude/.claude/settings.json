@@ -1,10 +1,4 @@
 {
-  "theme": "auto",
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "medium"
-    }
-  },
   "permissions": {
     "deny": [
       "Read(~/notes/**)",
@@ -51,9 +45,18 @@
       "docker *"
     ]
   },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
   "sandbox": {
     "enabled": true
   },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "theme": "auto",
   "network": {
     "allowLocalPortBinding": true
   }
