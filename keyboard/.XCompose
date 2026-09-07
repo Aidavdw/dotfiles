@@ -1,6 +1,17 @@
 <Multi_key> <space> <space>		: " "	nobreakspace # NO-BREAK SPACE
 <Multi_key> <period> <period>		: "…"	ellipsis # HORIZONTAL ELLIPSIS
 
+# Arrows
+<Multi_key> <minus> <greater>       : "→"
+<Multi_key> <less> <minus>        : "←"
+<Multi_key> <slash> <backslash>        : "↑"
+<Multi_key> <backslash> <slash>      : "↓"
+<Multi_key> <a> <r>       : "→"
+<Multi_key> <a> <l>        : "←"
+<Multi_key> <a> <u>        : "↑"
+<Multi_key> <a> <d>      : "↓"
+
+
 # Math
 <Multi_key> <plus> <minus>              : "±"   plusminus # PLUS-MINUS SIGN
 <Multi_key> <minus> <plus>              : "±"   plusminus # PLUS-MINUS SIGN
