@@ -72,11 +72,13 @@ You can also supplement with Mason.
 | python-pylatexenc | - | ? | Rendering latex equations inline for markdown-render|
 | imagemagick | . | ? | needed for the image.nvim plugin|
 | unzip | . | ? | used to use the lua lsp.|
+| jq | . | ? | auto-formatting json |
 | fortls (AUR) | - | ? | fortran LSP|
 | fortitude-bin (AUR) | - | ? | fortran linter|
 | codelldb-bin (AUR) | - | ? | debugger. Rustaceanvim works best with this specific build. |
 | tex-fmt (AUR) | - | ? | latex formatter|
 | libtexprintf (AUR) | - | ? | Rendering latex equations inline for markdown-render|
+| claude-agent-acp (AUR) | - | - | Using claude code from within CodeCompanion [^1] |
 
 Be sure you have `unzip` and `npm` installed, as they are required for lua & latex LSP respectively!
 
@@ -110,3 +112,5 @@ secret-tool store --label="Openrouter API key for my account" password openroute
 ## Troubleshooting
 
 If you get an error like `[fzf-lua] Unable to add buffer`, you should probably wait for `TSManager` to finish installing all the treesitter grammars. It does not load automatically (lazy)!
+
+[^1]: <https://codecompanion.olimorris.dev/configuration/adapters-acp#setup-claude-code>
