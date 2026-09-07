@@ -97,6 +97,8 @@ local function fold_captures(capture_name)
 end
 
 local function fold_functions()
+    -- FIXME: Folding of functions right now also folds arguments if it spans over multiple lines.
+    -- It should always show the arguments, and only fold what is inside the function.
     fold_captures("function.outer")
 end
 
