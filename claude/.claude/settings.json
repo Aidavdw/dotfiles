@@ -3,8 +3,6 @@
     "deny": [
       "Read(~/notes/**)",
       "Edit(~/notes/**)",
-      "Read(~/notes/**)",
-      "Edit(~/notes/**)",
       "Read(~/.ssh/**)",
       "Edit(~/.ssh/**)",
       "Bash(secret-tool *)",
