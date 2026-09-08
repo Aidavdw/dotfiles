@@ -25,9 +25,24 @@ vim.o.foldtext = ""
 --- Fold all nodes matching a given treesitter-textobjects capture
 --- (e.g. "function.outer", "class.outer") in the current buffer,
 --- without touching any existing folds.
---- Requires:
---- - nvim-treesitter (with parser installed for the filetype)
---- - nvim-treesitter-textobjects (provides the e.g. `function.outer` capture)
+local function body_start_line(node)
+    local ok, body = pcall(function()
+        return node:field("body")[1]
+    end)
+    if not ok or not body then
+        body = nil
+        for child in node:iter_children() do
+            local t = child:type()
+            if t:find("block") or t:find("body") or t == "declaration_list" then
+                body = child
+                break
+            end
+        end
+    end
+
+    return (body or node):start() + 1
+end
+
 local function fold_captures(capture_name)
     local bufnr = vim.api.nvim_get_current_buf()
 
@@ -37,11 +52,9 @@ local function fold_captures(capture_name)
         return
     end
 
-    -- The `:fold` command (like `zf`) only works when 'foldmethod' is
-    -- "manual". Switching to "manual" does NOT delete or recompute existing
-    -- folds -- it freezes whatever folds are currently there (regardless of
-    -- how they were computed) and keeps them exactly as-is. So this is safe
-    -- and we never need to clear anything.
+    -- Switching to "manual" does NOT delete or recompute existing folds.
+    -- It freezes whatever folds are currently there (regardless of
+    -- how they were computed) and keeps them exactly as-is.
     if vim.wo.foldmethod ~= "manual" then
         vim.wo.foldmethod = "manual"
     end
@@ -58,8 +71,9 @@ local function fold_captures(capture_name)
         local root = tstree:root()
         for id, node in query:iter_captures(root, bufnr, 0, -1) do
             if query.captures[id] == capture_name then
-                local start_row, _, end_row, end_col = node:range()
-                local start_line = start_row + 1
+                local _, _, end_row, end_col = node:range()
+                -- Fold from the body, not from the start of the signature.
+                local start_line = body_start_line(node)
                 local end_line = (end_col == 0) and end_row or (end_row + 1)
 
                 if end_line > start_line then
@@ -76,6 +90,8 @@ local function fold_captures(capture_name)
     -- Recurse into the parser and any injected-language subtrees
     -- (e.g. embedded languages in markdown, vue, etc.)
     local function walk(lang_tree)
+        -- Make sure a tree is already loaded for this file
+        lang_tree:parse(true)
         for _, tstree in ipairs(lang_tree:trees()) do
             collect(tstree, lang_tree:lang())
         end
@@ -97,8 +113,6 @@ local function fold_captures(capture_name)
 end
 
 local function fold_functions()
-    -- FIXME: Folding of functions right now also folds arguments if it spans over multiple lines.
-    -- It should always show the arguments, and only fold what is inside the function.
     fold_captures("function.outer")
 end
 
