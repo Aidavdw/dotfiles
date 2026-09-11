@@ -11,10 +11,17 @@ return {
             -- rg_opts = "--hidden --follow --column --line-number --no-heading --smart-case -g '!{.git,node_modules, target}/*'",
             follow = true, -- Follow symlinks
             hidden = true, -- Also search inside hidden files
+            -- don't search in files in gitignore, but do allow searching
+            -- in files that are in gitexclude.
+            rg_opts = "--column --line-number --no-heading --color=always --smart-case "
+                .. "--max-columns=4096 --no-ignore-exclude -e",
         },
         files = {
             follow = false, -- Follow symlinks
             hidden = true, -- Also search inside hidden files
+            -- Same deal as `grep.rg_opts` above (fzf-lua uses rg for `files`
+            -- as well, since `fd` isn't installed).
+            rg_opts = [[--color=never --files --no-ignore-exclude -g "!.git" -g "!.jj"]],
         },
     },
     config = function(_, opts)
