@@ -79,6 +79,16 @@ output "BOE 0x0B8B 0x00000001" {
     focus-at-startup
 }
 
+
+/// Extra monitor at Wet
+output "LG Electronics E2210      301NDSKJE134" {
+    scale 1.0
+    // Typically i put my laptop left of it because closer to power outlet
+    position x=-1680 y=0
+}
+
+
+
 output "Lenovo Group Limited 0x8AB1 Unknown" {
     mode "3072x1920@60.000" 
     // Also supports 120hz
@@ -263,8 +273,6 @@ animations {
 // fast1 and fast2 are now the 'home' ones, most easily accessible.
 // No dedicated 'home' on 'h'.
 
-workspace "fastone" {}
-workspace "fasttwo" {}
 workspace "mail" {
     open-on-output "eDP-1"
 }
@@ -441,10 +449,10 @@ binds {
     Mod+m hotkey-overlay-title="move window to workspace..." {spawn-sh "wlr-which-key niri-submaps --initial-keys \"m\""; }
 
     // quick workspaces are not behind the submap, they are direct mappings
-    Mod+P hotkey-overlay-title="switch to fast workspace 1" { focus-workspace "fastone"; }
-    Mod+Shift+P hotkey-overlay-title="move windows to fast1" { move-column-to-workspace "fastone"; }
-    Mod+Comma hotkey-overlay-title="switch to fast workspace 2" {focus-workspace "fasttwo"; }
-    Mod+Shift+Comma hotkey-overlay-title="move windows to fast2" { move-column-to-workspace "fasttwo"; }
+    Mod+P hotkey-overlay-title="switch to fast workspace 1" { focus-workspace 1; }
+    Mod+Shift+P hotkey-overlay-title="move windows to fast1" { move-column-to-workspace 1; }
+    Mod+Comma hotkey-overlay-title="switch to fast workspace 2" {focus-workspace 2; }
+    Mod+Shift+Comma hotkey-overlay-title="move windows to fast2" { move-column-to-workspace 2; }
 
 
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -510,10 +518,9 @@ binds {
 
     Mod+Period              { focus-workspace-up; }
     Mod+Slash              { focus-workspace-down; }
-    Mod+Shift+Period         { move-column-to-workspace-up; }
-    Mod+Shift+Slash         { move-column-to-workspace-down; }
-    Mod+Ctrl+Period         { move-workspace-up; }
-    Mod+Ctrl+Slash         { move-workspace-down; }
+    Mod+Shift+Period         { move-workspace-up; }
+    Mod+Shift+Slash         { move-workspace-down; }
+    Mod+Shift+L         { move-column-to-monitor-next; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
