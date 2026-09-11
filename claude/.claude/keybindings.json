@@ -1,13 +1,4 @@
 {
   "$schema": "https://www.schemastore.org/claude-code-keybindings.json",
-  "bindings": [
-    {
-      "context": "Chat",
-      "bindings": {
-        "ctrl+y": "chat:submit",
-        "enter": "chat:newline",
-        "shift+enter": "chat:newline"
-      }
-    }
-  ]
+  "$note": "I tried rebinding chat:newline to enter and chat:submit to ctrl+enter, but it messes up the command menus"
 }

@@ -1,4 +1,7 @@
 {
+  "env": {
+    "GIT_OPTIONAL_LOCKS": "0"
+  },
   "permissions": {
     "allow": [
       "Bash(git status *)",
@@ -79,6 +82,7 @@
       "Bash(git commit *)",
       "Bash(git commit)"
     ],
+    "defaultMode": "default",
     "excludedCommands": [
       "docker *"
     ]
@@ -90,23 +94,24 @@
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
     "allowUnsandboxedCommands": false,
-    "excludedCommands": [],
+    "network": {
+      "allowLocalBinding": true
+    },
     "filesystem": {
       "denyWrite": [
         "./.git/**"
       ]
     },
-    "network": {
-      "allowLocalBinding": true
-    }
+    "excludedCommands": []
   },
   "modelSettings": {
     "claude-opus-5": {
       "effortLevel": "medium"
     }
   },
+  "timeFormat": "auto",
   "theme": "auto",
-  "env": {
-    "GIT_OPTIONAL_LOCKS": "0"
-  }
+  "editorMode": "vim",
+  "autoScrollEnabled": true,
+  "inputNeededNotifEnabled": true
 }
