@@ -16,7 +16,66 @@ local function move_file(old, new)
     return true
 end
 
--- Point the current buffer at `new` without reopening it, so the window layout is untouched
+-- Does `path` match one of the globs a server registered for this file operation?
+-- No filters at all means the server never asked to hear about renames.
+local function matches_filters(filters, path)
+    for _, filter in ipairs(filters or {}) do
+        local pattern = filter.pattern or {}
+        local scheme_ok = filter.scheme == nil or filter.scheme == "file"
+        local kind_ok = pattern.matches == nil or pattern.matches == "file"
+        if scheme_ok and kind_ok and pattern.glob then
+            local ok, lpeg = pcall(vim.glob.to_lpeg, pattern.glob)
+            if ok and vim.lpeg.match(lpeg, path) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+-- Attached or not, any client that registered interest in `path` should hear about the rename
+local function clients_interested_in(operation, path)
+    local interested = {}
+    for _, client in ipairs(vim.lsp.get_clients()) do
+        local file_operations = vim.tbl_get(client.server_capabilities or {}, "workspace", "fileOperations")
+        local capability = file_operations and file_operations[operation]
+        if capability and matches_filters(capability.filters, path) then
+            table.insert(interested, client)
+        end
+    end
+    return interested
+end
+
+local function rename_params(old, new)
+    return { files = { { oldUri = vim.uri_from_fname(old), newUri = vim.uri_from_fname(new) } } }
+end
+
+-- Ask servers to prepare for the rename,
+-- and apply the edits they hand back.
+-- Must happen *before* the move: the edits target the old paths.
+local function lsp_will_rename(old, new)
+    for _, client in ipairs(clients_interested_in("willRename", old)) do
+        local ok, response = pcall(function()
+            return client:request_sync("workspace/willRenameFiles", rename_params(old, new), 1000)
+        end)
+        if ok and response and response.result then
+            pcall(vim.lsp.util.apply_workspace_edit, response.result, client.offset_encoding)
+        end
+    end
+end
+
+-- Tell servers the rename happened,
+-- so they can resync their own view of the workspace
+local function lsp_did_rename(old, new)
+    for _, client in ipairs(clients_interested_in("didRename", old)) do
+        pcall(function()
+            client:notify("workspace/didRenameFiles", rename_params(old, new))
+        end)
+    end
+end
+
+-- Point the current buffer at `new` without reopening it,
+-- so the window layout is untouched
 local function rename_buffer(new)
     new = vim.trim(new or "")
     if new == "" then
@@ -54,11 +113,15 @@ local function rename_buffer(new)
         vim.fn.mkdir(parent, "p")
     end
 
+    lsp_will_rename(old, new)
+
     local ok, err = move_file(old, new)
     if not ok then
         vim.notify("Rename failed: " .. tostring(err), vim.log.levels.ERROR)
         return
     end
+
+    lsp_did_rename(old, new)
 
     vim.api.nvim_buf_set_name(buf, new)
     -- Re-read so 'filetype', LSP attachment and friends follow the new extension
@@ -75,7 +138,8 @@ local function rename_buffer(new)
     vim.notify("Renamed to " .. vim.fn.fnamemodify(new, ":~:."))
 end
 
--- Ask for the new name, pre-filled with the current one so a small edit is enough
+-- Ask for the new name,
+-- pre-filled with the current one so a small edit is enough
 local function prompt_rename_buffer()
     local old = vim.api.nvim_buf_get_name(0)
     if old == "" then
@@ -83,11 +147,14 @@ local function prompt_rename_buffer()
         return
     end
 
-    vim.ui.input({ prompt = "Rename to: ", default = vim.fn.fnamemodify(old, ":t"), completion = "file" }, function(name)
-        if name then
-            rename_buffer(name)
+    vim.ui.input(
+        { prompt = "Rename to: ", default = vim.fn.fnamemodify(old, ":t"), completion = "file" },
+        function(name)
+            if name then
+                rename_buffer(name)
+            end
         end
-    end)
+    )
 end
 
 vim.api.nvim_create_user_command("RenameBuffer", function(opts)

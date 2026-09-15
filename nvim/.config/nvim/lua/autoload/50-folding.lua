@@ -8,7 +8,7 @@ vim.o.foldlevel = 99
 vim.opt.foldlevelstart = 6
 -- If something is folded, everything inside of it might get folded too.
 -- This limits how deep that is, so you don't end up unfolding everything 100 times.
-vim.opt.foldnestmax = 4
+vim.opt.foldnestmax = 5
 -- Show a little column on the left with the nesting level.
 -- If you make it wider (>1) then it will be like a contour,
 -- which is cute but takes up a lot of space.
