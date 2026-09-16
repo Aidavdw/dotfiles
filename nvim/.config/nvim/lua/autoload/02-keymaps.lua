@@ -26,9 +26,6 @@ vim.keymap.set("n", "<leader>vw", function()
     end
 end, { desc = "Toggle word [W]rap" })
 
--- Open netrw (file browser)
-vim.keymap.set("n", "<leader>on", "<cmd>Ex<CR>", { desc = "open netrw (file browser)" })
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
