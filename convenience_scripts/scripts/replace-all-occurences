@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# Replace every occurrence of a literal string with another one, in all files
+# in the current directory. The .git folder is always skipped, as are binary
+# files. Quote arguments to include spaces.
+#
+# usage:
+# replace-all-occurences "old string" "new string"
+# replace-all-occurences -r "old string" "new string"   # recurse into subdirs
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: $(basename "$0") [-r] <search> <replace>"
+    echo "  -r    recurse into subdirectories"
+    echo 'Example: replace-all-occurences -r "hello world" "goodbye world"'
+    exit 1
+}
+
+recursive=false
+while getopts ":rh" opt; do
+    case $opt in
+        r) recursive=true ;;
+        *) usage ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+if [ "$#" -ne 2 ]; then
+    usage
+fi
+
+export SEARCH="$1"
+export REPLACE="$2"
+
+if [ -z "$SEARCH" ]; then
+    echo "Search string may not be empty." >&2
+    exit 2
+fi
+
+# Without -r we only look at the files directly in the current directory.
+if [ "$recursive" = true ]; then
+    find_args=(.)
+else
+    find_args=(. -maxdepth 1)
+fi
+
+changed=0
+while IFS= read -r -d '' file; do
+    # -F: literal match, -I: skip binary files, -q: just tell us if it matched.
+    if grep -qIF -e "$SEARCH" -- "$file"; then
+        # \Q..\E makes the search literal, and the replacement comes from the
+        # environment so that /, & and backslashes in it stay literal too.
+        perl -i -pe 's/\Q$ENV{SEARCH}\E/$ENV{REPLACE}/g' -- "$file"
+        echo "$file"
+        changed=$((changed + 1))
+    fi
+done < <(find "${find_args[@]}" -name .git -prune -o -type f -print0)
+
+echo "Replaced in $changed file(s)."
