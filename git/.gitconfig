@@ -10,7 +10,7 @@
   tool = nvimdiff
 [mergetool]
   prompt = false
-  keepBackup = false
+	keepbackup = false
 [mergetool "nvimdiff"]
   layout = "LOCAL,BASE,REMOTE / MERGED"
 [alias]
@@ -18,3 +18,5 @@
     # These also get all the submodules.
 	clone-all = clone --recurse-submodules
 	pull-all = pull --recurse-submodules
+[diff]
+	tool = nvimdiff
