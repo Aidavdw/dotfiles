@@ -4,6 +4,13 @@
   },
   "permissions": {
     "allow": [
+      "Read(~/.cache/uv/**)",
+      "Read(~/plans/**)",
+      "Bash(cargo build *)",
+      "Bash(cargo test *)",
+      "Bash(cargo run *)",
+      "Bash(cargo doc *)",
+      "Bash(cargo clippy *)",
       "Bash(git status *)",
       "Bash(git diff *)",
       "Bash(git log *)",
@@ -19,6 +26,8 @@
       "Bash(git cat-file *)",
       "Bash(git merge-base *)",
       "Bash(git name-rev *)",
+      "Bash(git mv *)",
+      "Bash(git check-ignore *)",
       "Bash(git reflog show *)"
     ],
     "deny": [
@@ -32,7 +41,6 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git rm *)",
-      "Bash(git mv *)",
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(git fetch *)",
@@ -79,34 +87,48 @@
       "Bash(git checkout-index *)"
     ],
     "ask": [
-      "Bash(git commit *)",
+      "Bash(dangerouslyDisableSandbox:true)",
+      "Bash(cargo add *)",
+      "Bash(cargo remove *)",
       "Bash(git commit)"
     ],
-    "defaultMode": "default",
-    "excludedCommands": [
-      "docker *"
-    ]
+    "defaultMode": "default"
   },
   "enabledPlugins": {
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "sandbox": {
     "enabled": true,
+    "failIfUnavailable": true,
     "autoAllowBashIfSandboxed": true,
-    "allowUnsandboxedCommands": false,
+    "allowUnsandboxedCommands": true,
     "network": {
+      "strictAllowlist": true,
       "allowLocalBinding": true
     },
     "filesystem": {
       "denyWrite": [
-        "./.git/**"
+        "~/**/.git/**"
+      ],
+      "denyRead": [
+        "~/"
+      ],
+      "allowRead": [
+        "~/polars",
+        "~/dotfiles",
+        "~/geopolars",
+        "~/rs-geoarrow",
+        "~/read-only-repos",
+        "~/.cargo",
+        "~/.rustup",
+        "~/.cache/uv"
       ]
     },
     "excludedCommands": []
   },
   "modelSettings": {
     "claude-opus-5": {
-      "effortLevel": "medium"
+      "effortLevel": "high"
     }
   },
   "timeFormat": "auto",
