@@ -109,6 +109,16 @@ secret-tool store --label="Openrouter API key for my account" password openroute
 
 ```
 
+### abc notation LSP
+
+```sh
+git clone https://github.com/AntoineBalaine/abcls
+cd abcls
+npm install -g abcls
+# check if it works
+which abcls
+```
+
 ## Troubleshooting
 
 If you get an error like `[fzf-lua] Unable to add buffer`, you should probably wait for `TSManager` to finish installing all the treesitter grammars. It does not load automatically (lazy)!

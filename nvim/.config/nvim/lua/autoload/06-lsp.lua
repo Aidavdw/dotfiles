@@ -30,6 +30,8 @@ vim.lsp.enable({
     "fortitude",
     -- Markdown linter and formatter
     "rumdl",
+    -- ABC music notation
+    "abcls",
 })
 
 -- Diagnostic Config
