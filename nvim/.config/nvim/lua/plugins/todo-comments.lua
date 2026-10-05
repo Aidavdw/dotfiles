@@ -5,7 +5,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
     keys = {
-        { "<leader>Tw", "<cmd>Trouble todo focus=true<CR>", desc = "Open side-panel with todos" },
         {
             "]t",
             function()
@@ -19,6 +18,18 @@ return {
                 require("todo-comments").jump_next()
             end,
             desc = "Previous todo",
+        },
+        { "<leader>Tw", "<cmd>Trouble todo focus=true<CR>", desc = "Open side-panel with todos" },
+        { "<leader>Tl", "<cmd>TodoLocList<CR>", desc = "todo loclist" },
+        {
+            "<leader>Tsa",
+            "<cmd>TodoFzfLua<Cr>",
+            desc = "search all todos/fixmes/etc.",
+        },
+        {
+            "<leader>Tst",
+            "<cmd>TodoFzfLua keywords=TODO<Cr>",
+            desc = "search todos",
         },
     },
 }
