@@ -1,6 +1,9 @@
 {
   "env": {
-    "GIT_OPTIONAL_LOCKS": "0"
+    "GIT_OPTIONAL_LOCKS": "0",
+    "UV_CACHE_DIR": ".uv-cache",
+    "UV_LINK_MODE": "copy",
+    "UV_OFFLINE": "1"
   },
   "permissions": {
     "allow": [
@@ -28,6 +31,11 @@
       "Bash(git name-rev *)",
       "Bash(git mv *)",
       "Bash(git check-ignore *)",
+      "Bash(git bisect *)",
+      "Bash(git hash-object *)",
+      "Bash(ruff *)",
+      "Bash(dprint fmt *)",
+      "Bash(make *)",
       "Bash(git reflog show *)"
     ],
     "deny": [
@@ -53,7 +61,6 @@
       "Bash(git rebase *)",
       "Bash(git reset *)",
       "Bash(git revert *)",
-      "Bash(git cherry-pick *)",
       "Bash(git am *)",
       "Bash(git apply *)",
       "Bash(git stash *)",
@@ -70,7 +77,6 @@
       "Bash(git reflog delete *)",
       "Bash(git notes *)",
       "Bash(git replace *)",
-      "Bash(git bisect *)",
       "Bash(git sparse-checkout *)",
       "Bash(git gc *)",
       "Bash(git prune *)",
@@ -82,7 +88,6 @@
       "Bash(git read-tree *)",
       "Bash(git write-tree *)",
       "Bash(git commit-tree *)",
-      "Bash(git hash-object *)",
       "Bash(git fast-import *)",
       "Bash(git checkout-index *)"
     ],
@@ -90,6 +95,7 @@
       "Bash(dangerouslyDisableSandbox:true)",
       "Bash(cargo add *)",
       "Bash(cargo remove *)",
+      "Bash(git cherry-pick *)",
       "Bash(git commit)"
     ],
     "defaultMode": "default"
@@ -129,11 +135,38 @@
   "modelSettings": {
     "claude-opus-5": {
       "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
     }
   },
   "timeFormat": "auto",
   "theme": "auto",
   "editorMode": "vim",
   "autoScrollEnabled": true,
-  "inputNeededNotifEnabled": true
+  "inputNeededNotifEnabled": true,
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "msg=$(jq -r '.message // \"Needs your input\"'); notify-send -u critical -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" \"$msg\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "notify-send -u low -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" 'Done'"
+          }
+        ]
+      }
+    ]
+  }
 }
