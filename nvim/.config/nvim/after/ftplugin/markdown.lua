@@ -132,3 +132,81 @@ vim.keymap.set({ "n", "x", "o" }, "[s", goto_end_of_previous_section, {
     buffer = 0,
     desc = "End of previous section  ",
 })
+
+-- Compact markdown tables:
+-- strip the alignment padding from cells
+-- and use a single dash in the delimiter row.
+-- `| What     | Python |`        `| What | Python |`
+-- `|----------|:------:|`   ->   `| - | :-: |`
+-- Works on the table under the cursor,
+-- or on all tables in the buffer if the cursor is not in one.
+local function row_cells(row)
+    local cells, current = {}, nil
+    for child in row:iter_children() do
+        local type = child:type()
+        if type == "|" then
+            if current ~= nil then
+                table.insert(cells, current)
+            end
+            current = ""
+        elseif type == "pipe_table_cell" or type == "pipe_table_delimiter_cell" then
+            current = vim.trim(vim.treesitter.get_node_text(child, 0))
+        end
+    end
+    -- Last cell of a row without a trailing pipe.
+    if current ~= nil and current ~= "" then
+        table.insert(cells, current)
+    end
+    return cells
+end
+
+local function delimiter_cell(text)
+    local left = text:sub(1, 1) == ":" and ":" or ""
+    local right = #text > 1 and text:sub(-1) == ":" and ":" or ""
+    return left .. "-" .. right
+end
+
+local function compact_table(table_node)
+    for row in table_node:iter_children() do
+        local type = row:type()
+        if type == "pipe_table_header" or type == "pipe_table_row" or type == "pipe_table_delimiter_row" then
+            local cells = row_cells(row)
+            if type == "pipe_table_delimiter_row" then
+                cells = vim.tbl_map(delimiter_cell, cells)
+            end
+            local line_number, start_col = row:start()
+            local line = vim.api.nvim_buf_get_lines(0, line_number, line_number + 1, false)[1]
+            local padded = vim.tbl_map(function(cell)
+                return cell == "" and " " or " " .. cell .. " "
+            end, cells)
+            local new_line = line:sub(1, start_col) .. "|" .. table.concat(padded, "|") .. "|"
+            if new_line ~= line then
+                vim.api.nvim_buf_set_lines(0, line_number, line_number + 1, false, { new_line })
+            end
+        end
+    end
+end
+
+local function compact_tables()
+    local parser = vim.treesitter.get_parser(0, "markdown")
+    if not parser then
+        return
+    end
+    local root = parser:parse()[1]:root()
+
+    local node = vim.treesitter.get_node({ lang = "markdown", ignore_injections = true })
+    while node and node:type() ~= "pipe_table" do
+        node = node:parent()
+    end
+    if node then
+        compact_table(node)
+        return
+    end
+
+    local query = vim.treesitter.query.parse("markdown", "(pipe_table) @table")
+    for _, table_node in query:iter_captures(root, 0) do
+        compact_table(table_node)
+    end
+end
+
+vim.keymap.set("n", "<leader>et", compact_tables, { desc = "[E]dit: Compact [T]able ", buffer = true })
