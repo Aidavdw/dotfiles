@@ -2,6 +2,10 @@
 vim.api.nvim_set_keymap("n", "<leader>h", "<C-w>w", { noremap = true, silent = true, desc = "Switch active split" })
 vim.keymap.set("n", "<C-h>", "<C-w>w", { noremap = true, silent = true })
 
+-- No need for keybind to go to next tab, that's `gt` / `gT`
+
+vim.api.nvim_set_keymap("n", "<leader>pd", "<CMD>tabclose<CR>", { noremap = true, desc = "Close tab" })
+
 -- Resize splits with Ctrl+p/,
 -- With shift for vertical (horizontal is more important)
 vim.keymap.set("n", "<C-,>", "4<C-W>+", {
