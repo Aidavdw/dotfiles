@@ -46,8 +46,6 @@
       "Bash(secret-tool *)",
       "Bash(secret-tool)",
       "Edit(.git/**)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
       "Bash(git rm *)",
       "Bash(git push *)",
       "Bash(git pull *)",
@@ -100,51 +98,6 @@
     ],
     "defaultMode": "default"
   },
-  "enabledPlugins": {
-    "rust-analyzer-lsp@claude-plugins-official": true
-  },
-  "sandbox": {
-    "enabled": true,
-    "failIfUnavailable": true,
-    "autoAllowBashIfSandboxed": true,
-    "allowUnsandboxedCommands": true,
-    "network": {
-      "strictAllowlist": true,
-      "allowLocalBinding": true
-    },
-    "filesystem": {
-      "denyWrite": [
-        "~/**/.git/**"
-      ],
-      "denyRead": [
-        "~/"
-      ],
-      "allowRead": [
-        "~/polars",
-        "~/dotfiles",
-        "~/geopolars",
-        "~/rs-geoarrow",
-        "~/read-only-repos",
-        "~/.cargo",
-        "~/.rustup",
-        "~/.cache/uv"
-      ]
-    },
-    "excludedCommands": []
-  },
-  "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "high"
-    },
-    "claude-opus-5-5": {
-      "effortLevel": "medium"
-    }
-  },
-  "timeFormat": "auto",
-  "theme": "auto",
-  "editorMode": "vim",
-  "autoScrollEnabled": true,
-  "inputNeededNotifEnabled": true,
   "hooks": {
     "Notification": [
       {
@@ -168,5 +121,55 @@
         ]
       }
     ]
-  }
+  },
+  "enabledPlugins": {
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": true,
+    "network": {
+      "strictAllowlist": true,
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/repos/rs-dicts",
+        "~/repos/rs-dicts/.git"
+      ],
+      "denyWrite": [
+        "~/**/.git/**"
+      ],
+      "denyRead": [
+        "~/"
+      ],
+      "allowRead": [
+        "~/polars",
+        "~/dotfiles",
+        "~/geopolars",
+        "~/rs-geoarrow",
+        "~/read-only-repos",
+        "~/.cargo",
+        "~/.rustup",
+        "~/.cache/uv",
+        "~/.gitconfig"
+      ]
+    },
+    "excludedCommands": []
+  },
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "timeFormat": "auto",
+  "theme": "auto",
+  "editorMode": "vim",
+  "autoScrollEnabled": true,
+  "inputNeededNotifEnabled": true
 }

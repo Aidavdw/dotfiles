@@ -1,5 +1,14 @@
 # Global claude.md
 
+Use British spelling.
+
+## Helper functions
+
+Using short helper functions is great if that makes the code more legible,
+and stops you from repeating the same code a lot.
+With these functions, keep the name descriptive.
+If you do this, almost always, this means they do *not* need a doc comment.
+
 ## Line breaking
 
 If you need to line-break a long sentence, prefer doing it directly after punctuation,
@@ -12,13 +21,21 @@ then this would be my preferred way
 always. It does not mean you always must start on a new line though.
 ```
 
+## Sandbox
+
+You run in a sandbox.
+Some commands need to run outside of it, so you have to ask me for permission:
+
+- `gh --json`.
+- `uv`, when it needs to connect to the internet.
+
 ## Reporting style
 
 - Never address or refer to me by name: not in replies, thinking, or memory files. Use "you" in chat and "the user" in memory.
 
 ## Comment style
 
-Name things concretely: "the min, max, null count and sizes", not "what it records".
+Name things concretely: "min, max, null count and sizes", not "what it records".
 Use "minimum/maximum" and "number of distinct values", not loaded single words.
 
 In function docs, give each parameter its own clause instead of chaining "the X of Y of Z".
@@ -33,6 +50,8 @@ When describing a boolean parameter (or generic), prefer writing it with a value
 /// If `y=true`, ...
 pub fn foo<const X: bool>(y: bool) {}
 ```
+
+### Functions that return bools
 
 ### Prefer short sentences
 
@@ -65,10 +84,15 @@ then that is our source of truth.
 If information is already here,
 you should **not** repeat it again elsewhere as e.g. a module comment.
 
-### Make clear function names
+### Use descriptive function names
 
 A function name by itself should be informative enough to get a rough understanding
 of what it does. Don't call a function `polygons`, call a function `do_action_for_polygons`.
+
+For functions that return a boolean, name these like `is_polygon_valid` rather than `valid`.
+
+For member functions (methods in rust) you don't have to repeat the object name of course.
+`Polygon::has_x` rather than `Polygon::polygon_has_x`
 
 #### Don't make useless doc comments
 
