@@ -2,11 +2,18 @@
 # Bring a stale Polars development setup up to date.
 # See https://docs.pola.rs/development/contributing/ for the individual steps.
 #
+# Usage: polars-update.sh [POLARS_REPO], where POLARS_REPO defaults to ~/polars.
+#
 # This does not touch your checked-out branch or working tree.
 # It only fetches upstream, so merging or rebasing is still up to you.
 set -euo pipefail
 
-cd "$(dirname "$(realpath "$0")")"
+# Run from the Polars repo, so that cargo picks up its pinned nightly from rust-toolchain.toml.
+cd "${1:-$HOME/polars}"
+if [[ ! -f rust-toolchain.toml ]]; then
+    echo "$(pwd) has no rust-toolchain.toml; is this the Polars repo?" >&2
+    exit 1
+fi
 
 UPSTREAM_URL="https://github.com/pola-rs/polars.git"
 COMPONENTS="miri,rust-analyzer,rust-src,clippy,rustfmt"
