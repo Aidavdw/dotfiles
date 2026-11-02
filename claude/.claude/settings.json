@@ -9,6 +9,7 @@
     "allow": [
       "Read(~/.cache/uv/**)",
       "Read(~/plans/**)",
+      "Read(~/.claude/skills/**)",
       "Bash(cargo build *)",
       "Bash(cargo test *)",
       "Bash(cargo run *)",
@@ -154,7 +155,8 @@
         "~/.cargo",
         "~/.rustup",
         "~/.cache/uv",
-        "~/.gitconfig"
+        "~/.gitconfig",
+        "~/.claude/skills"
       ]
     },
     "excludedCommands": []
@@ -164,7 +166,7 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
-      "effortLevel": "medium"
+      "effortLevel": "high"
     }
   },
   "timeFormat": "auto",
