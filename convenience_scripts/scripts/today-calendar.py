@@ -123,7 +123,6 @@ def print_event(event: Event):
     minutes_until = ((time_until_start.seconds - hours_until * 3600) / 60).__floor__()
     # If the event is ongoing, mark it in a special color
     if time_until_start.total_seconds() < 0 and time_until_end.total_seconds() > 0:
-
         hours_until_end = (time_until_end.seconds / 3600).__floor__()
         minutes_until_end = (
             (time_until_end.seconds - hours_until_end) / 60
