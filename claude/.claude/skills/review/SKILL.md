@@ -1,6 +1,6 @@
 ---
 name: my-review
-description: Review the code an approve verdict: explain it, flag what needs attention, then have subagents hunt bugs (with reproducers), unclear comments and architectural problems.
+description: "Review the code an approve verdict: explain it, flag what needs attention, then have subagents hunt bugs (with reproducers), unclear comments and architectural problems."
 argument-hint: "[scope: a crate, directory or file, or all the changes since a certain commit] (default: the whole PR)"
 disable-model-invocation: true
 ---

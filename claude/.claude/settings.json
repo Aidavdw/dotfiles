@@ -97,16 +97,16 @@
       "Bash(git cherry-pick *)",
       "Bash(git commit)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "hooks": {
-    "Notification": [
+    "PostToolUse": [
       {
-        "matcher": "",
+        "matcher": "Edit|Write",
         "hooks": [
           {
             "type": "command",
-            "command": "msg=$(jq -r '.message // \"Needs your input\"'); notify-send -u critical -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" \"$msg\""
+            "command": "f=$(jq -r '.tool_input.file_path // empty'); case \"$f\" in *.rs) d=$(dirname \"$f\"); ed=; while [ -z \"$ed\" ] && [ \"$d\" != / ]; do [ -f \"$d/Cargo.toml\" ] && ed=$(sed -nE 's/^[[:space:]]*edition[[:space:]]*=[[:space:]]*\"([0-9]+)\".*/\\1/p' \"$d/Cargo.toml\" | head -n1); d=$(dirname \"$d\"); done; rustfmt ${ed:+--edition \"$ed\"} \"$f\";; *.py|*.pyi) ruff format --quiet \"$f\";; esac 2>/dev/null; true"
           }
         ]
       }
@@ -118,6 +118,17 @@
           {
             "type": "command",
             "command": "notify-send -u low -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" 'Done'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "msg=$(jq -r '.message // \"Needs your input\"'); notify-send -u critical -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" \"$msg\""
           }
         ]
       }
@@ -173,5 +184,25 @@
   "theme": "auto",
   "editorMode": "vim",
   "autoScrollEnabled": true,
-  "inputNeededNotifEnabled": true
+  "inputNeededNotifEnabled": true,
+  "skillOverrides": {
+    "anthropic-skills:built-in-browser": "off",
+    "anthropic-skills:chrome-browser": "off",
+    "anthropic-skills:computer-use": "off",
+    "anthropic-skills:morning": "off",
+    "anthropic-skills:google-workspace": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:pptx": "off",
+    "anthropic-skills:xlsx": "off",
+    "anthropic-skills:docs": "off",
+    "anthropic-skills:import-memory": "off",
+    "anthropic-skills:deep-research": "off",
+    "anthropic-skills:domain-modeling": "off",
+    "anthropic-skills:downloading-from-s3": "off",
+    "anthropic-skills:grilling": "off",
+    "anthropic-skills:pdf": "off",
+    "anthropic-skills:polars-brand-colors": "off",
+    "anthropic-skills:setup-aws": "off",
+    "anthropic-skills:skill-creator": "off"
+  }
 }
