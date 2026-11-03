@@ -20,3 +20,6 @@
 	pull-all = pull --recurse-submodules
 [diff]
 	tool = nvimdiff
+[safe]
+	directory = /fellowship/repos/git
+	directory = /fellowship/repos/git/finances.git
