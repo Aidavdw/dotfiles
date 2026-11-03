@@ -55,6 +55,8 @@ cargo miri setup
 step "Cleaning build artifacts and the virtual environment"
 # This also runs `cargo clean` and removes .venv.
 make clean
+# `make clean` only removes the top-level .venv, so also remove a stray one in py-polars.
+rm -rf py-polars/.venv
 
 step "Pruning the uv cache"
 if command -v uv >/dev/null 2>&1; then
