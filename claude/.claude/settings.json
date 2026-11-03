@@ -99,6 +99,26 @@
     ],
     "defaultMode": "auto"
   },
+  "skillOverrides": {
+    "anthropic-skills:built-in-browser": "off",
+    "anthropic-skills:chrome-browser": "off",
+    "anthropic-skills:computer-use": "off",
+    "anthropic-skills:morning": "off",
+    "anthropic-skills:google-workspace": "off",
+    "anthropic-skills:docx": "off",
+    "anthropic-skills:pptx": "off",
+    "anthropic-skills:xlsx": "off",
+    "anthropic-skills:docs": "off",
+    "anthropic-skills:import-memory": "off",
+    "anthropic-skills:deep-research": "off",
+    "anthropic-skills:domain-modeling": "off",
+    "anthropic-skills:downloading-from-s3": "off",
+    "anthropic-skills:grilling": "off",
+    "anthropic-skills:pdf": "off",
+    "anthropic-skills:polars-brand-colors": "off",
+    "anthropic-skills:setup-aws": "off",
+    "anthropic-skills:skill-creator": "off"
+  },
   "hooks": {
     "PostToolUse": [
       {
@@ -111,24 +131,47 @@
         ]
       }
     ],
-    "Stop": [
+    "Notification": [
       {
-        "matcher": "",
+        "matcher": "permission_prompt|elicitation_dialog|elicitation_url_dialog|agent_needs_input",
         "hooks": [
           {
             "type": "command",
-            "command": "notify-send -u low -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" 'Done'"
+            "command": "\"$HOME\"/.claude/claude-notify.sh",
+            "async": true
           }
         ]
       }
     ],
-    "Notification": [
+    "Stop": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "msg=$(jq -r '.message // \"Needs your input\"'); notify-send -u critical -a 'Claude Code' \"Claude Code · $(basename \"$CLAUDE_PROJECT_DIR\")\" \"$msg\""
+            "command": "\"$HOME\"/.claude/claude-notify.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME\"/.claude/claude-notify.sh",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME\"/.claude/claude-notify.sh",
+            "async": true
           }
         ]
       }
@@ -177,32 +220,12 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "medium"
     }
   },
   "timeFormat": "auto",
   "theme": "auto",
   "editorMode": "vim",
   "autoScrollEnabled": true,
-  "inputNeededNotifEnabled": true,
-  "skillOverrides": {
-    "anthropic-skills:built-in-browser": "off",
-    "anthropic-skills:chrome-browser": "off",
-    "anthropic-skills:computer-use": "off",
-    "anthropic-skills:morning": "off",
-    "anthropic-skills:google-workspace": "off",
-    "anthropic-skills:docx": "off",
-    "anthropic-skills:pptx": "off",
-    "anthropic-skills:xlsx": "off",
-    "anthropic-skills:docs": "off",
-    "anthropic-skills:import-memory": "off",
-    "anthropic-skills:deep-research": "off",
-    "anthropic-skills:domain-modeling": "off",
-    "anthropic-skills:downloading-from-s3": "off",
-    "anthropic-skills:grilling": "off",
-    "anthropic-skills:pdf": "off",
-    "anthropic-skills:polars-brand-colors": "off",
-    "anthropic-skills:setup-aws": "off",
-    "anthropic-skills:skill-creator": "off"
-  }
+  "inputNeededNotifEnabled": true
 }
