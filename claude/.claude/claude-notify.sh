@@ -17,6 +17,10 @@ event=$(j .hook_event_name)
 session=$(j .session_id)
 cwd=$(j .cwd)
 project=$(basename "${cwd:-${CLAUDE_PROJECT_DIR:-claude}}")
+# Branch name, or short hash when detached; empty outside a git repo.
+branch=$(git -C "${cwd:-.}" branch --show-current 2>/dev/null)
+[[ -z "$branch" ]] && branch=$(git -C "${cwd:-.}" rev-parse --short HEAD 2>/dev/null)
+heading="${project^}${branch:+  $branch}"
 
 state_dir="${XDG_RUNTIME_DIR:-/tmp}/claude-notify"
 mkdir -p "$state_dir"
@@ -120,7 +124,7 @@ setsid -f bash -c '
         -A "default=Focus terminal" "$3" "$4" | tee "$5.id" | tail -n +2)
   rm -f "$5.id"
   [[ "$out" == default && -n "$6" ]] && focus_terminal "$6"
-' _ "$urgency" "$tag" "Claude · $project — $title" "$(escape <<<"${body:-}")" "$state" "$term" \
+' _ "$urgency" "$tag" "$heading - $title" "$(escape <<<"${body:-}")" "$state" "$term" \
     >/dev/null 2>&1 </dev/null
 
 exit 0
