@@ -38,6 +38,10 @@ Some commands need to run outside of it, so you have to ask me for permission:
 - `gh --json`.
 - `uv`, when it needs to connect to the internet.
 
+## Github
+
+If you want to view an issue on github, use it `gh issue view <...> --json`, as you do not get my access token.
+
 ### Benchmarking
 
 `perf record -g` (call-graph) does not work here. Use `perf stat` or plain `perf record`, and pass `--no-debuginfod` (or set DEBUGINFOD_URLS="") so perf doesn't try to reach the network.

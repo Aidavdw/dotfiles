@@ -12,4 +12,10 @@ We try to make an API that matches that of Polars itself.
 - Validity-masked values are called 'null' (not 'missing' or 'invalid').
 - Wrapper types must not leak their inner type through any accessor.
 - Shared doc sentences go in _docs.py snippets via the @doc decorator.
-- Every new expression needs Rust kernel, plugin layer, Python API and namespace method, plus tests on both sides.
+- Every new expression needs a Rust kernel, plugin layer, Python API and namespace method.
+
+## Tests
+Prefer testing from the python side where possible. Only add Rust tests where you cannot test it from the python side.
+
+## Kernel implementation guidelines
+You will find these in the docs folder. Follow them closely.
