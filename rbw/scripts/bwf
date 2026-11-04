@@ -2,28 +2,47 @@
 
 # Selects an item using fzf.
 # Replaces the password in the printout, and copies it to the clipboard.
+# Entries sharing a name with another entry are shown with their username, to tell them apart.
 # If you run the script with an additional string argument, it is used as an entry name directly, skipping fzf.
 
 set -euo pipefail
 
-# Determine the entry name.
+# Prints one line per entry: the text to display, the name and the username, separated by tabs.
+list_entries() {
+    rbw ls --fields name,user |
+        awk -F '\t' '
+            { names[NR] = $1; users[NR] = $2; count[$1]++ }
+            END {
+                for (i = 1; i <= NR; i++) {
+                    display = names[i]
+                    if (count[names[i]] > 1 && users[i] != "") display = display " (" users[i] ")"
+                    printf "%s\t%s\t%s\n", display, names[i], users[i]
+                }
+            }'
+}
+
+# Determine the entry name, and the username if it is needed to disambiguate.
+user=""
 if [[ $# -gt 0 ]]; then
     entry="$*"
 else
-    entry="$(rbw ls | fzf)"
-    [[ -n "$entry" ]] || exit 1
+    selection="$(list_entries | fzf --delimiter='\t' --with-nth=1)"
+    [[ -n "$selection" ]] || exit 1
+    IFS=$'\t' read -r _ entry user <<<"$selection"
 fi
+args=("$entry")
+[[ -n "$user" ]] && args+=("$user")
 
 # First, try copying the password to the clipboard.
 # If this succeeds, we know the entry has a password.
-if rbw get --clipboard "$entry" >/dev/null 2>&1; then
+if rbw get --clipboard "${args[@]}" >/dev/null 2>&1; then
     has_password=true
 else
     has_password=false
 fi
 
 # Fetch the full entry.
-if ! full="$(rbw get --full "$entry" 2>/dev/null)"; then
+if ! full="$(rbw get --full "${args[@]}" 2>/dev/null)"; then
     echo "Error: entry '$entry' not found." >&2
     exit 1
 fi
