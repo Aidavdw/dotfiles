@@ -26,7 +26,7 @@ user=""
 if [[ $# -gt 0 ]]; then
     entry="$*"
 else
-    selection="$(list_entries | fzf --delimiter='\t' --with-nth=1)"
+    selection="$(list_entries | fzf --ignore-case --delimiter='\t' --with-nth=1)"
     [[ -n "$selection" ]] || exit 1
     IFS=$'\t' read -r _ entry user <<<"$selection"
 fi
@@ -35,14 +35,14 @@ args=("$entry")
 
 # First, try copying the password to the clipboard.
 # If this succeeds, we know the entry has a password.
-if rbw get --clipboard "${args[@]}" >/dev/null 2>&1; then
+if rbw get --ignorecase --clipboard "${args[@]}" >/dev/null 2>&1; then
     has_password=true
 else
     has_password=false
 fi
 
 # Fetch the full entry.
-if ! full="$(rbw get --full "${args[@]}" 2>/dev/null)"; then
+if ! full="$(rbw get --ignorecase --full "${args[@]}" 2>/dev/null)"; then
     echo "Error: entry '$entry' not found." >&2
     exit 1
 fi
