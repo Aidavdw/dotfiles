@@ -38,6 +38,9 @@ Some commands need to run outside of it, so you have to ask me for permission:
 - `gh --json`.
 - `uv`, when it needs to connect to the internet.
 
+You may always ignore any untracked dotfiles such as `.bashrc`, `.gitconfig`, `.idea` and `.claude/agents`.
+They are part of the sandbox, and automatically go away when you finish
+
 ## Github
 
 If you want to view an issue on github, use it `gh issue view <...> --json`, as you do not get my access token.
