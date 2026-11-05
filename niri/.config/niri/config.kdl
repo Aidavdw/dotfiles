@@ -218,6 +218,8 @@ spawn-at-startup "alacritty" "--title" "nchat" "-e" "nchat"
 spawn-at-startup "evolution"
 spawn-at-startup "gtk-launch slack"
 
+spawn-at-startup "blinkd"
+
 // WARNING: There is also some stuff in `/etc/xdg/autostart/` placed by packages themselves.
 // NOTE: do not assume that a script is in path. You need to give a full path.
 

@@ -1,24 +1,23 @@
 timers:
-- interval: 20:00
-  notification:
-    title: Micro break 
-    descriptions:
-    - how's your posture lol
-    - pls dont fuck up your eyes
-    - brek is good for u
-    - Time to get a cup of cofee.
-    - Time to get away from your desk.
-- interval: 50:00
-  weight: 1
-  decline: 0.6
-  # I could see if I can make it check if it's fullscreen and ignore.
-  # But arguably, it's better if I take breaks there anyway.
-  command: sleep 5 && loginctl lock-session
-  notification:
-    title: Breaktime!
-    descriptions:
-    - Time to relax. You've been using the computer for {} minutes.
+  - interval: 20:00
+    notification:
+      title: Micro break
+      descriptions:
+        - how's your posture lol
+        - pls dont fuck up your eyes
+        - brek is good for u
+        - Time to get a cup of cofee.
+        - Time to get away from your desk.
+  - interval: 50:00
+    # I could see if I can make it check if it's fullscreen and ignore.
+    # But arguably, it's better if I take breaks there anyway.
+    command: sleep 5 && loginctl lock-session
+    notification:
+      title: Breaktime!
+      descriptions:
+        - Time to relax. You've been using the computer for {} minutes.
 input_tracking:
+  backend: wayland
   pause_after: 00:30
   reset_after: 02:00
-show_startup_notification: false
+startup_notification: false
