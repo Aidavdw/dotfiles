@@ -71,3 +71,6 @@ If the benchmark is on the critical path, you should wait instead.
 
 No need to use `ps`.
 You can check current total resource use from `/proc/stat`,`/proc/loadavg`, and ram usage from `/proc/meminfo`.
+
+Any performance numbers you give me *must* come from a release build.
+Never give me numbers from a dev build.
