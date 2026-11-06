@@ -1,7 +1,7 @@
 ---
 name: my-review
 description: "Review the code an approve verdict: explain it, flag what needs attention, then have subagents hunt bugs (with reproducers), unclear comments and architectural problems."
-argument-hint: "[scope: a crate, directory or file, or all the changes since a certain commit] (default: the whole PR)"
+argument-hint: "[scope: a crate, directory or file, or all the changes since a certain commit] (default: all changes since this branch forked off its parent branch)"
 disable-model-invocation: true
 ---
 
@@ -13,8 +13,9 @@ Review the PR in the checkout and decide whether the user should approve it. The
 
 ## Steps
 
-1. **Find the diff and the scope.** Compare the branch this branch originates from.
-   - **The scope** is the argument: a crate (`pc-engine` means `compute-plane/crates/pc-engine`), a directory or a file, or otherwise all the files that were changed in the diff. Match it against the diff's file list; ask when it is ambiguous. No argument means the whole changeset. Review every change of the set in scope, staged or not.
+1. **Find the diff and the scope.**
+   - **The scope** is what the user names: a crate (`pc-engine` means `compute-plane/crates/pc-engine`), a directory, a file or a commit to diff from. Ask when it is ambiguous. Review every change in scope, staged or not.
+   - **Default**, if the user names nothing: `git diff <fork point>`. The fork point is `git merge-base HEAD <branch>` for the branch, other than this one or its remote copies, with the fewest commits from merge base to `HEAD`, skipping branches at 0. Say which branch you picked.
 
    Done when you have the diff, the list of files in scope.
 

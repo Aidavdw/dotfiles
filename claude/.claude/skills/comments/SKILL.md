@@ -1,9 +1,19 @@
 ---
 name: comments
 description: Rules for writing code comments and doc comments, for deciding whether an item needs a doc comment and how long it may be, and for naming functions. Use whenever you write, edit or review a comment, doc comment or module doc, or name a function. The core question is whether a comment conveys something the code cannot.
+argument-hint: "[scope: a crate, directory or file, or all the changes since a certain commit] (default: all changes since this branch forked off its parent branch)"
 ---
 
 Only add comments that actually add something.
+
+## Which code
+
+The scope is what the user names.
+If they name nothing, take `git diff <fork point>`.
+The fork point is `git merge-base HEAD <branch>` for the branch,
+other than this one or its remote copies,
+with the fewest commits from merge base to `HEAD`, skipping branches at 0.
+Say which branch you picked.
 
 ## The Golden Rule
 
@@ -125,7 +135,8 @@ After:
 ```rust
 /// Buffers every point, linestring, or polygon into a polygon through GEOS.
 /// Implements the Python `buffer` with `allow_splitting=false`, which documents its behaviour.
-/// So a row that GEOS splits into several polygons fails, see [buffer_into_multi_polygons] to keep them.
+/// A row that GEOS splits into several polygons therefore fails.
+/// [buffer_into_multi_polygons] keeps them instead.
 ```
 
 User-facing docstrings follow the project's docstring convention for their structure
@@ -222,7 +233,7 @@ Try to not have sentences that are 80% variable names like "`arg1`, where `value
 Don't spell out behaviour every reader already expects.
 A `None` or null contributes nothing, empty input gives empty output, and so on.
 That is the whole point of passing an `Option`, and it means the same thing everywhere.
-So "A null row of `parts_added` adds nothing." can go.
+The line "A null row of `parts_added` adds nothing." can therefore go.
 Only document it when the function deviates from the convention.
 
 ### Say what an argument does to the result
@@ -284,6 +295,8 @@ Re-read every doc comment you wrote and ask:
 11. Does a sentence lead with "If `x=...`," or "With `x`," for a non-default case?
     Describe the default or the behaviour first, then the argument that changes it.
 12. Does a sentence use "otherwise", or chain several clauses with commas? Split it into direct sentences.
+13. Does a sentence start with "So", "And", "But", "Or", or "Which"?
+    Rewrite it, see [Restructure, don't just cut](#restructure-dont-just-cut).
 
 ## Spelling
 
@@ -317,6 +330,19 @@ Don't drag things on with many commas. Keep sentences short, clear, and concise.
 If you make two different statements, which would cause the sentence to go on forever,
 put them in two separate sentences.
 It is fine if this means you have to repeat the (short) subject again.
+
+#### Restructure, don't just cut
+
+When you split or fix a sentence, you may rewrite it completely:
+change its subject, reorder its clauses, or merge it with a neighbouring sentence.
+Large changes are fine. A sentence that reads well matters more than staying close to the original wording.
+Don't just cut a sentence at a comma and keep both halves as they were.
+
+A sentence never starts with a conjunction such as "so", "and", "but", "or", or "which".
+"The ring is closed, so its last vertex is dropped." must not become
+"The ring is closed. So its last vertex is dropped."
+Either keep it as one sentence, or rewrite the second half so it stands on its own:
+"As the ring is closed, its last vertex is dropped." or "Its last vertex is therefore dropped."
 
 #### Use :, and ; sparingly
 
