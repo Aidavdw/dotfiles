@@ -61,3 +61,13 @@ See the comment skill for this (`~/.claude/skills/comments/SKILL.md`)
 
 Don't pad everything with spaces in markdown tables.
 Just leave one space before and one space between the `|` and the cell content.
+
+## Benchmarking
+
+Before running a benchmark, always check if the CPU is not yet already being heavily used.
+I work on multiple projects at the same time, so I might be running benchmarks or doing something memory-intensive on the side.
+If it is busy, wait with the benchmark. If you can do some other things in the meantime, do those first.
+If the benchmark is on the critical path, you should wait instead.
+
+No need to use `ps`.
+You can check current total resource use from `/proc/stat`,`/proc/loadavg`, and ram usage from `/proc/meminfo`.

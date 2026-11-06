@@ -87,6 +87,13 @@ If the information in the central place clearly affects (almost) all functionali
 then you don't have to explicitly link it.
 Consider it a 'you must know this to read this module at all' in such a case.
 
+Prefer doc comments on struct fields over putting them on functions.
+If you have a struct with a public field and a setter/getter/modifying function,
+that function should simply get a doc comment that refers to the field.
+If the field is not public, (outside the crate) but the function is, then it should live on the function.
+It should then also not link to the implementation detail (in this case, the name of the field),
+as that is not part of the API.
+
 ### Implementation details should not leak
 
 A public doc-comment should not say anything about how something works internally.
