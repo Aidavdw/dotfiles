@@ -69,5 +69,11 @@ fi
 step "Recreating the virtual environment and installing requirements"
 make requirements
 
+step "Checking that mypy is installed"
+if [[ ! -x .venv/bin/mypy ]]; then
+    .venv/bin/uv pip install --python .venv/bin/python -r py-polars/requirements-lint.txt
+fi
+.venv/bin/mypy --version
+
 step "Done"
 echo "Run 'make build' to compile Polars into the fresh .venv."
