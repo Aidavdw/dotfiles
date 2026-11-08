@@ -7,6 +7,7 @@ I use stow, so expect all files in named directories to be relative to `~`.
 ## Niri
 
 Depends on modules:
+
 - `wayland`
 - `veila`
 - `wlr-which-key`
@@ -145,7 +146,7 @@ After stowing:
 Config file requires a password, so you need to manually set it.
 
 ```shell
-cp .outside/mpdscribble.conf.example /etc/mpdscribble.conf
+sudo cp ~/dotfiles/mpd/.mpdscribble/mpdscribble.conf.example /etc/mpdscribble.conf
 ```
 
 edit to use lastfm password.
