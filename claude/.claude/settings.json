@@ -223,6 +223,7 @@
       "effortLevel": "high"
     }
   },
+  "tui": "fullscreen",
   "timeFormat": "auto",
   "theme": "auto",
   "editorMode": "vim",

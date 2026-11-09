@@ -1,4 +1,14 @@
 {
   "$schema": "https://www.schemastore.org/claude-code-keybindings.json",
-  "$note": "I tried rebinding chat:newline to enter and chat:submit to ctrl+enter, but it messes up the command menus"
+  "$docs": "https://code.claude.com/docs/en/keybindings",
+  "$note": "I tried rebinding chat:newline to enter and chat:submit to ctrl+enter, but it messes up the command menus. ctrl+d cannot be rebound (hardcoded exit), so ctrl+e scrolls down instead.",
+  "bindings": [
+    {
+      "context": "Scroll",
+      "bindings": {
+        "ctrl+u": "scroll:halfPageUp",
+        "ctrl+e": "scroll:halfPageDown"
+      }
+    }
+  ]
 }
