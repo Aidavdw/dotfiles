@@ -45,10 +45,6 @@ They are part of the sandbox, and automatically go away when you finish
 
 If you want to view an issue on github, use it `gh issue view <...> --json`, as you do not get my access token.
 
-### Benchmarking
-
-`perf record -g` (call-graph) does not work here. Use `perf stat` or plain `perf record`, and pass `--no-debuginfod` (or set DEBUGINFOD_URLS="") so perf doesn't try to reach the network.
-
 ## Reporting style
 
 - Never address or refer to me by name: not in replies, thinking, or memory files. Use "you" in chat and "the user" in memory.
@@ -64,13 +60,12 @@ Just leave one space before and one space between the `|` and the cell content.
 
 ## Benchmarking
 
-Before running a benchmark, always check if the CPU is not yet already being heavily used.
+Always ask me for confirmation before running a benchmark, and wait until I say yes.
 I work on multiple projects at the same time, so I might be running benchmarks or doing something memory-intensive on the side.
-If it is busy, wait with the benchmark. If you can do some other things in the meantime, do those first.
-If the benchmark is on the critical path, you should wait instead.
+You may do all the preparation (building, writing the benchmark script, etc.) beforehand,
+and do other work while you wait for my answer.
 
-No need to use `ps`.
-You can check current total resource use from `/proc/stat`,`/proc/loadavg`, and ram usage from `/proc/meminfo`.
+`perf record -g` (call-graph) does not work here. Use `perf stat` or plain `perf record`, and pass `--no-debuginfod` (or set DEBUGINFOD_URLS="") so perf doesn't try to reach the network.
 
 Any performance numbers you give me *must* come from a release build.
 Never give me numbers from a dev build.

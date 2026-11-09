@@ -15,6 +15,18 @@ other than this one or its remote copies,
 with the fewest commits from merge base to `HEAD`, skipping branches at 0.
 Say which branch you picked.
 
+## Rewrite freely
+
+When you fix an existing comment, you may rewrite it from scratch.
+Reorder, merge, or split its sentences, change their subjects, and drop its wording entirely.
+Don't settle for minor edits that keep a bad structure intact:
+a comment that reads well matters more than staying close to the original.
+
+The one constraint is that the content stays the same.
+Every fact the old comment conveyed must still be conveyed,
+unless these rules say it should go (e.g. a restated convention or an implementation detail).
+Never add claims you have not checked against the code.
+
 ## The Golden Rule
 
 The golden rule to ask yourself is: "Does the comment convey something the code cannot?"
@@ -333,9 +345,7 @@ It is fine if this means you have to repeat the (short) subject again.
 
 #### Restructure, don't just cut
 
-When you split or fix a sentence, you may rewrite it completely:
-change its subject, reorder its clauses, or merge it with a neighbouring sentence.
-Large changes are fine. A sentence that reads well matters more than staying close to the original wording.
+When you split or fix a sentence, [rewrite it freely](#rewrite-freely).
 Don't just cut a sentence at a comma and keep both halves as they were.
 
 A sentence never starts with a conjunction such as "so", "and", "but", "or", or "which".

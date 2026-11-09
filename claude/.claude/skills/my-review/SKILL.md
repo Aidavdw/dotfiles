@@ -29,6 +29,8 @@ Review the PR in the checkout and decide whether the user should approve it. The
 
    Done when every hunk in scope is explained in step 2, listed here, or plainly routine.
 
+3.1 **Find a place to put reproducer test in.** This should be runnable by the test suite, but it should not be included in the version history by default. Create a new file with the current date and time (hour+minute), and make sure it is ignored by putting it in the git exclude. Pass this file on to the reviewers too.
+
 4. **Send the reviewers.** Spawn the reviewers of [`reviewers.md`](reviewers.md) in one message, in the background: four subagents (correctness, tests, architecture, comments), or two when the scoped diff is under about 150 lines (correctness with tests, architecture with comments). Brief each with the explanation and attention list from steps 2–3, the diff command, the scoped file list, and the path of `reviewers.md` with the sections it must follow.
 
    Then post steps 2–3 to the user, who reads them while the subagents run.
@@ -42,3 +44,5 @@ Review the PR in the checkout and decide whether the user should approve it. The
    Done when every surviving finding has a red reproducer or a stated reason it has none.
 
 6. **Report the verdict.** Lead with *approve*, *approve with comments* or *request changes*, and one sentence why. Then the findings, numbered so the user can pick them ("fix 1 and 3"), in the order you would want them solved. For each: severity (blocker, should fix, question), `file:line`, what goes wrong in plain words, the reproducer's path and what it showed, and the fix in a sentence. Then a short judgment of the architecture and of comment clarity, also when they are fine. End with what was not checked (tests not run, files outside the scope).
+
+7. **Fix what the user picks.** After each finding you finish implementing, end your reply with the findings still unaddressed: one line each, with its number from step 6, severity and a few words on what goes wrong. Never renumber: the numbers from step 6 stay fixed for the rest of the conversation, so the list can have gaps (e.g. 2, 4, 5 after fixing 1 and 3). Leave out the ones fixed or dismissed so far; say so when none are left.
