@@ -41,6 +41,8 @@ Some commands need to run outside of it, so you have to ask me for permission:
 You may always ignore any untracked dotfiles such as `.bashrc`, `.gitconfig`, `.idea` and `.claude/agents`.
 They are part of the sandbox, and automatically go away when you finish
 
+You can list branches using `git for-each-ref`. Don't use `git branch -a`.
+
 ## Github
 
 If you want to view an issue on github, use it `gh issue view <...> --json`, as you do not get my access token.

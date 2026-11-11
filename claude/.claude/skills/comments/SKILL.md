@@ -212,6 +212,18 @@ Common causes:
   e.g. "Only the parts set in `base_keep` and `parts_keep` are kept, so without `parts_added` this only filters `base_geometry`."
   If it follows so obviously that the reader would work it out anyway, drop it.
 
+There is one exception to this.
+If one small part (such as an argument) is already described on another function or place,
+you may refer to it on its own line, naming the argument:
+
+```rust
+/// `ccw_outer`: see [`OverlayPairs::into_polygons`]
+pub fn into_multi_polygons(
+    self,
+    ccw_outer: bool,
+) {}
+```
+
 Order the sentences as: what it does, then behaviour the caller would not expect,
 then what the caller must guarantee (equal lengths, matching dimensions).
 Separate the preconditions with a blank line.
