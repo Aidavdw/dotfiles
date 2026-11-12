@@ -54,8 +54,6 @@
       "Bash(git fetch *)",
       "Bash(git clone *)",
       "Bash(git init *)",
-      "Bash(git checkout *)",
-      "Bash(git switch *)",
       "Bash(git restore *)",
       "Bash(git merge *)",
       "Bash(git reset *)",
@@ -96,7 +94,9 @@
       "Bash(git cherry-pick *)",
       "Bash(git rebase *)",
       "Bash(git branch *)",
-      "Bash(git commit)"
+      "Bash(git commit)",
+      "Bash(git switch *)",
+      "Bash(git checkout *)"
     ],
     "defaultMode": "auto"
   },
