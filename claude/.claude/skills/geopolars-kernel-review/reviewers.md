@@ -11,6 +11,7 @@ Each reviewer follows **Every reviewer** plus its own section.
   the other reviewers cover the rest.
 - **Each finding**:
   - **Severity**: *should fix*, *consider*, or *question* (the author can decide what you cannot).
+    **Helpers** also has *allowed*.
   - `file:line`.
   - **Claim**: one sentence.
   - **Evidence**: the code (or doc) that proves it.
@@ -29,32 +30,91 @@ to **Missing values and errors**.
 
 ## Helpers
 
-### Duplication of helpers
+Review the helpers connected to the kernel:
+the ones it defines, the ones it uses (from the views, shared modules or other kernels),
+the ones other modules import from it,
+and code elsewhere that duplicates its code.
+Leave helpers you only pass on the way.
 
-Look at the helpers defined in the module.
-Does this kernel define any helper functions that already exist as convenience methods
-on the view types (e.g. PolygonArray)?
-Then it should simply use that function.
+Much of the repository does not follow the rules below yet,
+so a pattern found elsewhere does not excuse one here.
+Naming, doc comments, upstream crates and tests are not yours to review.
 
-Does it have a `pub(super)`,
-or `use` one from another module that is not a 'global' convenience method or helper?
-Check how 'generic' that function is. If it clearly is a helper that is used directly for the kernel,
-then that is fine and can stay there.
-If it is something like 'adds 1 to all of the coordinates' in a module for 'getting the distance',
-then it should be made a shared helper, even if it has only one user.
+### Where helpers belong
 
-See if you can find any expressions in this module and in other modules that do the same thing.
-If there are, they should be put in a central location again, per the above.
+- **`geopolars-views`**: only what costs nothing:
+  O(1) per call, without allocating or writing
+  (accessors, ranges, spans, O(1) checks such as `is_ring`).
+  Building a view (its constructors, and the trimming in `new` and `sliced`) belongs there too.
+- **`geopolars-compute/src/utils.rs`**: every other shared helper, for native, GEOS or both,
+  directly in that module, without sub-modules.
+  This includes filters, and anything that loops over the coordinates, allocates or writes,
+  such as `with_ranges_reversed`, `copy_ranges`, `gathered` and `with_null_at`, which are in the views now.
+- **Shared infrastructure** that kernels are built on stays where it is
+  (`per_row.rs`, `passing.rs`, `inner_nulls.rs`, `metric.rs`, `error.rs`, the GEOS conversion in `geos/mod.rs`).
+  A small helper in one of those modules that is not part of its infrastructure belongs in `utils.rs`.
+- **A kernel module** holds only helpers for that kernel alone.
 
-### Location of helpers
+### Duplication
 
-Helpers that simply get something from the views (e.g. 'get the outer ring of the polygons')
-should be placed in the geopolars-views crate.
-Other examples of such functions would be filters.
-A good rule of thumb is this: If it needs to allocate, it probably does not belong here.
+This is your main job, so search thoroughly.
+For each helper, and each piece of the kernel that could be one,
+grep `geopolars-compute` and `geopolars-views` for its shape
+(the calls and types it relies on, not its name),
+and read the hits.
+List what you searched for in your report.
 
-Helpers that actually *transform* data should be placed in the geopolars-compute crate.
-You may put them in a sub-module at the root of the `geopolars-compute` crate.
+- A helper, or inline code, that does what a view method or shared helper already does should use that.
+- The same logic in two or more modules should be one helper in `utils.rs`.
+  List every copy with `file:line`, also those outside this kernel.
+- Copies that differ in a way that looks deliberate are a *question*,
+  unless a comment already explains the difference
+  (e.g. the empty point is x and y NaN for GEOS, but NaN on every axis for native).
+- Code repeated within the module should become a helper.
+
+### Imports between kernels
+
+A kernel module should neither import a helper from another kernel module nor export one to it.
+Check both ways.
+
+The exception is a kernel's main thing:
+the function that computes the kernel's own result for one item (row, part or ring),
+so that the kernel is essentially a loop around it
+(e.g. `area::twice_signed_area`, but not `rings::offsets_of`).
+Report such an import too, as *allowed*, with a one-sentence reason against this test.
+The orchestrator judges it.
+
+Calling another kernel as a whole (e.g. `add_parts` using the `is_empty` kernels) is fine,
+unless it pays for a whole pass to get a small piece of it.
+
+### The helper itself
+
+- **Necessity**: inline a helper that hides more than it clarifies:
+  a one-line wrapper that only forwards to another function,
+  one whose name says less than its body,
+  or one that splits a loop so that its shape is harder to follow.
+  A helper that names a step of the kernel stays, even with a single caller.
+- **Visibility**: the narrowest that works.
+- **Fit**: an existing helper that does not quite fit,
+  e.g. one that forces a copy where a variant without one would do.
+- **Allocation**: judge from the code; do not run benchmarks.
+  Flag an allocation per row or per part, a `Vec` collected only to iterate over,
+  copying a view only to reshape it, and a pass that only changes the type.
+  Output buffers sized once (`SizeHint`),
+  and one allocation per chunk to build a trimmed view, are fine.
+
+### Severity and fix
+
+- *should fix*: a copy of an existing helper, the same logic in two or more modules,
+  an import between kernels, a helper in the wrong crate or module,
+  an avoidable allocation, and a poor fit that forces an allocation.
+- *consider*: code repeated within the module, visibility wider than needed,
+  an unnecessary helper, and a poor fit that costs no allocation.
+- *question*: copies that seem to differ on purpose,
+  and an allocation that may be a deliberate trade-off.
+- *allowed*: a kernel's main thing, imported by another kernel.
+
+A fix that moves a helper names its destination and every caller that changes.
 
 ## Arguments
 

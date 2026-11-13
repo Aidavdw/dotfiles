@@ -1,6 +1,6 @@
 ---
 name: geopolars-kernel-review
-description: "Review a GeoPolars kernel: decide whether it is native or forwards to GEOS (or another library), then have focused subagents check it against the kernel guides, its helpers, its arguments, its handling of nulls, NaN and errors and, for native kernels, the GEOS source."
+description: "Review a GeoPolars kernel: decide whether it is native or forwards to GEOS (or another library), then have focused subagents check it against the kernel guides, its helpers (duplication, placement, imports between kernels, allocation), its arguments, its handling of nulls, NaN and errors and, for native kernels, the GEOS source."
 argument-hint: "[kernel: a module in geopolars-compute, or the name of an expression]"
 ---
 
@@ -53,6 +53,11 @@ Leave the reading to the reviewers, so that your own context stays small.
    Check a finding against the code yourself only when it is surprising,
    or when two reviewers contradict each other.
 
+   Judge each *allowed* import between kernels from **Helpers**:
+   accept it only when its reason shows the helper is the kernel's main thing, as defined there.
+   Otherwise reject it and make it a *should fix*,
+   giving the reviewer's reason and why it does not hold.
+
 6. **Report.**
    Lead with the kind of kernel,
    the "Constructor rules" line from **Missing values and errors**,
@@ -60,5 +65,7 @@ Leave the reading to the reviewers, so that your own context stays small.
    Then the findings, numbered so the user can pick them ("fix 1 and 3"), most urgent first.
    Findings tagged **unverified (no build)** come first, in a section of their own.
    For each: severity, `file:line`, what is wrong, and the fix in a sentence.
+   Then, unnumbered, the accepted imports between kernels under "Allowed imports between kernels",
+   each with its reason.
    End with what was not checked
    (e.g. a GEOS equivalent that could not be found, a fuzz test that could not run, a build that failed and why).
