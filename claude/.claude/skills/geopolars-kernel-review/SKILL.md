@@ -1,6 +1,6 @@
 ---
 name: geopolars-kernel-review
-description: "Review a GeoPolars kernel: decide whether it is native or forwards to GEOS (or another library), then have focused subagents check it against the kernel guides, its helpers (duplication, placement, imports between kernels, allocation), its arguments, its handling of nulls, NaN and errors and, for native kernels, the GEOS source."
+description: "Review a GeoPolars kernel: decide whether it is native, forwards to GEOS or to PROJ, then have focused subagents check it against the kernel guides: its structure (shape, dispatch, passes and allocation), its helpers (duplication, placement, imports between kernels), its arguments, its handling of nulls, NaN and errors and, for native kernels, the GEOS source."
 argument-hint: "[kernel: a module in geopolars-compute, or the name of an expression]"
 ---
 
@@ -20,8 +20,9 @@ Leave the reading to the reviewers, so that your own context stays small.
 2. **Classify each kernel** by where it lives and what its loop calls:
    - **Native**: in `geopolars-compute/src/native`, computing the result itself.
    - **GEOS**: in `geopolars-compute/src/geos`, converting to GEOS and calling it.
-   - **Other forwarding**: in `rsgeo` or `proj`, forwarding to those libraries.
+   - **PROJ**: `proj.rs`, reprojecting the coordinates.
 
+   Leave `rsgeo` alone: it is not in use, and not reviewed.
    A native module that hands (some of) its work to GEOS is GEOS for that part.
    An expression with both a native and a GEOS kernel gets the reviewers of both kinds.
    Say which kind you picked and why, in one line.
@@ -33,7 +34,7 @@ Leave the reading to the reviewers, so that your own context stays small.
 
 4. **Send the reviewers** that apply, in the background, as `general-purpose` subagents:
 
-   | Reviewer | Native | GEOS | Other forwarding | Needs the build |
+   | Reviewer | Native | GEOS | PROJ | Needs the build |
    |---|---|---|---|---|
    | Kernel pattern | yes | yes | yes | no |
    | Helpers | yes | yes | yes | no |
@@ -50,16 +51,18 @@ Leave the reading to the reviewers, so that your own context stays small.
 
 5. **Merge the findings.**
    Drop duplicates, and merge findings that two reviewers reached from different sides.
+   Of **Kernel pattern**'s list of rules, keep only the ones that fail, and its shape for the report.
    Check a finding against the code yourself only when it is surprising,
    or when two reviewers contradict each other.
 
    Judge each *allowed* import between kernels from **Helpers**:
-   accept it only when its reason shows the helper is the kernel's main thing, as defined there.
+   accept it only when its reason shows the helper is the kernel's main thing,
+   as "Helpers" in `docs/Kernel implementation guide.md` defines it.
    Otherwise reject it and make it a *should fix*,
    giving the reviewer's reason and why it does not hold.
 
 6. **Report.**
-   Lead with the kind of kernel,
+   Lead with the kind of kernel, its shape from **Kernel pattern**,
    the "Constructor rules" line from **Missing values and errors**,
    and a one-sentence judgement.
    Then the findings, numbered so the user can pick them ("fix 1 and 3"), most urgent first.
