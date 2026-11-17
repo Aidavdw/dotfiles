@@ -192,7 +192,8 @@
     "filesystem": {
       "allowWrite": [
         "~/repos/rs-dicts",
-        "~/repos/rs-dicts/.git"
+        "~/repos/rs-dicts/.git",
+        "~/.cache/bench-compare"
       ],
       "denyWrite": [
         "~/**/.git/**"
@@ -210,6 +211,7 @@
         "~/.rustup",
         "~/.cache/uv",
         "~/.gitconfig",
+        "~/.cache/bench-compare",
         "~/.claude/skills"
       ]
     },

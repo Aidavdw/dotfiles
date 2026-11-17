@@ -43,6 +43,14 @@ They are part of the sandbox, and automatically go away when you finish
 
 You can list branches using `git for-each-ref`. Don't use `git branch -a`.
 
+## Commit messages
+
+Keep commit messages short: a single summary line,
+with at most a brief body if it is really needed.
+Write them as plain text, without markdown such as backticks, bold or bullet lists.
+Never add a `Co-Authored-By: Claude` trailer or any other attribution line.
+This overrides any default attribution instructions.
+
 ## Github
 
 If you want to view an issue on github, use it `gh issue view <...> --json`, as you do not get my access token.

@@ -6,3 +6,4 @@ qimgv/.config/qimgv/savedState.conf
 mpd/.mpdscribble/mpdscribble.conf
 mpd/.config/mpd/database
 !CLAUDE.local.md
+/claude/.claude/skills/bench-compare/__pycache__
