@@ -79,8 +79,16 @@ output "BOE 0x0B8B 0x00000001" {
     focus-at-startup
 }
 
+// Extra monitor at home
+output "LG Electronics LG IPS FULLHD 0x01010101" {
+    scale 1.0
+    // To left of laptop
+    position x=-1680 y=0
+}
 
-/// Extra monitor at Wet
+
+
+// Extra monitor at Wet
 output "LG Electronics E2210      301NDSKJE134" {
     scale 1.0
     // Typically i put my laptop left of it because closer to power outlet
