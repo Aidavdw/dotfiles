@@ -48,4 +48,18 @@ return {
         },
     },
     cmd = { "DiffviewOpen" },
+    opts = function()
+        local actions = require("diffview.actions")
+        local file_nav = {
+            { "n", "<C-/>", actions.select_prev_entry, { desc = "Open the diff for the previous file" } },
+            { "n", "<C-'>", actions.select_next_entry, { desc = "Open the diff for the next file" } },
+        }
+        return {
+            keymaps = {
+                view = file_nav,
+                file_panel = file_nav,
+                file_history_panel = file_nav,
+            },
+        }
+    end,
 }
