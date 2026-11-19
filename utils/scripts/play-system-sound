@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# play-system-sound — play a named sound from ~/.config/syssounds.ini,
+# unless swaync Do-Not-Disturb is on
+
+CONFIG="$HOME/.config/syssounds.ini"
+
+usage() {
+    echo "Usage: play-system-sound <name> [--silent]" >&2
+    exit 2
+}
+
+# swaync reports a non-zero exit as a notification (script-fail-notify),
+# so --silent also exits successfully.
+fail() {
+    if [[ $SILENT == true ]]; then
+        exit 0
+    fi
+    echo "play-system-sound: $1" >&2
+    exit 1
+}
+
+trim() {
+    local s="$1"
+    s="${s#"${s%%[![:space:]]*}"}"
+    s="${s%"${s##*[![:space:]]}"}"
+    printf '%s' "$s"
+}
+
+# swaync-client waits forever for swaync if it cannot connect, even with --skip-wait.
+is_dnd_enabled() {
+    command -v swaync-client >/dev/null 2>&1 \
+        && [[ $(timeout 1 swaync-client --skip-wait -D 2>/dev/null) == "true" ]]
+}
+
+lookup_sound_path() {
+    local key value
+    while IFS='=' read -r key value || [[ -n $key ]]; do
+        key="$(trim "$key")"
+        if [[ $key == "$1" ]]; then
+            trim "$value"
+            return 0
+        fi
+    done < "$CONFIG"
+    return 1
+}
+
+NAME="$1"
+SILENT=false
+case "$#:$2" in
+    1:) ;;
+    2:--silent) SILENT=true ;;
+    *) usage ;;
+esac
+[[ -n $NAME ]] || usage
+
+if is_dnd_enabled; then
+    exit 0
+fi
+
+[[ -f $CONFIG ]] || fail "config file $CONFIG does not exist"
+SOUND_PATH="$(lookup_sound_path "$NAME")" || fail "no sound named '$NAME' in $CONFIG"
+if [[ $SOUND_PATH == "~/"* ]]; then
+    SOUND_PATH="$HOME/${SOUND_PATH#"~/"}"
+fi
+[[ -f $SOUND_PATH ]] || fail "sound file $SOUND_PATH does not exist"
+
+pw-play "$SOUND_PATH"

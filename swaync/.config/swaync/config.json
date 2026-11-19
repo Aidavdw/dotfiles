@@ -78,11 +78,11 @@
   },
   "scripts": {
     "calendar-reminders": {
-      "exec": "~/.config/swaync/play-sound.sh ~/sounds/notifications/marimba-chord-low.ogg",
+      "exec": "~/scripts/play-system-sound calendar-reminder --silent",
       "app-name": "evolution-alarm-notify"
     },
     "blink-break-reminder": {
-      "exec": "~/.config/swaync/play-sound.sh ~/sounds/notifications/soft-harp-down.ogg",
+      "exec": "~/scripts/play-system-sound break-reminder --silent",
       "app-name": "blink"
     }
   },

@@ -190,7 +190,8 @@ Screenshot editor
 
 #### swaync
 
-Notification centre
+Notification centre.
+Depends on `utils` for notification sounds.
 
 #### awww
 
@@ -223,6 +224,14 @@ fzf # fuzzy file finder
 eza # modern ls replacement
 yazi # modern ranger replacement (terminal file browser)
 ```
+
+#### utils
+
+Scripts that other modules depend on.
+`play-system-sound <name> [--silent]` plays the sound named in `~/.config/syssounds.ini`
+(`name = path` lines),
+unless swaync Do-Not-Disturb is on.
+`--silent` hides the error for an unknown name or missing file.
 
 #### Vesktop
 
