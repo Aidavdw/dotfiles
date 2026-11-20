@@ -4,11 +4,11 @@ Each reviewer follows **Every reviewer** plus its own section.
 
 ## Every reviewer
 
-- The repository is `~/geopolars`. Its `docs` folder holds the guides referred to below:
-  `Kernel implementation guide.md` (the *general* guide),
-  `Native kernel implementation guide.md` (the *native* guide),
-  `GEOS kernel implementation guide.md` (the *GEOS* guide),
-  and `Common arguments.md`.
+- The repository is `~/geopolars`. Its `docs/source/development` folder holds the guides referred to below:
+  `kernel-implementation-guide.md` (the *general* guide),
+  `native-kernel-implementation-guide.md` (the *native* guide),
+  and `geos-kernel-implementation-guide.md` (the *GEOS* guide).
+  The common arguments are in `geopolars/docs/source/reference/common_arguments.rst`.
 - **The guides are the authority** on how a kernel should be written,
   not the code around it.
   Read "The target, and legacy names" in the general guide first:
@@ -37,7 +37,7 @@ Each reviewer follows **Every reviewer** plus its own section.
 You own:
 
 - general guide: "The entry point" (with "Work on the arrays, not on single items"),
-  "Dispatch" (with "Const or runtime"), "Passes and allocation",
+  "Dispatch" (with "Const or runtime branching"), "Passes and allocation",
   "Trimmed and untrimmed views", and "Backends".
 - native guide: "Shapes", "Points and nested kinds", and "Vectorising simple kernels",
   except whether a computation is harmless under a null,
@@ -126,10 +126,10 @@ A fix that moves a helper names its destination and every caller that changes.
 
 ## Arguments
 
-You own: `Common arguments.md`, and the GEOS guide's "Orientation of new rings".
+You own: `common_arguments.rst`, and the GEOS guide's "Orientation of new rings".
 
 Follow the kernel's arguments up through the plugin layer to the Python API
-(see `docs/Typical expression flow.md`), and review them there.
+(see `docs/source/development/typical-expression-flow.md`), and review them there.
 Check that the right arguments are there, with their common names,
 and that every argument "Arguments that come together" asks for is there too.
 An argument marked *Legacy* should not be used in new code.
@@ -154,8 +154,9 @@ You own:
 - native guide: "`early_coord_check`".
 - GEOS guide: "Trivial rows never reach GEOS", and "Coordinate checks and GEOS errors".
 
-Besides the guides, what an expression should give is in `docs/Common arguments.md`,
-the validity table in `README.md`, and `docs/Tier per expression.md`.
+Besides the guides, what an expression should give is in `common_arguments.rst`,
+the validity table in `docs/source/user-guide/geo/concepts/validity.md`,
+and `docs/source/development/tier-per-expression.md`.
 A kernel that hand-rolls what a shared helper does is for **Helpers**.
 
 ### Method
@@ -171,7 +172,7 @@ Always check what the kernel gives for a NaN axis, an inf coordinate,
 an empty point, and an empty ring or part.
 
 For every error the kernel can raise, find the earliest point it could be raised
-(follow the argument up to the plugin, per `docs/Typical expression flow.md`).
+(follow the argument up to the plugin, per `docs/source/development/typical-expression-flow.md`).
 An error raised later than it could be is *should fix*.
 
 ### Constructors

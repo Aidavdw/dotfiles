@@ -57,7 +57,7 @@ Leave the reading to the reviewers, so that your own context stays small.
 
    Judge each *allowed* import between kernels from **Helpers**:
    accept it only when its reason shows the helper is the kernel's main thing,
-   as "Helpers" in `docs/Kernel implementation guide.md` defines it.
+   as "Helpers" in `docs/source/development/kernel-implementation-guide.md` defines it.
    Otherwise reject it and make it a *should fix*,
    giving the reviewer's reason and why it does not hold.
 
